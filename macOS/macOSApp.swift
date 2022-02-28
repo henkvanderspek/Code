@@ -1,14 +1,14 @@
 //
-//  CodeApp.swift
-//  Code
+//  macOSApp.swift
+//  macOS
 //
-//  Created by Henk van der Spek on 24/02/2022.
+//  Created by Henk van der Spek on 28/02/2022.
 //
 
 import SwiftUI
 
 @main
-struct CodeApp: App {
+struct macOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

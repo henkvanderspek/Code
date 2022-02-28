@@ -1,16 +1,15 @@
 //
 //  ContentView.swift
-//  Code
+//  iOS
 //
-//  Created by Henk van der Spek on 24/02/2022.
+//  Created by Henk van der Spek on 28/02/2022.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        GridView(rows: 12, cols: 8)
     }
 }
 
