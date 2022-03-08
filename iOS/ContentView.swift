@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        GridView(rows: 12, cols: 8)
+        GridView(rows: 12, cols: 8, text: .constant("f"))
     }
 }
 

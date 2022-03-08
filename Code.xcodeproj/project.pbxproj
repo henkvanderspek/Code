@@ -9,6 +9,24 @@
 /* Begin PBXBuildFile section */
 		B63F547027CD08CC00C111A8 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FDF7D227CCDA500008262D /* GridView.swift */; };
 		B63F547127CD131900C111A8 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FDF7D227CCDA500008262D /* GridView.swift */; };
+		B63F547327CE1D2200C111A8 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547227CE1D2200C111A8 /* NewsView.swift */; };
+		B63F547427CE1D2200C111A8 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547227CE1D2200C111A8 /* NewsView.swift */; };
+		B63F547627CE254200C111A8 /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547527CE254200C111A8 /* LiveView.swift */; };
+		B63F547727CE254200C111A8 /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547527CE254200C111A8 /* LiveView.swift */; };
+		B63F547927CE2B1900C111A8 /* DynamicGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547827CE2B1900C111A8 /* DynamicGridView.swift */; };
+		B63F547A27CE2B1900C111A8 /* DynamicGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547827CE2B1900C111A8 /* DynamicGridView.swift */; };
+		B63F547C27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */; };
+		B63F547D27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */; };
+		B6838BEB27D76F4300C60C32 /* JsonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BEA27D76F4300C60C32 /* JsonUI.swift */; };
+		B6838BEC27D76F4300C60C32 /* JsonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BEA27D76F4300C60C32 /* JsonUI.swift */; };
+		B6838BEE27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */; };
+		B6838BEF27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */; };
+		B6838BF127D7B7E100C60C32 /* JsonUI+Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */; };
+		B6838BF227D7B7E100C60C32 /* JsonUI+Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */; };
+		B6838BF427D7BE4400C60C32 /* JsonUI.View.Type+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF327D7BE4400C60C32 /* JsonUI.View.Type+Codable.swift */; };
+		B6838BF527D7BE4400C60C32 /* JsonUI.View.Type+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF327D7BE4400C60C32 /* JsonUI.View.Type+Codable.swift */; };
+		B6838BFA27D7D94A00C60C32 /* ScriptParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF927D7D94A00C60C32 /* ScriptParser.swift */; };
+		B6838BFB27D7D94A00C60C32 /* ScriptParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF927D7D94A00C60C32 /* ScriptParser.swift */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843727CCEAF60000C0E7 /* ContentView.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
@@ -20,6 +38,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B63F547227CE1D2200C111A8 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		B63F547527CE254200C111A8 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
+		B63F547827CE2B1900C111A8 /* DynamicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGridView.swift; sourceTree = "<group>"; };
+		B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
+		B6838BEA27D76F4300C60C32 /* JsonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUI.swift; sourceTree = "<group>"; };
+		B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+SwiftUI.swift"; sourceTree = "<group>"; };
+		B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+Script.swift"; sourceTree = "<group>"; };
+		B6838BF327D7BE4400C60C32 /* JsonUI.View.Type+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI.View.Type+Codable.swift"; sourceTree = "<group>"; };
+		B6838BF927D7D94A00C60C32 /* ScriptParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptParser.swift; sourceTree = "<group>"; };
 		B6C2843327CCEAF60000C0E7 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C2843527CCEAF60000C0E7 /* macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSApp.swift; sourceTree = "<group>"; };
 		B6C2843727CCEAF60000C0E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +143,15 @@
 			isa = PBXGroup;
 			children = (
 				B6FDF7D227CCDA500008262D /* GridView.swift */,
+				B63F547527CE254200C111A8 /* LiveView.swift */,
+				B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */,
+				B63F547227CE1D2200C111A8 /* NewsView.swift */,
+				B63F547827CE2B1900C111A8 /* DynamicGridView.swift */,
+				B6838BEA27D76F4300C60C32 /* JsonUI.swift */,
+				B6838BF327D7BE4400C60C32 /* JsonUI.View.Type+Codable.swift */,
+				B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */,
+				B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */,
+				B6838BF927D7D94A00C60C32 /* ScriptParser.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -220,9 +256,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B63F547A27CE2B1900C111A8 /* DynamicGridView.swift in Sources */,
+				B63F547D27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */,
+				B6838BF227D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
+				B6838BF527D7BE4400C60C32 /* JsonUI.View.Type+Codable.swift in Sources */,
 				B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */,
+				B63F547727CE254200C111A8 /* LiveView.swift in Sources */,
+				B63F547427CE1D2200C111A8 /* NewsView.swift in Sources */,
+				B6838BFB27D7D94A00C60C32 /* ScriptParser.swift in Sources */,
 				B63F547127CD131900C111A8 /* GridView.swift in Sources */,
 				B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */,
+				B6838BEF27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */,
+				B6838BEC27D76F4300C60C32 /* JsonUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,9 +275,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B63F547927CE2B1900C111A8 /* DynamicGridView.swift in Sources */,
+				B63F547C27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */,
+				B6838BF127D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
+				B6838BF427D7BE4400C60C32 /* JsonUI.View.Type+Codable.swift in Sources */,
 				B6FDF7DD27CCDB800008262D /* ContentView.swift in Sources */,
+				B63F547627CE254200C111A8 /* LiveView.swift in Sources */,
+				B63F547327CE1D2200C111A8 /* NewsView.swift in Sources */,
+				B6838BFA27D7D94A00C60C32 /* ScriptParser.swift in Sources */,
 				B63F547027CD08CC00C111A8 /* GridView.swift in Sources */,
 				B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */,
+				B6838BEE27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */,
+				B6838BEB27D76F4300C60C32 /* JsonUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
