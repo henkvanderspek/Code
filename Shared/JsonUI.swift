@@ -76,23 +76,17 @@ extension JsonUI.View.Script {
                     return `<vstack>
                         <hstack>
                             <text>🤓</text>
-                            <text>👍</text>
                             <spacer/>
-                        </hstack>
-                        <text>👍</text>
-                        <hstack>
-                            <vstack>
-                                <text>😍</text>
-                                <text>❤️</text>
-                            </vstack>
                             <text>👍</text>
-                            <zstack>
-                                <text>'</text>
-                                <text>.</text>
-                            </zstack>
-                            <spacer/>
                         </hstack>
                         <spacer/>
+                        <text>❤️</text>
+                        <spacer/>
+                        <hstack>
+                            <text>👍</text>
+                            <spacer/>
+                            <text>🤓</text>
+                        </hstack>
                     </vstack>`
                 }
             """#
