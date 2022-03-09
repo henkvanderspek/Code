@@ -59,6 +59,8 @@ private extension JsonUIView {
             return AnyView(Text(v))
         case let .script(s):
             return AnyView(Script(s))
+        case .spacer:
+            return AnyView(Spacer())
         case .empty:
             return AnyView(EmptyView())
         }
@@ -69,13 +71,13 @@ extension JsonUI.View: Identifiable {}
 
 extension JsonUIView {
     struct HStack: View {
-        let view: JsonUI.View.HStack
-        init(_ v: JsonUI.View.HStack) {
-            view = v
+        let children: [JsonUI.View]
+        init(_ c: [JsonUI.View]) {
+            children = c
         }
         var body: some View {
             SwiftUI.HStack {
-                ForEach(view.children) {
+                ForEach(children) {
                     JsonUIView($0)
                 }
             }
@@ -84,13 +86,13 @@ extension JsonUIView {
 
     struct VStack: View {
         let id = UUID()
-        let view: JsonUI.View.VStack
-        init(_ v: JsonUI.View.VStack) {
-            view = v
+        let children: [JsonUI.View]
+        init(_ c: [JsonUI.View]) {
+            children = c
         }
         var body: some View {
             SwiftUI.VStack {
-                ForEach(view.children) {
+                ForEach(children) {
                     JsonUIView($0)
                 }
             }
@@ -99,13 +101,15 @@ extension JsonUIView {
 
     struct ZStack: View {
         let id = UUID()
-        let view: JsonUI.View.ZStack
-        init(_ v: JsonUI.View.ZStack) {
-            view = v
+        let children: [JsonUI.View]
+        init(_ c: [JsonUI.View]) {
+            children = c
         }
         var body: some View {
             SwiftUI.ZStack {
-                
+                ForEach(children) {
+                    JsonUIView($0)
+                }
             }
         }
     }

@@ -10,12 +10,13 @@ import Foundation
 enum JsonUI {
     struct View: Codable {
         enum `Type` {
-            case hstack(HStack)
-            case vstack(VStack)
-            case zstack(ZStack)
+            case hstack([JsonUI.View])
+            case vstack([JsonUI.View])
+            case zstack([JsonUI.View])
             case image(Image)
             case text(Text)
             case script(Script)
+            case spacer
             case empty
         }
         var id = UUID()
@@ -25,15 +26,6 @@ enum JsonUI {
 }
 
 extension JsonUI.View {
-    struct HStack: Codable {
-        let children: [JsonUI.View]
-    }
-    struct VStack: Codable {
-        let children: [JsonUI.View]
-    }
-    struct ZStack: Codable {
-        let children: [JsonUI.View]
-    }
     struct Image: Codable {}
     struct Text: Codable {
         let value: String
@@ -51,13 +43,13 @@ extension JsonUI.View {
 
 extension JsonUI.View {
     static func hstack(_ children:  [JsonUI.View] = [], padding: Padding? = nil) -> Self {
-        .init(type: .hstack(.init(children: children)), padding: padding)
+        .init(type: .hstack(children), padding: padding)
     }
     static func vstack(_ children:  [JsonUI.View] = [], padding: Padding? = nil) -> Self {
-        .init(type: .vstack(.init(children: children)), padding: padding)
+        .init(type: .vstack(children), padding: padding)
     }
     static func zstack(_ children:  [JsonUI.View] = [], padding: Padding? = nil) -> Self {
-        .init(type: .zstack(.init(children: children)), padding: padding)
+        .init(type: .zstack(children), padding: padding)
     }
     static func text(_ s: String = .init(), padding: Padding? = nil) -> Self {
         .init(type: .text(.init(value: s)), padding: padding)
@@ -67,6 +59,9 @@ extension JsonUI.View {
     }
     static func script(_ s: Script, padding: Padding? = nil) -> Self {
         .init(type: .script(s), padding: padding)
+    }
+    static var spacer: Self {
+        .init(type: .spacer, padding: nil)
     }
     static var empty: Self {
         .init(type: .empty, padding: nil)
@@ -78,10 +73,27 @@ extension JsonUI.View.Script {
         .init(
             source: #"""
                 function render() {
-                    return {
-                        type: 'text',
-                        value: 'Hello World! 🤓👍'
-                    }
+                    return `<vstack>
+                        <hstack>
+                            <text>🤓</text>
+                            <text>👍</text>
+                            <spacer/>
+                        </hstack>
+                        <text>👍</text>
+                        <hstack>
+                            <vstack>
+                                <text>😍</text>
+                                <text>❤️</text>
+                            </vstack>
+                            <text>👍</text>
+                            <zstack>
+                                <text>'</text>
+                                <text>.</text>
+                            </zstack>
+                            <spacer/>
+                        </hstack>
+                        <spacer/>
+                    </vstack>`
                 }
             """#
         )
