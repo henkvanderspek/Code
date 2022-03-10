@@ -121,7 +121,7 @@ private extension JsonUI.View {
                 return .spacer
             } else if let _ = try c.decodeIfPresent(Empty.self, forKey: .rectangle) {
                 return .rectangle // TODO: Padding
-            } else { // TODO image, script
+            } else { // TODO: image, script
                 return .empty
             }
         } catch {
