@@ -16,6 +16,7 @@ enum JsonUI {
             case image(Image)
             case text(Text)
             case script(Script)
+            case rectangle
             case spacer
             case empty
         }
@@ -60,6 +61,9 @@ extension JsonUI.View {
     static func script(_ s: Script, padding: Padding? = nil) -> Self {
         .init(type: .script(s), padding: padding)
     }
+    static var rectangle: Self {
+        .init(type: .rectangle, padding: nil)
+    }
     static var spacer: Self {
         .init(type: .spacer, padding: nil)
     }
@@ -73,21 +77,24 @@ extension JsonUI.View.Script {
         .init(
             source: #"""
                 function render() {
-                    return `<vstack>
-                        <hstack>
-                            <text>🤓</text>
+                    return `<zstack>
+                        <rectangle/>
+                        <vstack padding="16">
+                            <hstack>
+                                <text>🤓</text>
+                                <spacer/>
+                                <text>👍</text>
+                            </hstack>
                             <spacer/>
-                            <text>👍</text>
-                        </hstack>
-                        <spacer/>
-                        <text>❤️</text>
-                        <spacer/>
-                        <hstack>
-                            <text>👍</text>
+                            <text>❤️</text>
                             <spacer/>
-                            <text>🤓</text>
-                        </hstack>
-                    </vstack>`
+                            <hstack>
+                                <text>👍</text>
+                                <spacer/>
+                                <text>🤓</text>
+                            </hstack>
+                        </vstack>
+                    </zstack>`
                 }
             """#
         )

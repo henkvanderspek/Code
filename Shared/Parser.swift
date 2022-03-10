@@ -15,7 +15,7 @@ struct Parser {
         c.evaluateScript(s)
         guard
             let s = c.evaluateScript("render()").toString(),
-            let data = "<root>\(s)</root>".data(using: .utf8)
+            let data = "<doc>\(s)</doc>".data(using: .utf8)
         else {
             return .text("💣")
         }

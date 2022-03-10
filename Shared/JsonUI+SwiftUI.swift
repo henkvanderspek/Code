@@ -18,31 +18,7 @@ struct JsonUIView: SwiftUI.View {
     }
 }
 
-extension JsonUI.View.Padding: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding(.leading, leading.map { .init($0) } ?? 0)
-            .padding(.trailing, trailing.map { .init($0) } ?? 0)
-            .padding(.top, top.map { .init($0) } ?? 0)
-            .padding(.bottom, bottom.map { .init($0) } ?? 0)
-    }
-}
-
-extension JsonUI.View.Padding {
-    static var zero: Self {
-        .init(leading: nil, trailing: nil, top: nil, bottom: nil)
-    }
-    static func all(_ v: Int) -> Self {
-        .init(leading: v, trailing: v, top: v, bottom: v)
-    }
-}
-
-extension View {
-    func padding(_ p: JsonUI.View.Padding?) -> some View {
-        guard let p = p else { return AnyView(self) }
-        return AnyView(modifier(p))
-    }
-}
+extension JsonUI.View: Identifiable {}
 
 private extension JsonUIView {
     func createView() -> some SwiftUI.View {
@@ -59,80 +35,12 @@ private extension JsonUIView {
             return AnyView(Text(v))
         case let .script(s):
             return AnyView(Script(s))
+        case .rectangle:
+            return AnyView(Rectangle())
         case .spacer:
             return AnyView(Spacer())
         case .empty:
             return AnyView(EmptyView())
-        }
-    }
-}
-
-extension JsonUI.View: Identifiable {}
-
-extension JsonUIView {
-    struct HStack: View {
-        let children: [JsonUI.View]
-        init(_ c: [JsonUI.View]) {
-            children = c
-        }
-        var body: some View {
-            SwiftUI.HStack {
-                ForEach(children) {
-                    JsonUIView($0)
-                }
-            }
-        }
-    }
-
-    struct VStack: View {
-        let id = UUID()
-        let children: [JsonUI.View]
-        init(_ c: [JsonUI.View]) {
-            children = c
-        }
-        var body: some View {
-            SwiftUI.VStack {
-                ForEach(children) {
-                    JsonUIView($0)
-                }
-            }
-        }
-    }
-
-    struct ZStack: View {
-        let id = UUID()
-        let children: [JsonUI.View]
-        init(_ c: [JsonUI.View]) {
-            children = c
-        }
-        var body: some View {
-            SwiftUI.ZStack {
-                ForEach(children) {
-                    JsonUIView($0)
-                }
-            }
-        }
-    }
-
-    struct Image: View {
-        let id = UUID()
-        let view: JsonUI.View.Image
-        init(_ v: JsonUI.View.Image) {
-            view = v
-        }
-        var body: some View {
-            SwiftUI.Image(systemName: "mustache.fill")
-        }
-    }
-
-    struct Text: View {
-        let id = UUID()
-        let view: JsonUI.View.Text
-        init(_ v: JsonUI.View.Text) {
-            view = v
-        }
-        var body: some View {
-            SwiftUI.Text(view.value)
         }
     }
 }
