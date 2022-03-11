@@ -23,6 +23,8 @@
 		B62CFCAC27D9F60F00C0F17B /* JsonUI+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFCAA27D9F60F00C0F17B /* JsonUI+Padding.swift */; };
 		B62CFCAE27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFCAD27DB5C0800C0F17B /* JsonUI+Color.swift */; };
 		B62CFCAF27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFCAD27DB5C0800C0F17B /* JsonUI+Color.swift */; };
+		B62CFCB027DB6C9500C0F17B /* JsonUI+Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC8F27D9EE7100C0F17B /* JsonUI+Rectangle.swift */; };
+		B62CFCB127DB6C9600C0F17B /* JsonUI+Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC8F27D9EE7100C0F17B /* JsonUI+Rectangle.swift */; };
 		B63F547027CD08CC00C111A8 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FDF7D227CCDA500008262D /* GridView.swift */; };
 		B63F547127CD131900C111A8 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FDF7D227CCDA500008262D /* GridView.swift */; };
 		B63F547327CE1D2200C111A8 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547227CE1D2200C111A8 /* NewsView.swift */; };
@@ -33,6 +35,8 @@
 		B63F547A27CE2B1900C111A8 /* DynamicGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547827CE2B1900C111A8 /* DynamicGridView.swift */; };
 		B63F547C27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */; };
 		B63F547D27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */; };
+		B67109A327DBAACC0010E47E /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B67109A227DBAACC0010E47E /* XMLCoder */; };
+		B67109A527DBAAD30010E47E /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B67109A427DBAAD30010E47E /* XMLCoder */; };
 		B6838BEB27D76F4300C60C32 /* JsonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BEA27D76F4300C60C32 /* JsonUI.swift */; };
 		B6838BEC27D76F4300C60C32 /* JsonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BEA27D76F4300C60C32 /* JsonUI.swift */; };
 		B6838BEE27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */; };
@@ -43,8 +47,6 @@
 		B6838BF527D7BE4400C60C32 /* JsonUI+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF327D7BE4400C60C32 /* JsonUI+Codable.swift */; };
 		B6838BFA27D7D94A00C60C32 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF927D7D94A00C60C32 /* Parser.swift */; };
 		B6838BFB27D7D94A00C60C32 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF927D7D94A00C60C32 /* Parser.swift */; };
-		B69BABFE27D8A78800FC8C19 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B69BABFD27D8A78800FC8C19 /* XMLCoder */; };
-		B69BAC0127D8A7C900FC8C19 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B69BAC0027D8A7C900FC8C19 /* XMLCoder */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843727CCEAF60000C0E7 /* ContentView.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
@@ -69,6 +71,7 @@
 		B63F547527CE254200C111A8 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		B63F547827CE2B1900C111A8 /* DynamicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGridView.swift; sourceTree = "<group>"; };
 		B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
+		B67109A127DBAAB20010E47E /* XMLCoder */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = XMLCoder; path = ../XMLCoder; sourceTree = "<group>"; };
 		B6838BEA27D76F4300C60C32 /* JsonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUI.swift; sourceTree = "<group>"; };
 		B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+SwiftUI.swift"; sourceTree = "<group>"; };
 		B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+Script.swift"; sourceTree = "<group>"; };
@@ -94,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B69BABFE27D8A78800FC8C19 /* XMLCoder in Frameworks */,
+				B67109A527DBAAD30010E47E /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B69BAC0127D8A7C900FC8C19 /* XMLCoder in Frameworks */,
+				B67109A327DBAACC0010E47E /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +115,7 @@
 		B62A6CE927C7C6D200798A2C = {
 			isa = PBXGroup;
 			children = (
+				B67109A027DBAAB20010E47E /* Packages */,
 				B6FDF7E627CCDB960008262D /* Shared */,
 				B6FDF7D927CCDB800008262D /* iOS */,
 				B6C2843427CCEAF60000C0E7 /* macOS */,
@@ -127,6 +131,14 @@
 				B6C2843327CCEAF60000C0E7 /* Canvas.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B67109A027DBAAB20010E47E /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				B67109A127DBAAB20010E47E /* XMLCoder */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 		B69BABFF27D8A7C900FC8C19 /* Frameworks */ = {
@@ -219,7 +231,7 @@
 			);
 			name = macOS;
 			packageProductDependencies = (
-				B69BABFD27D8A78800FC8C19 /* XMLCoder */,
+				B67109A427DBAAD30010E47E /* XMLCoder */,
 			);
 			productName = macOS;
 			productReference = B6C2843327CCEAF60000C0E7 /* Canvas.app */;
@@ -239,7 +251,7 @@
 			);
 			name = iOS;
 			packageProductDependencies = (
-				B69BAC0027D8A7C900FC8C19 /* XMLCoder */,
+				B67109A227DBAACC0010E47E /* XMLCoder */,
 			);
 			productName = iOS;
 			productReference = B6FDF7D827CCDB800008262D /* Canvas.app */;
@@ -273,7 +285,6 @@
 			);
 			mainGroup = B62A6CE927C7C6D200798A2C;
 			packageReferences = (
-				B69BABFC27D8A78800FC8C19 /* XCRemoteSwiftPackageReference "XMLCoder" */,
 			);
 			productRefGroup = B62A6CF327C7C6D200798A2C /* Products */;
 			projectDirPath = "";
@@ -313,6 +324,7 @@
 			files = (
 				B63F547A27CE2B1900C111A8 /* DynamicGridView.swift in Sources */,
 				B62CFC9C27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */,
+				B62CFCB127DB6C9600C0F17B /* JsonUI+Rectangle.swift in Sources */,
 				B63F547D27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */,
 				B6838BF227D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
 				B62CFCA227D9F02E00C0F17B /* JsonUI+VStack.swift in Sources */,
@@ -340,6 +352,7 @@
 			files = (
 				B63F547927CE2B1900C111A8 /* DynamicGridView.swift in Sources */,
 				B62CFC9B27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */,
+				B62CFCB027DB6C9500C0F17B /* JsonUI+Rectangle.swift in Sources */,
 				B63F547C27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */,
 				B6838BF127D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
 				B62CFCA127D9F02E00C0F17B /* JsonUI+VStack.swift in Sources */,
@@ -632,26 +645,13 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		B69BABFC27D8A78800FC8C19 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/CoreOffice/XMLCoder";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		B69BABFD27D8A78800FC8C19 /* XMLCoder */ = {
+		B67109A227DBAACC0010E47E /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B69BABFC27D8A78800FC8C19 /* XCRemoteSwiftPackageReference "XMLCoder" */;
 			productName = XMLCoder;
 		};
-		B69BAC0027D8A7C900FC8C19 /* XMLCoder */ = {
+		B67109A427DBAAD30010E47E /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B69BABFC27D8A78800FC8C19 /* XCRemoteSwiftPackageReference "XMLCoder" */;
 			productName = XMLCoder;
 		};
 /* End XCSwiftPackageProductDependency section */

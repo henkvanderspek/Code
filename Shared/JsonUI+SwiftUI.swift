@@ -15,8 +15,8 @@ struct JsonUIView: SwiftUI.View {
     var body: some View {
         createView()
             .padding(view.attributes.padding)
-            .foregroundColor(view.attributes.foregroundColor)
             .backgroundColor(view.attributes.backgroundColor)
+            .foregroundColor(view.attributes.foregroundColor)
     }
 }
 

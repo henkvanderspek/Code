@@ -48,6 +48,21 @@ enum JsonUI {
     }
 }
 
+extension JsonUI.View.`Type` {
+    static var names: [String] {
+        return [
+            "hstack",
+            "vstack",
+            "zstack",
+            "image",
+            "text",
+            "script",
+            "rectangle",
+            "spacer"
+        ]
+    }
+}
+
 extension JsonUI.View {
     struct Image: Codable {}
     struct Text: Codable {
@@ -86,8 +101,11 @@ extension JsonUI.View {
     static func script(_ s: Script, attributes: Attributes = .none) -> Self {
         .init(type: .script(s), attributes: attributes)
     }
+    static func rectangle(attributes: Attributes = .none) -> Self {
+        .init(type: .rectangle, attributes: attributes)
+    }
     static var rectangle: Self {
-        .init(type: .rectangle, attributes: .none)
+        .rectangle()
     }
     static var spacer: Self {
         .init(type: .spacer, attributes: .none)
@@ -101,10 +119,13 @@ extension JsonUI.View.Script {
     static var mock: Self {
         .init(
             source: #"""
+                function background() {
+                    return `<rectangle foregroundColor='pink'/>`
+                }
                 function render() {
-                    return `<zstack backgroundColor="red">
-                        <rectangle/>
-                        <vstack padding="16">
+                    return `<zstack>
+                        <background/>
+                        <vstack padding='16'>
                             <hstack>
                                 <text>🤓</text>
                                 <spacer/>
@@ -113,11 +134,13 @@ extension JsonUI.View.Script {
                             <spacer/>
                             <text>❤️</text>
                             <spacer/>
-                            <hstack>
-                                <text>👍</text>
-                                <spacer/>
-                                <text>🤓</text>
-                            </hstack>
+                            <zstack>
+                                <hstack>
+                                    <text>👍</text>
+                                    <spacer/>
+                                    <text>🤓</text>
+                                </hstack>
+                            </zstack>
                         </vstack>
                     </zstack>`
                 }

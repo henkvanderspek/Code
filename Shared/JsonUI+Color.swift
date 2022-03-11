@@ -9,10 +9,17 @@ import SwiftUI
 
 extension View {
     func foregroundColor(_ c: JsonUI.View.Attributes.Color?) -> some View {
-        return foregroundColor(c.map { _ in .red }) // TODO: Map native color to SwiftUI color
+        guard let c = c else { return AnyView(self) }
+        return AnyView(foregroundColor(Color(c)))
     }
     func backgroundColor(_ c: JsonUI.View.Attributes.Color?) -> some View {
-        guard let _ = c else { return AnyView(self) }
-        return AnyView(background(.black)) // TODO: Map native color to SwiftUI color
+        guard let c = c else { return AnyView(self) }
+        return AnyView(background(Color(c)))
+    }
+}
+
+extension Color {
+    init(_ c: JsonUI.View.Attributes.Color) {
+        self.init(c.value)
     }
 }
