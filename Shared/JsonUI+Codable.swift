@@ -24,34 +24,48 @@ extension JsonUI.View: Equatable {
     }
 }
 
-extension JsonUI.View.Text {
+extension JsonUI.View.Attributes {
+    private enum CodingKeys: CodingKey {
+        case padding
+        case foregroundColor
+        case backgroundColor
+    }
     init(from decoder: Decoder) throws {
-        var c = try decoder.unkeyedContainer()
-        value = try c.decode(String.self)
-        print(value)
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        let v = Int(try c.decodeIfPresent(String.self, forKey: .padding) ?? "")
+        padding = .init(leading: v, trailing: v, top: v, bottom: v)
+        foregroundColor = try c.decodeIfPresent(Color.self, forKey: .foregroundColor)
+        backgroundColor = try c.decodeIfPresent(Color.self, forKey: .backgroundColor)
+    }
+    func encode(to encoder: Encoder) throws {
+        // TODO: implement Attributes encoder
     }
 }
 
-extension JsonUI.View {
+private extension JsonUI.View {
+    struct Empty: Codable {}
     
-    private struct Empty: Codable {}
-    
-    private struct Stack: Codable {
-        private enum CodingKeys: CodingKey {
-            case padding
+    struct T: Codable {
+        let attributes: Attributes
+        let value: String
+        init(from decoder: Decoder) throws {
+            attributes = try Attributes(from: decoder)
+            var c = try decoder.unkeyedContainer()
+            value = try c.decode(String.self)
         }
-        let padding: Padding?
+    }
+
+    struct Stack: Codable {
+        let attributes: Attributes
         let children: [JsonUI.View]
         init(from decoder: Decoder) throws {
-            let c = try decoder.container(keyedBy: CodingKeys.self)
+            attributes = try Attributes(from: decoder)
             let c2 = try decoder.singleValueContainer()
-            let v = Int(try c.decodeIfPresent(String.self, forKey: .padding) ?? "")
-            padding = .init(leading: v, trailing: v, top: v, bottom: v)
             children = try c2.decode([JsonUI.View].self)
         }
     }
     
-    private enum CodingKeys: String, XMLChoiceCodingKey {
+    enum CodingKeys: String, XMLChoiceCodingKey {
         case padding
         case hstack
         case vstack
@@ -63,10 +77,12 @@ extension JsonUI.View {
         case spacer
         case empty
     }
-    
+}
+
+extension JsonUI.View {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(padding, forKey: .padding)
+        try container.encode(attributes.padding, forKey: .padding)
         switch type {
         case let .hstack(value):
             try container.encode(value, forKey: .hstack)
@@ -95,17 +111,18 @@ extension JsonUI.View {
 }
 
 private extension JsonUI.View {
-    
     private static func hstack(_ s: Stack) -> Self {
-        .init(type: .hstack(s.children), padding: s.padding)
+        .hstack(s.children, attributes: s.attributes)
     }
     private static func vstack(_ s: Stack) -> Self {
-        .init(type: .vstack(s.children), padding: s.padding)
+        .vstack(s.children, attributes: s.attributes)
     }
     private static func zstack(_ s: Stack) -> Self {
-        .init(type: .zstack(s.children), padding: s.padding)
+        .zstack(s.children, attributes: s.attributes)
     }
-    
+    private static func text(_ t: T) -> Self {
+        .text(t.value, attributes: t.attributes)
+    }
     static func decode(from decoder: Decoder) throws -> Self {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         do {
@@ -115,8 +132,8 @@ private extension JsonUI.View {
                 return .vstack(s)
             } else if let s = try c.decodeIfPresent(Stack.self, forKey: .zstack) {
                 return .zstack(s)
-            } else if let s = try c.decodeIfPresent(String.self, forKey: .text) {
-                return .text(.init(s)) // TODO: Padding
+            } else if let t = try c.decodeIfPresent(T.self, forKey: .text) {
+                return .text(t)
             } else if let _ = try c.decodeIfPresent(Empty.self, forKey: .spacer) {
                 return .spacer
             } else if let _ = try c.decodeIfPresent(Empty.self, forKey: .rectangle) {
@@ -127,5 +144,18 @@ private extension JsonUI.View {
         } catch {
             return .empty
         }
+    }
+}
+
+extension JsonUI.View.Attributes.Color {
+    init(from decoder: Decoder) throws {
+        let c = try decoder.singleValueContainer()
+        let s = try c.decode(String.self)
+        print(s)
+        // TODO: Covert string to native color
+        value = .red
+    }
+    func encode(to encoder: Encoder) throws {
+        // TODO: implement SystemColor encoder
     }
 }

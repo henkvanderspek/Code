@@ -14,7 +14,9 @@ struct JsonUIView: SwiftUI.View {
     }
     var body: some View {
         createView()
-            .padding(view.padding)
+            .padding(view.attributes.padding)
+            .foregroundColor(view.attributes.foregroundColor)
+            .backgroundColor(view.attributes.backgroundColor)
     }
 }
 
@@ -60,7 +62,8 @@ struct JsonUIView_Previews: PreviewProvider {
                     .text("🤓"),
                     .text("🤓"),
                 ]),
-            ], padding: .all(8))
+            ],
+            attributes: .padding(.all(8)))
         )
     }
 }

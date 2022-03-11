@@ -6,9 +6,8 @@
 //
 
 import SwiftUI
-import XMLCoder
 
-extension JsonUI.View.Padding: ViewModifier {
+extension JsonUI.View.Attributes.Padding: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(.leading, leading.map { .init($0) } ?? 0)
@@ -18,7 +17,7 @@ extension JsonUI.View.Padding: ViewModifier {
     }
 }
 
-extension JsonUI.View.Padding {
+extension JsonUI.View.Attributes.Padding {
     static var zero: Self {
         .init(leading: nil, trailing: nil, top: nil, bottom: nil)
     }
@@ -28,7 +27,7 @@ extension JsonUI.View.Padding {
 }
 
 extension View {
-    func padding(_ p: JsonUI.View.Padding?) -> some View {
+    func padding(_ p: JsonUI.View.Attributes.Padding?) -> some View {
         guard let p = p else { return AnyView(self) }
         return AnyView(modifier(p))
     }
