@@ -119,12 +119,12 @@ extension JsonUI.View.Script {
     static var mock: Self {
         .init(
             source: #"""
-                function background() {
-                    return `<rectangle foregroundColor='pink'/>`
+                function background(props) {
+                    return `<rectangle foregroundColor='${props.color}'/>`
                 }
                 function render() {
                     return `<zstack>
-                        <background/>
+                        <background color='teal'/>
                         <vstack padding='16'>
                             <hstack>
                                 <text>🤓</text>

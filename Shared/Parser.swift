@@ -15,7 +15,7 @@ private extension CodingUserInfoKey {
 }
 
 private protocol ViewResolving {
-    func view(from key: String) -> JsonUI.View
+    func view(from key: String, props: [String: String]) -> JsonUI.View
 }
 
 struct Parser {
@@ -27,10 +27,10 @@ struct Parser {
 }
 
 private extension Parser {
-    func parse(_ s: String, function: String) -> JsonUI.View {
+    func parse(_ s: String, function: String, props: [String: String] = [:]) -> JsonUI.View {
         c.evaluateScript(s)
         guard
-            let s = c.evaluateScript("\(function)()").toString(),
+            let s = c.evaluateScript(function).call(withArguments: [props]).toString(),
             let data = "<doc>\(s)</doc>".data(using: .utf8)
         else {
             return .text("💣")
@@ -41,14 +41,14 @@ private extension Parser {
 }
 
 extension Parser: ViewResolving {
-    func view(from key: String) -> JsonUI.View {
-        return parse(.init(), function: key)
+    func view(from key: String, props: [String: String]) -> JsonUI.View {
+        return parse(.init(), function: key, props: props)
     }
 }
 
 extension Decoder {
     func resolve() -> JsonUI.View {
-        guard let k = currentKey, let p = userInfo[.viewResolver] as? ViewResolving else { return .empty }
-        return p.view(from: k)
+        guard let k = currentItem, let p = userInfo[.viewResolver] as? ViewResolving else { return .empty }
+        return p.view(from: k.name, props: k.attributes)
     }
 }
