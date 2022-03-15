@@ -37,6 +37,40 @@
 		B63F547D27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */; };
 		B67109A327DBAACC0010E47E /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B67109A227DBAACC0010E47E /* XMLCoder */; };
 		B67109A527DBAAD30010E47E /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B67109A427DBAAD30010E47E /* XMLCoder */; };
+		B67B3D8D27DF3E1A00F50F2E /* Sourceful in Frameworks */ = {isa = PBXBuildFile; productRef = B67B3D8C27DF3E1A00F50F2E /* Sourceful */; };
+		B67B3D8F27DF3E2800F50F2E /* Sourceful in Frameworks */ = {isa = PBXBuildFile; productRef = B67B3D8E27DF3E2800F50F2E /* Sourceful */; };
+		B67B3D9127DF3E9300F50F2E /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9027DF3E9300F50F2E /* EditorView.swift */; };
+		B67B3D9227DF3E9300F50F2E /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9027DF3E9300F50F2E /* EditorView.swift */; };
+		B67B3D9427DF419700F50F2E /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9327DF419700F50F2E /* NSLayoutConstraint+Helpers.swift */; };
+		B67B3D9527DF419700F50F2E /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9327DF419700F50F2E /* NSLayoutConstraint+Helpers.swift */; };
+		B67B3D9727DF42B300F50F2E /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
+		B67B3D9827DF42B300F50F2E /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
+		B67B3D9A27DF483E00F50F2E /* JsonUI+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9927DF483E00F50F2E /* JsonUI+Editor.swift */; };
+		B67B3D9B27DF483E00F50F2E /* JsonUI+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9927DF483E00F50F2E /* JsonUI+Editor.swift */; };
+		B67B3D9D27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9C27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift */; };
+		B67B3D9E27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9C27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift */; };
+		B67B3DA027DF54C000F50F2E /* UIEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9F27DF54C000F50F2E /* UIEdgeInsets+Helpers.swift */; };
+		B67B3DA227DF55A300F50F2E /* UIEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9F27DF54C000F50F2E /* UIEdgeInsets+Helpers.swift */; };
+		B67B3DA727E093F300F50F2E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DA627E093F300F50F2E /* LocationView.swift */; };
+		B67B3DA827E093F300F50F2E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DA627E093F300F50F2E /* LocationView.swift */; };
+		B67B3DAA27E0942900F50F2E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DA927E0942900F50F2E /* Location.swift */; };
+		B67B3DAB27E0942900F50F2E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DA927E0942900F50F2E /* Location.swift */; };
+		B67B3DAD27E0C2FE00F50F2E /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAC27E0C2FE00F50F2E /* PostView.swift */; };
+		B67B3DAE27E0C2FE00F50F2E /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAC27E0C2FE00F50F2E /* PostView.swift */; };
+		B67B3DB027E0D95900F50F2E /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAF27E0D95900F50F2E /* CarouselView.swift */; };
+		B67B3DB127E0D95900F50F2E /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAF27E0D95900F50F2E /* CarouselView.swift */; };
+		B67B3DB327E0DAE700F50F2E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DB227E0DAE700F50F2E /* ImageView.swift */; };
+		B67B3DB427E0DAE700F50F2E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DB227E0DAE700F50F2E /* ImageView.swift */; };
+		B67B3DB727E0F1DB00F50F2E /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DB627E0F1DB00F50F2E /* Coordinate.swift */; };
+		B67B3DB827E0F1DB00F50F2E /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DB627E0F1DB00F50F2E /* Coordinate.swift */; };
+		B67B3DBA27E0F1FE00F50F2E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DB927E0F1FE00F50F2E /* Post.swift */; };
+		B67B3DBB27E0F1FE00F50F2E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DB927E0F1FE00F50F2E /* Post.swift */; };
+		B67B3DBD27E0F21D00F50F2E /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DBC27E0F21D00F50F2E /* CarouselItem.swift */; };
+		B67B3DBE27E0F21D00F50F2E /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DBC27E0F21D00F50F2E /* CarouselItem.swift */; };
+		B67B3DC227E1048F00F50F2E /* NewspaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DC127E1048F00F50F2E /* NewspaperView.swift */; };
+		B67B3DC327E1048F00F50F2E /* NewspaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DC127E1048F00F50F2E /* NewspaperView.swift */; };
+		B67B3DC527E1057B00F50F2E /* Newspaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DC427E1057B00F50F2E /* Newspaper.swift */; };
+		B67B3DC627E1057B00F50F2E /* Newspaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DC427E1057B00F50F2E /* Newspaper.swift */; };
 		B6838BEB27D76F4300C60C32 /* JsonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BEA27D76F4300C60C32 /* JsonUI.swift */; };
 		B6838BEC27D76F4300C60C32 /* JsonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BEA27D76F4300C60C32 /* JsonUI.swift */; };
 		B6838BEE27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */; };
@@ -72,6 +106,22 @@
 		B63F547827CE2B1900C111A8 /* DynamicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGridView.swift; sourceTree = "<group>"; };
 		B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
 		B67109A127DBAAB20010E47E /* XMLCoder */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = XMLCoder; path = ../XMLCoder; sourceTree = "<group>"; };
+		B67B3D9027DF3E9300F50F2E /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		B67B3D9327DF419700F50F2E /* NSLayoutConstraint+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Helpers.swift"; sourceTree = "<group>"; };
+		B67B3D9627DF42B300F50F2E /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		B67B3D9927DF483E00F50F2E /* JsonUI+Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+Editor.swift"; sourceTree = "<group>"; };
+		B67B3D9C27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+Helpers.swift"; sourceTree = "<group>"; };
+		B67B3D9F27DF54C000F50F2E /* UIEdgeInsets+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Helpers.swift"; sourceTree = "<group>"; };
+		B67B3DA627E093F300F50F2E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		B67B3DA927E0942900F50F2E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		B67B3DAC27E0C2FE00F50F2E /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		B67B3DAF27E0D95900F50F2E /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		B67B3DB227E0DAE700F50F2E /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		B67B3DB627E0F1DB00F50F2E /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		B67B3DB927E0F1FE00F50F2E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		B67B3DBC27E0F21D00F50F2E /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
+		B67B3DC127E1048F00F50F2E /* NewspaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewspaperView.swift; sourceTree = "<group>"; };
+		B67B3DC427E1057B00F50F2E /* Newspaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newspaper.swift; sourceTree = "<group>"; };
 		B6838BEA27D76F4300C60C32 /* JsonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUI.swift; sourceTree = "<group>"; };
 		B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+SwiftUI.swift"; sourceTree = "<group>"; };
 		B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+Script.swift"; sourceTree = "<group>"; };
@@ -98,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B67109A527DBAAD30010E47E /* XMLCoder in Frameworks */,
+				B67B3D8F27DF3E2800F50F2E /* Sourceful in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B67109A327DBAACC0010E47E /* XMLCoder in Frameworks */,
+				B67B3D8D27DF3E1A00F50F2E /* Sourceful in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +191,69 @@
 				B67109A127DBAAB20010E47E /* XMLCoder */,
 			);
 			name = Packages;
+			sourceTree = "<group>";
+		};
+		B67B3D8A27DF3D3F00F50F2E /* JsonUI */ = {
+			isa = PBXGroup;
+			children = (
+				B67B3D9627DF42B300F50F2E /* Types.swift */,
+				B6838BEA27D76F4300C60C32 /* JsonUI.swift */,
+				B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */,
+				B6838BF327D7BE4400C60C32 /* JsonUI+Codable.swift */,
+				B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */,
+				B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */,
+				B62CFC8D27D9EE7100C0F17B /* JsonUI+VStack.swift */,
+				B62CFC9027D9EE7100C0F17B /* JsonUI+ZStack.swift */,
+				B62CFC9227D9EE7100C0F17B /* JsonUI+Image.swift */,
+				B62CFC8E27D9EE7100C0F17B /* JsonUI+Text.swift */,
+				B62CFC8F27D9EE7100C0F17B /* JsonUI+Rectangle.swift */,
+				B62CFCA327D9F41B00C0F17B /* JsonUI+Spacer.swift */,
+				B62CFCAA27D9F60F00C0F17B /* JsonUI+Padding.swift */,
+				B62CFCAD27DB5C0800C0F17B /* JsonUI+Color.swift */,
+				B67B3D9927DF483E00F50F2E /* JsonUI+Editor.swift */,
+				B6838BF927D7D94A00C60C32 /* Parser.swift */,
+				B67B3D9027DF3E9300F50F2E /* EditorView.swift */,
+			);
+			path = JsonUI;
+			sourceTree = "<group>";
+		};
+		B67B3DB527E0F1CF00F50F2E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B67B3DA927E0942900F50F2E /* Location.swift */,
+				B67B3DB627E0F1DB00F50F2E /* Coordinate.swift */,
+				B67B3DB927E0F1FE00F50F2E /* Post.swift */,
+				B67B3DBC27E0F21D00F50F2E /* CarouselItem.swift */,
+				B67B3DC427E1057B00F50F2E /* Newspaper.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B67B3DBF27E1036900F50F2E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B67B3D9327DF419700F50F2E /* NSLayoutConstraint+Helpers.swift */,
+				B67B3D9C27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift */,
+				B67B3D9F27DF54C000F50F2E /* UIEdgeInsets+Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B67B3DC027E1039600F50F2E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B6FDF7D227CCDA500008262D /* GridView.swift */,
+				B63F547527CE254200C111A8 /* LiveView.swift */,
+				B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */,
+				B63F547227CE1D2200C111A8 /* NewsView.swift */,
+				B63F547827CE2B1900C111A8 /* DynamicGridView.swift */,
+				B67B3DA627E093F300F50F2E /* LocationView.swift */,
+				B67B3DAC27E0C2FE00F50F2E /* PostView.swift */,
+				B67B3DAF27E0D95900F50F2E /* CarouselView.swift */,
+				B67B3DB227E0DAE700F50F2E /* ImageView.swift */,
+				B67B3DC127E1048F00F50F2E /* NewspaperView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B69BABFF27D8A7C900FC8C19 /* Frameworks */ = {
@@ -191,25 +306,10 @@
 		B6FDF7E627CCDB960008262D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				B6FDF7D227CCDA500008262D /* GridView.swift */,
-				B63F547527CE254200C111A8 /* LiveView.swift */,
-				B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */,
-				B63F547227CE1D2200C111A8 /* NewsView.swift */,
-				B63F547827CE2B1900C111A8 /* DynamicGridView.swift */,
-				B6838BEA27D76F4300C60C32 /* JsonUI.swift */,
-				B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */,
-				B6838BF327D7BE4400C60C32 /* JsonUI+Codable.swift */,
-				B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */,
-				B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */,
-				B62CFC8D27D9EE7100C0F17B /* JsonUI+VStack.swift */,
-				B62CFC9027D9EE7100C0F17B /* JsonUI+ZStack.swift */,
-				B62CFC9227D9EE7100C0F17B /* JsonUI+Image.swift */,
-				B62CFC8E27D9EE7100C0F17B /* JsonUI+Text.swift */,
-				B62CFC8F27D9EE7100C0F17B /* JsonUI+Rectangle.swift */,
-				B62CFCA327D9F41B00C0F17B /* JsonUI+Spacer.swift */,
-				B62CFCAA27D9F60F00C0F17B /* JsonUI+Padding.swift */,
-				B62CFCAD27DB5C0800C0F17B /* JsonUI+Color.swift */,
-				B6838BF927D7D94A00C60C32 /* Parser.swift */,
+				B67B3DBF27E1036900F50F2E /* Helpers */,
+				B67B3D8A27DF3D3F00F50F2E /* JsonUI */,
+				B67B3DB527E0F1CF00F50F2E /* Models */,
+				B67B3DC027E1039600F50F2E /* Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -232,6 +332,7 @@
 			name = macOS;
 			packageProductDependencies = (
 				B67109A427DBAAD30010E47E /* XMLCoder */,
+				B67B3D8E27DF3E2800F50F2E /* Sourceful */,
 			);
 			productName = macOS;
 			productReference = B6C2843327CCEAF60000C0E7 /* Canvas.app */;
@@ -252,6 +353,7 @@
 			name = iOS;
 			packageProductDependencies = (
 				B67109A227DBAACC0010E47E /* XMLCoder */,
+				B67B3D8C27DF3E1A00F50F2E /* Sourceful */,
 			);
 			productName = iOS;
 			productReference = B6FDF7D827CCDB800008262D /* Canvas.app */;
@@ -285,6 +387,7 @@
 			);
 			mainGroup = B62A6CE927C7C6D200798A2C;
 			packageReferences = (
+				B67B3D8B27DF3E1A00F50F2E /* XCRemoteSwiftPackageReference "Sourceful" */,
 			);
 			productRefGroup = B62A6CF327C7C6D200798A2C /* Products */;
 			projectDirPath = "";
@@ -324,19 +427,35 @@
 			files = (
 				B63F547A27CE2B1900C111A8 /* DynamicGridView.swift in Sources */,
 				B62CFC9C27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */,
+				B67B3DBE27E0F21D00F50F2E /* CarouselItem.swift in Sources */,
 				B62CFCB127DB6C9600C0F17B /* JsonUI+Rectangle.swift in Sources */,
+				B67B3D9827DF42B300F50F2E /* Types.swift in Sources */,
+				B67B3D9E27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift in Sources */,
+				B67B3DC627E1057B00F50F2E /* Newspaper.swift in Sources */,
 				B63F547D27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */,
+				B67B3DB127E0D95900F50F2E /* CarouselView.swift in Sources */,
 				B6838BF227D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
 				B62CFCA227D9F02E00C0F17B /* JsonUI+VStack.swift in Sources */,
 				B6838BF527D7BE4400C60C32 /* JsonUI+Codable.swift in Sources */,
 				B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */,
 				B62CFCAF27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */,
+				B67B3D9527DF419700F50F2E /* NSLayoutConstraint+Helpers.swift in Sources */,
+				B67B3DC327E1048F00F50F2E /* NewspaperView.swift in Sources */,
 				B62CFCAC27D9F60F00C0F17B /* JsonUI+Padding.swift in Sources */,
+				B67B3DB827E0F1DB00F50F2E /* Coordinate.swift in Sources */,
+				B67B3DB427E0DAE700F50F2E /* ImageView.swift in Sources */,
 				B63F547727CE254200C111A8 /* LiveView.swift in Sources */,
 				B63F547427CE1D2200C111A8 /* NewsView.swift in Sources */,
+				B67B3DBB27E0F1FE00F50F2E /* Post.swift in Sources */,
+				B67B3DAE27E0C2FE00F50F2E /* PostView.swift in Sources */,
 				B62CFCA527D9F41B00C0F17B /* JsonUI+Spacer.swift in Sources */,
+				B67B3D9227DF3E9300F50F2E /* EditorView.swift in Sources */,
+				B67B3D9B27DF483E00F50F2E /* JsonUI+Editor.swift in Sources */,
+				B67B3DA227DF55A300F50F2E /* UIEdgeInsets+Helpers.swift in Sources */,
 				B6838BFB27D7D94A00C60C32 /* Parser.swift in Sources */,
 				B63F547127CD131900C111A8 /* GridView.swift in Sources */,
+				B67B3DAB27E0942900F50F2E /* Location.swift in Sources */,
+				B67B3DA827E093F300F50F2E /* LocationView.swift in Sources */,
 				B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */,
 				B62CFCA027D9F02B00C0F17B /* JsonUI+ZStack.swift in Sources */,
 				B6838BEF27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */,
@@ -352,19 +471,35 @@
 			files = (
 				B63F547927CE2B1900C111A8 /* DynamicGridView.swift in Sources */,
 				B62CFC9B27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */,
+				B67B3DBD27E0F21D00F50F2E /* CarouselItem.swift in Sources */,
 				B62CFCB027DB6C9500C0F17B /* JsonUI+Rectangle.swift in Sources */,
+				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
+				B67B3D9D27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift in Sources */,
+				B67B3DC527E1057B00F50F2E /* Newspaper.swift in Sources */,
 				B63F547C27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */,
+				B67B3DB027E0D95900F50F2E /* CarouselView.swift in Sources */,
 				B6838BF127D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
 				B62CFCA127D9F02E00C0F17B /* JsonUI+VStack.swift in Sources */,
 				B6838BF427D7BE4400C60C32 /* JsonUI+Codable.swift in Sources */,
 				B6FDF7DD27CCDB800008262D /* ContentView.swift in Sources */,
 				B62CFCAE27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */,
+				B67B3D9427DF419700F50F2E /* NSLayoutConstraint+Helpers.swift in Sources */,
+				B67B3DC227E1048F00F50F2E /* NewspaperView.swift in Sources */,
 				B62CFCAB27D9F60F00C0F17B /* JsonUI+Padding.swift in Sources */,
+				B67B3DB727E0F1DB00F50F2E /* Coordinate.swift in Sources */,
+				B67B3DB327E0DAE700F50F2E /* ImageView.swift in Sources */,
 				B63F547627CE254200C111A8 /* LiveView.swift in Sources */,
 				B63F547327CE1D2200C111A8 /* NewsView.swift in Sources */,
+				B67B3DBA27E0F1FE00F50F2E /* Post.swift in Sources */,
+				B67B3DAD27E0C2FE00F50F2E /* PostView.swift in Sources */,
 				B62CFCA427D9F41B00C0F17B /* JsonUI+Spacer.swift in Sources */,
+				B67B3D9127DF3E9300F50F2E /* EditorView.swift in Sources */,
+				B67B3D9A27DF483E00F50F2E /* JsonUI+Editor.swift in Sources */,
+				B67B3DA027DF54C000F50F2E /* UIEdgeInsets+Helpers.swift in Sources */,
 				B6838BFA27D7D94A00C60C32 /* Parser.swift in Sources */,
 				B63F547027CD08CC00C111A8 /* GridView.swift in Sources */,
+				B67B3DAA27E0942900F50F2E /* Location.swift in Sources */,
+				B67B3DA727E093F300F50F2E /* LocationView.swift in Sources */,
 				B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */,
 				B62CFC9F27D9F02A00C0F17B /* JsonUI+ZStack.swift in Sources */,
 				B6838BEE27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */,
@@ -645,6 +780,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		B67B3D8B27DF3E1A00F50F2E /* XCRemoteSwiftPackageReference "Sourceful" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/Sourceful";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		B67109A227DBAACC0010E47E /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -653,6 +799,16 @@
 		B67109A427DBAAD30010E47E /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XMLCoder;
+		};
+		B67B3D8C27DF3E1A00F50F2E /* Sourceful */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B67B3D8B27DF3E1A00F50F2E /* XCRemoteSwiftPackageReference "Sourceful" */;
+			productName = Sourceful;
+		};
+		B67B3D8E27DF3E2800F50F2E /* Sourceful */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B67B3D8B27DF3E1A00F50F2E /* XCRemoteSwiftPackageReference "Sourceful" */;
+			productName = Sourceful;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

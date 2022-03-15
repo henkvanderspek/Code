@@ -7,14 +7,6 @@
 
 import Foundation
 
-#if os(macOS)
-import AppKit
-typealias NativeColor = NSColor
-#elseif os(iOS)
-import UIKit
-typealias NativeColor = UIColor
-#endif
-
 enum JsonUI {
     struct View: Codable {
         enum `Type` {
