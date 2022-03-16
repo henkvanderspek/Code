@@ -28,11 +28,21 @@ struct LocationView: View {
                 }
             }.task {
                 image = try? await LocationFetcher(
-                    data.coordinate,
+                    .init(from: data.coordinate),
                     size: geo.size
-                ).fetch()
+                ).fetch().map { .init(nativeImage: $0) }
             }
         }
+    }
+}
+
+extension Image {
+    init(nativeImage image: NativeImage) {
+    #if os(iOS)
+        self.init(uiImage: image)
+    #else
+        self.init(nsImage: image)
+    #endif
     }
 }
 
@@ -48,32 +58,9 @@ struct LocationView_Previews: PreviewProvider {
     }
 }
 
-struct LocationFetcher {
-    typealias CompletionHandler = (Image?)->()
-    private let snapshotter: MKMapSnapshotter
-    init(_ coordinate: Coordinate, size: CGSize) {
-        snapshotter = MKMapSnapshotter(options: .init(from: coordinate, size: size))
-    }
-    func fetch() async throws -> Image? {
-        let s = try await snapshotter.start()
-    #if os(iOS)
-        return .init(uiImage: s.image)
-    #elseif os(macOS)
-        return .init(nsImage: s.image)
-    #endif
-    }
-}
-
-extension MKMapSnapshotter.Options {
-    convenience init(from coordinate: Coordinate, size s: CGSize) {
-        self.init()
-        size = s
-        region = MKCoordinateRegion(center: .init(from: coordinate), span: .init())
-    }
-}
-
 extension CLLocationCoordinate2D {
     init(from coordinate: Coordinate) {
         self.init(latitude: coordinate.latitude, longitude: coordinate.longitude)
     }
 }
+

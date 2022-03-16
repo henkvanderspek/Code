@@ -26,9 +26,6 @@ extension ContentView {
     func newspaperView() -> some View {
         NewspaperView(.mock)
     }
-    func postView() -> some View {
-        PostView(.mock)
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {

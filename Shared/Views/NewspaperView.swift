@@ -7,35 +7,59 @@
 
 import SwiftUI
 
-
 struct NewspaperView: View {
     let newspaper: Newspaper
     private let padding = 16.0
     private let spacing = 24.0
+    @State private var date = Date()
+    @State private var calendarId: Int = 0
     init(_ n: Newspaper) {
         newspaper = n
+    #if os(iOS)
         UINavigationBar.overrideAppearance(.custom)
+    #endif
     }
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: .init(repeating: .init(), count: 1), alignment: .leading, spacing: spacing) {
-                    ForEach(Array(newspaper.posts.enumerated()), id: \.offset) { i, e in
-                        VStack(spacing: spacing) {
-                            if i != 0 {
-                                Color
-                                    .teal
-                                    .frame(height: 2)
-                                    .padding(.leading, padding)
+            if let issue = newspaper.issue(from: date) {
+                ZStack {
+                    ScrollView {
+                        IssueView(issue, spacing: spacing, padding: padding)
+                            .padding(.vertical, padding)
+                    }
+                    VStack(alignment: .leading) {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            if let dateRange = newspaper.dateRange {
+                                DatePicker(
+                                    "",
+                                    selection: $date,
+                                    in: dateRange,
+                                    displayedComponents: [.date]
+                                )
+                                .labelsHidden()
+                                .background(.white)
+                                .id(calendarId)
+                                .onChange(of: date) { _ in
+                                    calendarId += 1 // This forces a reload and closes the picker
+                                }
+                                .clipped()
+                                .cornerRadius(5)
+                                .shadow(radius: 5)
+                            } else {
+                                IssueDateView(issue.date)
+                                    .cornerRadius(5)
                             }
-                            PostView(e, padding: padding)
                         }
+                        .padding()
+                        .accentColor(.teal)
                     }
                 }
-                .padding(.vertical, padding)
                 .navigationTitle("My Gazette")
-                .navigationBarTitleDisplayMode(.inline)
             }
+        }.onAppear {
+            date = newspaper.latestIssue?.date ?? date
         }
     }
 }
@@ -46,20 +70,30 @@ struct NewspaperView_Previews: PreviewProvider {
     }
 }
 
+#if os(iOS)
 extension UINavigationBarAppearance {
     static var custom: UINavigationBarAppearance {
         let a = UINavigationBarAppearance()
-        let f = a.titleTextAttributes[.font] as! UIFont
-        let d = f.fontDescriptor
-        let s = d.withDesign(.serif)!
-        let f2 = UIFont(descriptor: s, size: 0.0)
         a.configureWithOpaqueBackground()
         a.backgroundColor = .black
         a.titleTextAttributes = [
             .foregroundColor: UIColor.white,
-            .font: f2
+            .font: (a.titleTextAttributes[.font] as! UIFont).withDesign(.serif)
+        ]
+        a.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.white,
+            .font: (a.largeTitleTextAttributes[.font] as! UIFont).withDesign(.serif)
         ]
         return a
+    }
+}
+
+extension UIFont {
+    func withDesign(_ d: UIFontDescriptor.SystemDesign) -> Self {
+        .init(
+            descriptor: fontDescriptor.withDesign(d)!,
+            size: 0.0
+        )
     }
 }
 
@@ -69,3 +103,4 @@ extension UINavigationBar {
         appearance().scrollEdgeAppearance = a
     }
 }
+#endif

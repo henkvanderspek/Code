@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        postView()
+        newspaperView()
     }
 }
 
@@ -31,12 +31,8 @@ private extension ContentView {
         JsonUIEditor()
             .frame(width: 320, height: 240)
     }
-    func locationsView() -> some View {
-        LocationsView()
-            .frame(width: 320, height: 240)
-    }
-    func postView() -> some View {
-        PostView()
+    func newspaperView() -> some View {
+        NewspaperView(.mock)
             .frame(width: 320, height: 240)
     }
 }
