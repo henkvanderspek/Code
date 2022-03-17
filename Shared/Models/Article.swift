@@ -8,9 +8,19 @@
 import Foundation
 
 struct Article {
+    struct Text {
+        enum `Type` {
+            case body
+            case callout
+            case caption
+            case caption2
+        }
+        let type: `Type`
+        let value: String
+    }
     struct Item {
         enum `Type` {
-            case paragraph(String)
+            case text(Text)
             case image(url: URL, caption: String?)
             case location(coordinate: Coordinate, caption: String?)
             case carousel(items: [CarouselItem], caption: String?)
@@ -28,9 +38,24 @@ struct Article {
 extension Article: Identifiable {}
 extension Article.Item: Identifiable {}
 
+extension Article.Text {
+    static func body(_ s: String) -> Self {
+        .init(type: .body, value: s)
+    }
+    static func callout(_ s: String) -> Self {
+        .init(type: .callout, value: s)
+    }
+    static func caption(_ s: String) -> Self {
+        .init(type: .caption, value: s)
+    }
+    static func caption2(_ s: String) -> Self {
+        .init(type: .caption2, value: s)
+    }
+}
+
 extension Article.Item {
-    static func paragraph(_ s: String) -> Self {
-        .init(type: .paragraph(s))
+    static func text(_ t: Article.Text) -> Self {
+        .init(type: .text(t))
     }
     static func image(_ u: URL, caption: String? = nil) -> Self {
         .init(type: .image(url: u, caption: caption))
@@ -56,10 +81,10 @@ extension Article {
             published: date,
             author: "Kelly Williams",
             items: [
-                .paragraph("Today is finally the day for the family BBQ. I've been organizing it with my sister, and it's going to be great. The weather forecast is excellent and no cancellations so far!"),
+                .text(.body("Today is finally the day for the family BBQ. I've been organizing it with my sister, and it's going to be great. The weather forecast is excellent and no cancellations so far!")),
                 .image(.hamilton, caption: "Hamilton is looking forward to the meat 🍖"),
-                .paragraph("We reserved a spot at our favorite beach bar. The only thing we have to bring is ourselves, the kids and pets of course. I'm going to keep you guys updated on this live blog."),
-                .paragraph("This is where we are going. Look us up if you're there!"),
+                .text(.body("We reserved a spot at our favorite beach bar. The only thing we have to bring is ourselves, the kids and pets of course. I'm going to keep you guys updated on this live blog.")),
+                .text(.callout("This is where we are going. Look us up if you're there!")),
                 .carousel([
                     .location(.zanzibarBeachclub),
                     .image(.zanzibarBeachclub)
@@ -73,7 +98,7 @@ extension Article {
             published: date,
             author: "Shaun Wilder",
             items: [
-                .paragraph("I finally got the good news today: I made promotion to Executive Manager. This is such great news, since I've been at the firm for almost a decade now."),
+                .text(.body("I finally got the good news today: I made promotion to Executive Manager. This is such great news, since I've been at the firm for almost a decade now.")),
                 .image(.work, caption: "Happy faces in my team also 🙌"),
             ]
         )
@@ -84,7 +109,7 @@ extension Article {
             published: date,
             author: "Bruce Sap",
             items: [
-                .paragraph("Our team lead told us we could organise more events. We seem to have budget for it. After asking around we decided to organise a karaoke night, since the last time it was a lot of fun."),
+                .text(.body("Our team lead told us we could organise more events. We seem to have budget for it. After asking around we decided to organise a karaoke night, since the last time it was a lot of fun.")),
                 .image(.karaoke, caption: "Lisa blew us away the last time 🎤"),
             ]
         )
@@ -95,7 +120,7 @@ extension Article {
             published: date,
             author: "Nick Mullens",
             items: [
-                .paragraph("I wasn't feeling myself last couple of days. Last night I got a fever even. So, I decided to get tested, since I don't want to bring this to the office tomorrow. Low and behold I tested positive. That's going to be quarantine for me the next two weeks."),
+                .text(.body("I wasn't feeling myself last couple of days. Last night I got a fever even. So, I decided to get tested, since I don't want to bring this to the office tomorrow. Low and behold I tested positive. That's going to be quarantine for me the next two weeks.")),
                 .image(.vaccination, caption: "This was my during my vaccination 💉"),
             ]
         )

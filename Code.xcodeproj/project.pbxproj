@@ -55,8 +55,8 @@
 		B67B3DA827E093F300F50F2E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DA627E093F300F50F2E /* LocationView.swift */; };
 		B67B3DAA27E0942900F50F2E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DA927E0942900F50F2E /* Location.swift */; };
 		B67B3DAB27E0942900F50F2E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DA927E0942900F50F2E /* Location.swift */; };
-		B67B3DAD27E0C2FE00F50F2E /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAC27E0C2FE00F50F2E /* PostView.swift */; };
-		B67B3DAE27E0C2FE00F50F2E /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAC27E0C2FE00F50F2E /* PostView.swift */; };
+		B67B3DAD27E0C2FE00F50F2E /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAC27E0C2FE00F50F2E /* ArticleView.swift */; };
+		B67B3DAE27E0C2FE00F50F2E /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAC27E0C2FE00F50F2E /* ArticleView.swift */; };
 		B67B3DB027E0D95900F50F2E /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAF27E0D95900F50F2E /* CarouselView.swift */; };
 		B67B3DB127E0D95900F50F2E /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DAF27E0D95900F50F2E /* CarouselView.swift */; };
 		B67B3DB327E0DAE700F50F2E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3DB227E0DAE700F50F2E /* ImageView.swift */; };
@@ -85,8 +85,8 @@
 		B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843727CCEAF60000C0E7 /* ContentView.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
-		B6ECBDEB27E1DC0F00185B7E /* PostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDEA27E1DC0F00185B7E /* PostHeaderView.swift */; };
-		B6ECBDEC27E1DC0F00185B7E /* PostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDEA27E1DC0F00185B7E /* PostHeaderView.swift */; };
+		B6ECBDEB27E1DC0F00185B7E /* ArticleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDEA27E1DC0F00185B7E /* ArticleHeaderView.swift */; };
+		B6ECBDEC27E1DC0F00185B7E /* ArticleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDEA27E1DC0F00185B7E /* ArticleHeaderView.swift */; };
 		B6ECBDEF27E1DEAA00185B7E /* Caption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDEE27E1DEAA00185B7E /* Caption.swift */; };
 		B6ECBDF027E1DEAA00185B7E /* Caption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDEE27E1DEAA00185B7E /* Caption.swift */; };
 		B6ECBDF327E1F2BA00185B7E /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDF227E1F2BA00185B7E /* LocationFetcher.swift */; };
@@ -128,7 +128,7 @@
 		B67B3D9F27DF54C000F50F2E /* UIEdgeInsets+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Helpers.swift"; sourceTree = "<group>"; };
 		B67B3DA627E093F300F50F2E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		B67B3DA927E0942900F50F2E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		B67B3DAC27E0C2FE00F50F2E /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		B67B3DAC27E0C2FE00F50F2E /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		B67B3DAF27E0D95900F50F2E /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		B67B3DB227E0DAE700F50F2E /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		B67B3DB627E0F1DB00F50F2E /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B6C2843E27CCEAF70000C0E7 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		B6C2844327CCFBCC0000C0E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		B6ECBDEA27E1DC0F00185B7E /* PostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeaderView.swift; sourceTree = "<group>"; };
+		B6ECBDEA27E1DC0F00185B7E /* ArticleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderView.swift; sourceTree = "<group>"; };
 		B6ECBDEE27E1DEAA00185B7E /* Caption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caption.swift; sourceTree = "<group>"; };
 		B6ECBDF227E1F2BA00185B7E /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		B6ECBDF527E20CD000185B7E /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
@@ -217,7 +217,6 @@
 		B67B3D8A27DF3D3F00F50F2E /* JsonUI */ = {
 			isa = PBXGroup;
 			children = (
-				B67B3D9627DF42B300F50F2E /* Types.swift */,
 				B6838BEA27D76F4300C60C32 /* JsonUI.swift */,
 				B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */,
 				B6838BF327D7BE4400C60C32 /* JsonUI+Codable.swift */,
@@ -271,8 +270,8 @@
 				B63F547227CE1D2200C111A8 /* NewsView.swift */,
 				B63F547827CE2B1900C111A8 /* DynamicGridView.swift */,
 				B67B3DA627E093F300F50F2E /* LocationView.swift */,
-				B67B3DAC27E0C2FE00F50F2E /* PostView.swift */,
-				B6ECBDEA27E1DC0F00185B7E /* PostHeaderView.swift */,
+				B67B3DAC27E0C2FE00F50F2E /* ArticleView.swift */,
+				B6ECBDEA27E1DC0F00185B7E /* ArticleHeaderView.swift */,
 				B67B3DAF27E0D95900F50F2E /* CarouselView.swift */,
 				B67B3DB227E0DAE700F50F2E /* ImageView.swift */,
 				B6ECBDF827E20D0800185B7E /* IssueView.swift */,
@@ -320,6 +319,7 @@
 		B6ECBDF127E1F2A300185B7E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B67B3D9627DF42B300F50F2E /* Types.swift */,
 				B6ECBDF227E1F2BA00185B7E /* LocationFetcher.swift */,
 				B6ECBDFB27E2234000185B7E /* CustomFormatter.swift */,
 			);
@@ -497,7 +497,7 @@
 				B63F547727CE254200C111A8 /* LiveView.swift in Sources */,
 				B63F547427CE1D2200C111A8 /* NewsView.swift in Sources */,
 				B67B3DBB27E0F1FE00F50F2E /* Article.swift in Sources */,
-				B67B3DAE27E0C2FE00F50F2E /* PostView.swift in Sources */,
+				B67B3DAE27E0C2FE00F50F2E /* ArticleView.swift in Sources */,
 				B62CFCA527D9F41B00C0F17B /* JsonUI+Spacer.swift in Sources */,
 				B67B3D9227DF3E9300F50F2E /* EditorView.swift in Sources */,
 				B67B3D9B27DF483E00F50F2E /* JsonUI+Editor.swift in Sources */,
@@ -506,7 +506,7 @@
 				B63F547127CD131900C111A8 /* GridView.swift in Sources */,
 				B67B3DAB27E0942900F50F2E /* Location.swift in Sources */,
 				B67B3DA827E093F300F50F2E /* LocationView.swift in Sources */,
-				B6ECBDEC27E1DC0F00185B7E /* PostHeaderView.swift in Sources */,
+				B6ECBDEC27E1DC0F00185B7E /* ArticleHeaderView.swift in Sources */,
 				B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */,
 				B62CFCA027D9F02B00C0F17B /* JsonUI+ZStack.swift in Sources */,
 				B6838BEF27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */,
@@ -548,7 +548,7 @@
 				B63F547627CE254200C111A8 /* LiveView.swift in Sources */,
 				B63F547327CE1D2200C111A8 /* NewsView.swift in Sources */,
 				B67B3DBA27E0F1FE00F50F2E /* Article.swift in Sources */,
-				B67B3DAD27E0C2FE00F50F2E /* PostView.swift in Sources */,
+				B67B3DAD27E0C2FE00F50F2E /* ArticleView.swift in Sources */,
 				B62CFCA427D9F41B00C0F17B /* JsonUI+Spacer.swift in Sources */,
 				B67B3D9127DF3E9300F50F2E /* EditorView.swift in Sources */,
 				B67B3D9A27DF483E00F50F2E /* JsonUI+Editor.swift in Sources */,
@@ -557,7 +557,7 @@
 				B63F547027CD08CC00C111A8 /* GridView.swift in Sources */,
 				B67B3DAA27E0942900F50F2E /* Location.swift in Sources */,
 				B67B3DA727E093F300F50F2E /* LocationView.swift in Sources */,
-				B6ECBDEB27E1DC0F00185B7E /* PostHeaderView.swift in Sources */,
+				B6ECBDEB27E1DC0F00185B7E /* ArticleHeaderView.swift in Sources */,
 				B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */,
 				B62CFC9F27D9F02A00C0F17B /* JsonUI+ZStack.swift in Sources */,
 				B6838BEE27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */,
@@ -754,7 +754,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -787,7 +787,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

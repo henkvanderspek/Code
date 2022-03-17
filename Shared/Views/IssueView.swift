@@ -27,7 +27,7 @@ struct IssueView: View {
                                 .frame(height: 1)
                                 .padding(.horizontal, padding)
                         }
-                        PostView(e, padding: padding)
+                        ArticleView(e, padding: padding)
                     }
                 }
             }

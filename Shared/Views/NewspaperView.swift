@@ -27,34 +27,6 @@ struct NewspaperView: View {
                         IssueView(issue, spacing: spacing, padding: padding)
                             .padding(.vertical, padding)
                     }
-                    VStack(alignment: .leading) {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            if let dateRange = newspaper.dateRange {
-                                DatePicker(
-                                    "",
-                                    selection: $date,
-                                    in: dateRange,
-                                    displayedComponents: [.date]
-                                )
-                                .labelsHidden()
-                                .background(.white)
-                                .id(calendarId)
-                                .onChange(of: date) { _ in
-                                    calendarId += 1 // This forces a reload and closes the picker
-                                }
-                                .clipped()
-                                .cornerRadius(5)
-                                .shadow(radius: 5)
-                            } else {
-                                IssueDateView(issue.date)
-                                    .cornerRadius(5)
-                            }
-                        }
-                        .padding()
-                        .accentColor(.teal)
-                    }
                 }
                 .navigationTitle("My Gazette")
             }
@@ -74,17 +46,31 @@ struct NewspaperView_Previews: PreviewProvider {
 extension UINavigationBarAppearance {
     static var custom: UINavigationBarAppearance {
         let a = UINavigationBarAppearance()
+        let c: UIColor = .white
+        let d: UIFontDescriptor.SystemDesign = .serif
         a.configureWithOpaqueBackground()
         a.backgroundColor = .black
-        a.titleTextAttributes = [
-            .foregroundColor: UIColor.white,
-            .font: (a.titleTextAttributes[.font] as! UIFont).withDesign(.serif)
-        ]
-        a.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.white,
-            .font: (a.largeTitleTextAttributes[.font] as! UIFont).withDesign(.serif)
-        ]
+        a.modifyTitleTextAttributes(c, fontDesign: d)
+        a.modifyLargeTitleTextAttributes(c, fontDesign: d)
         return a
+    }
+}
+
+private extension UINavigationBarAppearance {
+    func modifyTitleTextAttributes(_ f: UIColor, fontDesign: UIFontDescriptor.SystemDesign) {
+        titleTextAttributes = titleTextAttributes.withForegroundColor(f, fontDesign: fontDesign)
+    }
+    func modifyLargeTitleTextAttributes(_ f: UIColor, fontDesign: UIFontDescriptor.SystemDesign) {
+        largeTitleTextAttributes = largeTitleTextAttributes.withForegroundColor(f, fontDesign: fontDesign)
+    }
+}
+
+private extension Dictionary where Key == NSAttributedString.Key, Value == Any {
+    func withForegroundColor(_ f: UIColor, fontDesign: UIFontDescriptor.SystemDesign) -> Self {
+        var ret = self
+        ret[.foregroundColor] = f
+        ret[.font] = (ret[.font] as? UIFont)?.withDesign(.serif)
+        return ret
     }
 }
 

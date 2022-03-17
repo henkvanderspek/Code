@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct LocationView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var image: Image? = nil
     private let data: Location
     init(_ d: Location) {
@@ -31,18 +32,8 @@ struct LocationView: View {
                     .init(from: data.coordinate),
                     size: geo.size
                 ).fetch().map { .init(nativeImage: $0) }
-            }
+            }.id(colorScheme)
         }
-    }
-}
-
-extension Image {
-    init(nativeImage image: NativeImage) {
-    #if os(iOS)
-        self.init(uiImage: image)
-    #else
-        self.init(nsImage: image)
-    #endif
     }
 }
 

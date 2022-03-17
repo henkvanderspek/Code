@@ -1,5 +1,5 @@
 //
-//  PostView.swift
+//  ArticleView.swift
 //  Code
 //
 //  Created by Henk van der Spek on 15/03/2022.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct PostView: View {
-    let post: Article
+struct ArticleView: View {
+    let article: Article
     let padding: Double
     init(_ p: Article, padding pa: Double = 16.0) {
-        post = p
+        article = p
         padding = pa
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
-            PostHeaderView(post.title, author: post.author, padding: padding)
-            ForEach(post.items) {
+            ArticleHeaderView(article, padding: padding)
+            ForEach(article.items) {
                 $0.view(padding: padding)
             }
         }
@@ -27,10 +27,10 @@ struct PostView: View {
 private extension Article.Item {
     func view(padding: Double) -> AnyView {
         switch type {
-        case let .paragraph(s):
+        case let .text(t):
             return AnyView(
-                Text(s)
-                    .font(.system(.body, design: .serif))
+                Text(t.value)
+                    .font(.system(.init(from: t.type), design: .serif))
                     .padding(.horizontal, padding)
             )
         case let .image(u, c):
@@ -55,9 +55,20 @@ private extension Article.Item {
     }
 }
 
+private extension Font.TextStyle {
+    init(from other: Article.Text.`Type`) {
+        switch other {
+        case .body: self = .body
+        case .callout: self = .callout
+        case .caption: self = .caption
+        case .caption2: self = .caption2
+        }
+    }
+}
+
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-        PostView(.mock)
+        ArticleView(.mock)
     }
 }
 

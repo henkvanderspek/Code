@@ -1,5 +1,5 @@
 //
-//  PostHeaderView.swift
+//  ArticleHeaderView.swift
 //  Code
 //
 //  Created by Henk van der Spek on 16/03/2022.
@@ -7,26 +7,27 @@
 
 import SwiftUI
 
-struct PostHeaderView: View {
-    let title: String
-    let author: String
+struct ArticleHeaderView: View {
+    let article: Article
     let padding: Double
-    init(_ t: String, author a: String, padding p: Double = 16.0) {
-        title = t
-        author = a
+    init(_ a: Article, padding p: Double = 16.0) {
+        article = a
         padding = p
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(title)
+            Text(article.title)
                 .font(.system(.title, design: .serif))
                 .padding(.horizontal, padding)
-            ZStack {
-                Text(author)
-                    .font(.system(.caption2, design: .serif))
+            HStack {
+                Text(article.published, style: .date)
+                    .font(.system(.footnote, design: .serif))
+                Text(article.author)
+                    .font(.system(.caption, design: .serif))
                     .padding(.horizontal, 4)
                     .padding(.vertical, 2)
                     .background(.teal)
+                    .foregroundColor(.init(nativeColor: .background))
                     .cornerRadius(2)
                     .foregroundColor(.white)
             }.padding(.horizontal, padding)
@@ -36,6 +37,6 @@ struct PostHeaderView: View {
 
 struct PostHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        PostHeaderView("My First Article", author: "Henk van der Spek")
+        ArticleHeaderView(.mock)
     }
 }

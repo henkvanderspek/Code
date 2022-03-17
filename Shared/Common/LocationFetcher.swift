@@ -5,30 +5,41 @@
 //  Created by Henk van der Spek on 16/03/2022.
 //
 
-#if os(iOS)
-import UIKit
-typealias NativeImage = UIImage
-#elseif os(macOS)
-import AppKit
-typealias NativeImage = NSImage
-#endif
 import MapKit
 
-class LocationFetcher {
+class LocationFetcher: NSObject {
+    let coordinate: CLLocationCoordinate2D
     private let snapshotter: MKMapSnapshotter
-    private var image: NativeImage?
-    init(_ coordinate: CLLocationCoordinate2D, size: CGSize) {
+    init(_ c: CLLocationCoordinate2D, size: CGSize) {
+        coordinate = c
         snapshotter = MKMapSnapshotter(options: .init(from: coordinate, size: size))
     }
     func fetch() async throws -> NativeImage? {
-        guard image == nil else { return image }
         let s = try await snapshotter.start()
-        image = s.image
-        // TODO: Add pin using SF Symbol "mappin.circle.fill"
+        let p = s.point(for: coordinate)
+        return await s.image.withAnnotation(self, at: p)
+    }
+}
+
+extension LocationFetcher: MKAnnotation {}
+
+extension NativeImage {
+    @MainActor
+    func withAnnotation(_ annotation: MKAnnotation, at p: CGPoint) async -> NativeImage? {
     #if os(iOS)
-        return s.image
+        UIGraphicsBeginImageContextWithOptions(size, true, scale)
+        draw(at: .zero)
+        let s = CGSize(width: 40, height: 40)
+        let x = p.x - s.width / 2
+        let y = p.y - s.height / 2
+        let a = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: .init())
+        a.contentMode = .scaleAspectFit
+        a.bounds = .init(origin: .zero, size: s)
+        a.drawHierarchy(in: .init(origin: .init(x: x, y: y), size: s), afterScreenUpdates: true)
+        return UIGraphicsGetImageFromCurrentImageContext()
     #elseif os(macOS)
-        return s.image
+        // TODO: We probably want to use catalyst anyway
+        return self
     #endif
     }
 }
