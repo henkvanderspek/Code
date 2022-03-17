@@ -17,18 +17,16 @@ struct IssueView: View {
         padding = p
     }
     var body: some View {
-        ZStack {
-            LazyVGrid(columns: .init(repeating: .init(), count: 1), alignment: .leading, spacing: spacing) {
-                ForEach(Array(issue.articles.enumerated()), id: \.offset) { i, e in
-                    VStack(spacing: spacing) {
-                        if i != 0 {
-                            Color
-                                .teal
-                                .frame(height: 1)
-                                .padding(.horizontal, padding)
-                        }
-                        ArticleView(e, padding: padding)
+        LazyVGrid(columns: .init(repeating: .init(), count: 1), alignment: .leading, spacing: spacing) {
+            ForEach(Array(issue.articles.enumerated()), id: \.offset) { i, e in
+                VStack(spacing: spacing) {
+                    if i != 0 {
+                        Color
+                            .teal
+                            .frame(height: 1)
+                            .padding(.horizontal, padding)
                     }
+                    ArticleView(e, padding: padding)
                 }
             }
         }

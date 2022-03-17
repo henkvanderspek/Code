@@ -15,17 +15,43 @@ struct ArticleView: View {
         padding = pa
     }
     var body: some View {
-        // TODO: We want variable spacing, decided by the item view
-        VStack(alignment: .leading, spacing: 40) {
+        let last = max(0, article.items.count - 1)
+        VStack(alignment: .leading) {
             ArticleHeaderView(article, padding: padding)
-            ForEach(article.items) {
-                $0.view(padding: padding)
+            ForEach(Array(article.items.enumerated()), id: \.offset) { index, item in
+                let s = item.spacing(isLast: index == last)
+                item
+                    .view(padding: padding)
+                    .padding(.top, s.top)
+                    .padding(.bottom, s.bottom)
             }
         }
     }
 }
 
 private extension Article.Item {
+    struct Spacing {
+        let top: Double
+        let bottom: Double
+    }
+    func spacing(isLast: Bool) -> Spacing {
+        let v: Double = {
+            switch type {
+            case let .text(t):
+                switch t.type {
+                case .body: return 20.0
+                case .callout: return 16.0
+                case .subhead: return 13.0
+                case .footnote: return 10.0
+                case .caption: return 8.0
+                case .caption2: return 4.0
+                }
+            case .carousel, .location, .image:
+                return 20.0
+            }
+        }()
+        return .init(top: v, bottom: isLast ? 0 : v)
+    }
     func view(padding: Double) -> AnyView {
         switch type {
         case let .text(t):
@@ -61,6 +87,8 @@ private extension Font.TextStyle {
         switch other {
         case .body: self = .body
         case .callout: self = .callout
+        case .subhead: self = .subheadline
+        case .footnote: self = .footnote
         case .caption: self = .caption
         case .caption2: self = .caption2
         }

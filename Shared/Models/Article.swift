@@ -12,6 +12,8 @@ struct Article {
         enum `Type` {
             case body
             case callout
+            case subhead
+            case footnote
             case caption
             case caption2
         }
@@ -44,6 +46,12 @@ extension Article.Text {
     }
     static func callout(_ s: String) -> Self {
         .init(type: .callout, value: s)
+    }
+    static func subhead(_ s: String) -> Self {
+        .init(type: .subhead, value: s)
+    }
+    static func footnote(_ s: String) -> Self {
+        .init(type: .footnote, value: s)
     }
     static func caption(_ s: String) -> Self {
         .init(type: .caption, value: s)
@@ -84,7 +92,7 @@ extension Article {
                 .text(.body("Today is finally the day for the family BBQ. I've been organizing it with my sister, and it's going to be great. The weather forecast is excellent and no cancellations so far!")),
                 .image(.hamilton, caption: "Hamilton is looking forward to the meat 🍖"),
                 .text(.body("We reserved a spot at our favorite beach bar. The only thing we have to bring is ourselves, the kids and pets of course. I'm going to keep you guys updated on this live blog.")),
-                .text(.callout("This is where we are going. Look us up if you're there!")),
+                .text(.footnote("This is where we are going. Look us up if you're there!")),
                 .carousel([
                     .location(.zanzibarBeachclub),
                     .image(.zanzibarBeachclub)

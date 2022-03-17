@@ -7,21 +7,25 @@
 
 import MapKit
 
-class LocationFetcher: NSObject {
-    let coordinate: CLLocationCoordinate2D
+struct LocationFetcher {
+    class Annotation: NSObject, MKAnnotation {
+        let coordinate: CLLocationCoordinate2D
+        init(_ c: CLLocationCoordinate2D) {
+            coordinate = c
+        }
+    }
+    private let annotation: Annotation
     private let snapshotter: MKMapSnapshotter
     init(_ c: CLLocationCoordinate2D, size: CGSize) {
-        coordinate = c
-        snapshotter = MKMapSnapshotter(options: .init(from: coordinate, size: size))
+        annotation = .init(c)
+        snapshotter = MKMapSnapshotter(options: .init(from: c, size: size))
     }
     func fetch() async throws -> NativeImage? {
         let s = try await snapshotter.start()
-        let p = s.point(for: coordinate)
-        return await s.image.withAnnotation(self, at: p)
+        let p = s.point(for: annotation.coordinate)
+        return await s.image.withAnnotation(annotation, at: p)
     }
 }
-
-extension LocationFetcher: MKAnnotation {}
 
 extension NativeImage {
     @MainActor
