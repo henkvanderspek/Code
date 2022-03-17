@@ -15,6 +15,7 @@ struct ArticleView: View {
         padding = pa
     }
     var body: some View {
+        // TODO: We want variable spacing, decided by the item view
         VStack(alignment: .leading, spacing: 40) {
             ArticleHeaderView(article, padding: padding)
             ForEach(article.items) {
