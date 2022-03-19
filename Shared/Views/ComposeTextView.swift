@@ -27,6 +27,7 @@ struct TextView: UIViewRepresentable {
     }
     func makeCoordinator() -> InnerView {
         coordinator.paragraphSpacing = 32
+        coordinator.imageContainerHeight = 300
         return coordinator
     }
     func makeUIView(context: Context) -> UITextView {
@@ -52,6 +53,7 @@ extension TextView {
     class InnerView: UITextView {
         @Binding var value: String
         var paragraphSpacing: CGFloat = 0.0
+        var imageContainerHeight: CGFloat = 0.0
         init(value v: Binding<String>) {
             _value = v
             super.init(frame: .zero, textContainer: nil)
@@ -62,12 +64,17 @@ extension TextView {
             fatalError("init(coder:) has not been implemented")
         }
         override func caretRect(for position: UITextPosition) -> CGRect {
-            var r = super.caretRect(for: position)
-            let min = typingFont?.lineHeight ?? 0
-            if r.height >= paragraphSpacing {
-                r.size = .init(width: r.width, height: max(min, r.height - paragraphSpacing))
-            }
-            return r
+            let r = super.caretRect(for: position)
+            print(r.height)
+            print(textRange(from: position, to: position))
+            let height = r.height < imageContainerHeight ? ((typingFont?.lineHeight ?? 0.0) + 2.0).rounded(.toNearestOrEven) + 0.5 : r.height
+            return .init(
+                origin: r.origin,
+                size: .init(
+                    width: r.width,
+                    height: height
+                )
+            )
         }
     }
 }
@@ -82,6 +89,16 @@ extension TextView.InnerView: NSLayoutManagerDelegate {
 extension TextView.InnerView: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         value = text
+        if text == "\n" {
+            let w = bounds.width - textContainerInset.left - textContainerInset.right
+            let a = NSTextAttachment()
+            a.image = .init(systemName: "mustache")!
+            a.bounds = .init(origin: .zero, size: .init(width: w, height: imageContainerHeight))
+            let s = NSMutableAttributedString(attachment: a)
+            textStorage.append(s)
+        } else {
+            print(text)
+        }
         return true
     }
 }
