@@ -7,16 +7,47 @@
 
 import SwiftUI
 
+struct NavigationBarSettings {
+    let foregroundColor: Color
+    let backgroundColor: Color
+}
+
+extension NavigationBarSettings {
+    static var standard: Self {
+        .init(foregroundColor: .white, backgroundColor: .black)
+    }
+}
+
+private struct NavigationBarSettingsKey: EnvironmentKey {
+    static let defaultValue: NavigationBarSettings = .standard
+}
+
+extension EnvironmentValues {
+    var navigationBarSettings: NavigationBarSettings {
+        get { self[NavigationBarSettingsKey.self] }
+        set { self[NavigationBarSettingsKey.self] = newValue }
+    }
+}
+
 struct NewspaperView: View {
     let newspaper: Newspaper
     private let padding = 16.0
     private let spacing = 24.0
     @State private var date = Date()
-    @State private var calendarId: Int = 0
+    @State private var isConceptVisible = false
+    @Environment(\.navigationBarSettings.foregroundColor) private var foregroundColor
+    @Environment(\.navigationBarSettings.backgroundColor) private var backgroundColor
     init(_ n: Newspaper) {
         newspaper = n
     #if os(iOS)
-        UINavigationBar.overrideAppearance(.custom)
+        let f = UIColor(foregroundColor)
+        UINavigationBar.appearance().tintColor = f
+        UINavigationBar.overrideAppearance(
+            .custom(
+                foregroundColor: f,
+                backgroundColor: .init(backgroundColor)
+            )
+        )
     #endif
     }
     var body: some View {
@@ -29,6 +60,19 @@ struct NewspaperView: View {
                     }
                 }
                 .navigationTitle("My Gazette")
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button {
+                            isConceptVisible = true
+                        } label: {
+                            Image(systemName: "pencil")
+                        }
+                        .tint(foregroundColor)
+                    }
+                }
+                .popover(isPresented: $isConceptVisible) {
+                    ComposeArticleView()
+                }
             }
         }.onAppear {
             date = newspaper.latestIssue?.date ?? date
@@ -44,14 +88,13 @@ struct NewspaperView_Previews: PreviewProvider {
 
 #if os(iOS)
 extension UINavigationBarAppearance {
-    static var custom: UINavigationBarAppearance {
+    static func custom(foregroundColor: UIColor, backgroundColor: UIColor) -> UINavigationBarAppearance {
         let a = UINavigationBarAppearance()
-        let c: UIColor = .white
         let d: UIFontDescriptor.SystemDesign = .serif
         a.configureWithOpaqueBackground()
-        a.backgroundColor = .black
-        a.modifyTitleTextAttributes(c, fontDesign: d)
-        a.modifyLargeTitleTextAttributes(c, fontDesign: d)
+        a.backgroundColor = backgroundColor
+        a.modifyTitleTextAttributes(foregroundColor, fontDesign: d)
+        a.modifyLargeTitleTextAttributes(foregroundColor, fontDesign: d)
         return a
     }
 }

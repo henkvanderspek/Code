@@ -99,6 +99,10 @@
 		B6ECBDFD27E2234000185B7E /* CustomFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDFB27E2234000185B7E /* CustomFormatter.swift */; };
 		B6ECBDFF27E226B300185B7E /* IssueDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDFE27E226B300185B7E /* IssueDateView.swift */; };
 		B6ECBE0027E226B300185B7E /* IssueDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDFE27E226B300185B7E /* IssueDateView.swift */; };
+		B6ECBE0227E4CBBD00185B7E /* ComposeArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBE0127E4CBBD00185B7E /* ComposeArticleView.swift */; };
+		B6ECBE0327E4CBBD00185B7E /* ComposeArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBE0127E4CBBD00185B7E /* ComposeArticleView.swift */; };
+		B6ECBE0527E4E4AF00185B7E /* ComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBE0427E4E4AF00185B7E /* ComposeTextView.swift */; };
+		B6ECBE0627E4E4AF00185B7E /* ComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBE0427E4E4AF00185B7E /* ComposeTextView.swift */; };
 		B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FDF7DA27CCDB800008262D /* iOSApp.swift */; };
 		B6FDF7DD27CCDB800008262D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FDF7DC27CCDB800008262D /* ContentView.swift */; };
 		B6FDF7DF27CCDB810008262D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6FDF7DE27CCDB810008262D /* Assets.xcassets */; };
@@ -155,6 +159,8 @@
 		B6ECBDF827E20D0800185B7E /* IssueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueView.swift; sourceTree = "<group>"; };
 		B6ECBDFB27E2234000185B7E /* CustomFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFormatter.swift; sourceTree = "<group>"; };
 		B6ECBDFE27E226B300185B7E /* IssueDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDateView.swift; sourceTree = "<group>"; };
+		B6ECBE0127E4CBBD00185B7E /* ComposeArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeArticleView.swift; sourceTree = "<group>"; };
+		B6ECBE0427E4E4AF00185B7E /* ComposeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeTextView.swift; sourceTree = "<group>"; };
 		B6FDF7D227CCDA500008262D /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		B6FDF7D827CCDB800008262D /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6FDF7DA27CCDB800008262D /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
@@ -277,6 +283,8 @@
 				B6ECBDF827E20D0800185B7E /* IssueView.swift */,
 				B6ECBDFE27E226B300185B7E /* IssueDateView.swift */,
 				B67B3DC127E1048F00F50F2E /* NewspaperView.swift */,
+				B6ECBE0127E4CBBD00185B7E /* ComposeArticleView.swift */,
+				B6ECBE0427E4E4AF00185B7E /* ComposeTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -471,6 +479,7 @@
 			files = (
 				B6ECBE0027E226B300185B7E /* IssueDateView.swift in Sources */,
 				B63F547A27CE2B1900C111A8 /* DynamicGridView.swift in Sources */,
+				B6ECBE0327E4CBBD00185B7E /* ComposeArticleView.swift in Sources */,
 				B62CFC9C27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */,
 				B6ECBDF427E1F2BA00185B7E /* LocationFetcher.swift in Sources */,
 				B6ECBDF727E20CD000185B7E /* Issue.swift in Sources */,
@@ -484,6 +493,7 @@
 				B67B3DB127E0D95900F50F2E /* CarouselView.swift in Sources */,
 				B6838BF227D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
 				B62CFCA227D9F02E00C0F17B /* JsonUI+VStack.swift in Sources */,
+				B6ECBE0627E4E4AF00185B7E /* ComposeTextView.swift in Sources */,
 				B6838BF527D7BE4400C60C32 /* JsonUI+Codable.swift in Sources */,
 				B6ECBDFD27E2234000185B7E /* CustomFormatter.swift in Sources */,
 				B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */,
@@ -522,6 +532,7 @@
 			files = (
 				B6ECBDFF27E226B300185B7E /* IssueDateView.swift in Sources */,
 				B63F547927CE2B1900C111A8 /* DynamicGridView.swift in Sources */,
+				B6ECBE0227E4CBBD00185B7E /* ComposeArticleView.swift in Sources */,
 				B62CFC9B27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */,
 				B6ECBDF327E1F2BA00185B7E /* LocationFetcher.swift in Sources */,
 				B6ECBDF627E20CD000185B7E /* Issue.swift in Sources */,
@@ -535,6 +546,7 @@
 				B67B3DB027E0D95900F50F2E /* CarouselView.swift in Sources */,
 				B6838BF127D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
 				B62CFCA127D9F02E00C0F17B /* JsonUI+VStack.swift in Sources */,
+				B6ECBE0527E4E4AF00185B7E /* ComposeTextView.swift in Sources */,
 				B6838BF427D7BE4400C60C32 /* JsonUI+Codable.swift in Sources */,
 				B6ECBDFC27E2234000185B7E /* CustomFormatter.swift in Sources */,
 				B6FDF7DD27CCDB800008262D /* ContentView.swift in Sources */,

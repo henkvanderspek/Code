@@ -15,11 +15,11 @@ struct ArticleHeaderView: View {
         padding = p
     }
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 2) {
             Text(article.title)
                 .font(.system(.title, design: .serif))
                 .padding(.horizontal, padding)
-            HStack {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(article.published, style: .date)
                     .font(.system(.footnote, design: .serif))
                 Text(article.author)
@@ -35,7 +35,7 @@ struct ArticleHeaderView: View {
     }
 }
 
-struct PostHeaderView_Previews: PreviewProvider {
+struct ArticleHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         ArticleHeaderView(.mock)
     }
