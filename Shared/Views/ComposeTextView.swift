@@ -101,7 +101,6 @@ extension TextView.InnerView: UITextViewDelegate {
             t.append(.init(attachment: a))
             t.addAttributes([
                     .font: UIFont.preferredFont(forTextStyle: .body).withDesign(.serif),
-                    .backgroundColor: UIColor.red,
                     .paragraphStyle: NSParagraphStyle.custom(spacing: paragraphSpacing, indent: 0)
                 ],
                 range: .init(location: loc, length: t.length - loc)
@@ -121,7 +120,8 @@ extension TextView.InnerView {
 //            label.text = "Test"
 //            label.textAlignment = .center
 //            view = label
-            view = CameraView(position: .front)
+            view = CameraView(position: .back)
+            view?.isUserInteractionEnabled = false
         }
     }
 }
