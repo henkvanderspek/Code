@@ -131,6 +131,7 @@ extension JsonUI.View {
         case .zstack: return "ZStack"
         case .text: return "Text"
         case .spacer: return "Spacer"
+        case .rectangle: return "Rectangle"
         default: return "💣"
         }
     }
@@ -138,18 +139,23 @@ extension JsonUI.View {
 
 extension JsonUI.View {
     static var mock: Self {
-        .hstack([
+        .zstack([
+            .rectangle,
             .vstack([
-                .text("🤓"),
-                .text("🤓"),
-                .text("🤓")
-            ]),
-            .text("🤓"),
-            .vstack([
-                .text("🤓"),
-                .text("🤓"),
-                .text("🤓"),
-            ]),
+                .hstack([
+                    .text("🤓"),
+                    .spacer,
+                    .text("👍"),
+                ]),
+                .spacer,
+                .text("❤️"),
+                .spacer,
+                .hstack([
+                    .text("👍"),
+                    .spacer,
+                    .text("🤓"),
+                ])
+            ])
         ],
         attributes: .padding(.all(8)))
     }

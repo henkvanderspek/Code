@@ -15,7 +15,7 @@ struct Tree<Value: Hashable>: Hashable {
 
 extension JsonUI.Screen {
     var tree: Tree<String> {
-        return .init(value: id, name: title, children: [view.tree])
+        return .init(value: id, name: "Screen", children: [view.tree])
     }
 }
 
@@ -31,7 +31,7 @@ struct EditorView: View {
         NavigationView {
             List(app.screens.map { $0.tree }, id: \.value, children: \.children) { tree in
                 Text(tree.name)
-            }.listStyle(SidebarListStyle())
+            }.listStyle(.sidebar)
             Text("Preview")
                 .navigationViewStyle(.columns)
                 .navigationTitle("")
