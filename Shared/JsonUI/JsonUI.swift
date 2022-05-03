@@ -106,6 +106,55 @@ extension JsonUI.View {
     }
 }
 
+extension JsonUI {
+    struct Screen {
+        let id: String
+        let title: String
+        let view: JsonUI.View
+    }
+    struct App {
+        let screens: [Screen]
+    }
+}
+
+extension JsonUI.App {
+    static var mock: Self {
+        return .init(screens: [.init(id: UUID().uuidString, title: "Home", view: .mock)])
+    }
+}
+
+extension JsonUI.View {
+    var displayName: String {
+        switch type {
+        case .hstack: return "HStack"
+        case .vstack: return "VStack"
+        case .zstack: return "ZStack"
+        case .text: return "Text"
+        case .spacer: return "Spacer"
+        default: return "💣"
+        }
+    }
+}
+
+extension JsonUI.View {
+    static var mock: Self {
+        .hstack([
+            .vstack([
+                .text("🤓"),
+                .text("🤓"),
+                .text("🤓")
+            ]),
+            .text("🤓"),
+            .vstack([
+                .text("🤓"),
+                .text("🤓"),
+                .text("🤓"),
+            ]),
+        ],
+        attributes: .padding(.all(8)))
+    }
+}
+
 extension JsonUI.View.Script {
     static var mock: Self {
         .init(

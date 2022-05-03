@@ -20,7 +20,22 @@ struct JsonUIView: SwiftUI.View {
     }
 }
 
-extension JsonUI.View: Identifiable {}
+extension JsonUI.Screen: Identifiable {}
+
+extension JsonUI.View: Identifiable {
+    var children: [Self]? {
+        switch type {
+        case let .hstack(s):
+            return s.children
+        case let .vstack(s):
+            return s.children
+        case let .zstack(s):
+            return s.children
+        case .empty, .rectangle, .spacer, .script, .image, .text:
+            return nil
+        }
+    }
+}
 
 private extension JsonUIView {
     func createView() -> some SwiftUI.View {
@@ -49,21 +64,6 @@ private extension JsonUIView {
 
 struct JsonUIView_Previews: PreviewProvider {
     static var previews: some View {
-        JsonUIView(
-            .hstack([
-                .vstack([
-                    .text("🤓"),
-                    .text("🤓"),
-                    .text("🤓")
-                ]),
-                .text("🤓"),
-                .vstack([
-                    .text("🤓"),
-                    .text("🤓"),
-                    .text("🤓"),
-                ]),
-            ],
-            attributes: .padding(.all(8)))
-        )
+        JsonUIView(.mock)
     }
 }

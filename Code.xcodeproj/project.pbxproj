@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B627C60E2821636D0029126A /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B627C60D2821636D0029126A /* EditorView.swift */; };
 		B62CFC9B27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */; };
 		B62CFC9C27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */; };
 		B62CFC9F27D9F02A00C0F17B /* JsonUI+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9027D9EE7100C0F17B /* JsonUI+ZStack.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B627C60D2821636D0029126A /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		B62CFC8D27D9EE7100C0F17B /* JsonUI+VStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JsonUI+VStack.swift"; sourceTree = "<group>"; };
 		B62CFC8E27D9EE7100C0F17B /* JsonUI+Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JsonUI+Text.swift"; sourceTree = "<group>"; };
 		B62CFC8F27D9EE7100C0F17B /* JsonUI+Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JsonUI+Rectangle.swift"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				B6ECBE0127E4CBBD00185B7E /* ComposeArticleView.swift */,
 				B6ECBE0427E4E4AF00185B7E /* ComposeTextView.swift */,
 				B66A8E092816D46D00BE9D55 /* TerminalView.swift */,
+				B627C60D2821636D0029126A /* EditorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				B62CFCAF27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */,
 				B67B3D9527DF419700F50F2E /* NSLayoutConstraint+Helpers.swift in Sources */,
 				B62CFCAC27D9F60F00C0F17B /* JsonUI+Padding.swift in Sources */,
+				B627C60E2821636D0029126A /* EditorView.swift in Sources */,
 				B62CFCA527D9F41B00C0F17B /* JsonUI+Spacer.swift in Sources */,
 				B67B3DA227DF55A300F50F2E /* UIEdgeInsets+Helpers.swift in Sources */,
 				B6838BFB27D7D94A00C60C32 /* Parser.swift in Sources */,
