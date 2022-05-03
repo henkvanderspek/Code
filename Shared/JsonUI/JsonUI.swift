@@ -111,67 +111,26 @@ extension JsonUI.View.Script {
         .init(
             source: #"""
                 function render() {
-                    return {
-                        type: 'zstack',
-                        children: [
-                            {
-                                type: 'rectangle',
-                                attributes: {
-                                    foregroundColor: 'cyan'
-                                }
-                            },
-                            {
-                                type: 'vstack',
-                                children: [
-                                    {
-                                        type: 'hstack',
-                                        children: [
-                                            {
-                                                type: 'text',
-                                                value: '🤓'
-                                            },
-                                            {
-                                                type: 'spacer'
-                                            },
-                                            {
-                                                type: 'text',
-                                                value: '👍'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        type: 'spacer'
-                                    },
-                                    {
-                                        type: 'text',
-                                        value: '❤️'
-                                    },
-                                    {
-                                        type: 'spacer'
-                                    },
-                                    {
-                                        type: 'hstack',
-                                        children: [
-                                            {
-                                                type: 'text',
-                                                value: '👍'
-                                            },
-                                            {
-                                                type: 'spacer'
-                                            },
-                                            {
-                                                type: 'text',
-                                                value: '🤓'
-                                            }
-                                        ]
-                                    },
-                                ],
-                                attributes: {
-                                    padding: 16
-                                }
-                            }
-                        ]
-                    }
+                    return zstack([
+                        color('cyan'),
+                        vstack([
+                            hstack([
+                                text('🤓'),
+                                spacer(),
+                                text('👍')
+                            ]),
+                            spacer(),
+                            text('❤️'),
+                            spacer(),
+                            hstack([
+                                text('👍'),
+                                spacer(),
+                                text('🤓')
+                            ]),
+                        ], {
+                            padding: 16
+                        })
+                    ])
                 }
             """#
         )
