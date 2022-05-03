@@ -10,9 +10,9 @@ import Foundation
 enum JsonUI {
     struct View: Codable {
         enum `Type` {
-            case hstack([JsonUI.View])
-            case vstack([JsonUI.View])
-            case zstack([JsonUI.View])
+            case hstack(HStack)
+            case vstack(VStack)
+            case zstack(ZStack)
             case image(Image)
             case text(Text)
             case script(Script)
@@ -34,28 +34,27 @@ enum JsonUI {
             let foregroundColor: Color?
             let backgroundColor: Color?
         }
-        var id = UUID()
+        let id: String
         let type: `Type`
         let attributes: Attributes
     }
 }
 
-extension JsonUI.View.`Type` {
-    static var names: [String] {
-        return [
-            "hstack",
-            "vstack",
-            "zstack",
-            "image",
-            "text",
-            "script",
-            "rectangle",
-            "spacer"
-        ]
-    }
-}
-
 extension JsonUI.View {
+    init(uuid: UUID = .init(), type t: `Type`, attributes a: Attributes) {
+        id = uuid.uuidString
+        type = t
+        attributes = a
+    }
+    struct HStack: Codable {
+        let children: [JsonUI.View]
+    }
+    struct VStack: Codable {
+        let children: [JsonUI.View]
+    }
+    struct ZStack: Codable {
+        let children: [JsonUI.View]
+    }
     struct Image: Codable {}
     struct Text: Codable {
         let value: String
@@ -76,13 +75,13 @@ extension JsonUI.View.Attributes {
 
 extension JsonUI.View {
     static func hstack(_ children:  [JsonUI.View] = [], attributes: Attributes = .none) -> Self {
-        .init(type: .hstack(children), attributes: attributes)
+        .init(type: .hstack(.init(children: children)), attributes: attributes)
     }
     static func vstack(_ children:  [JsonUI.View] = [], attributes: Attributes = .none) -> Self {
-        .init(type: .vstack(children), attributes: attributes)
+        .init(type: .vstack(.init(children: children)), attributes: attributes)
     }
     static func zstack(_ children:  [JsonUI.View] = [], attributes: Attributes = .none) -> Self {
-        .init(type: .zstack(children), attributes: attributes)
+        .init(type: .zstack(.init(children: children)), attributes: attributes)
     }
     static func text(_ s: String = .init(), attributes: Attributes = .none) -> Self {
         .init(type: .text(.init(value: s)), attributes: attributes)
@@ -111,30 +110,68 @@ extension JsonUI.View.Script {
     static var mock: Self {
         .init(
             source: #"""
-                function background(props) {
-                    return `<rectangle foregroundColor='${props.color}'/>`
-                }
                 function render() {
-                    return `<zstack>
-                        <background color='teal'/>
-                        <vstack padding='16'>
-                            <hstack>
-                                <text>🤓</text>
-                                <spacer/>
-                                <text>👍</text>
-                            </hstack>
-                            <spacer/>
-                            <text>❤️</text>
-                            <spacer/>
-                            <zstack>
-                                <hstack>
-                                    <text>👍</text>
-                                    <spacer/>
-                                    <text>🤓</text>
-                                </hstack>
-                            </zstack>
-                        </vstack>
-                    </zstack>`
+                    return {
+                        type: 'zstack',
+                        children: [
+                            {
+                                type: 'rectangle',
+                                attributes: {
+                                    foregroundColor: 'cyan'
+                                }
+                            },
+                            {
+                                type: 'vstack',
+                                children: [
+                                    {
+                                        type: 'hstack',
+                                        children: [
+                                            {
+                                                type: 'text',
+                                                value: '🤓'
+                                            },
+                                            {
+                                                type: 'spacer'
+                                            },
+                                            {
+                                                type: 'text',
+                                                value: '👍'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        type: 'spacer'
+                                    },
+                                    {
+                                        type: 'text',
+                                        value: '❤️'
+                                    },
+                                    {
+                                        type: 'spacer'
+                                    },
+                                    {
+                                        type: 'hstack',
+                                        children: [
+                                            {
+                                                type: 'text',
+                                                value: '👍'
+                                            },
+                                            {
+                                                type: 'spacer'
+                                            },
+                                            {
+                                                type: 'text',
+                                                value: '🤓'
+                                            }
+                                        ]
+                                    },
+                                ],
+                                attributes: {
+                                    padding: 16
+                                }
+                            }
+                        ]
+                    }
                 }
             """#
         )

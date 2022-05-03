@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreGraphics
-import XMLCoder
 
 extension JsonUI.View: Equatable {
     static func == (lhs: JsonUI.View, rhs: JsonUI.View) -> Bool {
@@ -34,7 +33,7 @@ extension JsonUI.View.Attributes {
     }
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        let v = Int(try c.decodeIfPresent(String.self, forKey: .padding) ?? "")
+        let v = try c.decodeIfPresent(Int.self, forKey: .padding) ?? 0
         padding = .init(leading: v, trailing: v, top: v, bottom: v)
         foregroundColor = try c.decodeIfPresent(Color.self, forKey: .foregroundColor)
         backgroundColor = try c.decodeIfPresent(Color.self, forKey: .backgroundColor)
@@ -45,118 +44,81 @@ extension JsonUI.View.Attributes {
 }
 
 private extension JsonUI.View {
-    struct Empty: Codable {
-        let attributes: Attributes
-        init() {
-            attributes = .none
-        }
-        init(from decoder: Decoder) throws {
-            attributes = try Attributes(from: decoder)
-        }
-    }
-    
-    struct T: Codable {
-        let attributes: Attributes
-        let value: String
-        init(from decoder: Decoder) throws {
-            attributes = try Attributes(from: decoder)
-            var c = try decoder.unkeyedContainer()
-            value = try c.decode(String.self)
-        }
+    enum CodingKeys: String, CodingKey {
+        case id
+        case type
+        case attributes
     }
 
-    struct Stack: Codable {
-        let attributes: Attributes
-        let children: [JsonUI.View]
-        init(from decoder: Decoder) throws {
-            attributes = try Attributes(from: decoder)
-            let c2 = try decoder.singleValueContainer()
-            children = try c2.decode([JsonUI.View].self)
-        }
-    }
-    
-    enum CodingKeys: String, XMLChoiceCodingKey {
-        case padding
+    enum ViewType: String, Decodable {
         case hstack
         case vstack
         case zstack
-        case image
         case text
-        case script
-        case rectangle
         case spacer
+        case rectangle
+        case image
+        case script
         case empty
     }
 }
 
-extension JsonUI.View {
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(attributes.padding, forKey: .padding)
-        switch type {
-        case let .hstack(value):
-            try container.encode(value, forKey: .hstack)
-        case let .vstack(value):
-            try container.encode(value, forKey: .vstack)
-        case let .zstack(value):
-            try container.encode(value, forKey: .zstack)
-        case let .image(value):
-            try container.encode(value, forKey: .image)
-        case let .text(value):
-            try container.encode(value, forKey: .text)
-        case let .script(value):
-            try container.encode(value, forKey: .script)
-        case .rectangle:
-            try container.encode(Empty(), forKey: .rectangle)
-        case .spacer:
-            try container.encode(Empty(), forKey: .spacer)
-        case .empty:
-            try container.encode(Empty(), forKey: .empty)
+private extension JsonUI.View.ViewType {
+    func complexType(using decoder: Decoder) throws -> JsonUI.View.`Type` {
+        switch self {
+        case .vstack: return .vstack(try .init(from: decoder))
+        case .hstack: return .hstack(try .init(from: decoder))
+        case .zstack: return .zstack(try .init(from: decoder))
+        case .text: return .text(try .init(from: decoder))
+        case .image: return .image(try .init(from: decoder))
+        case .script: return .script(try .init(from: decoder))
+        case .spacer: return .spacer
+        case .rectangle: return .rectangle
+        case .empty: return .empty
         }
-    }
-
-    init(from decoder: Decoder) throws {
-        self = try Self.decode(from: decoder)
     }
 }
 
-private extension JsonUI.View {
-    private static func hstack(_ s: Stack) -> Self {
-        .hstack(s.children, attributes: s.attributes)
-    }
-    private static func vstack(_ s: Stack) -> Self {
-        .vstack(s.children, attributes: s.attributes)
-    }
-    private static func zstack(_ s: Stack) -> Self {
-        .zstack(s.children, attributes: s.attributes)
-    }
-    private static func text(_ t: T) -> Self {
-        .text(t.value, attributes: t.attributes)
-    }
-    private static func rectangle(_ e: Empty) -> Self {
-        .rectangle(attributes: e.attributes)
-    }
-    static func decode(from decoder: Decoder) throws -> Self {
-        let c = try decoder.container(keyedBy: CodingKeys.self)
-        do {
-            if let s = try c.decodeIfPresent(Stack.self, forKey: .hstack) {
-                return .hstack(s)
-            } else if let s = try c.decodeIfPresent(Stack.self, forKey: .vstack) {
-                return .vstack(s)
-            } else if let s = try c.decodeIfPresent(Stack.self, forKey: .zstack) {
-                return .zstack(s)
-            } else if let t = try c.decodeIfPresent(T.self, forKey: .text) {
-                return .text(t)
-            } else if let _ = try c.decodeIfPresent(Empty.self, forKey: .spacer) {
-                return .spacer
-            } else if let e = try c.decodeIfPresent(Empty.self, forKey: .rectangle) {
-                return .rectangle(e)
-            } else { // TODO: image, script
-                return decoder.resolve()
-            }
-        } catch {
-            return .empty
+private extension JsonUI.View.`Type` {
+    var string: String {
+        switch self {
+        case .hstack: return "hstack"
+        case .vstack: return "vstack"
+        case .zstack: return "zstack"
+        case .image: return "image"
+        case .text: return "text"
+        case .script: return "script"
+        case .rectangle: return "rectangle"
+        case .spacer: return "spacer"
+        case .empty: return "empty"
         }
+    }
+    var encodable: Encodable? {
+        switch self {
+        case .empty, .spacer, .rectangle: return nil
+        case let .hstack(s): return s
+        case let .vstack(s): return s
+        case let .zstack(s): return s
+        case let .image(i): return i
+        case let .text(t): return t
+        case let .script(s): return s
+        }
+    }
+}
+extension JsonUI.View {
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(type.string, forKey: .type)
+        try type.encodable?.encode(to: encoder)
+        try container.encode(attributes, forKey: .attributes)
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decodeIfPresent(String.self, forKey: .id) ?? UUID().uuidString
+        type = try c.decode(ViewType.self, forKey: .type).complexType(using: decoder)
+        attributes = try c.decodeIfPresent(Attributes.self, forKey: .attributes) ?? .none
     }
 }
 

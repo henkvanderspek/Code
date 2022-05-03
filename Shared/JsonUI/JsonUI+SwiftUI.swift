@@ -26,11 +26,11 @@ private extension JsonUIView {
     func createView() -> some SwiftUI.View {
         switch view.type {
         case let .hstack(v):
-            return AnyView(HStack(v))
+            return AnyView(HStack(v.children))
         case let .vstack(v):
-            return AnyView(VStack(v))
+            return AnyView(VStack(v.children))
         case let .zstack(v):
-            return AnyView(ZStack(v))
+            return AnyView(ZStack(v.children))
         case let .image(v):
             return AnyView(Image(v))
         case let .text(v):
