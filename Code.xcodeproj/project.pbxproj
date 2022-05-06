@@ -71,7 +71,7 @@
 		B6883D6B2825854C00544462 /* String+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D692825850700544462 /* String+Unique.swift */; };
 		B6883D6D2825864500544462 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D6C2825864500544462 /* Reference.swift */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
-		B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843727CCEAF60000C0E7 /* ContentView.swift */; };
+		B6C2843827CCEAF60000C0E7 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843727CCEAF60000C0E7 /* AppView.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
 		B6ECBDEB27E1DC0F00185B7E /* ArticleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBDEA27E1DC0F00185B7E /* ArticleHeaderView.swift */; };
@@ -142,7 +142,7 @@
 		B6B186892817E0C100E138F4 /* libcurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurses.tbd; path = usr/lib/libcurses.tbd; sourceTree = SDKROOT; };
 		B6C2843327CCEAF60000C0E7 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C2843527CCEAF60000C0E7 /* macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSApp.swift; sourceTree = "<group>"; };
-		B6C2843727CCEAF60000C0E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B6C2843727CCEAF60000C0E7 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B6C2843927CCEAF70000C0E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B6C2843E27CCEAF70000C0E7 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				B6C2843527CCEAF60000C0E7 /* macOSApp.swift */,
-				B6C2843727CCEAF60000C0E7 /* ContentView.swift */,
+				B6C2843727CCEAF60000C0E7 /* AppView.swift */,
 				B6C2843927CCEAF70000C0E7 /* Assets.xcassets */,
 				B6C2843E27CCEAF70000C0E7 /* macOS.entitlements */,
 				B6C2843B27CCEAF70000C0E7 /* Preview Content */,
@@ -500,7 +500,7 @@
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B6883D682825846E00544462 /* ConfigurationType.swift in Sources */,
 				B6ECBDFD27E2234000185B7E /* CustomFormatter.swift in Sources */,
-				B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */,
+				B6C2843827CCEAF60000C0E7 /* AppView.swift in Sources */,
 				B62CFCAF27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */,
 				B67B3D9527DF419700F50F2E /* NSLayoutConstraint+Helpers.swift in Sources */,
 				B62CFCAC27D9F60F00C0F17B /* JsonUI+Padding.swift in Sources */,
