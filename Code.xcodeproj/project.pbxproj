@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B627C60E2821636D0029126A /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B627C60D2821636D0029126A /* EditorView.swift */; };
 		B62CFC9B27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */; };
 		B62CFC9C27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */; };
 		B62CFC9F27D9F02A00C0F17B /* JsonUI+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9027D9EE7100C0F17B /* JsonUI+ZStack.swift */; };
@@ -60,6 +59,8 @@
 		B6838BF527D7BE4400C60C32 /* JsonUI+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF327D7BE4400C60C32 /* JsonUI+Codable.swift */; };
 		B6838BFA27D7D94A00C60C32 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF927D7D94A00C60C32 /* Parser.swift */; };
 		B6838BFB27D7D94A00C60C32 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6838BF927D7D94A00C60C32 /* Parser.swift */; };
+		B6883D5928242CC000544462 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B627C60D2821636D0029126A /* EditorView.swift */; };
+		B6883D5B282523B400544462 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5A282523B400544462 /* TreeView.swift */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843727CCEAF60000C0E7 /* ContentView.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
@@ -118,6 +119,8 @@
 		B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+Script.swift"; sourceTree = "<group>"; };
 		B6838BF327D7BE4400C60C32 /* JsonUI+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+Codable.swift"; sourceTree = "<group>"; };
 		B6838BF927D7D94A00C60C32 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		B6883D3B2824236C00544462 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		B6883D5A282523B400544462 /* TreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
 		B6B186882817E0B000E138F4 /* libncurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libncurses.tbd; path = usr/lib/libncurses.tbd; sourceTree = SDKROOT; };
 		B6B186892817E0C100E138F4 /* libcurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurses.tbd; path = usr/lib/libcurses.tbd; sourceTree = SDKROOT; };
 		B6C2843327CCEAF60000C0E7 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +172,7 @@
 				B6FDF7E627CCDB960008262D /* Shared */,
 				B6FDF7D927CCDB800008262D /* iOS */,
 				B6C2843427CCEAF60000C0E7 /* macOS */,
+				B6883D3A2824236C00544462 /* macOS */,
 				B62A6CF327C7C6D200798A2C /* Products */,
 				B69BABFF27D8A7C900FC8C19 /* Frameworks */,
 			);
@@ -248,8 +252,17 @@
 				B6ECBE0427E4E4AF00185B7E /* ComposeTextView.swift */,
 				B66A8E092816D46D00BE9D55 /* TerminalView.swift */,
 				B627C60D2821636D0029126A /* EditorView.swift */,
+				B6883D5A282523B400544462 /* TreeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B6883D3A2824236C00544462 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				B6883D3B2824236C00544462 /* macOS.entitlements */,
+			);
+			path = macOS;
 			sourceTree = "<group>";
 		};
 		B69BABFF27D8A7C900FC8C19 /* Frameworks */ = {
@@ -380,7 +393,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					B6C2843227CCEAF60000C0E7 = {
@@ -445,6 +458,7 @@
 				B67B3D9E27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift in Sources */,
 				B6ECBDF027E1DEAA00185B7E /* Caption.swift in Sources */,
 				B6838BF227D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
+				B6883D5B282523B400544462 /* TreeView.swift in Sources */,
 				B62CFCA227D9F02E00C0F17B /* JsonUI+VStack.swift in Sources */,
 				B6838BF527D7BE4400C60C32 /* JsonUI+Codable.swift in Sources */,
 				B6ECBDFD27E2234000185B7E /* CustomFormatter.swift in Sources */,
@@ -452,7 +466,7 @@
 				B62CFCAF27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */,
 				B67B3D9527DF419700F50F2E /* NSLayoutConstraint+Helpers.swift in Sources */,
 				B62CFCAC27D9F60F00C0F17B /* JsonUI+Padding.swift in Sources */,
-				B627C60E2821636D0029126A /* EditorView.swift in Sources */,
+				B6883D5928242CC000544462 /* EditorView.swift in Sources */,
 				B62CFCA527D9F41B00C0F17B /* JsonUI+Spacer.swift in Sources */,
 				B67B3DA227DF55A300F50F2E /* UIEdgeInsets+Helpers.swift in Sources */,
 				B6838BFB27D7D94A00C60C32 /* Parser.swift in Sources */,

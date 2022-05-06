@@ -7,31 +7,55 @@
 
 import SwiftUI
 
-struct Tree<Value: Hashable>: Hashable {
-    let value: Value
-    let name: String
-    let children: [Tree]?
+extension JsonUI.App {
+    var treeItem: TreeView.Item {
+        return .init(id: id, title: title, systemImage: "iphone.homebutton", children: screens.map { $0.treeItem })
+    }
 }
 
 extension JsonUI.Screen {
-    var tree: Tree<String> {
-        return .init(value: id, name: "Screen", children: [view.tree])
+    var treeItem: TreeView.Item {
+        return .init(id: id, title: title, systemImage: "rectangle.portrait", children: [view.treeItem])
     }
 }
 
 extension JsonUI.View {
-    var tree: Tree<String> {
-        return .init(value: id, name: displayName, children: children?.map { $0.tree })
+    var treeItem: TreeView.Item {
+        return .init(id: id, title: displayName, systemImage: systemImage, children: children?.map { $0.treeItem })
+    }
+}
+
+extension JsonUI.View {
+    var systemImage: String {
+        switch type {
+        case .script: return "bolt.fill"
+        case .image: return "photo"
+        case .vstack: return "arrow.up.and.down.square"
+        case .hstack: return "arrow.left.and.right.square"
+        case .zstack: return "square.stack"
+        case .spacer: return "arrow.left.and.right"
+        case .text: return "t.square"
+        default: return "folder"
+        }
     }
 }
 
 struct EditorView: View {
-    let app: JsonUI.App
+    let apps: [JsonUI.App]
     var body: some View {
         NavigationView {
-            List(app.screens.map { $0.tree }, id: \.value, children: \.children) { tree in
-                Text(tree.name)
-            }.listStyle(.sidebar)
+//            List(app.screens.map { $0.treeItem }, id: \.id, children: \.children) { item in
+//                HStack {
+//                    Image(systemName: "folder")
+//                    Text(item.name)
+//                }
+//            }
+            List {
+                ForEach(apps, id: \.id) {
+                    TreeView($0.treeItem)
+                }
+            }
+            .listStyle(.sidebar)
             Text("Preview")
                 .navigationViewStyle(.columns)
                 .navigationTitle("")
@@ -54,6 +78,6 @@ struct EditorView: View {
 
 struct EditorView_Previews: PreviewProvider {
     static var previews: some View {
-        EditorView(app: .mock)
+        EditorView(apps: [.mock])
     }
 }

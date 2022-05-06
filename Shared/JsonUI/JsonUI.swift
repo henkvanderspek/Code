@@ -113,13 +113,19 @@ extension JsonUI {
         let view: JsonUI.View
     }
     struct App {
+        let id: String
+        let title: String
         let screens: [Screen]
     }
 }
 
 extension JsonUI.App {
     static var mock: Self {
-        return .init(screens: [.init(id: UUID().uuidString, title: "Home", view: .mock)])
+        return .init(
+            id: UUID().uuidString,
+            title: "My App",
+            screens: [.init(id: UUID().uuidString, title: "Home", view: .mock)]
+        )
     }
 }
 

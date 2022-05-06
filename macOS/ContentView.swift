@@ -23,10 +23,10 @@ private extension ContentView {
 //            .background(.background)
 //            .frame(width: 375, height: 667, alignment: .topLeading)
 //    }
-    func jsonUIView() -> some View {
-        JsonUIView(.script(.mock))
-            .frame(width: 320, height: 240)
-    }
+//    func jsonUIView() -> some View {
+//        JsonUIView(.script(.mock))
+//            .frame(width: 320, height: 240)
+//    }
 //    func newspaperView() -> some View {
 //        NewspaperView(.mock)
 //            .frame(width: 320, height: 240)
@@ -35,7 +35,7 @@ private extension ContentView {
 //        TerminalView()
 //    }
     func editorView() -> some View {
-        EditorView(app: .mock)
+        EditorView(apps: [.mock])
     }
 }
 
