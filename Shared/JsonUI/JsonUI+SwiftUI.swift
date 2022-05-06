@@ -58,7 +58,7 @@ private extension JsonUIView {
         case .spacer:
             Spacer()
         case let .map(m):
-            Map(coordinateRegion: .constant(.init()))
+            MapView(m)
         case .empty:
             EmptyView()
         }

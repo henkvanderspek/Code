@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B6883D332824236C00544462"
-               BuildableName = "editor.app"
-               BlueprintName = "editor"
+               BlueprintIdentifier = "B6C2843227CCEAF60000C0E7"
+               BuildableName = "Canvas.app"
+               BlueprintName = "macOS"
                ReferencedContainer = "container:Code.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B6883D332824236C00544462"
-            BuildableName = "editor.app"
-            BlueprintName = "editor"
+            BlueprintIdentifier = "B6C2843227CCEAF60000C0E7"
+            BuildableName = "Canvas.app"
+            BlueprintName = "macOS"
             ReferencedContainer = "container:Code.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B6883D332824236C00544462"
-            BuildableName = "editor.app"
-            BlueprintName = "editor"
+            BlueprintIdentifier = "B6C2843227CCEAF60000C0E7"
+            BuildableName = "Canvas.app"
+            BlueprintName = "macOS"
             ReferencedContainer = "container:Code.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -1,5 +1,5 @@
 //
-//  EditorView.swift
+//  AppView.swift
 //  macOS
 //
 //  Created by Henk van der Spek on 03/05/2022.
@@ -101,9 +101,12 @@ extension ViewType {
     }
 }
 
-struct EditorView: View {
+struct AppView: View {
     @Binding var app: JsonUI.App
     @State private var selectedItem: TreeView.Item = .empty
+    init(_ a: Binding<JsonUI.App>) {
+        _app = a
+    }
     var body: some View {
         NavigationView {
             List {
@@ -134,8 +137,8 @@ struct EditorView: View {
     }
 }
 
-struct EditorView_Previews: PreviewProvider {
+struct App_Previews: PreviewProvider {
     static var previews: some View {
-        EditorView(app: .constant(.mock))
+        AppView(.constant(.mock))
     }
 }

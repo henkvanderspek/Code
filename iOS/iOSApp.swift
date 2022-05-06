@@ -11,7 +11,8 @@ import SwiftUI
 struct iOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            JsonUIView(.mock)
+                .ignoresSafeArea()
         }
     }
 }

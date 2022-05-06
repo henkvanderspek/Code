@@ -144,7 +144,7 @@ extension JsonUI.App {
 extension JsonUI.View {
     static var mock: Self {
         .zstack([
-            .rectangle(.foregroundColor(.systemTeal)),
+            .rectangle(.foregroundColor(.systemCyan)),
             .vstack([
                 .hstack([
                     .text("🤓"),
