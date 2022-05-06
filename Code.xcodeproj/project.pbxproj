@@ -63,6 +63,13 @@
 		B6883D5B282523B400544462 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5A282523B400544462 /* TreeView.swift */; };
 		B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5C2825468100544462 /* ViewVisibility.swift */; };
 		B6883D5F2825531400544462 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5E2825531400544462 /* DeviceView.swift */; };
+		B6883D61282578BD00544462 /* PropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D60282578BD00544462 /* PropertiesView.swift */; };
+		B6883D632825838100544462 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D622825838100544462 /* MapView.swift */; };
+		B6883D662825844E00544462 /* ConfigurationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D652825844E00544462 /* ConfigurationStyle.swift */; };
+		B6883D682825846E00544462 /* ConfigurationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D672825846E00544462 /* ConfigurationType.swift */; };
+		B6883D6A2825850700544462 /* String+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D692825850700544462 /* String+Unique.swift */; };
+		B6883D6B2825854C00544462 /* String+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D692825850700544462 /* String+Unique.swift */; };
+		B6883D6D2825864500544462 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D6C2825864500544462 /* Reference.swift */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843727CCEAF60000C0E7 /* ContentView.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
@@ -125,6 +132,12 @@
 		B6883D5A282523B400544462 /* TreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
 		B6883D5C2825468100544462 /* ViewVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVisibility.swift; sourceTree = "<group>"; };
 		B6883D5E2825531400544462 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
+		B6883D60282578BD00544462 /* PropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesView.swift; sourceTree = "<group>"; };
+		B6883D622825838100544462 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		B6883D652825844E00544462 /* ConfigurationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationStyle.swift; sourceTree = "<group>"; };
+		B6883D672825846E00544462 /* ConfigurationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationType.swift; sourceTree = "<group>"; };
+		B6883D692825850700544462 /* String+Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Unique.swift"; sourceTree = "<group>"; };
+		B6883D6C2825864500544462 /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
 		B6B186882817E0B000E138F4 /* libncurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libncurses.tbd; path = usr/lib/libncurses.tbd; sourceTree = SDKROOT; };
 		B6B186892817E0C100E138F4 /* libcurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurses.tbd; path = usr/lib/libcurses.tbd; sourceTree = SDKROOT; };
 		B6C2843327CCEAF60000C0E7 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +244,7 @@
 				B67B3D9327DF419700F50F2E /* NSLayoutConstraint+Helpers.swift */,
 				B67B3D9C27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift */,
 				B67B3D9F27DF54C000F50F2E /* UIEdgeInsets+Helpers.swift */,
+				B6883D692825850700544462 /* String+Unique.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,6 +252,7 @@
 		B67B3DC027E1039600F50F2E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B6883D642825843F00544462 /* Shared */,
 				B6ECBDED27E1DE5600185B7E /* Modifiers */,
 				B6FDF7D227CCDA500008262D /* GridView.swift */,
 				B63F547527CE254200C111A8 /* LiveView.swift */,
@@ -258,6 +273,8 @@
 				B627C60D2821636D0029126A /* EditorView.swift */,
 				B6883D5A282523B400544462 /* TreeView.swift */,
 				B6883D5E2825531400544462 /* DeviceView.swift */,
+				B6883D60282578BD00544462 /* PropertiesView.swift */,
+				B6883D622825838100544462 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +285,16 @@
 				B6883D3B2824236C00544462 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		B6883D642825843F00544462 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B6883D652825844E00544462 /* ConfigurationStyle.swift */,
+				B6883D672825846E00544462 /* ConfigurationType.swift */,
+				B6883D6C2825864500544462 /* Reference.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		B69BABFF27D8A7C900FC8C19 /* Frameworks */ = {
@@ -464,10 +491,14 @@
 				B67B3D9E27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift in Sources */,
 				B6ECBDF027E1DEAA00185B7E /* Caption.swift in Sources */,
 				B6838BF227D7B7E100C60C32 /* JsonUI+Script.swift in Sources */,
+				B6883D632825838100544462 /* MapView.swift in Sources */,
 				B6883D5B282523B400544462 /* TreeView.swift in Sources */,
+				B6883D6D2825864500544462 /* Reference.swift in Sources */,
 				B62CFCA227D9F02E00C0F17B /* JsonUI+VStack.swift in Sources */,
 				B6883D5F2825531400544462 /* DeviceView.swift in Sources */,
 				B6838BF527D7BE4400C60C32 /* JsonUI+Codable.swift in Sources */,
+				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
+				B6883D682825846E00544462 /* ConfigurationType.swift in Sources */,
 				B6ECBDFD27E2234000185B7E /* CustomFormatter.swift in Sources */,
 				B6C2843827CCEAF60000C0E7 /* ContentView.swift in Sources */,
 				B62CFCAF27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */,
@@ -475,6 +506,7 @@
 				B62CFCAC27D9F60F00C0F17B /* JsonUI+Padding.swift in Sources */,
 				B6883D5928242CC000544462 /* EditorView.swift in Sources */,
 				B62CFCA527D9F41B00C0F17B /* JsonUI+Spacer.swift in Sources */,
+				B6883D61282578BD00544462 /* PropertiesView.swift in Sources */,
 				B67B3DA227DF55A300F50F2E /* UIEdgeInsets+Helpers.swift in Sources */,
 				B6838BFB27D7D94A00C60C32 /* Parser.swift in Sources */,
 				B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */,
@@ -483,6 +515,7 @@
 				B6838BEF27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */,
 				B6838BEC27D76F4300C60C32 /* JsonUI.swift in Sources */,
 				B62CFCA927D9F50C00C0F17B /* JsonUI+Text.swift in Sources */,
+				B6883D662825844E00544462 /* ConfigurationStyle.swift in Sources */,
 				B66A8E0B2816D67800BE9D55 /* TerminalView.swift in Sources */,
 				B62CFCA727D9F50800C0F17B /* JsonUI+Image.swift in Sources */,
 			);
@@ -501,6 +534,7 @@
 				B67B3DBD27E0F21D00F50F2E /* CarouselItem.swift in Sources */,
 				B62CFCB027DB6C9500C0F17B /* JsonUI+Rectangle.swift in Sources */,
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
+				B6883D6B2825854C00544462 /* String+Unique.swift in Sources */,
 				B67B3D9D27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift in Sources */,
 				B67B3DC527E1057B00F50F2E /* Newspaper.swift in Sources */,
 				B63F547C27CE2BD000C111A8 /* LiveHeaderView.swift in Sources */,

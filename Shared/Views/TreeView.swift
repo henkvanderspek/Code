@@ -91,12 +91,12 @@ extension TreeView.Item {
     }
     static var mock: Self {
         return .init(
-            id: UUID().uuidString,
+            id: .unique,
             title: "Root",
             systemImage: "folder",
             children: [
                 .init(
-                    id: UUID().uuidString,
+                    id: .unique,
                     title: "Child",
                     systemImage: "mustache",
                     children: nil,

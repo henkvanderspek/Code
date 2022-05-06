@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct JsonUIView: SwiftUI.View {
     let view: JsonUI.View
@@ -13,7 +14,7 @@ struct JsonUIView: SwiftUI.View {
         view = v
     }
     var body: some View {
-        createView()
+        content
             .padding(view.attributes.padding)
             .backgroundColor(view.attributes.backgroundColor)
             .foregroundColor(view.attributes.foregroundColor)
@@ -31,33 +32,35 @@ extension JsonUI.View: Identifiable {
             return s.children
         case let .zstack(s):
             return s.children
-        case .empty, .rectangle, .spacer, .script, .image, .text:
+        case .empty, .rectangle, .spacer, .script, .image, .text, .map:
             return nil
         }
     }
 }
 
 private extension JsonUIView {
-    func createView() -> some SwiftUI.View {
+    @ViewBuilder var content: some SwiftUI.View {
         switch view.type {
         case let .hstack(v):
-            return AnyView(HStack(v.children))
+            HStack(v.children)
         case let .vstack(v):
-            return AnyView(VStack(v.children))
+            VStack(v.children)
         case let .zstack(v):
-            return AnyView(ZStack(v.children))
+            ZStack(v.children)
         case let .image(v):
-            return AnyView(Image(v))
+            Image(v)
         case let .text(v):
-            return AnyView(Text(v))
+            Text(v)
         case let .script(s):
-            return AnyView(Script(s))
+            Script(s)
         case .rectangle:
-            return AnyView(Rectangle())
+            Rectangle()
         case .spacer:
-            return AnyView(Spacer())
+            Spacer()
+        case let .map(m):
+            Map(coordinateRegion: .constant(.init()))
         case .empty:
-            return AnyView(EmptyView())
+            EmptyView()
         }
     }
 }

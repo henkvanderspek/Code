@@ -89,6 +89,7 @@ private extension JsonUI.View.`Type` {
         case .text: return "text"
         case .script: return "script"
         case .rectangle: return "rectangle"
+        case .map: return "map"
         case .spacer: return "spacer"
         case .empty: return "empty"
         }
@@ -102,6 +103,7 @@ private extension JsonUI.View.`Type` {
         case let .image(i): return i
         case let .text(t): return t
         case let .script(s): return s
+        case let .map(m): return m
         }
     }
 }
@@ -116,7 +118,7 @@ extension JsonUI.View {
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        id = try c.decodeIfPresent(String.self, forKey: .id) ?? UUID().uuidString
+        id = try c.decodeIfPresent(String.self, forKey: .id) ?? .unique
         type = try c.decode(ViewType.self, forKey: .type).complexType(using: decoder)
         attributes = try c.decodeIfPresent(Attributes.self, forKey: .attributes) ?? .none
     }

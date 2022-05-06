@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var app: JsonUI.App = .mock
     var body: some View {
         editorView()
     }
@@ -35,7 +36,7 @@ private extension ContentView {
 //        TerminalView()
 //    }
     func editorView() -> some View {
-        EditorView(apps: [.mock])
+        EditorView(app: $app)
     }
 }
 

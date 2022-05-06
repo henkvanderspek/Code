@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct DeviceView: View {
-    let apps: [JsonUI.App]
+    @Binding var app: JsonUI.App
     @Binding var selectedItem: TreeView.Item
     var body: some View {
-        if let s = apps.compactMap({ $0.screens.first { $0.id == selectedItem.rootId } }).first {
+        if let s = app.screens.first(where: { $0.id == selectedItem.rootId }) {
             JsonUIView(s.view)
                 .frame(width: 320, height: 568)
                 .background(Color.white)
@@ -25,6 +25,6 @@ struct DeviceView: View {
 
 struct PreviewView_Previews: PreviewProvider {
     static var previews: some View {
-        DeviceView(apps: [.mock], selectedItem: .constant(.mock))
+        DeviceView(app: .constant(.mock), selectedItem: .constant(.mock))
     }
 }

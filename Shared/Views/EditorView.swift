@@ -43,6 +43,7 @@ private enum ViewType: String, Equatable, CaseIterable {
     case spacer
     case text
     case rectangle
+    case map
     case empty
 }
 
@@ -57,6 +58,7 @@ extension ViewType {
         case .spacer: self = .spacer
         case .text: self = .text
         case .rectangle: self = .rectangle
+        case .map: self = .map
         case .empty: self = .empty
         }
     }
@@ -76,6 +78,7 @@ extension ViewType {
         case .spacer: return "arrow.left.and.right"
         case .text: return "t.square"
         case .rectangle: return "rectangle"
+        case .map: return "map"
         case .empty: return "rectangle.dashed"
         }
     }
@@ -92,29 +95,22 @@ extension ViewType {
         case .spacer: return "Spacer"
         case .text: return "Text"
         case .rectangle: return "Rectangle"
+        case .map: return "map"
         case .empty: return "Empty"
         }
     }
 }
 
 struct EditorView: View {
-    let apps: [JsonUI.App]
+    @Binding var app: JsonUI.App
     @State private var selectedItem: TreeView.Item = .empty
     var body: some View {
         NavigationView {
-//            List(app.screens.map { $0.treeItem }, id: \.id, children: \.children) { item in
-//                HStack {
-//                    Image(systemName: "folder")
-//                    Text(item.name)
-//                }
-//            }
             List {
-                ForEach(apps, id: \.id) {
-                    TreeView($0.treeItem, selectedItem: $selectedItem)
-                }
+                TreeView(app.treeItem, selectedItem: $selectedItem)
             }
             .listStyle(.sidebar)
-            DeviceView(apps: apps, selectedItem: $selectedItem)
+            DeviceView(app: $app, selectedItem: $selectedItem)
                 .navigationViewStyle(.columns)
                 .navigationTitle("")
                 .toolbar {
@@ -133,13 +129,13 @@ struct EditorView: View {
                         }
                     }
                 }
-            Text("Properties")
+            PropertiesView(app: $app, selectedItem: $selectedItem)
         }
     }
 }
 
 struct EditorView_Previews: PreviewProvider {
     static var previews: some View {
-        EditorView(apps: [.mock])
+        EditorView(app: .constant(.mock))
     }
 }

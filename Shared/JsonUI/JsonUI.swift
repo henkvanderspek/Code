@@ -16,6 +16,7 @@ enum JsonUI {
             case image(Image)
             case text(Text)
             case script(Script)
+            case map(Map)
             case rectangle
             case spacer
             case empty
@@ -29,6 +30,9 @@ enum JsonUI {
             }
             struct Color: Codable {
                 let value: NativeColor
+            }
+            enum Alignment {
+                
             }
             let padding: Padding?
             let foregroundColor: Color?
@@ -61,6 +65,14 @@ extension JsonUI.View {
     }
     struct Script: Codable {
         let source: String
+    }
+    struct Map: Codable {
+        struct Coordinate: Codable {
+            let latitude: Double
+            let longitude: Double
+            let title: String?
+        }
+        let coordinate: Coordinate
     }
 }
 
@@ -122,18 +134,12 @@ extension JsonUI {
 extension JsonUI.App {
     static var mock: Self {
         return .init(
-            id: UUID().uuidString,
+            id: .unique,
             title: "My App",
-            screens: [.init(id: UUID().uuidString, title: "Home", view: .mock)]
+            screens: [.init(id: .unique, title: "Home", view: .mock)]
         )
     }
 }
-
-//extension JsonUI.View {
-//    var displayName: String {
-//        type.name
-//    }
-//}
 
 extension JsonUI.View {
     static var mock: Self {
@@ -195,6 +201,22 @@ extension JsonUI.View.Script {
                     ])
                 }
             """#
+        )
+    }
+}
+
+extension JsonUI.View.Map {
+    static var mock: Self {
+        .init(coordinate: .mock)
+    }
+}
+
+extension JsonUI.View.Map.Coordinate {
+    static var mock: Self {
+        .init(
+            latitude: 52.3783119,
+            longitude: 4.8939736,
+            title: "MakeSense"
         )
     }
 }
