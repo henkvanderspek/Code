@@ -92,8 +92,8 @@ extension JsonUI.View {
     static func script(_ s: Script, attributes: Attributes = .none) -> Self {
         .init(type: .script(s), attributes: attributes)
     }
-    static func rectangle(attributes: Attributes = .none) -> Self {
-        .init(type: .rectangle, attributes: attributes)
+    static func rectangle(_ a: Attributes = .none) -> Self {
+        .init(type: .rectangle, attributes: a)
     }
     static var rectangle: Self {
         .rectangle()
@@ -129,24 +129,16 @@ extension JsonUI.App {
     }
 }
 
-extension JsonUI.View {
-    var displayName: String {
-        switch type {
-        case .hstack: return "HStack"
-        case .vstack: return "VStack"
-        case .zstack: return "ZStack"
-        case .text: return "Text"
-        case .spacer: return "Spacer"
-        case .rectangle: return "Rectangle"
-        default: return "💣"
-        }
-    }
-}
+//extension JsonUI.View {
+//    var displayName: String {
+//        type.name
+//    }
+//}
 
 extension JsonUI.View {
     static var mock: Self {
         .zstack([
-            .rectangle,
+            .rectangle(.foregroundColor(.systemTeal)),
             .vstack([
                 .hstack([
                     .text("🤓"),
@@ -161,9 +153,18 @@ extension JsonUI.View {
                     .spacer,
                     .text("🤓"),
                 ])
-            ])
-        ],
-        attributes: .padding(.all(8)))
+            ],
+            attributes: .padding(.all(8)))
+        ])
+    }
+}
+
+extension JsonUI.View.Attributes {
+    static func backgroundColor(_ c: NativeColor) -> Self {
+        .init(padding: nil, foregroundColor: nil, backgroundColor: .init(value: c))
+    }
+    static func foregroundColor(_ c: NativeColor) -> Self {
+        .init(padding: nil, foregroundColor: .init(value: c), backgroundColor: nil)
     }
 }
 
