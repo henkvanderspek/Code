@@ -42,6 +42,7 @@ extension JsonUI.View {
 
 struct EditorView: View {
     let apps: [JsonUI.App]
+    @State private var selectedItemId: String = .init()
     var body: some View {
         NavigationView {
 //            List(app.screens.map { $0.treeItem }, id: \.id, children: \.children) { item in
@@ -52,7 +53,7 @@ struct EditorView: View {
 //            }
             List {
                 ForEach(apps, id: \.id) {
-                    TreeView($0.treeItem)
+                    TreeView($0.treeItem, selectedItemId: $selectedItemId)
                 }
             }
             .listStyle(.sidebar)
