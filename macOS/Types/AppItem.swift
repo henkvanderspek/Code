@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 class AppItem: ObservableObject {
     
@@ -16,7 +17,20 @@ class AppItem: ObservableObject {
     }
     
     var type: `Type`
-    var screen: JsonUI.Screen?
+    
+    var screen: JsonUI.Screen? {
+        get {
+            if let s = parentItem?.screen {
+                return s
+            } else {
+                guard case let .screen(s) = type else { return nil }
+                return s
+            }
+        }
+        set {
+            print(newValue)
+        }
+    }
     
     var view: JsonUI.View? {
         get {
@@ -29,22 +43,25 @@ class AppItem: ObservableObject {
         }
         set {
             type = newValue.map { .view($0) } ?? type
+            parentItem?.refreshScreen()
         }
     }
     
     var children: [AppItem]?
     
-    init(type t: `Type`, screen s: JsonUI.Screen? = nil) {
+    private var parentItem: AppItem?
+    
+    init(type t: `Type`, parentItem p: AppItem? = nil) {
         type = t
-        screen = s
+        parentItem = p
         children = {
             switch type {
             case let .app(a):
-                return a.screens.map { .init(type: .screen($0)) }
+                return a.screens.map { .init(type: .screen($0), parentItem: self) }
             case let .screen(s):
-                return [.init(type: .view(s.view), screen: s)]
+                return [.init(type: .view(s.view), parentItem: self)]
             case let .view(v):
-                return v.children?.map { .init(type: .view($0), screen: screen) }
+                return v.children?.map { .init(type: .view($0), parentItem: self) }
             }
         }()
     }
@@ -77,6 +94,18 @@ class AppItem: ObservableObject {
         case let .view(v):
             return v.systemImage
         }
+    }
+}
+
+private extension AppItem {
+    func refreshScreen() {
+        print(#function)
+        guard case let .screen(s) = type else {
+            parentItem?.refreshScreen()
+            return
+        }
+        print(s)
+        objectWillChange.send()
     }
 }
 

@@ -122,7 +122,7 @@ extension JsonUI {
     struct Screen {
         let id: String
         let title: String
-        var view: JsonUI.View
+        let view: JsonUI.View
     }
     struct App {
         let id: String
@@ -220,3 +220,5 @@ extension JsonUI.View.Map.Coordinate {
         )
     }
 }
+
+extension JsonUI.Screen: Equatable {}
