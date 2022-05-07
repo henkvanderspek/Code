@@ -20,8 +20,7 @@ extension JsonUI.View: Equatable {
         case (.rectangle, .rectangle): return true
         case (.spacer, .spacer): return true
         case (.empty, .empty): return true
-        default:
-            return false
+        default: return false
         }
     }
 }

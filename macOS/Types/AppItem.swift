@@ -27,9 +27,7 @@ class AppItem: ObservableObject {
                 return s
             }
         }
-        set {
-            print(newValue)
-        }
+        set {}
     }
     
     var view: JsonUI.View? {
@@ -42,8 +40,9 @@ class AppItem: ObservableObject {
             }
         }
         set {
-            type = newValue.map { .view($0) } ?? type
-            parentItem?.refreshScreen()
+            guard let v = newValue, case .view = type else { return }
+            type = .view(v)
+            update(v)
         }
     }
     
@@ -54,16 +53,7 @@ class AppItem: ObservableObject {
     init(type t: `Type`, parentItem p: AppItem? = nil) {
         type = t
         parentItem = p
-        children = {
-            switch type {
-            case let .app(a):
-                return a.screens.map { .init(type: .screen($0), parentItem: self) }
-            case let .screen(s):
-                return [.init(type: .view(s.view), parentItem: self)]
-            case let .view(v):
-                return v.children?.map { .init(type: .view($0), parentItem: self) }
-            }
-        }()
+        createChildren()
     }
     
     var id: String {
@@ -98,14 +88,40 @@ class AppItem: ObservableObject {
 }
 
 private extension AppItem {
-    func refreshScreen() {
-        print(#function)
+    func createChildren() {
+        children = {
+            switch type {
+            case let .app(a):
+                return a.screens.map { .init(type: .screen($0), parentItem: self) }
+            case let .screen(s):
+                return [.init(type: .view(s.view), parentItem: self)]
+            case let .view(v):
+                return v.children?.map { .init(type: .view($0), parentItem: self) }
+            }
+        }()
+    }
+    func update(_ v: JsonUI.View) {
         guard case let .screen(s) = type else {
-            parentItem?.refreshScreen()
+            parentItem?.update(v)
             return
         }
-        print(s)
-        objectWillChange.send()
+        type = .screen(s.updated(v))
+        createChildren()
+    }
+}
+
+private extension JsonUI.View {
+    func updated(_ v: JsonUI.View) -> JsonUI.View {
+        // TODO: This should not return the new view but do a recursive update of the old one
+        return v
+    }
+}
+
+private extension JsonUI.Screen {
+    func updated(_ v: JsonUI.View) -> JsonUI.Screen {
+        var s = self
+        s.view = view.updated(v)
+        return s
     }
 }
 

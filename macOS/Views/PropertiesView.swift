@@ -14,7 +14,12 @@ struct PropertiesView: SwiftUI.View {
     var body: some SwiftUI.View {
         Text($view.wrappedValue?.name ?? "")
         Button {
-            view?.type = .spacer
+            switch view?.type {
+            case .text:
+                view?.type = .spacer
+            default:
+                view?.type = .text(.init(value: "🐶"))
+            }
         } label: {
             Label("Update", systemImage: "wand.and.stars")
         }
