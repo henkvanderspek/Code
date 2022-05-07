@@ -36,8 +36,7 @@ class Properties: ObservableObject {
 }
 
 struct PropertiesView: SwiftUI.View {
-    @Binding var app: JsonUI.App
-    @Binding var selectedItem: TreeView.Item
+    @Binding var view: JsonUI.View?
     private let style: ConfigurationStyle = .default
     //@EnvironmentObject var properties: Properties
     var body: some SwiftUI.View {
@@ -46,16 +45,21 @@ struct PropertiesView: SwiftUI.View {
 //                .listRowInsets(.init(top: 8, leading: 0, bottom: 0, trailing: 0))
 //        }
 //        .listStyle(.sidebar)
-        if let v = app.recursiveView(withId: selectedItem.id) {
-            Text(v.shortName)
+        if var v = view {
+            Text(v.name)
+            Button {
+                v.type = .spacer
+            } label: {
+                Label("Update", systemImage: "wand.and.stars")
+            }
         } else {
-            Text("No screen selected")
+            EmptyView()
         }
     }
 }
                                    
 extension JsonUI.App {
-    func recursiveView(withId: String) -> JsonUI.View? {
+    func recursiveView(withId id: String) -> JsonUI.View? {
         return nil
     }
 }
@@ -461,6 +465,6 @@ extension ConfigurationType.EventAction {
 
 struct PropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        PropertiesView(app: .constant(.mock), selectedItem: .constant(.mock))
+        PropertiesView(view: .constant(.mock))
     }
 }

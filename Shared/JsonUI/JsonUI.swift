@@ -39,7 +39,7 @@ enum JsonUI {
             let backgroundColor: Color?
         }
         let id: String
-        let type: `Type`
+        var type: `Type`
         let attributes: Attributes
     }
 }

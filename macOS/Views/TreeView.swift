@@ -7,25 +7,26 @@
 
 import SwiftUI
 
-struct TreeView: View {
-    // TODO: Ideally this holds a reference to the underlying jsonui view, so preview doesn't have to hold apps and search for the screen
-    // TODO: Obviously we don't want to embed a jsonui screen, since it would make this tree view non generic
-    // TODO: Tried generic but it didn't work, state started complaining
-    struct Item: Hashable {
-        let id: String
-        let title: String
-        let systemImage: String
-        let children: [Item]?
-        let rootId: String?
+extension AppItem {
+    var safeChildren: [AppItem] {
+        get {
+            children ?? []
+        }
+        set {
+            print(newValue)
+        }
     }
-    let item: Item
+}
+
+struct TreeView: View {
+    @Binding var item: AppItem
     let level: Int
     @State private var state: ItemState
-    @Binding var selectedItem: Item
-    init(_ i: Item, level l: Int = 0, selectedItem s: Binding<Item>) {
-        item = i
+    @Binding var selectedItem: AppItem
+    init(_ i: Binding<AppItem>, level l: Int = 0, selectedItem s: Binding<AppItem>) {
+        _item = i
         level = l
-        state = i.children?.isEmpty ?? true ? .leaf : .parent(.expanded)
+        state = i.wrappedValue.children?.isEmpty ?? true ? .leaf : .parent(.expanded)
         _selectedItem = s
     }
     var body: some View {
@@ -44,7 +45,7 @@ struct TreeView: View {
                             state = .parent(p == .collapsed ? .expanded : .collapsed)
                         }
                     }
-                Image(systemName: item.systemImage)
+                Image(systemName: $item.wrappedValue.systemImage)
                     .fixedSize()
                     .frame(width: 20)
                 Text(item.title)
@@ -56,16 +57,16 @@ struct TreeView: View {
             .background(
                 Color
                     .orange
-                    .isHidden($selectedItem.wrappedValue.id != item.id)
+                    .isHidden($selectedItem.wrappedValue.id != $item.wrappedValue.id)
             )
             .cornerRadius(4)
             .contentShape(Rectangle())
             .onTapGesture {
                 selectedItem = item
             }
-            if let children = item.children, isExpanded {
-                ForEach(children, id: \.id) {
-                    TreeView($0, level: level + 1, selectedItem: $selectedItem)
+            if isExpanded {
+                ForEach($item.safeChildren) { $item in
+                    TreeView($item, level: level + 1, selectedItem: $selectedItem)
                 }
                 .frame(maxWidth: .infinity)
                 .animation(.easeInOut, value: isExpanded)
@@ -76,35 +77,6 @@ struct TreeView: View {
     private var isExpanded: Bool {
         guard case .parent(.expanded) = state else { return false }
         return true
-    }
-}
-
-struct TreeView_Previews: PreviewProvider {
-    static var previews: some View {
-        TreeView(.mock, selectedItem: .constant(.mock))
-    }
-}
-
-extension TreeView.Item {
-    static var empty: Self {
-        return .init(id: .init(), title: .init(), systemImage: .init(), children: nil, rootId: nil)
-    }
-    static var mock: Self {
-        return .init(
-            id: .unique,
-            title: "Root",
-            systemImage: "folder",
-            children: [
-                .init(
-                    id: .unique,
-                    title: "Child",
-                    systemImage: "mustache",
-                    children: nil,
-                    rootId: nil
-                )
-            ],
-            rootId: nil
-        )
     }
 }
 
