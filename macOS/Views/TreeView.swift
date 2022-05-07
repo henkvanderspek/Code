@@ -26,7 +26,7 @@ struct TreeView: View {
     init(_ i: Binding<AppItem>, level l: Int = 0, selectedItem s: Binding<AppItem>) {
         _item = i
         level = l
-        state = i.wrappedValue.children?.isEmpty ?? true ? .leaf : .parent(.expanded)
+        state = i.wrappedValue.safeChildren.isEmpty ? .leaf : .parent(.expanded)
         _selectedItem = s
     }
     var body: some View {

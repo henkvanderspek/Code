@@ -13,7 +13,7 @@ struct ScreenView: View {
         _screen = s
     }
     var body: some View {
-        if let s = screen {
+        if let s = $screen.wrappedValue {
             JsonUIView(s.view)
                 .frame(width: 320, height: 568)
                 .background(Color.white)

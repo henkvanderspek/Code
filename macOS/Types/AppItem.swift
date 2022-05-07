@@ -7,15 +7,48 @@
 
 import SwiftUI
 
-struct AppItem {
+class AppItem: ObservableObject {
+    
     enum `Type` {
         case app(JsonUI.App)
         case screen(JsonUI.Screen)
         case view(JsonUI.View)
     }
+    
     var type: `Type`
     var screen: JsonUI.Screen?
-    var view: JsonUI.View?
+    
+    var view: JsonUI.View? {
+        get {
+            switch type {
+            case let .view(v):
+                return v
+            case .app, .screen:
+                return nil
+            }
+        }
+        set {
+            type = newValue.map { .view($0) } ?? type
+        }
+    }
+    
+    var children: [AppItem]?
+    
+    init(type t: `Type`, screen s: JsonUI.Screen? = nil) {
+        type = t
+        screen = s
+        children = {
+            switch type {
+            case let .app(a):
+                return a.screens.map { .init(type: .screen($0)) }
+            case let .screen(s):
+                return [.init(type: .view(s.view), screen: s)]
+            case let .view(v):
+                return v.children?.map { .init(type: .view($0), screen: screen) }
+            }
+        }()
+    }
+    
     var id: String {
         switch type {
         case let .app(a): return a.id
@@ -23,16 +56,7 @@ struct AppItem {
         case let .view(v): return v.id
         }
     }
-    var children: [AppItem]? {
-        switch type {
-        case let .app(a):
-            return a.screens.map { .init(type: .screen($0), screen: $0, view: nil) }
-        case let .screen(s):
-            return [.init(type: .view(s.view), screen: s, view: nil)]
-        case var .view(v):
-            return v.children?.map { .init(type: .view($0), screen: screen, view: $0) }
-        }
-    }
+    
     var title: String {
         switch type {
         case let .app(a):
@@ -43,6 +67,7 @@ struct AppItem {
             return v.name
         }
     }
+    
     var systemImage: String {
         switch type {
         case .app:
@@ -133,5 +158,22 @@ extension ViewType {
 extension JsonUI.App {
     var appItem: AppItem {
         .init(type: .app(self))
+    }
+}
+
+extension AppItem: Equatable {
+    static func == (lhs: AppItem, rhs: AppItem) -> Bool {
+        lhs.id == rhs.id && lhs.type == rhs.type
+    }
+}
+
+extension AppItem.`Type`: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.app, .app): return true
+        case (.screen, .screen): return true
+        case let (.view(lhv), .view(rhv)): return lhv == rhv
+        default: return false
+        }
     }
 }

@@ -122,7 +122,7 @@ extension JsonUI {
     struct Screen {
         let id: String
         let title: String
-        let view: JsonUI.View
+        var view: JsonUI.View
     }
     struct App {
         let id: String

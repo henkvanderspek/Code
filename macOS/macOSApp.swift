@@ -9,10 +9,9 @@ import SwiftUI
 
 @main
 struct macOSApp: App {
-    @State private var app: JsonUI.App = .mock
     var body: some Scene {
         WindowGroup {
-            AppView($app)
+            AppView(.mock)
         }
     }
 }

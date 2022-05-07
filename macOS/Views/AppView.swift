@@ -8,21 +8,26 @@
 import SwiftUI
 
 struct AppView: View {
-    @Binding var app: JsonUI.App
-    @State private var rootItem: AppItem
-    @State private var selectedItem: AppItem
-    init(_ a: Binding<JsonUI.App>) {
-        _app = a
-        _rootItem = .init(initialValue: a.wrappedValue.appItem)
-        _selectedItem = _rootItem
+    class Observer: ObservableObject {
+        init(_ a: JsonUI.App) {
+            let i = a.appItem
+            rootItem = i
+            selectedItem = i
+        }
+        @Published var rootItem: AppItem
+        @Published var selectedItem: AppItem
+    }
+    @ObservedObject private var observer: Observer
+    init(_ a: JsonUI.App) {
+        observer = .init(a)
     }
     var body: some View {
         NavigationView {
             List {
-                TreeView($rootItem, selectedItem: $selectedItem)
+                TreeView($observer.rootItem, selectedItem: $observer.selectedItem)
             }
             .listStyle(.sidebar)
-            ScreenView($selectedItem.screen)
+            ScreenView($observer.selectedItem.screen)
                 .navigationViewStyle(.columns)
                 .navigationTitle("")
                 .toolbar {
@@ -34,29 +39,20 @@ struct AppView: View {
                                 } label: {
                                     Label(type.name, systemImage: type.systemImage)
                                         .labelStyle(.titleAndIcon)
-                                }.disabled(selectedItem.screen == nil)
+                                }.disabled(observer.selectedItem.screen == nil)
                             }
                         } label: {
                             Label("Add", systemImage: "plus")
                         }
                     }
                 }
-            PropertiesView(
-                view: .init(
-                    get: {
-                        selectedItem.view
-                    },
-                    set: {
-                        selectedItem.view = $0
-                    }
-                )
-            )
+            PropertiesView(view: $observer.selectedItem.view)
         }
     }
 }
 
 struct App_Previews: PreviewProvider {
     static var previews: some View {
-        AppView(.constant(.mock))
+        AppView(.mock)
     }
 }

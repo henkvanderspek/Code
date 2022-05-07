@@ -9,7 +9,7 @@ import Foundation
 import CoreGraphics
 
 extension JsonUI.View: Equatable {
-    static func == (lhs: JsonUI.View, rhs: JsonUI.View) -> Bool {
+    static func == (lhs: Self, rhs: Self) -> Bool {
         switch (lhs.type, rhs.type) {
         case (.hstack, .hstack): return true
         case (.vstack, .vstack): return true
@@ -20,7 +20,8 @@ extension JsonUI.View: Equatable {
         case (.rectangle, .rectangle): return true
         case (.spacer, .spacer): return true
         case (.empty, .empty): return true
-        default: return false
+        default:
+            return false
         }
     }
 }
