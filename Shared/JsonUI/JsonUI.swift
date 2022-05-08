@@ -119,15 +119,21 @@ extension JsonUI.View {
 }
 
 extension JsonUI {
-    struct Screen {
+    struct Screen: Codable {
         let id: String
         let title: String
         var view: JsonUI.View
     }
-    struct App {
+    struct App: Codable {
         let id: String
         let title: String
         var screens: [Screen]
+    }
+}
+
+extension JsonUI.Screen {
+    static var mock: Self {
+        .init(id: .unique, title: "Home", view: .empty)
     }
 }
 

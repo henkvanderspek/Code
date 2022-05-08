@@ -9,25 +9,30 @@ import SwiftUI
 import Combine
 
 struct PropertiesView: SwiftUI.View {
-    @Binding var view: JsonUI.View?
+    @Binding var view: JsonUI.View
     private let style: ConfigurationStyle = .default
     var body: some SwiftUI.View {
-        Text($view.wrappedValue?.name ?? "")
-        Button {
-            switch view?.type {
-            case .text:
-                view?.type = .spacer
-            default:
-                view?.type = .text(.init(value: "🐶"))
+        switch view.type {
+        case .empty:
+            EmptyView()
+        default:
+            Text($view.wrappedValue.name)
+            Button {
+                switch view.type {
+                case .text:
+                    view.type = .spacer
+                default:
+                    view.type = .text(.init(value: "🐶"))
+                }
+            } label: {
+                Label("Update", systemImage: "wand.and.stars")
             }
-        } label: {
-            Label("Update", systemImage: "wand.and.stars")
         }
     }
 }
 
 struct PropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        PropertiesView(view: .constant(.init(.mock)))
+        PropertiesView(view: .constant(.mock))
     }
 }

@@ -7,32 +7,21 @@
 
 import SwiftUI
 
-extension AppItem {
-    var safeChildren: [AppItem] {
-        get {
-            children ?? []
-        }
-        set {
-            print(newValue)
-        }
-    }
-}
-
 struct TreeView: View {
-    @Binding var item: AppItem
+    @Binding var item: TreeItem
     let level: Int
-    @State private var state: ItemState
-    @Binding var selectedItem: AppItem
-    init(_ i: Binding<AppItem>, level l: Int = 0, selectedItem s: Binding<AppItem>) {
+    @State private var state: TreeItemState
+    @Binding var selectedItem: TreeItem
+    init(_ i: Binding<TreeItem>, level l: Int = 0, selectedItem s: Binding<TreeItem>) {
         _item = i
         level = l
-        state = i.wrappedValue.safeChildren.isEmpty ? .leaf : .parent(.expanded)
+        _state = .init(initialValue: i.wrappedValue.hasChildren ? .parent(.expanded) : .leaf)
         _selectedItem = s
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 0) {
-                ItemStateView(state) // TODO: This should refresh on item change
+                TreeItemStateView(state) // TODO: This should refresh on item change
                     .font(.subheadline.weight(.bold))
                     .imageScale(.small)
                     .fixedSize()
@@ -65,7 +54,7 @@ struct TreeView: View {
                 selectedItem = item
             }
             if isExpanded {
-                ForEach($item.safeChildren) { $item in
+                ForEach($item.safeChildren, id: \.id) { $item in
                     TreeView($item, level: level + 1, selectedItem: $selectedItem)
                 }
                 .frame(maxWidth: .infinity)
@@ -80,18 +69,18 @@ struct TreeView: View {
     }
 }
 
-private enum ItemState {
-    enum ParentState {
+private enum TreeItemState {
+    enum ParentItemState {
         case collapsed
         case expanded
     }
     case leaf
-    case parent(ParentState)
+    case parent(ParentItemState)
 }
 
-private struct ItemStateView: View {
-    let state: ItemState
-    init(_ s: ItemState) {
+private struct TreeItemStateView: View {
+    let state: TreeItemState
+    init(_ s: TreeItemState) {
         state = s
     }
     var body: some View {

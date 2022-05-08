@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B6111E6C2825DC5800671BEA /* AppItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6111E6B2825DC5800671BEA /* AppItem.swift */; };
+		B60F22482827C53900A730F1 /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F22472827C53900A730F1 /* ViewType.swift */; };
+		B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F22492827C63E00A730F1 /* TreeItem.swift */; };
+		B60F224C2827C6B300A730F1 /* TreeItem+JsonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F224B2827C6B300A730F1 /* TreeItem+JsonUI.swift */; };
 		B62CFC9B27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */; };
 		B62CFC9C27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */; };
 		B62CFC9F27D9F02A00C0F17B /* JsonUI+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9027D9EE7100C0F17B /* JsonUI+ZStack.swift */; };
@@ -59,7 +61,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B6111E6B2825DC5800671BEA /* AppItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppItem.swift; sourceTree = "<group>"; };
+		B60F22472827C53900A730F1 /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
+		B60F22492827C63E00A730F1 /* TreeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItem.swift; sourceTree = "<group>"; };
+		B60F224B2827C6B300A730F1 /* TreeItem+JsonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+JsonUI.swift"; sourceTree = "<group>"; };
 		B627C60D2821636D0029126A /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B62CFC8D27D9EE7100C0F17B /* JsonUI+VStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JsonUI+VStack.swift"; sourceTree = "<group>"; };
 		B62CFC8E27D9EE7100C0F17B /* JsonUI+Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JsonUI+Text.swift"; sourceTree = "<group>"; };
@@ -247,7 +251,9 @@
 				B6883D652825844E00544462 /* ConfigurationStyle.swift */,
 				B6883D672825846E00544462 /* ConfigurationType.swift */,
 				B6883D6C2825864500544462 /* Reference.swift */,
-				B6111E6B2825DC5800671BEA /* AppItem.swift */,
+				B60F22472827C53900A730F1 /* ViewType.swift */,
+				B60F22492827C63E00A730F1 /* TreeItem.swift */,
+				B60F224B2827C6B300A730F1 /* TreeItem+JsonUI.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -485,8 +491,8 @@
 				B6838BF527D7BE4400C60C32 /* JsonUI+Codable.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B6883D682825846E00544462 /* ConfigurationType.swift in Sources */,
-				B6111E6C2825DC5800671BEA /* AppItem.swift in Sources */,
 				B62CFCAF27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */,
+				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
 				B62CFCAC27D9F60F00C0F17B /* JsonUI+Padding.swift in Sources */,
 				B6883D5928242CC000544462 /* AppView.swift in Sources */,
 				B62CFCA527D9F41B00C0F17B /* JsonUI+Spacer.swift in Sources */,
@@ -497,6 +503,8 @@
 				B62CFCA027D9F02B00C0F17B /* JsonUI+ZStack.swift in Sources */,
 				B6838BEF27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */,
 				B6838BEC27D76F4300C60C32 /* JsonUI.swift in Sources */,
+				B60F224C2827C6B300A730F1 /* TreeItem+JsonUI.swift in Sources */,
+				B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */,
 				B62CFCA927D9F50C00C0F17B /* JsonUI+Text.swift in Sources */,
 				B6883D662825844E00544462 /* ConfigurationStyle.swift in Sources */,
 				B62CFCA727D9F50800C0F17B /* JsonUI+Image.swift in Sources */,
