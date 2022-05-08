@@ -39,15 +39,30 @@ extension JsonUI.View: TreeItem {
         return name
     }
     var children: [TreeItem]? {
-        switch type {
-        case let .hstack(s):
-            return s.children
-        case let .vstack(s):
-            return s.children
-        case let .zstack(s):
-            return s.children
-        case .empty, .rectangle, .spacer, .script, .image, .text, .map:
-            return nil
+        get {
+            switch type {
+            case let .hstack(s):
+                return s.children
+            case let .vstack(s):
+                return s.children
+            case let .zstack(s):
+                return s.children
+            case .empty, .rectangle, .spacer, .script, .image, .text, .map:
+                return nil
+            }
+        }
+        set {
+            let children = newValue?.compactMap { $0 as? Self } ?? []
+            switch type {
+            case .hstack:
+                type = .hstack(.init(children: children))
+            case .vstack:
+                type = .vstack(.init(children: children))
+            case .zstack:
+                type = .zstack(.init(children: children))
+            case .empty, .rectangle, .spacer, .script, .image, .text, .map:
+                ()
+            }
         }
     }
 }

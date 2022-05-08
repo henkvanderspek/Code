@@ -24,21 +24,6 @@ struct JsonUIView: SwiftUI.View {
 extension JsonUI.Screen: Identifiable {}
 extension JsonUI.View: Identifiable {}
 
-//extension JsonUI.View: Identifiable {
-//    var children: [Self]? {
-//        switch type {
-//        case let .hstack(s):
-//            return s.children
-//        case let .vstack(s):
-//            return s.children
-//        case let .zstack(s):
-//            return s.children
-//        case .empty, .rectangle, .spacer, .script, .image, .text, .map:
-//            return nil
-//        }
-//    }
-//}
-
 private extension JsonUIView {
     @ViewBuilder var content: some SwiftUI.View {
         switch view.type {

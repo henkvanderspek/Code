@@ -68,13 +68,67 @@ extension AppView.Observer {
         )
     }
     var sanitizedSelectedItem: Binding<JsonUI.View> {
-        .init(
+        return .init(
             get: {
                 self.selectedItem as? JsonUI.View ?? .empty
             },
             set: {
                 self.selectedItem = $0
+                self.rootItem = self.rootItem.updated($0)
             }
         )
+    }
+}
+
+private extension TreeItem {
+    func updated(_ v: JsonUI.View) -> TreeItem {
+        if let a = self as? JsonUI.App {
+            return a.updated(v)
+        } else if let s = self as? JsonUI.Screen {
+            return s.updated(v)
+        } else if let v = self as? JsonUI.View {
+            return v.updated(v)
+        }
+        return self
+    }
+}
+
+private extension JsonUI.View {
+    func updated(_ v: JsonUI.View) -> Self {
+        var ret = self
+        if id == v.id {
+            ret.type = v.type
+        } else {
+            ret.children = safeChildren.updated(v)
+        }
+        return ret
+    }
+}
+
+private extension JsonUI.Screen {
+    func updated(_ v: JsonUI.View) -> Self {
+        var ret = self
+        ret.view = view.updated(v)
+        return ret
+    }
+}
+
+private extension JsonUI.App {
+    func updated(_ v: JsonUI.View) -> Self {
+        var ret = self
+        ret.screens = screens.updated(v)
+        return ret
+    }
+}
+
+private extension Array where Element == TreeItem {
+    func updated(_ v: JsonUI.View) -> Self {
+        map { $0.updated(v) }
+    }
+}
+
+private extension Array where Element == JsonUI.Screen {
+    func updated(_ v: JsonUI.View) -> Self {
+        map { $0.updated(v) }
     }
 }
