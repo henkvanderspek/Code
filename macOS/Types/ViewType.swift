@@ -21,26 +21,6 @@ enum ViewType: String, Equatable, CaseIterable {
 }
 
 extension ViewType {
-    init(from other: JsonUI.View.`Type`) {
-        switch other {
-        case .script: self = .script
-        case .image: self = .image
-        case .vstack: self = .vstack
-        case .hstack: self = .hstack
-        case .zstack: self = .zstack
-        case .spacer: self = .spacer
-        case .text: self = .text
-        case .rectangle: self = .rectangle
-        case .map: self = .map
-        case .empty: self = .empty
-        }
-    }
-    var localizedName: LocalizedStringKey {
-        LocalizedStringKey(name)
-    }
-}
-
-extension ViewType {
     var name: String {
         switch self {
         case .script: return "Script"
@@ -68,5 +48,8 @@ extension ViewType {
         case .map: return "map"
         case .empty: return "rectangle.dashed"
         }
+    }
+    var localizedName: LocalizedStringKey {
+        LocalizedStringKey(name)
     }
 }

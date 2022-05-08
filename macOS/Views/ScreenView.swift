@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ScreenView: View {
-    @Binding var screen: JsonUI.Screen
-    init(_ s: Binding<JsonUI.Screen>) {
+    @Binding var screen: Uicorn.Screen
+    init(_ s: Binding<Uicorn.Screen>) {
         _screen = s
     }
     var body: some View {
-        JsonUIView(screen.view)
+        UicornView($screen.view)
             .frame(width: 320, height: 568)
             .background(Color.white)
             .cornerRadius(15.0)
             .shadow(color: .black.opacity(0.1), radius: 5, x: 1, y: 1)
+
     }
 }
 
@@ -27,8 +28,8 @@ struct ScreenView_Previews: PreviewProvider {
     }
 }
 
-private extension JsonUI.Screen {
-    static var preview: Self {
+private extension Uicorn.Screen {
+    static var preview: Uicorn.Screen {
         return .init(id: .unique, title: .init(), view: .mock)
     }
 }

@@ -9,7 +9,6 @@ import SwiftUI
 
 extension JsonUIView {
     struct Script: View {
-        let id = UUID()
         let s: JsonUI.View.Script
         let p = Parser()
         init(_ s: JsonUI.View.Script) {

@@ -31,6 +31,8 @@ enum Uicorn {
     class View: Codable {
         enum `Type` {
             case hstack(HStack)
+            case text(Text)
+            case spacer
             case empty
         }
         let id: String
@@ -54,38 +56,31 @@ extension Uicorn.View {
             children = c
         }
     }
-}
-
-extension Uicorn.App: TreeItem {
-    var systemImage: String {
-        "folder"
-    }
-    var children: [TreeItem]? {
-        return screens
-    }
-}
-
-extension Uicorn.Screen: TreeItem {
-    var systemImage: String {
-        "folder"
-    }
-    var children: [TreeItem]? {
-        return [view]
-    }
-}
-
-extension Uicorn.View: TreeItem {
-    var title: String {
-        switch type {
-        case .empty: return "Empty"
-        case .hstack: return "HStack"
+    class Text: Codable {
+        let value: String
+        init(_ v: String) {
+            value = v
         }
     }
-    var systemImage: String {
-        "folder"
+}
+
+private extension Uicorn.View {
+    enum ViewType: String, Decodable {
+        case hstack
+        case text
+        case spacer
+        case empty
     }
-    var children: [TreeItem]? {
-        return nil
+}
+
+extension Uicorn.View.ViewType {
+    func complexType(using decoder: Decoder) throws -> Uicorn.View.`Type` {
+        switch self {
+        case .hstack: return .hstack(try .init(from: decoder))
+        case .text: return .text(try .init(from: decoder))
+        case .spacer: return .spacer
+        case .empty: return .empty
+        }
     }
 }
 
@@ -105,63 +100,16 @@ extension Uicorn.View {
     static var empty: Uicorn.View {
         .init(id: .unique, type: .empty)
     }
+    static var spacer: Uicorn.View {
+        .init(id: .unique, type: .spacer)
+    }
+    static func text(_ s: String) -> Uicorn.View {
+        .init(id: .unique, type: .text(.init(s)))
+    }
+    static func hstack(_ c: [Uicorn.View]) -> Uicorn.View {
+        .init(id: .unique, type: .hstack(.init(c)))
+    }
     static var mock: Uicorn.View {
-        .init(id: .unique, type: .hstack(.init([.empty])))
-    }
-}
-
-extension Uicorn.View: Equatable {
-    static func == (lhs: Uicorn.View, rhs: Uicorn.View) -> Bool {
-        switch (lhs.type, rhs.type) {
-        case (.hstack, .hstack): return true
-        case (.empty, .empty): return true
-        default: return false
-        }
-    }
-}
-
-private extension Uicorn.View {
-    enum CodingKeys: String, CodingKey {
-        case id
-        case type
-        case attributes
-    }
-
-    enum ViewType: String, Decodable {
-        case hstack
-        case empty
-    }
-}
-
-private extension Uicorn.View.ViewType {
-    func complexType(using decoder: Decoder) throws -> Uicorn.View.`Type` {
-        switch self {
-        case .hstack: return .hstack(try .init(from: decoder))
-        case .empty: return .empty
-        }
-    }
-}
-
-private extension Uicorn.View.`Type` {
-    var string: String {
-        switch self {
-        case .hstack: return "hstack"
-        case .empty: return "empty"
-        }
-    }
-    var encodable: Encodable? {
-        switch self {
-        case .empty: return nil
-        case let .hstack(s): return s
-        }
-    }
-}
-
-extension Uicorn.View {
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(type.string, forKey: .type)
-        try type.encodable?.encode(to: encoder)
+        .hstack([.spacer, .text("🍖"), .spacer])
     }
 }

@@ -8,41 +8,47 @@
 import SwiftUI
 
 struct UicornView: View {
-    let view: Uicorn.View
-    init(_ v: Uicorn.View) {
-        view = v
+    @Binding var view: Uicorn.View
+    init(_ v: Binding<Uicorn.View>) {
+        _view = v
     }
     var body: some View {
         content
     }
 }
 
-extension Uicorn.Screen: Identifiable {}
-extension Uicorn.View: Identifiable {}
-
 private extension UicornView {
     @ViewBuilder var content: some View {
-        switch view.type {
+        switch $view.wrappedValue.type {
         case let .hstack(v):
-            HStack(v.children)
+            HStack(
+                .init(
+                    get: {
+                        v.children
+                    },
+                    set: {
+                        print($0)
+                    }
+                )
+            )
+        case let .text(t):
+            Text(
+                .init(
+                    get: {
+                        t.value
+                    },
+                    set: {
+                        print($0)
+                    }
+                )
+            )
+        case .spacer:
+            SwiftUI.Text("Spacer")
         case .empty:
-            EmptyView()
+            SwiftUI.Text("Empty")
         }
     }
 }
 
-extension UicornView {
-    struct HStack: View {
-        let children: [Uicorn.View]
-        init(_ c: [Uicorn.View]) {
-            children = c
-        }
-        var body: some View {
-            SwiftUI.HStack {
-                ForEach(children) {
-                    UicornView($0)
-                }
-            }
-        }
-    }
-}
+extension Uicorn.Screen: Identifiable {}
+extension Uicorn.View: Identifiable {}

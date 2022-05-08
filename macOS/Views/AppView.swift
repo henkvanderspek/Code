@@ -26,9 +26,8 @@ struct AppView: View {
                 TreeView($observer.rootItem, selectedItem: $observer.selectedItem)
             }
             .listStyle(.sidebar)
-            UicornView(observer.sanitizedScreen.wrappedValue.view)
-            //ScreenView(observer.sanitizedScreen)
-            //PropertiesView(view: observer.sanitizedSelectedItem)
+            ScreenView(observer.sanitizedScreen)
+            PropertiesView(view: observer.sanitizedSelectedItem)
         }
         .navigationViewStyle(.columns)
         .navigationTitle("")
@@ -65,7 +64,9 @@ extension AppView.Observer {
             get: {
                 return child as! Uicorn.Screen
             },
-            set: { _ in }
+            set: {
+                print($0)
+            }
         )
     }
     var sanitizedSelectedItem: Binding<Uicorn.View> {
@@ -75,61 +76,7 @@ extension AppView.Observer {
             },
             set: {
                 self.selectedItem = $0
-                //self.rootItem = self.rootItem.updated($0)
             }
         )
     }
 }
-//
-//private extension TreeItem {
-//    func updated(_ v: JsonUI.View) -> TreeItem {
-//        if let ret = self as? JsonUI.App {
-//            return ret.updated(v)
-//        } else if let ret = self as? JsonUI.Screen {
-//            return ret.updated(v)
-//        } else if let ret = self as? JsonUI.View {
-//            return ret.updated(v)
-//        }
-//        return self
-//    }
-//}
-//
-//private extension JsonUI.View {
-//    func updated(_ v: JsonUI.View) -> Self {
-//        var ret = self
-//        if id == v.id {
-//            ret.type = v.type
-//        } else {
-//            ret.children = safeChildren.updated(v)
-//        }
-//        return ret
-//    }
-//}
-//
-//private extension JsonUI.Screen {
-//    func updated(_ v: JsonUI.View) -> Self {
-//        var ret = self
-//        ret.view = view.updated(v)
-//        return ret
-//    }
-//}
-//
-//private extension JsonUI.App {
-//    func updated(_ v: JsonUI.View) -> Self {
-//        var ret = self
-//        ret.screens = screens.updated(v)
-//        return ret
-//    }
-//}
-//
-//private extension Array where Element == TreeItem {
-//    func updated(_ v: JsonUI.View) -> Self {
-//        map { $0.updated(v) }
-//    }
-//}
-//
-//private extension Array where Element == JsonUI.Screen {
-//    func updated(_ v: JsonUI.View) -> Self {
-//        map { $0.updated(v) }
-//    }
-//}

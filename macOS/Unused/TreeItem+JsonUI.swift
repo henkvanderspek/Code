@@ -5,7 +5,7 @@
 //  Created by Henk van der Spek on 08/05/2022.
 //
 
-import Foundation
+import SwiftUI
 
 extension JsonUI.App: TreeItem {
     var systemImage: String {
@@ -25,18 +25,12 @@ extension JsonUI.Screen: TreeItem {
     }
 }
 
-extension JsonUI.View {
-    var name: String {
-        ViewType(from: type).name
-    }
-}
-
 extension JsonUI.View: TreeItem {
     var systemImage: String {
         ViewType(from: type).systemImage
     }
     var title: String {
-        return name
+        ViewType(from: type).name
     }
     var children: [TreeItem]? {
         get {
@@ -62,6 +56,23 @@ extension JsonUI.View: TreeItem {
                 type = .zstack(.init(children: children))
             case .empty, .rectangle, .spacer, .script, .image, .text, .map: ()
             }
+        }
+    }
+}
+
+extension ViewType {
+    init(from other: JsonUI.View.`Type`) {
+        switch other {
+        case .script: self = .script
+        case .image: self = .image
+        case .vstack: self = .vstack
+        case .hstack: self = .hstack
+        case .zstack: self = .zstack
+        case .spacer: self = .spacer
+        case .text: self = .text
+        case .rectangle: self = .rectangle
+        case .map: self = .map
+        case .empty: self = .empty
         }
     }
 }

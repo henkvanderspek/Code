@@ -9,7 +9,6 @@ import SwiftUI
 
 extension JsonUIView {
     struct Text: View {
-        let id = UUID()
         let view: JsonUI.View.Text
         init(_ v: JsonUI.View.Text) {
             view = v

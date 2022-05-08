@@ -1,5 +1,5 @@
 //
-//  JsonUI+Rectangle.swift
+//  JsonUI+Spacer.swift
 //  Code
 //
 //  Created by Henk van der Spek on 08/03/2022.
@@ -8,16 +8,15 @@
 import SwiftUI
 
 extension JsonUIView {
-    struct Rectangle: View {
-        let id = UUID()
+    struct Spacer: View {
         var body: some View {
-            SwiftUI.Rectangle()
+            SwiftUI.Spacer()
         }
     }
 }
 
-struct JsonUIView_Rectangle_Previews: PreviewProvider {
+struct JsonUIView_Spacer_Previews: PreviewProvider {
     static var previews: some View {
-        JsonUIView.Rectangle()
+        JsonUIView.Spacer()
     }
 }
