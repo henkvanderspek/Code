@@ -6,9 +6,8 @@
 //
 
 import SwiftUI
-import MapKit
 
-struct JsonUIView: SwiftUI.View {
+struct JsonUIView: View {
     let view: JsonUI.View
     init(_ v: JsonUI.View) {
         view = v

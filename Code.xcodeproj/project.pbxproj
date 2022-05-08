@@ -10,6 +10,8 @@
 		B60F22482827C53900A730F1 /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F22472827C53900A730F1 /* ViewType.swift */; };
 		B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F22492827C63E00A730F1 /* TreeItem.swift */; };
 		B60F224C2827C6B300A730F1 /* TreeItem+JsonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F224B2827C6B300A730F1 /* TreeItem+JsonUI.swift */; };
+		B60F224F282839F700A730F1 /* Uicorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F224E282839F700A730F1 /* Uicorn.swift */; };
+		B60F225128283A1B00A730F1 /* Uicorn+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F225028283A1B00A730F1 /* Uicorn+SwiftUI.swift */; };
 		B62CFC9B27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */; };
 		B62CFC9C27D9EE7100C0F17B /* JsonUI+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */; };
 		B62CFC9F27D9F02A00C0F17B /* JsonUI+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62CFC9027D9EE7100C0F17B /* JsonUI+ZStack.swift */; };
@@ -64,6 +66,8 @@
 		B60F22472827C53900A730F1 /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 		B60F22492827C63E00A730F1 /* TreeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItem.swift; sourceTree = "<group>"; };
 		B60F224B2827C6B300A730F1 /* TreeItem+JsonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+JsonUI.swift"; sourceTree = "<group>"; };
+		B60F224E282839F700A730F1 /* Uicorn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uicorn.swift; sourceTree = "<group>"; };
+		B60F225028283A1B00A730F1 /* Uicorn+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+SwiftUI.swift"; sourceTree = "<group>"; };
 		B627C60D2821636D0029126A /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B62CFC8D27D9EE7100C0F17B /* JsonUI+VStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JsonUI+VStack.swift"; sourceTree = "<group>"; };
 		B62CFC8E27D9EE7100C0F17B /* JsonUI+Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JsonUI+Text.swift"; sourceTree = "<group>"; };
@@ -148,6 +152,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B60F224D282839DC00A730F1 /* Uicorn */ = {
+			isa = PBXGroup;
+			children = (
+				B60F224E282839F700A730F1 /* Uicorn.swift */,
+				B60F225028283A1B00A730F1 /* Uicorn+SwiftUI.swift */,
+			);
+			path = Uicorn;
+			sourceTree = "<group>";
+		};
 		B62A6CE927C7C6D200798A2C = {
 			isa = PBXGroup;
 			children = (
@@ -171,8 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				B6838BEA27D76F4300C60C32 /* JsonUI.swift */,
-				B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */,
 				B6838BF327D7BE4400C60C32 /* JsonUI+Codable.swift */,
+				B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */,
 				B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */,
 				B62CFC9127D9EE7100C0F17B /* JsonUI+HStack.swift */,
 				B62CFC8D27D9EE7100C0F17B /* JsonUI+VStack.swift */,
@@ -367,6 +380,7 @@
 				B6ECBDF127E1F2A300185B7E /* Common */,
 				B67B3DBF27E1036900F50F2E /* Extensions */,
 				B67B3D8A27DF3D3F00F50F2E /* JsonUI */,
+				B60F224D282839DC00A730F1 /* Uicorn */,
 				B6883D852825BB8F00544462 /* Views */,
 				B6883D822825BB0900544462 /* Unused */,
 			);
@@ -492,6 +506,7 @@
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B6883D682825846E00544462 /* ConfigurationType.swift in Sources */,
 				B62CFCAF27DB5C0800C0F17B /* JsonUI+Color.swift in Sources */,
+				B60F224F282839F700A730F1 /* Uicorn.swift in Sources */,
 				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
 				B62CFCAC27D9F60F00C0F17B /* JsonUI+Padding.swift in Sources */,
 				B6883D5928242CC000544462 /* AppView.swift in Sources */,
@@ -503,6 +518,7 @@
 				B62CFCA027D9F02B00C0F17B /* JsonUI+ZStack.swift in Sources */,
 				B6838BEF27D794D300C60C32 /* JsonUI+SwiftUI.swift in Sources */,
 				B6838BEC27D76F4300C60C32 /* JsonUI.swift in Sources */,
+				B60F225128283A1B00A730F1 /* Uicorn+SwiftUI.swift in Sources */,
 				B60F224C2827C6B300A730F1 /* TreeItem+JsonUI.swift in Sources */,
 				B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */,
 				B62CFCA927D9F50C00C0F17B /* JsonUI+Text.swift in Sources */,

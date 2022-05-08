@@ -149,7 +149,7 @@ extension JsonUI.App {
         return .init(
             id: .unique,
             title: "My App",
-            screens: [.init(id: .unique, title: "Home", view: .text("Hello, World!"))]
+            screens: [.init(id: .unique, title: "Home", view: .hstack([.text("Hello, World!")]))]
         )
     }
 }

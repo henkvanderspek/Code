@@ -107,6 +107,7 @@ private extension JsonUI.View.`Type` {
         }
     }
 }
+
 extension JsonUI.View {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
