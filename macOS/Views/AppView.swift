@@ -64,9 +64,7 @@ extension AppView.Observer {
             get: {
                 return child as! JsonUI.Screen
             },
-            set: {
-                print($0)
-            }
+            set: { _ in }
         )
     }
     var sanitizedSelectedItem: Binding<JsonUI.View> {
@@ -75,7 +73,7 @@ extension AppView.Observer {
                 self.selectedItem as? JsonUI.View ?? .empty
             },
             set: {
-                print($0)
+                self.selectedItem = $0
             }
         )
     }
