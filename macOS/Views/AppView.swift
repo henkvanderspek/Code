@@ -99,6 +99,7 @@ private extension JsonUI.View {
         if id == v.id {
             ret.type = v.type
         } else {
+            // TODO: This should be recursive, but it isn't
             ret.children = safeChildren.updated(v)
         }
         return ret

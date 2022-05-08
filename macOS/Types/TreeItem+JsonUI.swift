@@ -60,8 +60,7 @@ extension JsonUI.View: TreeItem {
                 type = .vstack(.init(children: children))
             case .zstack:
                 type = .zstack(.init(children: children))
-            case .empty, .rectangle, .spacer, .script, .image, .text, .map:
-                ()
+            case .empty, .rectangle, .spacer, .script, .image, .text, .map: ()
             }
         }
     }
