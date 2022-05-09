@@ -9,7 +9,7 @@ import Foundation
 
 extension Uicorn.View {
     class HStack: Codable {
-        let children: [Uicorn.View]
+        var children: [Uicorn.View]
         init(_ c: [Uicorn.View]) {
             children = c
         }

@@ -12,6 +12,7 @@ extension Uicorn {
         enum `Type` {
             case hstack(HStack)
             case text(Text)
+            case image(Image)
             case spacer
             case empty
         }
@@ -53,8 +54,17 @@ extension Uicorn.View {
     static func hstack(_ c: [Uicorn.View]) -> Uicorn.View {
         .init(id: .unique, type: .hstack(.init(c)))
     }
+    static func imageUrl(_ s: String) -> Uicorn.View {
+        .init(id: .unique, type: .image(.init(type: .remote, value: s)))
+    }
     static var mock: Uicorn.View {
-        .hstack([.spacer, .text("🍖"), .spacer])
+        .imageUrl(.hamilton)
+    }
+}
+
+private extension String {
+    static var hamilton: Self {
+        return "https://images.unsplash.com/photo-1575425186775-b8de9a427e67?auto=format&fit=crop&w=687&q=80"
     }
 }
 
@@ -62,6 +72,7 @@ private extension Uicorn.View {
     enum ViewType: String, Decodable {
         case hstack
         case text
+        case image
         case spacer
         case empty
     }
@@ -72,6 +83,7 @@ private extension Uicorn.View.ViewType {
         switch self {
         case .hstack: return .hstack(try .init(from: decoder))
         case .text: return .text(try .init(from: decoder))
+        case .image: return .image(try .init(from: decoder))
         case .spacer: return .spacer
         case .empty: return .empty
         }
@@ -91,6 +103,7 @@ private extension Uicorn.View.`Type` {
         switch self {
         case .hstack: return "hstack"
         case .text: return "text"
+        case .image: return "image"
         case .spacer: return "spacer"
         case .empty: return "empty"
         }
@@ -99,6 +112,7 @@ private extension Uicorn.View.`Type` {
         switch self {
         case let .hstack(s): return s
         case let .text(t): return t
+        case let .image(i): return i
         case .spacer: return nil
         case .empty: return nil
         }

@@ -9,13 +9,13 @@ import SwiftUI
 
 extension UicornView {
     struct HStack: View {
-        @Binding var children: [Uicorn.View]
-        init(_ c: Binding<[Uicorn.View]>) {
-            _children = c
+        @Binding var model: Uicorn.View.HStack
+        init(_ m: Binding<Uicorn.View.HStack>) {
+            _model = m
         }
         var body: some View {
             SwiftUI.HStack {
-                ForEach($children) {
+                ForEach($model.children) {
                     UicornView($0)
                 }
             }
@@ -25,6 +25,6 @@ extension UicornView {
 
 struct UicornView_HStack_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.HStack(.constant([]))
+        UicornView.HStack(.constant(.init([])))
     }
 }

@@ -36,7 +36,7 @@ extension Uicorn.View: TreeItem {
         switch type {
         case let .hstack(v):
             return v.children
-        case .text, .spacer, .empty:
+        case .text, .spacer, .empty, .image:
             return nil
         }
     }
@@ -50,6 +50,7 @@ extension ViewType {
         switch other {
         case .hstack: self = .hstack
         case .text: self = .text
+        case .image: self = .image
         case .spacer: self = .spacer
         case .empty: self = .empty
         }

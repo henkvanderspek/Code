@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct UicornView: View {
-    @Binding var view: Uicorn.View
+    @Binding var model: Uicorn.View
     init(_ v: Binding<Uicorn.View>) {
-        _view = v
+        _model = v
     }
     var body: some View {
         content
@@ -19,12 +19,12 @@ struct UicornView: View {
 
 private extension UicornView {
     @ViewBuilder var content: some View {
-        switch $view.wrappedValue.type {
+        switch $model.wrappedValue.type {
         case let .hstack(v):
             HStack(
                 .init(
                     get: {
-                        v.children
+                        v
                     },
                     set: {
                         print($0)
@@ -36,6 +36,17 @@ private extension UicornView {
                 .init(
                     get: {
                         t.value
+                    },
+                    set: {
+                        print($0)
+                    }
+                )
+            )
+        case let .image(i):
+            Image(
+                .init(
+                    get: {
+                        i
                     },
                     set: {
                         print($0)
