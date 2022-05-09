@@ -40,6 +40,9 @@ extension Uicorn.View: TreeItem {
             return nil
         }
     }
+    var isView: Bool {
+        return true
+    }
 }
 
 extension ViewType {

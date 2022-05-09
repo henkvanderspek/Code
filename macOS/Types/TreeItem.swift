@@ -12,6 +12,7 @@ protocol TreeItem {
     var title: String { get }
     var systemImage: String { get }
     var children: [TreeItem]? { get }
+    var isView: Bool { get }
 }
 
 extension TreeItem {
@@ -25,6 +26,9 @@ extension TreeItem {
     }
     var hasChildren: Bool {
         !safeChildren.isEmpty
+    }
+    var isView: Bool {
+        return false
     }
     func contains(_ i: TreeItem) -> Bool {
         return safeChildren.contains {

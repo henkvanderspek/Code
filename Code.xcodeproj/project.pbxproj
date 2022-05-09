@@ -37,6 +37,8 @@
 		B6AE6D6D2828FF2C001800F8 /* Uicorn+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D6B2828FF2C001800F8 /* Uicorn+HStack.swift */; };
 		B6AE6D6F2828FF39001800F8 /* Uicorn+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */; };
 		B6AE6D702828FF39001800F8 /* Uicorn+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */; };
+		B6AE6D742829319E001800F8 /* Color+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D732829319E001800F8 /* Color+Random.swift */; };
+		B6AE6D752829319E001800F8 /* Color+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D732829319E001800F8 /* Color+Random.swift */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
@@ -102,6 +104,7 @@
 		B6AE6D682828FCFE001800F8 /* Uicorn+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+View.swift"; sourceTree = "<group>"; };
 		B6AE6D6B2828FF2C001800F8 /* Uicorn+HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+HStack.swift"; sourceTree = "<group>"; };
 		B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+Text.swift"; sourceTree = "<group>"; };
+		B6AE6D732829319E001800F8 /* Color+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Random.swift"; sourceTree = "<group>"; };
 		B6C2843327CCEAF60000C0E7 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C2843527CCEAF60000C0E7 /* macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSApp.swift; sourceTree = "<group>"; };
 		B6C2843927CCEAF70000C0E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -209,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				B6883D692825850700544462 /* String+Unique.swift */,
+				B6AE6D732829319E001800F8 /* Color+Random.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -508,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6AE6D752829319E001800F8 /* Color+Random.swift in Sources */,
 				B67B3D9827DF42B300F50F2E /* Types.swift in Sources */,
 				B6883D5B282523B400544462 /* TreeView.swift in Sources */,
 				B6883D5F2825531400544462 /* ScreenView.swift in Sources */,
@@ -545,6 +550,7 @@
 				B69F2BDB2828689A00877D04 /* UicornView.swift in Sources */,
 				B69F2BD92828689300877D04 /* UicornView+Text.swift in Sources */,
 				B6AE6D662828FCEA001800F8 /* Uicorn+Screen.swift in Sources */,
+				B6AE6D742829319E001800F8 /* Color+Random.swift in Sources */,
 				B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */,
 				B69F2BDC282868A000877D04 /* Uicorn.swift in Sources */,
 			);
