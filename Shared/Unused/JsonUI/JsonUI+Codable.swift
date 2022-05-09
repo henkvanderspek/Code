@@ -89,7 +89,7 @@ private extension JsonUI.View.`Type` {
         case .text: return "text"
         case .script: return "script"
         case .rectangle: return "rectangle"
-        case .map: return "map"
+        case .map: return "Map"
         case .spacer: return "spacer"
         case .empty: return "empty"
         }

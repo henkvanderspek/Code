@@ -22,6 +22,7 @@ struct PropertiesView: View {
                 default:
                     $view.type.wrappedValue = .text(.init("🐶"))
                 }
+                $view.wrappedValue.id = UUID().uuidString
             } label: {
                 Label("Update", systemImage: "wand.and.stars")
             }

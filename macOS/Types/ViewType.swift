@@ -31,7 +31,7 @@ extension ViewType {
         case .spacer: return "Spacer"
         case .text: return "Text"
         case .rectangle: return "Rectangle"
-        case .map: return "map"
+        case .map: return "Map"
         case .empty: return "Empty"
         }
     }

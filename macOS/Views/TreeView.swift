@@ -38,9 +38,6 @@ struct TreeView<V: View>: View {
                         }
                     }
                     .id(selectedItem.id)
-                    .onAppear {
-                        print(selectedItem.id)
-                    }
                 Image(systemName: $item.wrappedValue.systemImage)
                     .fixedSize()
                     .frame(width: 20)
