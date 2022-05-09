@@ -7,17 +7,19 @@
 
 import SwiftUI
 
-struct TreeView: View {
+struct TreeView<V: View>: View {
     @Binding var item: TreeItem
     let level: Int
     @State private var state: TreeItemState
     @Binding var selectedItem: TreeItem
     @State private var menuVisible = false
-    init(_ i: Binding<TreeItem>, level l: Int = 0, selectedItem s: Binding<TreeItem>) {
+    private var menu: (TreeItem)->V
+    init(_ i: Binding<TreeItem>, level l: Int = 0, selectedItem s: Binding<TreeItem>, menu m: @escaping (TreeItem)->V) {
         _item = i
         level = l
         _state = .init(initialValue: i.wrappedValue.hasChildren ? .parent(.expanded) : .leaf)
         _selectedItem = s
+        menu = m
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -34,6 +36,10 @@ struct TreeView: View {
                         case let .parent(p):
                             state = .parent(p == .collapsed ? .expanded : .collapsed)
                         }
+                    }
+                    .id(selectedItem.id)
+                    .onAppear {
+                        print(selectedItem.id)
                     }
                 Image(systemName: $item.wrappedValue.systemImage)
                     .fixedSize()
@@ -52,15 +58,11 @@ struct TreeView: View {
             .cornerRadius(4)
             .contentShape(Rectangle())
             .overlay {
-                Menu(menuItems)
-                    .isDisabled(!item.isView)
-                    .tapGesture {
-                        selectedItem = item
-                    }
+                menu(item)
             }
             if isExpanded {
                 ForEach($item.safeChildren, id: \.id) { $item in
-                    TreeView($item, level: level + 1, selectedItem: $selectedItem)
+                    TreeView($item, level: level + 1, selectedItem: $selectedItem, menu: menu)
                 }
                 .frame(maxWidth: .infinity)
                 .animation(.easeInOut, value: isExpanded)
@@ -74,14 +76,6 @@ struct TreeView: View {
     }
     private var isSelected: Bool {
         return $selectedItem.wrappedValue.id == $item.wrappedValue.id
-    }
-    private func menuItems() -> [Menu.Item] {
-        return [
-            .init(title: "Embed in HStack") {
-                print("Embed in hstack")
-                selectedItem = Uicorn.View.spacer
-            }
-        ]
     }
 }
 
@@ -110,84 +104,6 @@ private struct TreeItemStateView: View {
                 case .expanded:
                     Image(systemName: "chevron.down")
             }
-        }
-    }
-}
-
-extension TreeView {
-    private struct Menu: NSViewRepresentable {
-        struct Item {
-            let title: String
-            let action: ()->()
-        }
-        struct Coordinator {
-            let items: [Item]
-        }
-        let items: ()->[Item]
-        init(_ i: @escaping ()->[Item]) {
-            items = i
-        }
-        private var tapGestureHandler: (()->())?
-        private var isEnabled = true
-        class V: NSView {
-            struct Settings {
-                let items: [Item]
-                let mouseHandler: ()->()
-                let shouldShowMenu: ()->Bool
-            }
-            var settings: Settings? {
-                didSet {
-                    guard let s = settings, !s.items.isEmpty, s.shouldShowMenu() else { return }
-                    menu = NSMenu()
-                    s.items.enumerated().forEach { index, item in
-                        let m = NSMenuItem(title: item.title, action: #selector(tappedItem), keyEquivalent: "")
-                        m.target = self
-                        m.tag = index
-                        menu?.addItem(m)
-                    }
-                }
-            }
-            override func hitTest(_ point: NSPoint) -> NSView? {
-                settings?.mouseHandler()
-                if window?.currentEvent?.type == .rightMouseDown {
-                    return super.hitTest(point)
-                } else {
-                    return nil
-                }
-            }
-            @objc private func tappedItem(_ sender: AnyObject) {
-                guard let i = sender as? NSMenuItem else { return }
-                settings?.items[i.tag].action()
-            }
-        }
-        func makeNSView(context: Context) -> V {
-            let v = V()
-            v.focusRingType = .none
-            v.settings = .init(
-                items: context.coordinator.items,
-                mouseHandler: {
-                    tapGestureHandler?()
-                },
-                shouldShowMenu: {
-                    isEnabled
-                }
-            )
-            return v
-        }
-        func updateNSView(_ view: V, context: Context) {
-        }
-        func makeCoordinator() -> Coordinator {
-            return .init(items: items())
-        }
-        func tapGesture(_ action: @escaping ()->()) -> Self {
-            var v = self
-            v.tapGestureHandler = action
-            return v
-        }
-        func isDisabled(_ b: Bool) -> Self {
-            var v = self
-            v.isEnabled = !b
-            return v
         }
     }
 }

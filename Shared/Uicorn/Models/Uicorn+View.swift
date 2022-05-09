@@ -15,7 +15,7 @@ extension Uicorn {
             case spacer
             case empty
         }
-        let id: String
+        var id: String
         var type: `Type`
         init(id: String, type: `Type`) {
             self.id = id

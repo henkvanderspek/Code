@@ -39,6 +39,7 @@
 		B6AE6D702828FF39001800F8 /* Uicorn+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */; };
 		B6AE6D742829319E001800F8 /* Color+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D732829319E001800F8 /* Color+Random.swift */; };
 		B6AE6D752829319E001800F8 /* Color+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D732829319E001800F8 /* Color+Random.swift */; };
+		B6AE6D7828295130001800F8 /* TreeItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D7628295130001800F8 /* TreeItemMenu.swift */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
@@ -105,6 +106,7 @@
 		B6AE6D6B2828FF2C001800F8 /* Uicorn+HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+HStack.swift"; sourceTree = "<group>"; };
 		B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+Text.swift"; sourceTree = "<group>"; };
 		B6AE6D732829319E001800F8 /* Color+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Random.swift"; sourceTree = "<group>"; };
+		B6AE6D7628295130001800F8 /* TreeItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TreeItemMenu.swift; path = macOS/Views/TreeItemMenu.swift; sourceTree = SOURCE_ROOT; };
 		B6C2843327CCEAF60000C0E7 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C2843527CCEAF60000C0E7 /* macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSApp.swift; sourceTree = "<group>"; };
 		B6C2843927CCEAF70000C0E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				B6883D5A282523B400544462 /* TreeView.swift */,
 				B6883D5E2825531400544462 /* ScreenView.swift */,
 				B6883D60282578BD00544462 /* PropertiesView.swift */,
+				B6AE6D7628295130001800F8 /* TreeItemMenu.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				B6AE6D6A2828FCFE001800F8 /* Uicorn+View.swift in Sources */,
 				B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */,
 				B60F225128283A1B00A730F1 /* UicornView.swift in Sources */,
+				B6AE6D7828295130001800F8 /* TreeItemMenu.swift in Sources */,
 				B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */,
 				B69F2BD52828673000877D04 /* UicornView+Text.swift in Sources */,
 			);

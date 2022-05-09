@@ -23,7 +23,15 @@ struct AppView: View {
     var body: some View {
         NavigationView {
             List {
-                TreeView($observer.rootItem, selectedItem: $observer.selectedItem)
+                TreeView($observer.rootItem, selectedItem: $observer.selectedItem) { item in
+                    TreeItemMenu {
+                        menuItems(item)
+                    }
+                    .isDisabled(!item.isView)
+                    .tapGesture {
+                        observer.selectedItem = item
+                    }
+                }
             }.listStyle(.sidebar)
             ScreenView(observer.sanitizedScreen)
             List {
@@ -48,6 +56,15 @@ struct AppView: View {
                 }
             }
         }
+    }
+    private func menuItems(_ i: TreeItem) -> [TreeItemMenu.Item] {
+        return [
+            .init(title: "Embed in HStack") {
+                guard let v = i as? Uicorn.View else { return }
+                v.embeddedInHStack()
+                observer.objectWillChange.send()
+            }
+        ]
     }
 }
 
@@ -79,5 +96,12 @@ extension AppView.Observer {
                 self.selectedItem = $0
             }
         )
+    }
+}
+
+extension Uicorn.View {
+    func embeddedInHStack() {
+        id = UUID().uuidString
+        type = .hstack(.init([.init(id: .unique, type: type)]))
     }
 }
