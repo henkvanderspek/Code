@@ -24,10 +24,11 @@ struct AppView: View {
         NavigationView {
             List {
                 TreeView($observer.rootItem, selectedItem: $observer.selectedItem)
-            }
-            .listStyle(.sidebar)
+            }.listStyle(.sidebar)
             ScreenView(observer.sanitizedScreen)
-            PropertiesView(view: observer.sanitizedSelectedItem)
+            List {
+                PropertiesView(view: observer.sanitizedSelectedItem)
+            }.listStyle(.sidebar)
         }
         .navigationViewStyle(.columns)
         .navigationTitle("")

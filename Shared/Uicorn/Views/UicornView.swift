@@ -1,5 +1,5 @@
 //
-//  Uicorn+SwiftUI.swift
+//  UicornView.swift
 //  macOS
 //
 //  Created by Henk van der Spek on 08/05/2022.
@@ -50,5 +50,3 @@ private extension UicornView {
     }
 }
 
-extension Uicorn.Screen: Identifiable {}
-extension Uicorn.View: Identifiable {}

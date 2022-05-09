@@ -1,5 +1,5 @@
 //
-//  Uicorn+HStack.swift
+//  UicornView+HStack.swift
 //  macOS
 //
 //  Created by Henk van der Spek on 08/05/2022.
@@ -23,7 +23,7 @@ extension UicornView {
     }
 }
 
-struct Uicorn_HStack_Previews: PreviewProvider {
+struct UicornView_HStack_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.HStack(.constant([]))
     }

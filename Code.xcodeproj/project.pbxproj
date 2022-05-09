@@ -10,7 +10,7 @@
 		B60F22482827C53900A730F1 /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F22472827C53900A730F1 /* ViewType.swift */; };
 		B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F22492827C63E00A730F1 /* TreeItem.swift */; };
 		B60F224F282839F700A730F1 /* Uicorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F224E282839F700A730F1 /* Uicorn.swift */; };
-		B60F225128283A1B00A730F1 /* Uicorn+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F225028283A1B00A730F1 /* Uicorn+SwiftUI.swift */; };
+		B60F225128283A1B00A730F1 /* UicornView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F225028283A1B00A730F1 /* UicornView.swift */; };
 		B67B3D9727DF42B300F50F2E /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
 		B67B3D9827DF42B300F50F2E /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
 		B6883D5928242CC000544462 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B627C60D2821636D0029126A /* AppView.swift */; };
@@ -21,14 +21,22 @@
 		B6883D6A2825850700544462 /* String+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D692825850700544462 /* String+Unique.swift */; };
 		B6883D6B2825854C00544462 /* String+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D692825850700544462 /* String+Unique.swift */; };
 		B69F2BD12828646800877D04 /* TreeItem+Uicorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD02828646800877D04 /* TreeItem+Uicorn.swift */; };
-		B69F2BD32828663900877D04 /* Uicorn+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD22828663900877D04 /* Uicorn+HStack.swift */; };
-		B69F2BD52828673000877D04 /* Uicorn+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD42828673000877D04 /* Uicorn+Text.swift */; };
-		B69F2BD7282867A700877D04 /* Uicorn+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD6282867A700877D04 /* Uicorn+Codable.swift */; };
-		B69F2BD8282867A700877D04 /* Uicorn+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD6282867A700877D04 /* Uicorn+Codable.swift */; };
-		B69F2BD92828689300877D04 /* Uicorn+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD42828673000877D04 /* Uicorn+Text.swift */; };
-		B69F2BDA2828689700877D04 /* Uicorn+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD22828663900877D04 /* Uicorn+HStack.swift */; };
-		B69F2BDB2828689A00877D04 /* Uicorn+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F225028283A1B00A730F1 /* Uicorn+SwiftUI.swift */; };
+		B69F2BD32828663900877D04 /* UicornView+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD22828663900877D04 /* UicornView+HStack.swift */; };
+		B69F2BD52828673000877D04 /* UicornView+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD42828673000877D04 /* UicornView+Text.swift */; };
+		B69F2BD92828689300877D04 /* UicornView+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD42828673000877D04 /* UicornView+Text.swift */; };
+		B69F2BDA2828689700877D04 /* UicornView+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD22828663900877D04 /* UicornView+HStack.swift */; };
+		B69F2BDB2828689A00877D04 /* UicornView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F225028283A1B00A730F1 /* UicornView.swift */; };
 		B69F2BDC282868A000877D04 /* Uicorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F224E282839F700A730F1 /* Uicorn.swift */; };
+		B6AE6D632828FCDB001800F8 /* Uicorn+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D622828FCDB001800F8 /* Uicorn+App.swift */; };
+		B6AE6D642828FCDB001800F8 /* Uicorn+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D622828FCDB001800F8 /* Uicorn+App.swift */; };
+		B6AE6D662828FCEA001800F8 /* Uicorn+Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D652828FCEA001800F8 /* Uicorn+Screen.swift */; };
+		B6AE6D672828FCEA001800F8 /* Uicorn+Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D652828FCEA001800F8 /* Uicorn+Screen.swift */; };
+		B6AE6D692828FCFE001800F8 /* Uicorn+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D682828FCFE001800F8 /* Uicorn+View.swift */; };
+		B6AE6D6A2828FCFE001800F8 /* Uicorn+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D682828FCFE001800F8 /* Uicorn+View.swift */; };
+		B6AE6D6C2828FF2C001800F8 /* Uicorn+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D6B2828FF2C001800F8 /* Uicorn+HStack.swift */; };
+		B6AE6D6D2828FF2C001800F8 /* Uicorn+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D6B2828FF2C001800F8 /* Uicorn+HStack.swift */; };
+		B6AE6D6F2828FF39001800F8 /* Uicorn+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */; };
+		B6AE6D702828FF39001800F8 /* Uicorn+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
@@ -42,7 +50,7 @@
 		B60F22492827C63E00A730F1 /* TreeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItem.swift; sourceTree = "<group>"; };
 		B60F224B2827C6B300A730F1 /* TreeItem+JsonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+JsonUI.swift"; sourceTree = "<group>"; };
 		B60F224E282839F700A730F1 /* Uicorn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uicorn.swift; sourceTree = "<group>"; };
-		B60F225028283A1B00A730F1 /* Uicorn+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+SwiftUI.swift"; sourceTree = "<group>"; };
+		B60F225028283A1B00A730F1 /* UicornView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UicornView.swift; sourceTree = "<group>"; };
 		B627C60D2821636D0029126A /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B62CFC8D27D9EE7100C0F17B /* JsonUI+VStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JsonUI+VStack.swift"; sourceTree = "<group>"; };
 		B62CFC8E27D9EE7100C0F17B /* JsonUI+Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JsonUI+Text.swift"; sourceTree = "<group>"; };
@@ -87,9 +95,13 @@
 		B6883D692825850700544462 /* String+Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Unique.swift"; sourceTree = "<group>"; };
 		B6883D6C2825864500544462 /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
 		B69F2BD02828646800877D04 /* TreeItem+Uicorn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+Uicorn.swift"; sourceTree = "<group>"; };
-		B69F2BD22828663900877D04 /* Uicorn+HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+HStack.swift"; sourceTree = "<group>"; };
-		B69F2BD42828673000877D04 /* Uicorn+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+Text.swift"; sourceTree = "<group>"; };
-		B69F2BD6282867A700877D04 /* Uicorn+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+Codable.swift"; sourceTree = "<group>"; };
+		B69F2BD22828663900877D04 /* UicornView+HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+HStack.swift"; sourceTree = "<group>"; };
+		B69F2BD42828673000877D04 /* UicornView+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Text.swift"; sourceTree = "<group>"; };
+		B6AE6D622828FCDB001800F8 /* Uicorn+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+App.swift"; sourceTree = "<group>"; };
+		B6AE6D652828FCEA001800F8 /* Uicorn+Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+Screen.swift"; sourceTree = "<group>"; };
+		B6AE6D682828FCFE001800F8 /* Uicorn+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+View.swift"; sourceTree = "<group>"; };
+		B6AE6D6B2828FF2C001800F8 /* Uicorn+HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+HStack.swift"; sourceTree = "<group>"; };
+		B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+Text.swift"; sourceTree = "<group>"; };
 		B6C2843327CCEAF60000C0E7 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C2843527CCEAF60000C0E7 /* macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSApp.swift; sourceTree = "<group>"; };
 		B6C2843927CCEAF70000C0E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,11 +146,8 @@
 		B60F224D282839DC00A730F1 /* Uicorn */ = {
 			isa = PBXGroup;
 			children = (
-				B60F224E282839F700A730F1 /* Uicorn.swift */,
-				B69F2BD6282867A700877D04 /* Uicorn+Codable.swift */,
-				B60F225028283A1B00A730F1 /* Uicorn+SwiftUI.swift */,
-				B69F2BD22828663900877D04 /* Uicorn+HStack.swift */,
-				B69F2BD42828673000877D04 /* Uicorn+Text.swift */,
+				B6AE6D71282902DC001800F8 /* Models */,
+				B6AE6D72282902E2001800F8 /* Views */,
 			);
 			path = Uicorn;
 			sourceTree = "<group>";
@@ -299,6 +308,29 @@
 				B60F224B2827C6B300A730F1 /* TreeItem+JsonUI.swift */,
 			);
 			path = Unused;
+			sourceTree = "<group>";
+		};
+		B6AE6D71282902DC001800F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B60F224E282839F700A730F1 /* Uicorn.swift */,
+				B6AE6D622828FCDB001800F8 /* Uicorn+App.swift */,
+				B6AE6D652828FCEA001800F8 /* Uicorn+Screen.swift */,
+				B6AE6D682828FCFE001800F8 /* Uicorn+View.swift */,
+				B6AE6D6B2828FF2C001800F8 /* Uicorn+HStack.swift */,
+				B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B6AE6D72282902E2001800F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B60F225028283A1B00A730F1 /* UicornView.swift */,
+				B69F2BD22828663900877D04 /* UicornView+HStack.swift */,
+				B69F2BD42828673000877D04 /* UicornView+Text.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B6C2843427CCEAF60000C0E7 /* macOS */ = {
@@ -479,19 +511,23 @@
 				B67B3D9827DF42B300F50F2E /* Types.swift in Sources */,
 				B6883D5B282523B400544462 /* TreeView.swift in Sources */,
 				B6883D5F2825531400544462 /* ScreenView.swift in Sources */,
-				B69F2BD8282867A700877D04 /* Uicorn+Codable.swift in Sources */,
 				B69F2BD12828646800877D04 /* TreeItem+Uicorn.swift in Sources */,
+				B6AE6D672828FCEA001800F8 /* Uicorn+Screen.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
+				B6AE6D6D2828FF2C001800F8 /* Uicorn+HStack.swift in Sources */,
 				B60F224F282839F700A730F1 /* Uicorn.swift in Sources */,
-				B69F2BD32828663900877D04 /* Uicorn+HStack.swift in Sources */,
+				B69F2BD32828663900877D04 /* UicornView+HStack.swift in Sources */,
+				B6AE6D642828FCDB001800F8 /* Uicorn+App.swift in Sources */,
 				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
 				B6883D5928242CC000544462 /* AppView.swift in Sources */,
 				B6883D61282578BD00544462 /* PropertiesView.swift in Sources */,
 				B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */,
+				B6AE6D702828FF39001800F8 /* Uicorn+Text.swift in Sources */,
+				B6AE6D6A2828FCFE001800F8 /* Uicorn+View.swift in Sources */,
 				B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */,
-				B60F225128283A1B00A730F1 /* Uicorn+SwiftUI.swift in Sources */,
+				B60F225128283A1B00A730F1 /* UicornView.swift in Sources */,
 				B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */,
-				B69F2BD52828673000877D04 /* Uicorn+Text.swift in Sources */,
+				B69F2BD52828673000877D04 /* UicornView+Text.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,12 +535,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B69F2BD7282867A700877D04 /* Uicorn+Codable.swift in Sources */,
+				B6AE6D632828FCDB001800F8 /* Uicorn+App.swift in Sources */,
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
+				B6AE6D6F2828FF39001800F8 /* Uicorn+Text.swift in Sources */,
+				B6AE6D6C2828FF2C001800F8 /* Uicorn+HStack.swift in Sources */,
+				B6AE6D692828FCFE001800F8 /* Uicorn+View.swift in Sources */,
 				B6883D6B2825854C00544462 /* String+Unique.swift in Sources */,
-				B69F2BDA2828689700877D04 /* Uicorn+HStack.swift in Sources */,
-				B69F2BDB2828689A00877D04 /* Uicorn+SwiftUI.swift in Sources */,
-				B69F2BD92828689300877D04 /* Uicorn+Text.swift in Sources */,
+				B69F2BDA2828689700877D04 /* UicornView+HStack.swift in Sources */,
+				B69F2BDB2828689A00877D04 /* UicornView.swift in Sources */,
+				B69F2BD92828689300877D04 /* UicornView+Text.swift in Sources */,
+				B6AE6D662828FCEA001800F8 /* Uicorn+Screen.swift in Sources */,
 				B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */,
 				B69F2BDC282868A000877D04 /* Uicorn.swift in Sources */,
 			);
