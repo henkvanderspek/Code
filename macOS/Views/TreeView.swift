@@ -79,6 +79,7 @@ struct TreeView: View {
         return [
             .init(title: "Embed in HStack") {
                 print("Embed in hstack")
+                selectedItem = Uicorn.View.spacer
             }
         ]
     }
@@ -146,13 +147,13 @@ extension TreeView {
                     }
                 }
             }
-            override func mouseDown(with event: NSEvent) {
+            override func hitTest(_ point: NSPoint) -> NSView? {
                 settings?.mouseHandler()
-                super.mouseDown(with: event)
-            }
-            override func rightMouseDown(with event: NSEvent) {
-                settings?.mouseHandler()
-                super.rightMouseDown(with: event)
+                if window?.currentEvent?.type == .rightMouseDown {
+                    return super.hitTest(point)
+                } else {
+                    return nil
+                }
             }
             @objc private func tappedItem(_ sender: AnyObject) {
                 guard let i = sender as? NSMenuItem else { return }
