@@ -47,6 +47,14 @@
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
+		B6FA89A52829753700E842AE /* Uicorn+VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A42829753700E842AE /* Uicorn+VStack.swift */; };
+		B6FA89A62829753700E842AE /* Uicorn+VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A42829753700E842AE /* Uicorn+VStack.swift */; };
+		B6FA89A82829755100E842AE /* Uicorn+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A72829755100E842AE /* Uicorn+ZStack.swift */; };
+		B6FA89A92829755100E842AE /* Uicorn+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A72829755100E842AE /* Uicorn+ZStack.swift */; };
+		B6FA89AB282975D100E842AE /* UicornView+VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89AA282975D100E842AE /* UicornView+VStack.swift */; };
+		B6FA89AC282975D100E842AE /* UicornView+VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89AA282975D100E842AE /* UicornView+VStack.swift */; };
+		B6FA89AE282975E300E842AE /* UicornView+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89AD282975E300E842AE /* UicornView+ZStack.swift */; };
+		B6FA89AF282975E300E842AE /* UicornView+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89AD282975E300E842AE /* UicornView+ZStack.swift */; };
 		B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FDF7DA27CCDB800008262D /* iOSApp.swift */; };
 		B6FDF7DF27CCDB810008262D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6FDF7DE27CCDB810008262D /* Assets.xcassets */; };
 		B6FDF7E227CCDB810008262D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6FDF7E127CCDB810008262D /* Preview Assets.xcassets */; };
@@ -129,6 +137,10 @@
 		B6ECBE0127E4CBBD00185B7E /* ComposeArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeArticleView.swift; sourceTree = "<group>"; };
 		B6ECBE0427E4E4AF00185B7E /* ComposeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeTextView.swift; sourceTree = "<group>"; };
 		B6ECBE0727E7614E00185B7E /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		B6FA89A42829753700E842AE /* Uicorn+VStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+VStack.swift"; sourceTree = "<group>"; };
+		B6FA89A72829755100E842AE /* Uicorn+ZStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+ZStack.swift"; sourceTree = "<group>"; };
+		B6FA89AA282975D100E842AE /* UicornView+VStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+VStack.swift"; sourceTree = "<group>"; };
+		B6FA89AD282975E300E842AE /* UicornView+ZStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+ZStack.swift"; sourceTree = "<group>"; };
 		B6FDF7D227CCDA500008262D /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		B6FDF7D827CCDB800008262D /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6FDF7DA27CCDB800008262D /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
@@ -331,6 +343,8 @@
 				B6AE6D652828FCEA001800F8 /* Uicorn+Screen.swift */,
 				B6AE6D682828FCFE001800F8 /* Uicorn+View.swift */,
 				B6AE6D6B2828FF2C001800F8 /* Uicorn+HStack.swift */,
+				B6FA89A42829753700E842AE /* Uicorn+VStack.swift */,
+				B6FA89A72829755100E842AE /* Uicorn+ZStack.swift */,
 				B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */,
 				B61737AA2829664A006DE98E /* Uicorn+Image.swift */,
 			);
@@ -342,6 +356,8 @@
 			children = (
 				B60F225028283A1B00A730F1 /* UicornView.swift */,
 				B69F2BD22828663900877D04 /* UicornView+HStack.swift */,
+				B6FA89AA282975D100E842AE /* UicornView+VStack.swift */,
+				B6FA89AD282975E300E842AE /* UicornView+ZStack.swift */,
 				B69F2BD42828673000877D04 /* UicornView+Text.swift */,
 				B61737A72829651E006DE98E /* UicornView+Image.swift */,
 			);
@@ -526,8 +542,10 @@
 				B6AE6D752829319E001800F8 /* Color+Random.swift in Sources */,
 				B67B3D9827DF42B300F50F2E /* Types.swift in Sources */,
 				B6883D5B282523B400544462 /* TreeView.swift in Sources */,
+				B6FA89A92829755100E842AE /* Uicorn+ZStack.swift in Sources */,
 				B6883D5F2825531400544462 /* ScreenView.swift in Sources */,
 				B69F2BD12828646800877D04 /* TreeItem+Uicorn.swift in Sources */,
+				B6FA89AC282975D100E842AE /* UicornView+VStack.swift in Sources */,
 				B6AE6D672828FCEA001800F8 /* Uicorn+Screen.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B6AE6D6D2828FF2C001800F8 /* Uicorn+HStack.swift in Sources */,
@@ -537,9 +555,11 @@
 				B61737AC2829664A006DE98E /* Uicorn+Image.swift in Sources */,
 				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
 				B6883D5928242CC000544462 /* AppView.swift in Sources */,
+				B6FA89A62829753700E842AE /* Uicorn+VStack.swift in Sources */,
 				B6883D61282578BD00544462 /* PropertiesView.swift in Sources */,
 				B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */,
 				B6AE6D702828FF39001800F8 /* Uicorn+Text.swift in Sources */,
+				B6FA89AF282975E300E842AE /* UicornView+ZStack.swift in Sources */,
 				B6AE6D6A2828FCFE001800F8 /* Uicorn+View.swift in Sources */,
 				B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */,
 				B60F225128283A1B00A730F1 /* UicornView.swift in Sources */,
@@ -555,13 +575,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6AE6D632828FCDB001800F8 /* Uicorn+App.swift in Sources */,
+				B6FA89AE282975E300E842AE /* UicornView+ZStack.swift in Sources */,
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
 				B6AE6D6F2828FF39001800F8 /* Uicorn+Text.swift in Sources */,
 				B6AE6D6C2828FF2C001800F8 /* Uicorn+HStack.swift in Sources */,
 				B6AE6D692828FCFE001800F8 /* Uicorn+View.swift in Sources */,
+				B6FA89A52829753700E842AE /* Uicorn+VStack.swift in Sources */,
+				B6FA89AB282975D100E842AE /* UicornView+VStack.swift in Sources */,
 				B6883D6B2825854C00544462 /* String+Unique.swift in Sources */,
 				B69F2BDA2828689700877D04 /* UicornView+HStack.swift in Sources */,
 				B69F2BDB2828689A00877D04 /* UicornView.swift in Sources */,
+				B6FA89A82829755100E842AE /* Uicorn+ZStack.swift in Sources */,
 				B69F2BD92828689300877D04 /* UicornView+Text.swift in Sources */,
 				B6AE6D662828FCEA001800F8 /* Uicorn+Screen.swift in Sources */,
 				B6AE6D742829319E001800F8 /* Color+Random.swift in Sources */,

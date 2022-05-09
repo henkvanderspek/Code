@@ -101,7 +101,7 @@ extension AppView.Observer {
 
 extension Uicorn.View {
     func embeddedInHStack() {
-        type = .hstack(.init([.init(id: id, type: type)]))
+        type = .hstack(.init([.init(id: id, type: type)], spacing: 0))
         id = UUID().uuidString
     }
 }

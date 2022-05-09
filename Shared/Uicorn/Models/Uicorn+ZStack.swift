@@ -1,5 +1,5 @@
 //
-//  Uicorn+HStack.swift
+//  Uicorn+ZStack.swift
 //  Code
 //
 //  Created by Henk van der Spek on 09/05/2022.
@@ -8,12 +8,10 @@
 import Foundation
 
 extension Uicorn.View {
-    class HStack: Codable {
+    class ZStack: Codable {
         var children: [Uicorn.View]
-        var spacing: Int
-        init(_ c: [Uicorn.View], spacing s: Int) {
+        init(_ c: [Uicorn.View]) {
             children = c
-            spacing = s
         }
     }
 }

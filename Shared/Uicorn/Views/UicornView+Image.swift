@@ -18,7 +18,7 @@ extension UicornView {
             case .remote:
                 GeometryReader { geo in
                     AsyncImage(url: .init(string: $model.wrappedValue.value)) { image in
-                        VStack(alignment: .center) {
+                        SwiftUI.VStack(alignment: .center) {
                             image
                                 .resizable()
                                 .scaledToFill()

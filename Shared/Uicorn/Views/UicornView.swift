@@ -31,6 +31,28 @@ private extension UicornView {
                     }
                 )
             )
+        case let .vstack(v):
+            VStack(
+                .init(
+                    get: {
+                        v
+                    },
+                    set: {
+                        print($0)
+                    }
+                )
+            )
+        case let .zstack(v):
+            ZStack(
+                .init(
+                    get: {
+                        v
+                    },
+                    set: {
+                        print($0)
+                    }
+                )
+            )
         case let .text(t):
             Text(
                 .init(

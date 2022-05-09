@@ -14,7 +14,7 @@ extension UicornView {
             _model = m
         }
         var body: some View {
-            SwiftUI.HStack {
+            SwiftUI.HStack(spacing: .init($model.spacing.wrappedValue)) {
                 ForEach($model.children) {
                     UicornView($0)
                 }
@@ -25,6 +25,6 @@ extension UicornView {
 
 struct UicornView_HStack_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.HStack(.constant(.init([])))
+        UicornView.HStack(.constant(.init([], spacing: 0)))
     }
 }
