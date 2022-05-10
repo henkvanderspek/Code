@@ -11,6 +11,7 @@ extension UicornView {
     struct Image: View {
         @Binding var model: Uicorn.View.Image
         private var host: UicornHost
+        @State private var cachedImage: SwiftUI.Image?
         init(_ m: Binding<Uicorn.View.Image>, host h: UicornHost) {
             _model = m
             host = h
@@ -21,14 +22,12 @@ extension UicornView {
                 GeometryReader { geo in
                     AsyncImage(url: .init(string: host.resolve($model.wrappedValue.value))) { phase in
                         if let image = phase.image {
-                            SwiftUI.VStack(alignment: .center) {
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                    .id(UUID())
-                            }
-                            .frame(width: geo.size.width, height: geo.size.height)
-                            .clipped()
+                            createView(for: image, width: geo.size.width, height: geo.size.height)
+                                .onAppear {
+                                    cachedImage = image
+                                }
+                        } else if let cachedImage = cachedImage {
+                            createView(for: cachedImage, width: geo.size.width, height: geo.size.height)
                         } else if phase.error != nil {
                             Rectangle()
                                 .foregroundColor(.black)
@@ -41,6 +40,19 @@ extension UicornView {
                 }
             }
         }
+    }
+}
+
+private extension UicornView.Image {
+    @ViewBuilder func createView(for image: SwiftUI.Image, width: CGFloat, height: CGFloat) -> some SwiftUI.View {
+        SwiftUI.VStack(alignment: .center) {
+            image
+                .resizable()
+                .scaledToFill()
+                .id(UUID())
+        }
+        .frame(width: width, height: height)
+        .clipped()
     }
 }
 

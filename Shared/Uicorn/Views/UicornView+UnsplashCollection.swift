@@ -13,7 +13,7 @@ extension UicornView {
         let count: Int
         @Binding var view: Uicorn.View?
         @EnvironmentObject var backendController: Backend.Controller
-        @State private var images: Backend.Images?
+        @State private var images: [Backend.Images.Item]?
         private var host: UicornHost
         private static let spacing = 2.0
         private static let cols = 3
@@ -30,26 +30,44 @@ extension UicornView {
                     GeometryReader { geo in
                         ScrollView {
                             SwiftUI.LazyVGrid(columns: columns, spacing: Self.spacing) {
-                                ForEach(i.items) { image in
+                                ForEach(i) { image in
                                     if let v = Binding($view) {
                                         UicornView(v) {
-                                            $0.replacingOccurrences(of: "{{url}}", with: image.regular)
+                                            $0.replacingOccurrences(of: "{{url}}", with: image.thumb)
                                         }
                                         .frame(height: (geo.size.width / .init(Self.cols)))
                                     } else {
                                         SwiftUI.Text(image.id.uuidString)
                                     }
                                 }
+                                Rectangle()
+                                    .frame(height: 1)
+                                    .foregroundColor(.clear)
+                                    .onAppear {
+                                        appendImages()
+                                    }
                             }
+                            ProgressView()
                         }
                     }
                 } else {
                     ProgressView()
                 }
             }
-            .task {
-                images = await backendController.fetchImages(query, count: count)
+            .onAppear() {
+                appendImages()
             }
+        }
+    }
+}
+
+extension UicornView.UnsplashCollection {
+    func appendImages() {
+        Task {
+            guard let items = await backendController.fetchImages(query, count: count)?.items else { return }
+            var current = images ?? []
+            current.append(contentsOf: items)
+            images = current
         }
     }
 }
