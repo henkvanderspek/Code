@@ -40,6 +40,8 @@ extension Uicorn.View: TreeItem {
             return v.children
         case let .zstack(v):
             return v.children
+        case let .collection(c):
+            return c.view.map { [$0] }
         case .text, .spacer, .empty, .image:
             return nil
         }
@@ -57,6 +59,7 @@ extension ViewType {
         case .zstack: self = .zstack
         case .text: self = .text
         case .image: self = .image
+        case .collection: self = .collection
         case .spacer: self = .spacer
         case .empty: self = .empty
         }

@@ -15,3 +15,5 @@ extension Uicorn.View {
         }
     }
 }
+
+extension Uicorn.View.Text: UicornViewType {}

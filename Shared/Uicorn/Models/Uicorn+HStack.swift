@@ -17,3 +17,5 @@ extension Uicorn.View {
         }
     }
 }
+
+extension Uicorn.View.HStack: UicornViewType {}

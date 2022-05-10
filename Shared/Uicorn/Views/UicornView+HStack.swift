@@ -10,7 +10,7 @@ import SwiftUI
 extension UicornView {
     struct HStack: View {
         @Binding var model: Uicorn.View.HStack
-        init(_ m: Binding<Uicorn.View.HStack>) {
+        init(_ m: Binding<Uicorn.View.HStack>, host: UicornHost) {
             _model = m
         }
         var body: some View {
@@ -25,6 +25,6 @@ extension UicornView {
 
 struct UicornView_HStack_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.HStack(.constant(.init([], spacing: 0)))
+        UicornView.HStack(.constant(.init([], spacing: 0)), host: MockHost())
     }
 }

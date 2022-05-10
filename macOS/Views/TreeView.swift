@@ -23,7 +23,7 @@ struct TreeView<V: View>: View {
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack(spacing: 0) {
+            HStack(spacing: 2) {
                 TreeItemStateView(state) // TODO: This should refresh on item change
                     .font(.subheadline.weight(.bold))
                     .imageScale(.small)

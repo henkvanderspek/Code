@@ -17,6 +17,7 @@ enum ViewType: String, Equatable, CaseIterable {
     case text
     case rectangle
     case map
+    case collection
     case empty
 }
 
@@ -32,6 +33,7 @@ extension ViewType {
         case .text: return "Text"
         case .rectangle: return "Rectangle"
         case .map: return "Map"
+        case .collection: return "Collection"
         case .empty: return "Empty"
         }
     }
@@ -46,6 +48,7 @@ extension ViewType {
         case .text: return "t.square"
         case .rectangle: return "rectangle"
         case .map: return "map"
+        case .collection: return "square.grid.3x2"
         case .empty: return "rectangle.dashed"
         }
     }

@@ -7,6 +7,8 @@
 
 import Foundation
 
+protocol UicornViewType {}
+
 extension Uicorn {
     class View: Codable {
         enum `Type` {
@@ -15,6 +17,7 @@ extension Uicorn {
             case zstack(ZStack)
             case text(Text)
             case image(Image)
+            case collection(Collection)
             case spacer
             case empty
         }
@@ -43,80 +46,6 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View {
-    static var empty: Uicorn.View {
-        .init(id: .unique, type: .empty)
-    }
-    static var spacer: Uicorn.View {
-        .init(id: .unique, type: .spacer)
-    }
-    static func text(_ s: String) -> Uicorn.View {
-        .init(id: .unique, type: .text(.init(s)))
-    }
-    static func hstack(_ c: [Uicorn.View], spacing: Int = 0) -> Uicorn.View {
-        .init(id: .unique, type: .hstack(.init(c, spacing: spacing)))
-    }
-    static func vstack(_ c: [Uicorn.View], spacing: Int = 0) -> Uicorn.View {
-        .init(id: .unique, type: .vstack(.init(c, spacing: spacing)))
-    }
-    static func zstack(_ c: [Uicorn.View]) -> Uicorn.View {
-        .init(id: .unique, type: .zstack(.init(c)))
-    }
-    static func image(_ s: String) -> Uicorn.View {
-        .init(id: .unique, type: .image(.init(type: .remote, value: s)))
-    }
-    static var mock: Uicorn.View {
-        .vstack([
-            .hstack([
-                .image(.random),
-                .image(.random),
-                .image(.random),
-                .image(.random)
-            ]),
-            .hstack([
-                .image(.random),
-                .image(.random),
-                .image(.random),
-                .image(.random)
-            ]),
-            .hstack([
-                .image(.random),
-                .image(.random),
-                .image(.random),
-                .image(.random)
-            ]),
-            .hstack([
-                .image(.random),
-                .image(.random),
-                .image(.random),
-                .image(.random)
-            ]),
-            .hstack([
-                .image(.random),
-                .image(.random),
-                .image(.random),
-                .image(.random)
-            ])
-        ])
-    }
-}
-
-private extension String {
-    static var allImages: [Self] {
-        return [
-            "https://images.unsplash.com/photo-1575425186775-b8de9a427e67?auto=format&fit=crop&w=687&q=80",
-            "https://images.unsplash.com/photo-1523626797181-8c5ae80d40c2?auto=format&fit=crop&w=500&q=60",
-            "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=500&q=60",
-            "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?auto=format&fit=crop&w=500&q=60",
-            "https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=500&q=60",
-            "https://images.unsplash.com/photo-1523626752472-b55a628f1acc?auto=format&fit=crop&w=500&q=60"
-        ]
-    }
-    static var random: Self {
-        return allImages.randomElement()!
-    }
-}
-
 private extension Uicorn.View {
     enum ViewType: String, Decodable {
         case hstack
@@ -124,6 +53,7 @@ private extension Uicorn.View {
         case zstack
         case text
         case image
+        case collection
         case spacer
         case empty
     }
@@ -137,6 +67,7 @@ private extension Uicorn.View.ViewType {
         case .zstack: return .zstack(try .init(from: decoder))
         case .text: return .text(try .init(from: decoder))
         case .image: return .image(try .init(from: decoder))
+        case .collection: return .collection(try .init(from: decoder))
         case .spacer: return .spacer
         case .empty: return .empty
         }
@@ -159,6 +90,7 @@ private extension Uicorn.View.`Type` {
         case .zstack: return "zstack"
         case .text: return "text"
         case .image: return "image"
+        case .collection: return "collection"
         case .spacer: return "spacer"
         case .empty: return "empty"
         }
@@ -170,6 +102,7 @@ private extension Uicorn.View.`Type` {
         case let .zstack(s): return s
         case let .text(t): return t
         case let .image(i): return i
+        case let .collection(c): return c
         case .spacer: return nil
         case .empty: return nil
         }

@@ -20,3 +20,5 @@ extension Uicorn.View {
         }
     }
 }
+
+extension Uicorn.View.Image: UicornViewType {}

@@ -9,12 +9,12 @@ import SwiftUI
 
 extension UicornView {
     struct Text: View {
-        @Binding var value: String
-        init(_ v: Binding<String>) {
-            _value = v
+        @Binding var model: Uicorn.View.Text
+        init(_ m: Binding<Uicorn.View.Text>, host: UicornHost) {
+            _model = m
         }
         var body: some View {
-            SwiftUI.Text($value.wrappedValue)
+            SwiftUI.Text($model.wrappedValue.value)
         }
     }
 }
@@ -22,6 +22,6 @@ extension UicornView {
 
 struct UicornView_Text_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Text(.constant("Foo"))
+        UicornView.Text(.constant(.init("Foo")), host: MockHost())
     }
 }

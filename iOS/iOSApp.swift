@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct iOSApp: App {
+    @StateObject private var backendController = Backend.Controller(configuration: .live)
     var body: some Scene {
         WindowGroup {
             UicornView(.constant(.mock))
                 .ignoresSafeArea()
+                .environmentObject(backendController)
         }
     }
 }

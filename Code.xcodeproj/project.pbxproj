@@ -11,6 +11,18 @@
 		B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F22492827C63E00A730F1 /* TreeItem.swift */; };
 		B60F224F282839F700A730F1 /* Uicorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F224E282839F700A730F1 /* Uicorn.swift */; };
 		B60F225128283A1B00A730F1 /* UicornView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F225028283A1B00A730F1 /* UicornView.swift */; };
+		B614339E282A5EFC00760F39 /* Uicorn+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B614339D282A5EFC00760F39 /* Uicorn+Collection.swift */; };
+		B614339F282A5EFC00760F39 /* Uicorn+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B614339D282A5EFC00760F39 /* Uicorn+Collection.swift */; };
+		B61433A1282A642200760F39 /* Uicorn+View+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433A0282A642200760F39 /* Uicorn+View+Sugar.swift */; };
+		B61433A2282A642200760F39 /* Uicorn+View+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433A0282A642200760F39 /* Uicorn+View+Sugar.swift */; };
+		B61433A4282A644800760F39 /* Uicorn+View+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433A3282A644800760F39 /* Uicorn+View+Mock.swift */; };
+		B61433A5282A644800760F39 /* Uicorn+View+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433A3282A644800760F39 /* Uicorn+View+Mock.swift */; };
+		B61433A7282A656E00760F39 /* UicornView+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433A6282A656E00760F39 /* UicornView+Collection.swift */; };
+		B61433A8282A656E00760F39 /* UicornView+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433A6282A656E00760F39 /* UicornView+Collection.swift */; };
+		B61433AA282A84C600760F39 /* BackendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433A9282A84C600760F39 /* BackendController.swift */; };
+		B61433AB282A84C600760F39 /* BackendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433A9282A84C600760F39 /* BackendController.swift */; };
+		B61433AD282AA1D200760F39 /* UicornView+UnsplashCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433AC282AA1D200760F39 /* UicornView+UnsplashCollection.swift */; };
+		B61433AE282AA1D200760F39 /* UicornView+UnsplashCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433AC282AA1D200760F39 /* UicornView+UnsplashCollection.swift */; };
 		B61737A82829651E006DE98E /* UicornView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737A72829651E006DE98E /* UicornView+Image.swift */; };
 		B61737A92829651E006DE98E /* UicornView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737A72829651E006DE98E /* UicornView+Image.swift */; };
 		B61737AB2829664A006DE98E /* Uicorn+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* Uicorn+Image.swift */; };
@@ -66,6 +78,12 @@
 		B60F224B2827C6B300A730F1 /* TreeItem+JsonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+JsonUI.swift"; sourceTree = "<group>"; };
 		B60F224E282839F700A730F1 /* Uicorn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uicorn.swift; sourceTree = "<group>"; };
 		B60F225028283A1B00A730F1 /* UicornView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UicornView.swift; sourceTree = "<group>"; };
+		B614339D282A5EFC00760F39 /* Uicorn+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+Collection.swift"; sourceTree = "<group>"; };
+		B61433A0282A642200760F39 /* Uicorn+View+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+View+Sugar.swift"; sourceTree = "<group>"; };
+		B61433A3282A644800760F39 /* Uicorn+View+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+View+Mock.swift"; sourceTree = "<group>"; };
+		B61433A6282A656E00760F39 /* UicornView+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Collection.swift"; sourceTree = "<group>"; };
+		B61433A9282A84C600760F39 /* BackendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendController.swift; sourceTree = "<group>"; };
+		B61433AC282AA1D200760F39 /* UicornView+UnsplashCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+UnsplashCollection.swift"; sourceTree = "<group>"; };
 		B61737A72829651E006DE98E /* UicornView+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Image.swift"; sourceTree = "<group>"; };
 		B61737AA2829664A006DE98E /* Uicorn+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+Image.swift"; sourceTree = "<group>"; };
 		B627C60D2821636D0029126A /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -281,6 +299,7 @@
 				B60F22472827C53900A730F1 /* ViewType.swift */,
 				B60F22492827C63E00A730F1 /* TreeItem.swift */,
 				B69F2BD02828646800877D04 /* TreeItem+Uicorn.swift */,
+				B61433A9282A84C600760F39 /* BackendController.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -342,11 +361,14 @@
 				B6AE6D622828FCDB001800F8 /* Uicorn+App.swift */,
 				B6AE6D652828FCEA001800F8 /* Uicorn+Screen.swift */,
 				B6AE6D682828FCFE001800F8 /* Uicorn+View.swift */,
+				B61433A0282A642200760F39 /* Uicorn+View+Sugar.swift */,
+				B61433A3282A644800760F39 /* Uicorn+View+Mock.swift */,
 				B6AE6D6B2828FF2C001800F8 /* Uicorn+HStack.swift */,
 				B6FA89A42829753700E842AE /* Uicorn+VStack.swift */,
 				B6FA89A72829755100E842AE /* Uicorn+ZStack.swift */,
 				B6AE6D6E2828FF39001800F8 /* Uicorn+Text.swift */,
 				B61737AA2829664A006DE98E /* Uicorn+Image.swift */,
+				B614339D282A5EFC00760F39 /* Uicorn+Collection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -360,6 +382,8 @@
 				B6FA89AD282975E300E842AE /* UicornView+ZStack.swift */,
 				B69F2BD42828673000877D04 /* UicornView+Text.swift */,
 				B61737A72829651E006DE98E /* UicornView+Image.swift */,
+				B61433A6282A656E00760F39 /* UicornView+Collection.swift */,
+				B61433AC282AA1D200760F39 /* UicornView+UnsplashCollection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -543,6 +567,7 @@
 				B67B3D9827DF42B300F50F2E /* Types.swift in Sources */,
 				B6883D5B282523B400544462 /* TreeView.swift in Sources */,
 				B6FA89A92829755100E842AE /* Uicorn+ZStack.swift in Sources */,
+				B614339F282A5EFC00760F39 /* Uicorn+Collection.swift in Sources */,
 				B6883D5F2825531400544462 /* ScreenView.swift in Sources */,
 				B69F2BD12828646800877D04 /* TreeItem+Uicorn.swift in Sources */,
 				B6FA89AC282975D100E842AE /* UicornView+VStack.swift in Sources */,
@@ -555,18 +580,23 @@
 				B61737AC2829664A006DE98E /* Uicorn+Image.swift in Sources */,
 				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
 				B6883D5928242CC000544462 /* AppView.swift in Sources */,
+				B61433A2282A642200760F39 /* Uicorn+View+Sugar.swift in Sources */,
+				B61433AE282AA1D200760F39 /* UicornView+UnsplashCollection.swift in Sources */,
 				B6FA89A62829753700E842AE /* Uicorn+VStack.swift in Sources */,
 				B6883D61282578BD00544462 /* PropertiesView.swift in Sources */,
 				B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */,
 				B6AE6D702828FF39001800F8 /* Uicorn+Text.swift in Sources */,
 				B6FA89AF282975E300E842AE /* UicornView+ZStack.swift in Sources */,
 				B6AE6D6A2828FCFE001800F8 /* Uicorn+View.swift in Sources */,
+				B61433A8282A656E00760F39 /* UicornView+Collection.swift in Sources */,
 				B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */,
 				B60F225128283A1B00A730F1 /* UicornView.swift in Sources */,
+				B61433AB282A84C600760F39 /* BackendController.swift in Sources */,
 				B6AE6D7828295130001800F8 /* TreeItemMenu.swift in Sources */,
 				B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */,
 				B69F2BD52828673000877D04 /* UicornView+Text.swift in Sources */,
 				B61737A92829651E006DE98E /* UicornView+Image.swift in Sources */,
+				B61433A5282A644800760F39 /* Uicorn+View+Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,10 +607,14 @@
 				B6AE6D632828FCDB001800F8 /* Uicorn+App.swift in Sources */,
 				B6FA89AE282975E300E842AE /* UicornView+ZStack.swift in Sources */,
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
+				B61433A7282A656E00760F39 /* UicornView+Collection.swift in Sources */,
 				B6AE6D6F2828FF39001800F8 /* Uicorn+Text.swift in Sources */,
 				B6AE6D6C2828FF2C001800F8 /* Uicorn+HStack.swift in Sources */,
+				B61433AA282A84C600760F39 /* BackendController.swift in Sources */,
+				B614339E282A5EFC00760F39 /* Uicorn+Collection.swift in Sources */,
 				B6AE6D692828FCFE001800F8 /* Uicorn+View.swift in Sources */,
 				B6FA89A52829753700E842AE /* Uicorn+VStack.swift in Sources */,
+				B61433A1282A642200760F39 /* Uicorn+View+Sugar.swift in Sources */,
 				B6FA89AB282975D100E842AE /* UicornView+VStack.swift in Sources */,
 				B6883D6B2825854C00544462 /* String+Unique.swift in Sources */,
 				B69F2BDA2828689700877D04 /* UicornView+HStack.swift in Sources */,
@@ -592,7 +626,9 @@
 				B61737AB2829664A006DE98E /* Uicorn+Image.swift in Sources */,
 				B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */,
 				B61737A82829651E006DE98E /* UicornView+Image.swift in Sources */,
+				B61433A4282A644800760F39 /* Uicorn+View+Mock.swift in Sources */,
 				B69F2BDC282868A000877D04 /* Uicorn.swift in Sources */,
+				B61433AD282AA1D200760F39 /* UicornView+UnsplashCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
