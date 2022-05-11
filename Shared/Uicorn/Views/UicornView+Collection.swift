@@ -18,7 +18,9 @@ extension UicornView {
         var body: some View {
             switch $model.wrappedValue.type {
             case .unsplash:
-                UnsplashCollection(query: model.query ?? "pug", count: model.count ?? 100, view: $model.view, host: host)
+                NavigationView {
+                    UnsplashCollection(query: model.query ?? "pug", count: model.count ?? 100, view: $model.view, host: host)
+                }
             }
         }
     }

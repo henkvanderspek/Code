@@ -10,8 +10,10 @@ import SwiftUI
 extension UicornView {
     struct Text: View {
         @Binding var model: Uicorn.View.Text
-        init(_ m: Binding<Uicorn.View.Text>, host: UicornHost) {
+        private var host: UicornHost
+        init(_ m: Binding<Uicorn.View.Text>, host h: UicornHost) {
             _model = m
+            host = h
         }
         var body: some View {
             SwiftUI.Text($model.wrappedValue.value)

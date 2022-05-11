@@ -10,8 +10,10 @@ import SwiftUI
 extension UicornView {
     struct HStack: View {
         @Binding var model: Uicorn.View.HStack
-        init(_ m: Binding<Uicorn.View.HStack>, host: UicornHost) {
+        private var host: UicornHost
+        init(_ m: Binding<Uicorn.View.HStack>, host h: UicornHost) {
             _model = m
+            host = h
         }
         var body: some View {
             SwiftUI.HStack(spacing: .init($model.spacing.wrappedValue)) {
