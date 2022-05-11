@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let ws = (scene as? UIWindowScene) else { return }
         ws.sizeRestrictions?.maximumSize = .init(width: 320, height: 800)
         window = UIWindow(windowScene: ws)
-        let vc = HostController(rootView: RootView())
+        //let vc = UIHostingController(rootView: RootView())
         window?.rootViewController = ViewController()
         window?.canResizeToFitContent = true
         window?.makeKeyAndVisible()
@@ -34,28 +34,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let p = UInt32(35331)
+        view.backgroundColor = .systemYellow
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.connect)))
+    }
+    @objc func connect() {
+        let p = UInt32(ProcessInfo.processInfo.arguments.last!)!
         let remote = CARemoteLayerClient(serverPort: p)
         let layer = CALayer()
-        layer.backgroundColor = UIColor.systemRed.cgColor
+        layer.backgroundColor = UIColor.systemOrange.cgColor
         layer.frame = view.bounds
         remote.layer = layer
-        view.layer.addSublayer(layer)
-        print(remote.clientId)
+        print(remote.clientId, terminator: "")
+        fflush(stdout)
     }
 }
 
 class HostController<V: View>: UIHostingController<V> {
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let p = UInt32(34819)
-//        let remote = CARemoteLayerClient(serverPort: p)
-        let layer = CALayer()
-        layer.backgroundColor = UIColor.systemRed.cgColor
-        layer.frame = view.bounds
-//        remote.layer = layer
-        view.layer.addSublayer(layer)
-//        print(remote.clientId)
     }
 }
 
