@@ -47,11 +47,11 @@ extension UicornView {
                                         appendImages()
                                     }
                             }
-                            ProgressView()
+                            progressView
                         }
                     }
                 } else {
-                    ProgressView()
+                    progressView
                 }
             }
             .onAppear() {
@@ -61,7 +61,7 @@ extension UicornView {
     }
 }
 
-extension UicornView.UnsplashCollection {
+private extension UicornView.UnsplashCollection {
     func appendImages() {
         Task {
             guard let items = await backendController.fetchImages(query, count: count)?.items else { return }
@@ -69,6 +69,12 @@ extension UicornView.UnsplashCollection {
             current.append(contentsOf: items)
             images = current
         }
+    }
+    var progressView: some View {
+        return ProgressView()
+        #if os(macOS)
+            .scaleEffect(0.5)
+        #endif
     }
 }
 

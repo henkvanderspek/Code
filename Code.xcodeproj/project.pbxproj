@@ -299,7 +299,6 @@
 				B60F22472827C53900A730F1 /* ViewType.swift */,
 				B60F22492827C63E00A730F1 /* TreeItem.swift */,
 				B69F2BD02828646800877D04 /* TreeItem+Uicorn.swift */,
-				B61433A9282A84C600760F39 /* BackendController.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -423,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				B67B3D9627DF42B300F50F2E /* Types.swift */,
+				B61433A9282A84C600760F39 /* BackendController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
