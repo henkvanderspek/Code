@@ -52,7 +52,7 @@ private extension Backend.Controller {
         case fetchImages(query: String, count: Int)
     }
     func createTask<T>(_ t: Task) async -> T? where T: Decodable {
-        guard let r = t.urlRequest(root: configuration.root) else { return nil }
+        guard let r = t.urlRequest(root: configuration.root, mock: configuration == .dev) else { return nil }
         do {
             print(String(data: r.httpBody ?? .init(), encoding: .utf8) ?? "No body")
             let (d, _) = try await session.data(for: r)
@@ -79,8 +79,8 @@ private extension Backend.Controller.Configuration {
 }
 
 private extension Backend.Controller.Task {
-    func urlRequest(root: String) -> URLRequest? {
-        guard let u = URL(string: "\(root)/\(path)") else { return nil }
+    func urlRequest(root: String, mock: Bool) -> URLRequest? {
+        guard let u = URL(string: "\(root)/\(path(mock: mock))") else { return nil }
         print(u)
         var r = URLRequest(url: u)
         r.httpMethod = method
@@ -88,10 +88,10 @@ private extension Backend.Controller.Task {
         headers.forEach { r.setValue($0.value, forHTTPHeaderField: $0.key) }
         return r
     }
-    private var path: String {
+    private func path(mock: Bool) -> String {
         switch self {
         case let .fetchImages(q, c):
-            return "images/random?query=\(q)&count=\(c)"
+            return "images/random?query=\(q)&count=\(c)&mock=\(mock)"
         }
     }
     private var method: String {

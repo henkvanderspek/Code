@@ -93,6 +93,7 @@ extension AppView.Observer {
                 self.selectedItem as? Uicorn.View ?? .empty
             },
             set: {
+                print($0)
                 self.selectedItem = $0
             }
         )

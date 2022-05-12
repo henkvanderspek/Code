@@ -11,21 +11,18 @@ struct PropertiesView: View {
     @Binding var view: Uicorn.View
     var body: some View {
         switch view.type {
+        case let .collection(c):
+            CollectionPropertiesView(
+                model: c.binding {
+                    print($0.query)
+                    $view.type.wrappedValue = .collection($0)
+                    $view.wrappedValue.id = UUID().uuidString
+                }
+            )
         case .empty:
             EmptyView()
         default:
-            Text($view.wrappedValue.title)
-            Button {
-                switch view.type {
-                case .text:
-                    $view.type.wrappedValue = .spacer
-                default:
-                    $view.type.wrappedValue = .text(.init("🐶"))
-                }
-                $view.wrappedValue.id = UUID().uuidString
-            } label: {
-                Label("Update", systemImage: "wand.and.stars")
-            }
+            Text(view.title)
         }
     }
 }

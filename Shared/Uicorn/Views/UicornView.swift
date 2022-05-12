@@ -73,4 +73,12 @@ extension UicornViewType {
             }
         )
     }
+    func binding(set: @escaping (Self)->()) -> Binding<Self> {
+        .init(
+            get: {
+                self
+            },
+            set: set
+        )
+    }
 }

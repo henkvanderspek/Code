@@ -30,6 +30,6 @@ extension Uicorn.View {
         .init(id: .unique, type: .image(.init(type: .remote, value: s)))
     }
     static func unsplash(_ q: String?, count c: Int? = 100) -> Uicorn.View {
-        .init(id: .unique, type: .collection(.init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{url}}"))))
+        .init(id: .unique, type: .collection(.init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{thumb}}"))))
     }
 }

@@ -33,7 +33,7 @@ extension UicornView {
                                 ForEach(i) { image in
                                     if let v = Binding($view) {
                                         UicornView(v) {
-                                            $0.replacingOccurrences(of: "{{url}}", with: image.thumb)
+                                            $0.replacingOccurrences(of: "{{thumb}}", with: image.thumb)
                                         }
                                         .frame(height: (geo.size.width / .init(Self.cols)))
                                     } else {
@@ -47,7 +47,16 @@ extension UicornView {
                                         appendImages()
                                     }
                             }
-                            progressView
+                            if !i.isEmpty {
+                                progressView
+                            } else {
+                                SwiftUI.VStack {
+                                    SwiftUI.Text("Failed to fetch images 😱")
+                                    SwiftUI.Button("Retry") {
+                                        appendImages()
+                                    }
+                                }
+                            }
                         }
                     }
                 } else {
@@ -64,9 +73,9 @@ extension UicornView {
 private extension UicornView.UnsplashCollection {
     func appendImages() {
         Task {
-            guard let items = await backendController.fetchImages(query, count: count)?.items else { return }
+            let items = await backendController.fetchImages(query, count: count)?.items
             var current = images ?? []
-            current.append(contentsOf: items)
+            current.append(contentsOf: items ?? [])
             images = current
         }
     }

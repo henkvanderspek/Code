@@ -14,7 +14,7 @@ extension Uicorn.View {
             case unsplash
         }
         let type: `Type`
-        let parameters: Parameters
+        var parameters: Parameters
         var view: Uicorn.View?
         init(type t: `Type`, parameters p: Parameters, view v: Uicorn.View?) {
             type = t
@@ -28,9 +28,19 @@ extension Uicorn.View.Collection: UicornViewType {}
 
 extension Uicorn.View.Collection {
     var query: String? {
-        parameters["query"] ?? nil
+        get {
+            parameters["query"] ?? nil
+        }
+        set {
+            parameters["query"] = newValue
+        }
     }
     var count: Int? {
-        parameters["count"]?.map { Int($0) } ?? nil
+        get {
+            parameters["count"]?.map { Int($0) } ?? nil
+        }
+        set {
+            parameters["count"] = newValue.map { String($0) }
+        }
     }
 }
