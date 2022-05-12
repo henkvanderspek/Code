@@ -64,14 +64,9 @@ private extension UicornView {
 
 extension UicornViewType {
     var binding: Binding<Self> {
-        .init(
-            get: {
-                self
-            },
-            set: {
-                print($0)
-            }
-        )
+        binding {
+            print($0)
+        }
     }
     func binding(set: @escaping (Self)->()) -> Binding<Self> {
         .init(
