@@ -23,14 +23,17 @@ extension Uicorn {
         }
         var id: String
         var type: `Type`
-        init(id: String, type: `Type`) {
+        var action: Action?
+        init(id: String, type: `Type`, action: Action?) {
             self.id = id
             self.type = type
+            self.action = action
         }
         required init(from decoder: Decoder) throws {
             let c = try decoder.container(keyedBy: CodingKeys.self)
             id = try c.decodeIfPresent(String.self, forKey: .id) ?? .unique
             type = try c.decode(ViewType.self, forKey: .type).complexType(using: decoder)
+            action = try c.decodeIfPresent(Action.self, forKey: .action)
         }
     }
 }
@@ -47,6 +50,12 @@ extension Uicorn.View {
 }
 
 private extension Uicorn.View {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case type
+        case attributes
+        case action
+    }
     enum ViewType: String, Decodable {
         case hstack
         case vstack
@@ -71,14 +80,6 @@ private extension Uicorn.View.ViewType {
         case .spacer: return .spacer
         case .empty: return .empty
         }
-    }
-}
-
-private extension Uicorn.View {
-    enum CodingKeys: String, CodingKey {
-        case id
-        case type
-        case attributes
     }
 }
 

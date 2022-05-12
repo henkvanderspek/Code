@@ -22,12 +22,25 @@ extension UicornHost {
 struct UicornView: View {
     @Binding var model: Uicorn.View
     private let resolver: Resolve?
+    @State private var sheetView: AnyView?
+    @State private var shouldShowSheet = false
     init(_ v: Binding<Uicorn.View>, resolver r: Resolve? = nil) {
         _model = v
         resolver = r
     }
     var body: some View {
         content
+            .sheet(isPresented: $shouldShowSheet) {
+                sheetView
+            }
+            .onTapGesture {
+                guard let a = model.action else { return }
+                switch a.actionType {
+                case .presentSelf:
+                    sheetView = AnyView(content)
+                    shouldShowSheet = true
+                }
+            }
     }
 }
 

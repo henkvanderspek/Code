@@ -91,7 +91,7 @@ private extension Backend.Controller.Task {
     private func path(mock: Bool) -> String {
         switch self {
         case let .fetchImages(q, c):
-            return "images/random?query=\(q)&count=\(c)&mock=\(mock)"
+            return "images/random?query=\(q)&count=\(c)&mock=\(mock ? 1 : 0)"
         }
     }
     private var method: String {

@@ -9,27 +9,39 @@ import Foundation
 
 extension Uicorn.View {
     static var empty: Uicorn.View {
-        .init(id: .unique, type: .empty)
+        .init(id: .unique, type: .empty, action: nil)
     }
     static var spacer: Uicorn.View {
-        .init(id: .unique, type: .spacer)
+        .init(id: .unique, type: .spacer, action: nil)
     }
-    static func text(_ s: String) -> Uicorn.View {
-        .init(id: .unique, type: .text(.init(s)))
+    static func text(_ s: String, action: Action? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .text(.init(s)), action: action)
     }
     static func hstack(_ c: [Uicorn.View], spacing: Int = 0) -> Uicorn.View {
-        .init(id: .unique, type: .hstack(.init(c, spacing: spacing)))
+        .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: nil)
     }
     static func vstack(_ c: [Uicorn.View], spacing: Int = 0) -> Uicorn.View {
-        .init(id: .unique, type: .vstack(.init(c, spacing: spacing)))
+        .init(id: .unique, type: .vstack(.init(c, spacing: spacing)), action: nil)
     }
     static func zstack(_ c: [Uicorn.View]) -> Uicorn.View {
-        .init(id: .unique, type: .zstack(.init(c)))
+        .init(id: .unique, type: .zstack(.init(c)), action: nil)
     }
-    static func image(_ s: String) -> Uicorn.View {
-        .init(id: .unique, type: .image(.init(type: .remote, value: s)))
+    static func image(_ s: String, action: Action? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.init(type: .remote, value: s)), action: action)
     }
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .collection(.init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{thumb}}"))))
+        .init(id: .unique, type: .collection(.unsplash(q, count: c)), action: nil)
+    }
+}
+
+extension Uicorn.View.Collection {
+    static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View.Collection {
+        .init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{thumb}}", action: .presentSelf))
+    }
+}
+
+extension Uicorn.View.Action {
+    static var presentSelf: Uicorn.View.Action {
+        .init(actionType: .presentSelf)
     }
 }

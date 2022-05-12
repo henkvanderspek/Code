@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct iOSApp: App {
-    @StateObject private var backendController = Backend.Controller(configuration: .live)
+    @StateObject private var backendController = Backend.Controller(configuration: .dev)
     var body: some Scene {
         WindowGroup {
             UicornView(.constant(.mock))
