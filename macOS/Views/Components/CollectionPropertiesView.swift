@@ -25,6 +25,6 @@ struct CollectionPropertiesView: View {
 
 struct CollectionPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionPropertiesView(model: .constant(.init(type: .unsplash, parameters: ["query":"pug"], view: .image("{{thumb}}"))))
+        CollectionPropertiesView(model: .constant(.init(type: .unsplash, parameters: ["query":"pug"], view: .image("{{url}}"))))
     }
 }

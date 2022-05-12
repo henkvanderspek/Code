@@ -36,7 +36,7 @@ extension Uicorn.View {
 
 extension Uicorn.View.Collection {
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View.Collection {
-        .init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{thumb}}", action: .presentSelf))
+        .init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{url}}", action: .presentSelf))
     }
 }
 

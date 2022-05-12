@@ -7,15 +7,23 @@
 
 import SwiftUI
 
-typealias Resolve = (String) -> String
+enum ResolveContext {
+    case `default`
+    case sheet
+}
+
+typealias Resolve = (String, ResolveContext) -> String
 
 protocol UicornHost {
-    func resolve(_ s: String) -> String
+    func resolve(_ s: String, context: ResolveContext) -> String
 }
 
 extension UicornHost {
-    func resolve(_ s: String) -> String {
+    func resolve(_ s: String, context: ResolveContext) -> String {
         return s
+    }
+    func resolve(_ s: String) -> String {
+        return resolve(s, context: .default)
     }
 }
 
@@ -31,7 +39,8 @@ struct UicornView: View {
     var body: some View {
         content
             .sheet(isPresented: $shouldShowSheet) {
-                sheetView
+                sheetView?
+                    .frame(minWidth: 300, minHeight: 300)
             }
             .onTapGesture {
                 guard let a = model.action else { return }
@@ -45,8 +54,8 @@ struct UicornView: View {
 }
 
 extension UicornView: UicornHost {
-    func resolve(_ s: String) -> String {
-        resolver?(s) ?? s
+    func resolve(_ s: String, context c: ResolveContext) -> String {
+        resolver?(s, shouldShowSheet ? .sheet : .`default`) ?? s
     }
 }
 

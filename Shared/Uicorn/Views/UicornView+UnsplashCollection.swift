@@ -32,8 +32,13 @@ extension UicornView {
                             SwiftUI.LazyVGrid(columns: columns, spacing: Self.spacing) {
                                 ForEach(i) { image in
                                     if let v = Binding($view) {
-                                        UicornView(v) {
-                                            $0.replacingOccurrences(of: "{{thumb}}", with: image.thumb)
+                                        UicornView(v) { value, context in
+                                            switch context {
+                                            case .`default`:
+                                                return value.replacingOccurrences(of: "{{url}}", with: image.thumb)
+                                            case .sheet:
+                                                return value.replacingOccurrences(of: "{{url}}", with: image.regular)
+                                            }
                                         }
                                         .frame(height: (geo.size.width / .init(Self.cols)))
                                     } else {
