@@ -61,6 +61,7 @@ extension UicornView {
                                         appendImages()
                                     }
                                 }
+                                .frame(height: geo.size.height)
                             }
                         }
                     }

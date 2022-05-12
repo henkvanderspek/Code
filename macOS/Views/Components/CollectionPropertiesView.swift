@@ -10,14 +10,23 @@ import SwiftUI
 struct CollectionPropertiesView: View {
     @Binding var model: Uicorn.View.Collection
     var body: some View {
-        switch model.type {
-        case .unsplash:
-            VStack(alignment: .leading) {
+        Section(header: Text("Type")) {
+            Picker(selection: $model.type) {
+                ForEach(Uicorn.View.Collection.CollectionType.allCases, id: \.self) {
+                    Text($0.localizedTitle)
+                }
+            } label: {}
+            switch model.type {
+            case .unsplash:
                 Text("Search")
-                    .font(.title3)
-                    .opacity(0.6)
-                TextEditor(text: Binding($model.query) ?? .constant(""))
-                    .frame(minHeight: 100)
+                VStack {
+                    TextEditor(text: Binding($model.query) ?? .constant(""))
+                        .frame(minHeight: 100)
+                        .padding(6)
+                }
+                .background(.background)
+                .cornerRadius(4)
+                .frame(minHeight: 20)
             }
         }
     }
