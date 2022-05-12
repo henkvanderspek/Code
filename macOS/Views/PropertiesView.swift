@@ -14,7 +14,6 @@ struct PropertiesView: View {
         case let .collection(c):
             CollectionPropertiesView(
                 model: c.binding {
-                    print($0.query)
                     $view.type.wrappedValue = .collection($0)
                     $view.wrappedValue.id = UUID().uuidString
                 }

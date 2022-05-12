@@ -29,7 +29,7 @@ extension Uicorn.View {
     static func image(_ s: String) -> Uicorn.View {
         .init(id: .unique, type: .image(.init(type: .remote, value: s)))
     }
-    static func unsplash(_ q: String?, count c: Int? = 100) -> Uicorn.View {
+    static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View {
         .init(id: .unique, type: .collection(.init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{thumb}}"))))
     }
 }
