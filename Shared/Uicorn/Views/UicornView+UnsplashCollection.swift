@@ -54,8 +54,9 @@ extension UicornView {
                                     }
                             }
                             if !i.isEmpty {
-                                progressView
-                                    .isHidden(i.count < Uicorn.defaultUnsplashCollectionCount)
+                                if i.count < Uicorn.defaultUnsplashCollectionCount {
+                                    progressView
+                                }
                             } else {
                                 SwiftUI.VStack {
                                     SwiftUI.Text("Failed to fetch images 😱")

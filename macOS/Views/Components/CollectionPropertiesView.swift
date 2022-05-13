@@ -43,30 +43,6 @@ struct CollectionPropertiesView: View {
     }
 }
 
-extension Binding where Value: Equatable {
-    init(_ s: Binding<Value>, default d: Value) {
-        self.init(
-            get: {
-                s.wrappedValue
-            },
-            set: {
-                s.wrappedValue = $0 == s.wrappedValue ? d : $0
-            }
-        )
-    }
-    init(_ s: Binding<Value?>, default d: Value) {
-        self.init(
-            get: {
-                s.wrappedValue ?? d
-            },
-            set: {
-                s.wrappedValue = $0 == s.wrappedValue ? d : $0
-                print(s.wrappedValue)
-            }
-        )
-    }
-}
-
 struct CollectionPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
         CollectionPropertiesView(model: .constant(.init(type: .unsplash, parameters: ["query":"pug"], view: .image("{{url}}"))))

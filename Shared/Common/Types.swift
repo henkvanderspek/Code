@@ -50,56 +50,53 @@ extension Image {
 
 #if os(macOS)
 
-extension NSColor {
-    static var systemBackground: NSColor {
-        .windowBackgroundColor
-    }
-    static var label: NSColor {
+extension NativeColor {
+    static var label: NativeColor {
         .labelColor // TODO:
     }
-    static var systemGray: NSColor {
+    static var systemGray: NativeColor {
         .gray // TODO:
     }
-    static var systemGray2: NSColor {
+    static var systemGray2: NativeColor {
         .gray // TODO:
     }
-    static var systemGray3: NSColor {
+    static var systemGray3: NativeColor {
         .gray // TODO:
     }
-    static var systemGray4: NSColor {
+    static var systemGray4: NativeColor {
         .gray // TODO:
     }
-    static var systemGray5: NSColor {
+    static var systemGray5: NativeColor {
         .gray // TODO:
     }
-    static var systemGray6: NSColor {
+    static var systemGray6: NativeColor {
         .gray // TODO:
     }
-    static var secondaryLabel: NSColor {
+    static var secondaryLabel: NativeColor {
         .secondaryLabelColor
     }
-    static var quaternaryLabel: NSColor {
+    static var quaternaryLabel: NativeColor {
         .quaternaryLabelColor
     }
-    static var placeholderText: NSColor {
+    static var placeholderText: NativeColor {
         .placeholderTextColor
     }
-    static var separator: NSColor {
+    static var separator: NativeColor {
         .separatorColor
     }
-    static var opaqueSeparator: NSColor {
+    static var opaqueSeparator: NativeColor {
         .separatorColor // TODO:
     }
-    static var link: NSColor {
+    static var link: NativeColor {
         .linkColor
     }
-    static var background: NSColor {
-        .windowBackgroundColor // TODO:
+    static var systemBackground: NativeColor {
+        .windowBackgroundColor
     }
 }
 
 extension NSView {
-    var backgroundColor: NSColor? {
+    var backgroundColor: NativeColor? {
         set {
             wantsLayer = true
             layer?.backgroundColor = newValue?.cgColor
@@ -118,3 +115,27 @@ extension NSTextView {
 }
 
 #endif
+
+extension Binding where Value: Equatable {
+    init(_ s: Binding<Value>, default d: Value) {
+        self.init(
+            get: {
+                s.wrappedValue
+            },
+            set: {
+                s.wrappedValue = $0 == s.wrappedValue ? d : $0
+            }
+        )
+    }
+    init(_ s: Binding<Value?>, default d: Value) {
+        self.init(
+            get: {
+                s.wrappedValue ?? d
+            },
+            set: {
+                s.wrappedValue = $0 == s.wrappedValue ? d : $0
+                print(s.wrappedValue)
+            }
+        )
+    }
+}

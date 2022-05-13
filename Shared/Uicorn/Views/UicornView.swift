@@ -140,7 +140,7 @@ extension Color {
         case .separator: self = .init(nativeColor: .separator)
         case .opaqueSeparator: self = .init(nativeColor: .opaqueSeparator)
         case .link: self = .init(nativeColor: .link)
-        case .background: self = .init(nativeColor: .background)
+        case .background: self = .init(nativeColor: .systemBackground)
         }
     }
     init(_ s: Uicorn.View.Color.Custom) {
