@@ -9,8 +9,8 @@ import SwiftUI
 
 extension UicornView {
     struct UnsplashCollection: View {
-        let query: String
-        let count: Int
+        @Binding var query: String
+        @Binding var count: Int
         @Binding var view: Uicorn.View?
         @EnvironmentObject var backendController: Backend.Controller
         @State private var images: [Backend.Images.Item]?
@@ -18,9 +18,9 @@ extension UicornView {
         private static let spacing = 2.0
         private static let cols = 3
         private var columns: [GridItem] = .init(repeating: .init(.flexible(), spacing: spacing), count: cols)
-        init(query q: String, count c: Int, view v: Binding<Uicorn.View?>, host h: UicornHost) {
-            query = q
-            count = c
+        init(query q: Binding<String>, count c: Binding<Int>, view v: Binding<Uicorn.View?>, host h: UicornHost) {
+            _query = q
+            _count = c
             _view  = v
             host = h
         }
@@ -69,6 +69,12 @@ extension UicornView {
                     progressView
                 }
             }
+            .onChange(of: query) { _ in
+                refreshImages()
+            }
+            .onChange(of: count) { _ in
+                refreshImages()
+            }
             .onAppear() {
                 appendImages()
             }
@@ -77,9 +83,13 @@ extension UicornView {
 }
 
 private extension UicornView.UnsplashCollection {
+    func refreshImages() {
+        images = nil
+        appendImages()
+    }
     func appendImages() {
         Task {
-            let items = await backendController.fetchImages(query, count: count)?.items
+            let items = await backendController.fetchImages($query.wrappedValue, count: $count.wrappedValue)?.items
             var current = images ?? []
             current.append(contentsOf: items ?? [])
             images = current
@@ -95,6 +105,6 @@ private extension UicornView.UnsplashCollection {
 
 struct UicornView_UnsplashCollection_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.UnsplashCollection(query: "pug", count: 10, view: .constant(.empty), host: MockHost())
+        UicornView.UnsplashCollection(query: .constant("pug"), count: .constant(10), view: .constant(.empty), host: MockHost())
     }
 }
