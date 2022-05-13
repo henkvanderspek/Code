@@ -21,7 +21,7 @@ struct CollectionPropertiesView: View {
             case .unsplash:
                 Header("Search")
                 VStack {
-                    TextEditor(text: Binding($model.query, default: ""))
+                    TextEditor(text: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery))
                         .frame(minHeight: 100)
                         .padding(6)
                 }
@@ -30,9 +30,9 @@ struct CollectionPropertiesView: View {
                 .frame(minHeight: 20)
                 Header("Count")
                 HStack(spacing: 5) {
-                    Text("\(model.count ?? 1)")
+                    Text("\(model.count ?? Uicorn.defaultUnsplashCollectionCount)")
                         .frame(maxWidth: .infinity, alignment: .trailing)
-                    Stepper("Count", value: Binding($model.count, default: 1), in: 1...20)
+                    Stepper("Count", value: Binding($model.count, default: Uicorn.defaultUnsplashCollectionCount), in: 1...20)
                 }
                 .frame(width: 80)
                 .background(.background)

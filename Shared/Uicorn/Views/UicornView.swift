@@ -76,6 +76,10 @@ private extension UicornView {
             Image(i.binding, host: self)
         case let .collection(c):
             Collection(c.binding, host: self)
+        case let .rectangle(r):
+            Rectangle(r.binding, host: self)
+        case let .color(c):
+            Color(c.binding, host: self)
         case .spacer:
             SwiftUI.Text("Spacer")
         case .empty:
@@ -97,5 +101,49 @@ extension UicornViewType {
             },
             set: set
         )
+    }
+}
+
+extension Color {
+    init(_ c: Uicorn.View.Color) {
+        switch c.colorType {
+        case let .system(s):
+            self = .init(s)
+        case let .custom(c):
+            self = .init(c)
+        }
+    }
+    init(_ s: Uicorn.View.Color.System) {
+        switch s {
+        case .yellow: self = .yellow
+        case .blue: self = .blue
+        case .red: self = .red
+        case .orange: self = .orange
+        case .green: self = .green
+        case .mint: self = .mint
+        case .teal: self = .teal
+        case .cyan: self = .cyan
+        case .indigo: self = .indigo
+        case .purple: self = .purple
+        case .pink: self = .pink
+        case .brown: self = .brown
+        case .gray: self = .gray
+        case .gray2: self = .init(nativeColor: .systemGray2)
+        case .gray3: self = .init(nativeColor: .systemGray3)
+        case .gray4: self = .init(nativeColor: .systemGray4)
+        case .gray5: self = .init(nativeColor: .systemGray5)
+        case .gray6: self = .init(nativeColor: .systemGray6)
+        case .label: self = .init(nativeColor: .label)
+        case .secondaryLabel: self = .init(nativeColor: .secondaryLabel)
+        case .quaternaryLabel: self = .init(nativeColor: .quaternaryLabel)
+        case .placeholderText: self = .init(nativeColor: .placeholderText)
+        case .separator: self = .init(nativeColor: .separator)
+        case .opaqueSeparator: self = .init(nativeColor: .opaqueSeparator)
+        case .link: self = .init(nativeColor: .link)
+        case .background: self = .init(nativeColor: .background)
+        }
+    }
+    init(_ s: Uicorn.View.Color.Custom) {
+        self = .white
     }
 }

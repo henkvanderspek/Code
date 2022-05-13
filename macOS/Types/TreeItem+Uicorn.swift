@@ -42,7 +42,7 @@ extension Uicorn.View: TreeItem {
             return v.children
         case let .collection(c):
             return c.view.map { [$0] }
-        case .text, .spacer, .empty, .image:
+        case .text, .spacer, .empty, .image, .rectangle, .color:
             return nil
         }
     }
@@ -60,6 +60,8 @@ extension ViewType {
         case .text: self = .text
         case .image: self = .image
         case .collection: self = .collection
+        case .rectangle: self = .rectangle
+        case .color: self = .color
         case .spacer: self = .spacer
         case .empty: self = .empty
         }

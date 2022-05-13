@@ -29,10 +29,10 @@ extension UicornView {
                         } else if let cachedImage = cachedImage {
                             createView(for: cachedImage, width: geo.size.width, height: geo.size.height)
                         } else if phase.error != nil {
-                            Rectangle()
+                            SwiftUI.Rectangle()
                                 .foregroundColor(.black)
                         } else {
-                            Rectangle()
+                            SwiftUI.Rectangle()
                                 .foregroundColor(.white)
                         }
                     }

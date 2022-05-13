@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+extension Uicorn {
+    static let defaultUnsplashCollectionQuery = "pug"
+    static let defaultUnsplashCollectionCount = 20
+}
+
 extension UicornView {
     struct Collection: View {
         @Binding var model: Uicorn.View.Collection
@@ -18,7 +23,8 @@ extension UicornView {
         var body: some View {
             switch $model.wrappedValue.type {
             case .unsplash:
-                UnsplashCollection(query: Binding($model.query, default: "pug"), count: Binding($model.count, default: 20), view: $model.view, host: host)
+                // TODO: rewrite this in a generic (vertical) grid with optional lazy loader
+                UnsplashCollection(query: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery), count: Binding($model.count, default: Uicorn.defaultUnsplashCollectionCount), view: $model.view, host: host)
             }
         }
     }

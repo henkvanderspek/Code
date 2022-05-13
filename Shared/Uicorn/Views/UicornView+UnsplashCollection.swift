@@ -45,15 +45,17 @@ extension UicornView {
                                         SwiftUI.Text(image.id.uuidString)
                                     }
                                 }
-                                Rectangle()
+                                SwiftUI.Rectangle()
                                     .frame(height: 1)
                                     .foregroundColor(.clear)
                                     .onAppear {
+                                        guard i.count >= Uicorn.defaultUnsplashCollectionCount else { return }
                                         appendImages()
                                     }
                             }
                             if !i.isEmpty {
                                 progressView
+                                    .isHidden(i.count < Uicorn.defaultUnsplashCollectionCount)
                             } else {
                                 SwiftUI.VStack {
                                     SwiftUI.Text("Failed to fetch images 😱")

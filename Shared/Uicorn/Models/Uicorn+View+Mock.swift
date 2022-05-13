@@ -9,7 +9,8 @@ import Foundation
 
 extension Uicorn.View {
     static var mock: Uicorn.View {
-        .unsplash("pug")
+        //.unsplash("pug")
+        .rectangle
     }
 }
 

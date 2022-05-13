@@ -18,16 +18,20 @@ extension Uicorn {
             case text(Text)
             case image(Image)
             case collection(Collection)
+            case rectangle(Rectangle)
+            case color(Color)
             case spacer
             case empty
         }
         var id: String
         var type: `Type`
         var action: Action?
-        init(id: String, type: `Type`, action: Action?) {
+        var properties: Properties?
+        init(id: String, type: `Type`, action: Action?, properties: Properties?) {
             self.id = id
             self.type = type
             self.action = action
+            self.properties = properties
         }
         required init(from decoder: Decoder) throws {
             let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -63,6 +67,7 @@ private extension Uicorn.View {
         case text
         case image
         case collection
+        case color
         case spacer
         case empty
     }
@@ -77,6 +82,7 @@ private extension Uicorn.View.ViewType {
         case .text: return .text(try .init(from: decoder))
         case .image: return .image(try .init(from: decoder))
         case .collection: return .collection(try .init(from: decoder))
+        case .color: return .color(try .init(from: decoder))
         case .spacer: return .spacer
         case .empty: return .empty
         }
@@ -92,6 +98,8 @@ private extension Uicorn.View.`Type` {
         case .text: return "text"
         case .image: return "image"
         case .collection: return "collection"
+        case .rectangle: return "rectangle"
+        case .color: return "color"
         case .spacer: return "spacer"
         case .empty: return "empty"
         }
@@ -104,6 +112,8 @@ private extension Uicorn.View.`Type` {
         case let .text(t): return t
         case let .image(i): return i
         case let .collection(c): return c
+        case let .rectangle(r): return r
+        case let .color(c): return c
         case .spacer: return nil
         case .empty: return nil
         }

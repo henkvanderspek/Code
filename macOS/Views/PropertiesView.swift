@@ -21,8 +21,10 @@ struct PropertiesView: View {
                 )
             case .empty:
                 EmptyView()
+            case let .rectangle(r):
+                ColorPropertiesView(header: "Color", r.fill.binding)
             default:
-                Text(view.title)
+                Header(view.title)
             }
         }
     }

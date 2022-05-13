@@ -72,6 +72,30 @@ extension NSColor {
     static var systemGray5: NSColor {
         .gray // TODO:
     }
+    static var systemGray6: NSColor {
+        .gray // TODO:
+    }
+    static var secondaryLabel: NSColor {
+        .secondaryLabelColor
+    }
+    static var quaternaryLabel: NSColor {
+        .quaternaryLabelColor
+    }
+    static var placeholderText: NSColor {
+        .placeholderTextColor
+    }
+    static var separator: NSColor {
+        .separatorColor
+    }
+    static var opaqueSeparator: NSColor {
+        .separatorColor // TODO:
+    }
+    static var link: NSColor {
+        .linkColor
+    }
+    static var background: NSColor {
+        .windowBackgroundColor // TODO:
+    }
 }
 
 extension NSView {
