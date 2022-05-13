@@ -10,7 +10,20 @@ import Foundation
 extension Uicorn.View {
     static var mock: Uicorn.View {
         //.unsplash("pug")
-        .rectangle
+        .vstack([
+            .hstack([
+                .rectangle(.system(.yellow)),
+                .color(.system(.mint))
+            ], spacing: 2),
+            .hstack([
+                .rectangle(.system(.blue)),
+                .color(.system(.red))
+            ], spacing: 2),
+            .hstack([
+                .rectangle(.system(.brown)),
+                .color(.system(.teal))
+            ], spacing: 2),
+        ], spacing: 2)
     }
 }
 

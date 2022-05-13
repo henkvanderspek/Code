@@ -105,6 +105,18 @@ extension UicornViewType {
 }
 
 extension Color {
+    init(_ c: Uicorn.View.Color.Custom) {
+        self = .white // TODO:
+    }
+}
+
+extension Uicorn.View.Color.Custom {
+    init(_ c: Color) {
+        self = .init(red: 255, green: 255, blue: 255, alpha: 1.0) // TODO:
+    }
+}
+
+extension Color {
     init(_ c: Uicorn.View.Color) {
         switch c.colorType {
         case let .system(s):
@@ -115,6 +127,8 @@ extension Color {
     }
     init(_ s: Uicorn.View.Color.System) {
         switch s {
+        case .primary: self = .primary
+        case .secondary: self = .secondary
         case .yellow: self = .yellow
         case .blue: self = .blue
         case .red: self = .red
@@ -142,8 +156,5 @@ extension Color {
         case .link: self = .init(nativeColor: .link)
         case .background: self = .init(nativeColor: .systemBackground)
         }
-    }
-    init(_ s: Uicorn.View.Color.Custom) {
-        self = .white
     }
 }

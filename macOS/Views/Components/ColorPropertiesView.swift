@@ -10,88 +10,211 @@ import SwiftUI
 struct ColorPropertiesView: View {
     let header: String
     @Binding var model: Uicorn.View.Color
-    @State var type: ColorType = .fill
-    @State var fillType: FillColorType = .primary
-    @State var systemType: SystemColorType = .yellow
-    @State var customColor: Color = .white
     init(header s: String, _ color: Binding<Uicorn.View.Color>) {
         header = s
         _model = color
     }
     var body: some View {
         Section {
+            Colors(header: header, $model.colorType)
+                .pickerStyle(.menu)
+        }
+        .labelsHidden()
+    }
+}
+
+private extension ColorPropertiesView.Colors {
+    enum Category: String, CaseIterable {
+        case system
+        case custom
+    }
+    enum System: String, CaseIterable {
+        case red
+        case orange
+        case yellow
+        case green
+        case mint
+        case teal
+        case cyan
+        case blue
+        case indigo
+        case purple
+        case pink
+        case brown
+        case gray
+        case gray2
+        case gray3
+        case gray4
+        case gray5
+        case gray6
+        case label
+        case secondaryLabel
+        case quaternaryLabel
+        case placeholderText
+        case separator
+        case opaqueSeparator
+        case link
+        case background
+        case fill
+        case secondaryFill
+    }
+}
+
+extension ColorPropertiesView.Colors.System {
+    var localizedCapitalized: String {
+        switch self {
+        case .background, .red, .orange, .yellow, .green, .mint, .teal, .cyan, .blue, .indigo, .purple, .pink, .brown, .gray, .gray2, .gray3, .gray4, .gray5, .gray6, .label, .separator, .link, .fill:
+            return rawValue.localizedCapitalized
+        case .secondaryLabel:
+            return "Secondary Label"
+        case .quaternaryLabel:
+            return "Quaternary Label"
+        case .placeholderText:
+            return "Placeholder Text"
+        case .opaqueSeparator:
+            return "Opaque Separator"
+        case .secondaryFill:
+            return "Secondary Fill"
+        }
+    }
+}
+
+private extension ColorPropertiesView {
+    struct Colors: View {
+        @Binding var colorType: Uicorn.View.Color.ColorType
+        private let header: String
+        @State private var category: Category
+        @State private var system: System
+        @State private var custom: Color
+        init(_ t: Binding<Uicorn.View.Color.ColorType>, _ h: String, _ c: Category, _ s: System = .background, custom cs: Color = .white) {
+            _colorType = t
+            header = h
+            category = c
+            system = s
+            custom = cs
+        }
+        var body: some View {
             Header(header)
-            Picker(header, selection: $type) {
-                ForEach(ColorType.allCases, id: \.self) {
+            Picker(header, selection: $category) {
+                ForEach(Category.allCases, id: \.self) {
                     Text($0.rawValue.localizedCapitalized)
                 }
             }
-            switch type {
-            case .fill:
-                Picker("", selection: $fillType) {
-                    ForEach(FillColorType.allCases, id: \.self) { name in
-                        Text(name.rawValue.localizedCapitalized)
-                    }
-                }
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(fillType.color)
-                    .frame(minHeight: 20)
+            .onChange(of: category) {
+                colorType = determineColorType(category: $0)
+            }
+            switch category {
             case .system:
-                Picker("", selection: $systemType) {
-                    ForEach(SystemColorType.allCases, id: \.self) {
-                        Text($0.rawValue.localizedCapitalized)
+                Picker("", selection: $system) {
+                    ForEach(System.allCases, id: \.self) {
+                        Text($0.localizedCapitalized)
                     }
                 }
+                .onChange(of: system) {
+                    colorType = determineColorType(system: $0)
+                }
                 RoundedRectangle(cornerRadius: 5)
-                    .fill(systemType.color)
+                    .fill(Color(.init(system)))
                     .frame(minHeight: 20)
             case .custom:
                 RoundedRectangle(cornerRadius: 5)
-                    .fill(customColor)
+                    .fill(custom)
                     .frame(minHeight: 20)
             }
         }
-        .labelsHidden()
-        .pickerStyle(.menu)
     }
 }
 
-enum ColorType: String, CaseIterable {
-    case fill
-    case system
-    case custom
-}
-
-enum FillColorType: String, CaseIterable {
-    case primary
-    case secondary
-}
-
-enum SystemColorType: String, CaseIterable {
-    case blue
-    case yellow
-}
-
-extension FillColorType {
-    var color: Color {
-        switch self {
-        case .primary: return .primary
-        case .secondary: return .secondary
+private extension ColorPropertiesView.Colors {
+    init(header h: String, _ c: Binding<Uicorn.View.Color.ColorType>) {
+        switch c.wrappedValue {
+        case let .system(s):
+            switch s {
+            case .red: self = .init(c, h, .system, .red)
+            case .orange: self = .init(c, h, .system, .orange)
+            case .yellow: self = .init(c, h, .system, .yellow)
+            case .green: self = .init(c, h, .system, .green)
+            case .mint: self = .init(c, h, .system, .mint)
+            case .teal: self = .init(c, h, .system, .teal)
+            case .cyan: self = .init(c, h, .system, .cyan)
+            case .blue: self = .init(c, h, .system, .blue)
+            case .indigo: self = .init(c, h, .system, .indigo)
+            case .purple: self = .init(c, h, .system, .purple)
+            case .pink: self = .init(c, h, .system, .pink)
+            case .brown: self = .init(c, h, .system, .brown)
+            case .gray: self = .init(c, h, .system, .gray)
+            case .gray2: self = .init(c, h, .system, .gray2)
+            case .gray3: self = .init(c, h, .system, .gray3)
+            case .gray4: self = .init(c, h, .system, .gray4)
+            case .gray5: self = .init(c, h, .system, .gray5)
+            case .gray6: self = .init(c, h, .system, .gray6)
+            case .label: self = .init(c, h, .system, .label)
+            case .secondaryLabel: self = .init(c, h, .system, .secondaryLabel)
+            case .quaternaryLabel: self = .init(c, h, .system, .quaternaryLabel)
+            case .placeholderText: self = .init(c, h, .system, .placeholderText)
+            case .separator: self = .init(c, h, .system, .separator)
+            case .opaqueSeparator: self = .init(c, h, .system, .opaqueSeparator)
+            case .link: self = .init(c, h, .system, .link)
+            case .background: self = .init(c, h, .system, .background)
+            case .primary: self = .init(c, h, .system, .fill)
+            case .secondary: self = .init(c, h, .system, .secondaryFill)
+            }
+        case let .custom(cs):
+            self = .init(c, h, .custom, custom: .init(cs))
         }
     }
+    private func determineColorType(category: Category) -> Uicorn.View.Color.ColorType {
+        switch category {
+        case .system:
+            return determineColorType(system: system)
+        case .custom:
+            return .custom(.init(custom))
+        }
+    }
+    private func determineColorType(system: System) -> Uicorn.View.Color.ColorType {
+        return .system(.init(system))
+    }
 }
 
-extension SystemColorType {
-    var color: Color {
-        switch self {
-        case .blue: return .blue
-        case .yellow: return .yellow
+private extension Uicorn.View.Color.System {
+    init(_ c: ColorPropertiesView.Colors.System) {
+        switch c {
+        case .blue: self = .blue
+        case .yellow: self = .yellow
+        case .red: self = .red
+        case .orange: self = .orange
+        case .green: self = .green
+        case .mint: self = .mint
+        case .teal: self = .teal
+        case .cyan: self = .cyan
+        case .indigo: self = .indigo
+        case .purple: self = .purple
+        case .pink: self = .pink
+        case .brown: self = .brown
+        case .gray: self = .gray
+        case .gray2: self = .gray2
+        case .gray3: self = .gray3
+        case .gray4: self = .gray4
+        case .gray5: self = .gray5
+        case .gray6: self = .gray6
+        case .label: self = .label
+        case .secondaryLabel: self = .secondaryLabel
+        case .quaternaryLabel: self = .quaternaryLabel
+        case .placeholderText: self = .placeholderText
+        case .separator: self = .separator
+        case .opaqueSeparator: self = .opaqueSeparator
+        case .link: self = .link
+        case .background: self = .background
+        case .fill: self = .primary
+        case .secondaryFill: self = .secondary
         }
     }
 }
 
 struct ColorPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPropertiesView(header: "Color", .constant(.system(.yellow)))
+        Form {
+            ColorPropertiesView(header: "Color", .constant(.system(.yellow)))
+        }
     }
 }

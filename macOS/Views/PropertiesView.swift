@@ -22,9 +22,25 @@ struct PropertiesView: View {
             case .empty:
                 EmptyView()
             case let .rectangle(r):
-                ColorPropertiesView(header: "Color", r.fill.binding)
+                ColorPropertiesView(
+                    header: "Color",
+                    r.fill.binding {
+                        $view.type.wrappedValue = .rectangle(.init(fill: $0))
+                        $view.wrappedValue.id = UUID().uuidString
+                    }
+                )
+            case let .color(c):
+                ColorPropertiesView(
+                    header: "Color",
+                    c.binding {
+                        $view.type.wrappedValue = .color($0)
+                        $view.wrappedValue.id = UUID().uuidString
+                    }
+                )
             default:
-                Header(view.title)
+                Section {
+                    Header(view.title)
+                }.labelsHidden()
             }
         }
     }

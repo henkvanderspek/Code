@@ -13,7 +13,7 @@ extension Uicorn.View {
             case system(System)
             case custom(Custom)
         }
-        let colorType: ColorType
+        var colorType: ColorType
         init(_ t: ColorType) {
             colorType = t
         }
@@ -48,6 +48,8 @@ extension Uicorn.View.Color {
         case opaqueSeparator
         case link
         case background
+        case primary
+        case secondary
     }
     struct Custom: Codable {
         let red: UInt8
