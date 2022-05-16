@@ -38,6 +38,9 @@ extension Uicorn.View {
     static func rectangle(_ c: Uicorn.Color) -> Uicorn.View {
         .init(id: .unique, type: .shape(.rectangle(c)), action: nil, properties: nil)
     }
+    static func ellipse(_ c: Uicorn.Color) -> Uicorn.View {
+        .init(id: .unique, type: .shape(.ellipse(c)), action: nil, properties: nil)
+    }
 }
 
 extension Uicorn.View.Collection {
@@ -49,6 +52,9 @@ extension Uicorn.View.Collection {
 extension Uicorn.View.Shape {
     static func rectangle(_ c: Uicorn.Color) -> Uicorn.View.Shape {
         .init(type: .rectangle, fill: c)
+    }
+    static func ellipse(_ c: Uicorn.Color) -> Uicorn.View.Shape {
+        .init(type: .ellipse, fill: c)
     }
 }
 

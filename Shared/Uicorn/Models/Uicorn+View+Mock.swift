@@ -13,7 +13,10 @@ extension Uicorn.View {
         .vstack([
             .hstack([
                 .rectangle(.system(.yellow)),
-                .unsplash("pug")
+                .zstack([
+                    .rectangle(.system(.mint)),
+                    .ellipse(.system(.pink))
+                ])
             ], spacing: 2),
             .hstack([
                 .rectangle(.system(.blue)),

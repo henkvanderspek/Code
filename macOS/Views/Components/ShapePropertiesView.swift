@@ -34,6 +34,7 @@ struct ShapePropertiesView: View {
             }
         }
         .labelsHidden()
+        .id(UUID())
     }
 }
 
