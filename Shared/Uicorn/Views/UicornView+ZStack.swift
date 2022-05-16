@@ -17,7 +17,7 @@ extension UicornView {
         }
         var body: some View {
             SwiftUI.ZStack {
-                ForEach($model.children) {
+                ForEach($model.children.reversed()) {
                     UicornView($0, resolver: host.resolve)
                 }
             }

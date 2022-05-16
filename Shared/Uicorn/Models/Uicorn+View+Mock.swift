@@ -14,8 +14,8 @@ extension Uicorn.View {
             .hstack([
                 .rectangle(.system(.yellow)),
                 .zstack([
-                    .rectangle(.system(.mint)),
-                    .ellipse(.system(.pink))
+                    .ellipse(.system(.pink)),
+                    .rectangle(.system(.mint))
                 ])
             ], spacing: 2),
             .hstack([
