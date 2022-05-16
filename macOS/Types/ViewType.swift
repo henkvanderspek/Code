@@ -15,10 +15,9 @@ enum ViewType: String, Equatable, CaseIterable {
     case zstack
     case spacer
     case text
-    case rectangle
     case map
     case collection
-    case color
+    case shape
     case empty
 }
 
@@ -32,10 +31,9 @@ extension ViewType {
         case .zstack: return "ZStack"
         case .spacer: return "Spacer"
         case .text: return "Text"
-        case .rectangle: return "Rectangle"
         case .map: return "Map"
         case .collection: return "Collection"
-        case .color: return "Color"
+        case .shape: return "Shape"
         case .empty: return "Empty"
         }
     }
@@ -48,10 +46,9 @@ extension ViewType {
         case .zstack: return "square.stack"
         case .spacer: return "arrow.left.and.right"
         case .text: return "t.square"
-        case .rectangle: return "rectangle"
         case .map: return "map"
         case .collection: return "square.grid.3x2"
-        case .color: return "drop"
+        case .shape: return "square.on.circle"
         case .empty: return "rectangle.dashed"
         }
     }

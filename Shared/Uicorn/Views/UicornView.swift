@@ -76,10 +76,8 @@ private extension UicornView {
             Image(i.binding, host: self)
         case let .collection(c):
             Collection(c.binding, host: self)
-        case let .rectangle(r):
-            Rectangle(r.binding, host: self)
-        case let .color(c):
-            Color(c.binding, host: self)
+        case let .shape(s):
+            Shape(s.binding, host: self)
         case .spacer:
             SwiftUI.Text("Spacer")
         case .empty:
@@ -105,19 +103,19 @@ extension UicornViewType {
 }
 
 extension Color {
-    init(_ c: Uicorn.View.Color.Custom) {
+    init(_ c: Uicorn.Color.Custom) {
         self = .white // TODO:
     }
 }
 
-extension Uicorn.View.Color.Custom {
+extension Uicorn.Color.Custom {
     init(_ c: Color) {
         self = .init(red: 255, green: 255, blue: 255, alpha: 1.0) // TODO:
     }
 }
 
 extension Color {
-    init(_ c: Uicorn.View.Color) {
+    init(_ c: Uicorn.Color) {
         switch c.colorType {
         case let .system(s):
             self = .init(s)
@@ -125,7 +123,7 @@ extension Color {
             self = .init(c)
         }
     }
-    init(_ s: Uicorn.View.Color.System) {
+    init(_ s: Uicorn.Color.System) {
         switch s {
         case .primary: self = .primary
         case .secondary: self = .secondary

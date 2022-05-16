@@ -22,6 +22,7 @@ struct TreeView<V: View>: View {
         menu = m
     }
     var body: some View {
+        // TODO: Support arrow keys for selecting
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 2) {
                 TreeItemStateView(state) // TODO: This should refresh on item change

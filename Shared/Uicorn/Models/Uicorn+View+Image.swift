@@ -1,5 +1,5 @@
 //
-//  Uicorn+Image.swift
+//  Uicorn+View+Image.swift
 //  Code
 //
 //  Created by Henk van der Spek on 09/05/2022.

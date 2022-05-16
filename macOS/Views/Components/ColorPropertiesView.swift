@@ -9,11 +9,7 @@ import SwiftUI
 
 struct ColorPropertiesView: View {
     let header: String
-    @Binding var model: Uicorn.View.Color
-    init(header s: String, _ color: Binding<Uicorn.View.Color>) {
-        header = s
-        _model = color
-    }
+    @Binding var model: Uicorn.Color
     var body: some View {
         Section {
             Colors(header: header, $model.colorType)
@@ -81,12 +77,12 @@ extension ColorPropertiesView.Colors.System {
 
 private extension ColorPropertiesView {
     struct Colors: View {
-        @Binding var colorType: Uicorn.View.Color.ColorType
+        @Binding var colorType: Uicorn.Color.ColorType
         private let header: String
         @State private var category: Category
         @State private var system: System
         @State private var custom: Color
-        init(_ t: Binding<Uicorn.View.Color.ColorType>, _ h: String, _ c: Category, _ s: System = .background, custom cs: Color = .white) {
+        init(_ t: Binding<Uicorn.Color.ColorType>, _ h: String, _ c: Category, _ s: System = .background, custom cs: Color = .white) {
             _colorType = t
             header = h
             category = c
@@ -126,7 +122,7 @@ private extension ColorPropertiesView {
 }
 
 private extension ColorPropertiesView.Colors {
-    init(header h: String, _ c: Binding<Uicorn.View.Color.ColorType>) {
+    init(header h: String, _ c: Binding<Uicorn.Color.ColorType>) {
         switch c.wrappedValue {
         case let .system(s):
             switch s {
@@ -163,7 +159,7 @@ private extension ColorPropertiesView.Colors {
             self = .init(c, h, .custom, custom: .init(cs))
         }
     }
-    private func determineColorType(category: Category) -> Uicorn.View.Color.ColorType {
+    private func determineColorType(category: Category) -> Uicorn.Color.ColorType {
         switch category {
         case .system:
             return determineColorType(system: system)
@@ -171,12 +167,12 @@ private extension ColorPropertiesView.Colors {
             return .custom(.init(custom))
         }
     }
-    private func determineColorType(system: System) -> Uicorn.View.Color.ColorType {
+    private func determineColorType(system: System) -> Uicorn.Color.ColorType {
         return .system(.init(system))
     }
 }
 
-private extension Uicorn.View.Color.System {
+private extension Uicorn.Color.System {
     init(_ c: ColorPropertiesView.Colors.System) {
         switch c {
         case .blue: self = .blue
@@ -214,7 +210,7 @@ private extension Uicorn.View.Color.System {
 struct ColorPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
         Form {
-            ColorPropertiesView(header: "Color", .constant(.system(.yellow)))
+            ColorPropertiesView(header: "Color", model: .constant(.system(.yellow)))
         }
     }
 }

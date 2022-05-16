@@ -35,20 +35,20 @@ extension Uicorn.View {
     static var rectangle: Uicorn.View {
         rectangle(.system(.yellow))
     }
-    static func rectangle(_ c: Color) -> Uicorn.View {
-        .init(id: .unique, type: .rectangle(.init(fill: c)), action: nil, properties: nil)
-    }
-    static var color: Uicorn.View {
-        color(.system(.yellow))
-    }
-    static func color(_ ct: Color.ColorType) -> Uicorn.View {
-        .init(id: .unique, type: .color(.init(ct)), action: nil, properties: nil)
+    static func rectangle(_ c: Uicorn.Color) -> Uicorn.View {
+        .init(id: .unique, type: .shape(.rectangle(c)), action: nil, properties: nil)
     }
 }
 
 extension Uicorn.View.Collection {
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View.Collection {
         .init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{url}}", action: .presentSelf))
+    }
+}
+
+extension Uicorn.View.Shape {
+    static func rectangle(_ c: Uicorn.Color) -> Uicorn.View.Shape {
+        .init(type: .rectangle, fill: c)
     }
 }
 

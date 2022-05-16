@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Uicorn.View {
+extension Uicorn {
     class Color: Codable {
         enum ColorType: Codable {
             case system(System)
@@ -20,7 +20,7 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View.Color {
+extension Uicorn.Color {
     enum System: String, Codable {
         case red
         case orange
@@ -59,7 +59,7 @@ extension Uicorn.View.Color {
     }
 }
 
-extension Uicorn.View.Color {
+extension Uicorn.Color {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(colorType.string, forKey: .colorType)
@@ -67,7 +67,7 @@ extension Uicorn.View.Color {
     }
 }
 
-private extension Uicorn.View.Color {
+private extension Uicorn.Color {
     enum CodingKeys: String, CodingKey {
         case colorType
     }
@@ -77,8 +77,8 @@ private extension Uicorn.View.Color {
     }
 }
 
-private extension Uicorn.View.Color.SimpleColorType {
-    func complexType(using decoder: Decoder) throws -> Uicorn.View.Color.ColorType {
+private extension Uicorn.Color.SimpleColorType {
+    func complexType(using decoder: Decoder) throws -> Uicorn.Color.ColorType {
         switch self {
         case .system: return .system(try .init(from: decoder))
         case .custom: return .custom(try .init(from: decoder))
@@ -86,7 +86,7 @@ private extension Uicorn.View.Color.SimpleColorType {
     }
 }
 
-private extension Uicorn.View.Color.ColorType {
+private extension Uicorn.Color.ColorType {
     var string: String {
         switch self {
         case .system: return "system"
@@ -101,10 +101,8 @@ private extension Uicorn.View.Color.ColorType {
     }
 }
 
-extension Uicorn.View.Color {
-    static func system(_ s: Uicorn.View.Color.System) -> Uicorn.View.Color {
+extension Uicorn.Color {
+    static func system(_ s: Uicorn.Color.System) -> Uicorn.Color {
         return .init(.system(s))
     }
 }
-
-extension Uicorn.View.Color: UicornViewType {}

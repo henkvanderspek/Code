@@ -1,5 +1,5 @@
 //
-//  Uicorn+HStack.swift
+//  Uicorn+View+HStack.swift
 //  Code
 //
 //  Created by Henk van der Spek on 09/05/2022.

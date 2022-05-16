@@ -13,15 +13,15 @@ extension Uicorn.View {
         .vstack([
             .hstack([
                 .rectangle(.system(.yellow)),
-                .color(.system(.mint))
+                .unsplash("pug")
             ], spacing: 2),
             .hstack([
                 .rectangle(.system(.blue)),
-                .color(.system(.red))
+                .rectangle(.system(.red))
             ], spacing: 2),
             .hstack([
                 .rectangle(.system(.brown)),
-                .color(.system(.teal))
+                .rectangle(.system(.teal))
             ], spacing: 2),
         ], spacing: 2)
     }

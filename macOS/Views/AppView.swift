@@ -36,6 +36,7 @@ struct AppView: View {
             ScreenView(observer.sanitizedScreen)
             List {
                 PropertiesView(view: observer.sanitizedSelectedItem)
+                    .id(UUID())
             }.listStyle(.sidebar)
         }
         .navigationViewStyle(.columns)

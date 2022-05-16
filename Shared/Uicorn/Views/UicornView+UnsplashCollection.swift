@@ -26,8 +26,8 @@ extension UicornView {
         }
         var body: some View {
             SwiftUI.ZStack {
-                if let i = images {
-                    GeometryReader { geo in
+                GeometryReader { geo in
+                    if let i = images {
                         ScrollView {
                             SwiftUI.LazyVGrid(columns: columns, spacing: Self.spacing) {
                                 ForEach(i) { image in
@@ -67,9 +67,10 @@ extension UicornView {
                                 .frame(height: geo.size.height)
                             }
                         }
+                    } else {
+                        progressView
+                            .frame(width: geo.size.width, height: geo.size.height)
                     }
-                } else {
-                    progressView
                 }
             }
             .onChange(of: query) { _ in

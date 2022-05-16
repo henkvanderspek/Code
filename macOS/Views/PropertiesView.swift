@@ -19,24 +19,15 @@ struct PropertiesView: View {
                         $view.wrappedValue.id = UUID().uuidString
                     }
                 )
+            case let .shape(s):
+                ShapePropertiesView(
+                    model: s.binding {
+                        $view.type.wrappedValue = .shape($0)
+                        $view.wrappedValue.id = UUID().uuidString
+                    }
+                )
             case .empty:
                 EmptyView()
-            case let .rectangle(r):
-                ColorPropertiesView(
-                    header: "Color",
-                    r.fill.binding {
-                        $view.type.wrappedValue = .rectangle(.init(fill: $0))
-                        $view.wrappedValue.id = UUID().uuidString
-                    }
-                )
-            case let .color(c):
-                ColorPropertiesView(
-                    header: "Color",
-                    c.binding {
-                        $view.type.wrappedValue = .color($0)
-                        $view.wrappedValue.id = UUID().uuidString
-                    }
-                )
             default:
                 Section {
                     Header(view.title)

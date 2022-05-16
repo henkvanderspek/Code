@@ -18,8 +18,7 @@ extension Uicorn {
             case text(Text)
             case image(Image)
             case collection(Collection)
-            case rectangle(Rectangle)
-            case color(Color)
+            case shape(Shape)
             case spacer
             case empty
         }
@@ -67,7 +66,7 @@ private extension Uicorn.View {
         case text
         case image
         case collection
-        case color
+        case shape
         case spacer
         case empty
     }
@@ -82,7 +81,7 @@ private extension Uicorn.View.ViewType {
         case .text: return .text(try .init(from: decoder))
         case .image: return .image(try .init(from: decoder))
         case .collection: return .collection(try .init(from: decoder))
-        case .color: return .color(try .init(from: decoder))
+        case .shape: return .shape(try .init(from: decoder))
         case .spacer: return .spacer
         case .empty: return .empty
         }
@@ -98,8 +97,7 @@ private extension Uicorn.View.`Type` {
         case .text: return "text"
         case .image: return "image"
         case .collection: return "collection"
-        case .rectangle: return "rectangle"
-        case .color: return "color"
+        case .shape: return "shape"
         case .spacer: return "spacer"
         case .empty: return "empty"
         }
@@ -112,8 +110,7 @@ private extension Uicorn.View.`Type` {
         case let .text(t): return t
         case let .image(i): return i
         case let .collection(c): return c
-        case let .rectangle(r): return r
-        case let .color(c): return c
+        case let .shape(s): return s
         case .spacer: return nil
         case .empty: return nil
         }
