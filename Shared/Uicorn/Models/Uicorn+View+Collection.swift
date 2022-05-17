@@ -10,13 +10,13 @@ import Foundation
 extension Uicorn.View {
     class Collection: Codable {
         typealias Parameters = [String: String?]
-        enum CollectionType: String, Codable, CaseIterable {
+        enum `Type`: String, Codable, CaseIterable {
             case unsplash
         }
-        var type: CollectionType
+        var type: `Type`
         var parameters: Parameters
         var view: Uicorn.View?
-        init(type t: CollectionType, parameters p: Parameters, view v: Uicorn.View?) {
+        init(type t: `Type`, parameters p: Parameters, view v: Uicorn.View?) {
             type = t
             parameters = p
             view = v
@@ -27,6 +27,9 @@ extension Uicorn.View {
 extension Uicorn.View.Collection: UicornViewType {}
 
 extension Uicorn.View.Collection {
+    static var allTypeCases: [`Type`] {
+        `Type`.allCases
+    }
     var query: String? {
         get {
             parameters["query"] ?? nil
@@ -45,7 +48,7 @@ extension Uicorn.View.Collection {
     }
 }
 
-extension Uicorn.View.Collection.CollectionType {
+extension Uicorn.View.Collection.`Type` {
     var localizedTitle: String {
         switch self {
         case .unsplash: return "Unsplash"

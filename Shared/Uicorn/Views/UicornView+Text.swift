@@ -17,6 +17,8 @@ extension UicornView {
         }
         var body: some View {
             SwiftUI.Text($model.wrappedValue.value)
+                .font(.init($model.font.type.wrappedValue))
+                .fontWeight(.init($model.font.weight.wrappedValue))
         }
     }
 }
@@ -24,6 +26,6 @@ extension UicornView {
 
 struct UicornView_Text_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Text(.constant(.init("Foo")), host: MockHost())
+        UicornView.Text(.constant(.init("Foo", font: .default)), host: MockHost())
     }
 }

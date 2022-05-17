@@ -9,7 +9,7 @@ import Foundation
 
 extension Uicorn.View {
     class Shape: Codable {
-        enum ShapeType: String, Codable, CaseIterable {
+        enum `Type`: String, Codable, CaseIterable {
             case rectangle
             case roundedRectangle
             case ellipse
@@ -24,10 +24,10 @@ extension Uicorn.View {
             case cornerRadius
             case roundedCornerStyle
         }
-        var type: ShapeType
+        var type: `Type`
         var fill: Uicorn.Color
         var parameters: Parameters
-        init(type t: ShapeType, fill f: Uicorn.Color, parameters p: Parameters = [:]) {
+        init(type t: `Type`, fill f: Uicorn.Color, parameters p: Parameters = [:]) {
             type = t
             fill = f
             parameters = p
@@ -38,6 +38,9 @@ extension Uicorn.View {
 extension Uicorn.View.Shape: UicornViewType {}
 
 extension Uicorn.View.Shape {
+    static var allTypeCases: [`Type`] {
+        `Type`.allCases
+    }
     var cornerRadius: Int? {
         get {
             parameters[.cornerRadius]?.map { .init($0) } ?? nil
@@ -56,7 +59,7 @@ extension Uicorn.View.Shape {
     }
 }
 
-extension Uicorn.View.Shape.ShapeType {
+extension Uicorn.View.Shape.`Type` {
     var localizedTitle: String {
         switch self {
         case .rectangle: return "Rectangle"

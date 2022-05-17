@@ -98,6 +98,10 @@
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
 		B6D2B8F6283257EE00346B95 /* ShapePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */; };
+		B6EECA5328338BD100774B42 /* Uicorn+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5228338BD100774B42 /* Uicorn+Font.swift */; };
+		B6EECA5428338BD100774B42 /* Uicorn+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5228338BD100774B42 /* Uicorn+Font.swift */; };
+		B6EECA5628338D4000774B42 /* FontPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5528338D4000774B42 /* FontPropertiesView.swift */; };
+		B6EECA582833937400774B42 /* TextPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA572833937400774B42 /* TextPropertiesView.swift */; };
 		B6FA89A52829753700E842AE /* Uicorn+View+VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A42829753700E842AE /* Uicorn+View+VStack.swift */; };
 		B6FA89A62829753700E842AE /* Uicorn+View+VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A42829753700E842AE /* Uicorn+View+VStack.swift */; };
 		B6FA89A82829755100E842AE /* Uicorn+View+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A72829755100E842AE /* Uicorn+View+ZStack.swift */; };
@@ -211,6 +215,9 @@
 		B6ECBE0127E4CBBD00185B7E /* ComposeArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeArticleView.swift; sourceTree = "<group>"; };
 		B6ECBE0427E4E4AF00185B7E /* ComposeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeTextView.swift; sourceTree = "<group>"; };
 		B6ECBE0727E7614E00185B7E /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		B6EECA5228338BD100774B42 /* Uicorn+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+Font.swift"; sourceTree = "<group>"; };
+		B6EECA5528338D4000774B42 /* FontPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPropertiesView.swift; sourceTree = "<group>"; };
+		B6EECA572833937400774B42 /* TextPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPropertiesView.swift; sourceTree = "<group>"; };
 		B6FA89A42829753700E842AE /* Uicorn+View+VStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+View+VStack.swift"; sourceTree = "<group>"; };
 		B6FA89A72829755100E842AE /* Uicorn+View+ZStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uicorn+View+ZStack.swift"; sourceTree = "<group>"; };
 		B6FA89AA282975D100E842AE /* UicornView+VStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+VStack.swift"; sourceTree = "<group>"; };
@@ -427,6 +434,8 @@
 				B6A2E5F6282D064B002FCDFF /* CollectionPropertiesView.swift */,
 				B676929C282E828C0026CA87 /* ColorPropertiesView.swift */,
 				B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */,
+				B6EECA5528338D4000774B42 /* FontPropertiesView.swift */,
+				B6EECA572833937400774B42 /* TextPropertiesView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -460,6 +469,7 @@
 				B6AE6D652828FCEA001800F8 /* Uicorn+Screen.swift */,
 				B6AE6D682828FCFE001800F8 /* Uicorn+View.swift */,
 				B67692A4282E9DAA0026CA87 /* Uicorn+Color.swift */,
+				B6EECA5228338BD100774B42 /* Uicorn+Font.swift */,
 				B6A2E5F9282D33F7002FCDFF /* Uicorn+View+Action.swift */,
 				B676929E282E9C9C0026CA87 /* Uicorn+View+Properties.swift */,
 				B61433A0282A642200760F39 /* Uicorn+View+Sugar.swift */,
@@ -737,12 +747,14 @@
 				B69F2BD12828646800877D04 /* TreeItem+Uicorn.swift in Sources */,
 				B6FA89AC282975D100E842AE /* UicornView+VStack.swift in Sources */,
 				B6AE6D672828FCEA001800F8 /* Uicorn+Screen.swift in Sources */,
+				B6EECA5628338D4000774B42 /* FontPropertiesView.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B67692A6282E9DAA0026CA87 /* Uicorn+Color.swift in Sources */,
 				B6AE6D6D2828FF2C001800F8 /* Uicorn+View+HStack.swift in Sources */,
 				B67692A9282E9E330026CA87 /* UicornView+Shape.swift in Sources */,
 				B60F224F282839F700A730F1 /* Uicorn.swift in Sources */,
 				B6A2E5F7282D064B002FCDFF /* CollectionPropertiesView.swift in Sources */,
+				B6EECA582833937400774B42 /* TextPropertiesView.swift in Sources */,
 				B69F2BD32828663900877D04 /* UicornView+HStack.swift in Sources */,
 				B6AE6D642828FCDB001800F8 /* Uicorn+App.swift in Sources */,
 				B61737AC2829664A006DE98E /* Uicorn+View+Image.swift in Sources */,
@@ -750,6 +762,7 @@
 				B67692A3282E9D4C0026CA87 /* Uicorn+View+Shape.swift in Sources */,
 				B6883D5928242CC000544462 /* AppView.swift in Sources */,
 				B61433A2282A642200760F39 /* Uicorn+View+Sugar.swift in Sources */,
+				B6EECA5428338BD100774B42 /* Uicorn+Font.swift in Sources */,
 				B676929B282E622D0026CA87 /* Header.swift in Sources */,
 				B61433AE282AA1D200760F39 /* UicornView+UnsplashCollection.swift in Sources */,
 				B676929D282E828C0026CA87 /* ColorPropertiesView.swift in Sources */,
@@ -789,6 +802,7 @@
 				B614339E282A5EFC00760F39 /* Uicorn+View+Collection.swift in Sources */,
 				B6AE6D692828FCFE001800F8 /* Uicorn+View.swift in Sources */,
 				B6FA89A52829753700E842AE /* Uicorn+View+VStack.swift in Sources */,
+				B6EECA5328338BD100774B42 /* Uicorn+Font.swift in Sources */,
 				B61433A1282A642200760F39 /* Uicorn+View+Sugar.swift in Sources */,
 				B6FA89AB282975D100E842AE /* UicornView+VStack.swift in Sources */,
 				B676929F282E9C9C0026CA87 /* Uicorn+View+Properties.swift in Sources */,

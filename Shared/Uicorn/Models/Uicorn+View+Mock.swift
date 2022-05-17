@@ -12,21 +12,89 @@ extension Uicorn.View {
         //.unsplash("pug")
         .vstack([
             .hstack([
-                .rectangle(.system(.yellow)),
                 .zstack([
-                    .ellipse(.system(.pink)),
+                    .vstack([
+                        .spacer,
+                        .hstack([
+                            .text("H", font: .init(.largeTitle, weight: .black)),
+                            .text("E", font: .init(.largeTitle, weight: .black)),
+                            .text("L", font: .init(.largeTitle, weight: .black)),
+                            .text("L", font: .init(.largeTitle, weight: .black)),
+                            .text("O", font: .init(.largeTitle, weight: .black)),
+                        ]),
+                        .hstack([
+                            .text("W", font: .init(.largeTitle, weight: .black)),
+                            .text("O", font: .init(.largeTitle, weight: .black)),
+                            .text("R", font: .init(.largeTitle, weight: .black)),
+                            .text("L", font: .init(.largeTitle, weight: .black)),
+                            .text("D", font: .init(.largeTitle, weight: .black)),
+                        ]),
+                        .text("🌎", font: .init(.largeTitle, weight: .black)),
+                        .spacer
+                    ]),
+                    .rectangle(.system(.yellow))
+                ], action: .presentSelf),
+                .zstack([
+                    .capsule(.system(.pink)),
                     .rectangle(.system(.mint))
                 ])
-            ], spacing: 2),
+            ]),
             .hstack([
                 .rectangle(.system(.blue)),
-                .rectangle(.system(.red))
-            ], spacing: 2),
+                .vstack([
+                    .hstack([
+                        .zstack([
+                            .image("heart.fill", type: .system),
+                            .rectangle(.system(.yellow))
+                        ]),
+                        .zstack([
+                            .image("house.fill", type: .system),
+                            .rectangle(.system(.yellow))
+                        ]),
+                        .zstack([
+                            .image("highlighter", type: .system),
+                            .rectangle(.system(.yellow))
+                        ])
+                    ]),
+                    .hstack([
+                        .zstack([
+                            .ellipse(.system(.primary)),
+                            .rectangle(.system(.yellow))
+                        ]),
+                        .zstack([
+                            .ellipse(.system(.primary)),
+                            .rectangle(.system(.yellow))
+                        ]),
+                        .zstack([
+                            .ellipse(.system(.primary)),
+                            .rectangle(.system(.yellow))
+                        ])
+                    ]),
+                    .hstack([
+                        .zstack([
+                            .ellipse(.system(.primary)),
+                            .rectangle(.system(.yellow))
+                        ]),
+                        .zstack([
+                            .ellipse(.system(.primary)),
+                            .rectangle(.system(.yellow))
+                        ]),
+                        .zstack([
+                            .ellipse(.system(.primary)),
+                            .rectangle(.system(.yellow))
+                        ])
+                    ]),
+                ])
+            ]),
             .hstack([
-                .rectangle(.system(.brown)),
+                .image(.random, type: .remote, action: .presentSelf),
                 .rectangle(.system(.teal))
-            ], spacing: 2),
-        ], spacing: 2)
+            ]),
+            .hstack([
+                .rectangle(.system(.cyan)),
+                .unsplash("candy")
+            ]),
+        ])
     }
 }
 

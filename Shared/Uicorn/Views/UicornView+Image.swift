@@ -38,6 +38,11 @@ extension UicornView {
                     }
                     .frame(width: geo.size.width, height: geo.size.height)
                 }
+            case .system:
+                SwiftUI.Image(systemName: model.value)
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .foregroundColor(Color(model.fill ?? .system(.label)))
             }
         }
     }
@@ -58,6 +63,6 @@ private extension UicornView.Image {
 
 struct UicornView_Image_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Image(.constant(.init(type: .remote, value: .init())), host: MockHost())
+        UicornView.Image(.constant(.init(type: .remote, value: .init(), fill: nil)), host: MockHost())
     }
 }

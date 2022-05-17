@@ -26,12 +26,15 @@ struct PropertiesView: View {
                         $view.wrappedValue.id = UUID().uuidString
                     }
                 )
-            case .empty:
+            case let .text(t):
+                TextPropertiesView(
+                    model: t.binding {
+                        $view.type.wrappedValue = .text($0)
+                        $view.wrappedValue.id = UUID().uuidString
+                    }
+                )
+            case .empty, .image, .hstack, .vstack, .zstack, .spacer:
                 EmptyView()
-            default:
-                Section {
-                    Header(view.title)
-                }.labelsHidden()
             }
         }
     }

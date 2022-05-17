@@ -77,12 +77,12 @@ extension ColorPropertiesView.Colors.System {
 
 private extension ColorPropertiesView {
     struct Colors: View {
-        @Binding var colorType: Uicorn.Color.ColorType
+        @Binding var colorType: Uicorn.Color.`Type`
         private let header: String
         @State private var category: Category
         @State private var system: System
         @State private var custom: Color
-        init(_ t: Binding<Uicorn.Color.ColorType>, _ h: String, _ c: Category, _ s: System = .background, custom cs: Color = .white) {
+        init(_ t: Binding<Uicorn.Color.`Type`>, _ h: String, _ c: Category, _ s: System = .background, custom cs: Color = .white) {
             _colorType = t
             header = h
             category = c
@@ -122,7 +122,7 @@ private extension ColorPropertiesView {
 }
 
 private extension ColorPropertiesView.Colors {
-    init(header h: String, _ c: Binding<Uicorn.Color.ColorType>) {
+    init(header h: String, _ c: Binding<Uicorn.Color.`Type`>) {
         switch c.wrappedValue {
         case let .system(s):
             switch s {
@@ -159,7 +159,7 @@ private extension ColorPropertiesView.Colors {
             self = .init(c, h, .custom, custom: .init(cs))
         }
     }
-    private func determineColorType(category: Category) -> Uicorn.Color.ColorType {
+    private func determineColorType(category: Category) -> Uicorn.Color.`Type` {
         switch category {
         case .system:
             return determineColorType(system: system)
@@ -167,7 +167,7 @@ private extension ColorPropertiesView.Colors {
             return .custom(.init(custom))
         }
     }
-    private func determineColorType(system: System) -> Uicorn.Color.ColorType {
+    private func determineColorType(system: System) -> Uicorn.Color.`Type` {
         return .system(.init(system))
     }
 }

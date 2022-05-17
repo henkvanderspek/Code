@@ -9,9 +9,11 @@ import Foundation
 
 extension Uicorn.View {
     class Text: Codable {
-        let value: String
-        init(_ v: String) {
+        var value: String
+        var font: Uicorn.Font
+        init(_ v: String, font f: Uicorn.Font) {
             value = v
+            font = f
         }
     }
 }

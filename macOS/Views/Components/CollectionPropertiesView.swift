@@ -13,7 +13,7 @@ struct CollectionPropertiesView: View {
         Section {
             Header("Type")
             Picker("Type", selection: $model.type) {
-                ForEach(Uicorn.View.Collection.CollectionType.allCases, id: \.self) {
+                ForEach(Uicorn.View.Collection.allTypeCases, id: \.self) {
                     Text($0.localizedTitle)
                 }
             }
@@ -45,6 +45,6 @@ struct CollectionPropertiesView: View {
 
 struct CollectionPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionPropertiesView(model: .constant(.init(type: .unsplash, parameters: ["query":"pug"], view: .image("{{url}}"))))
+        CollectionPropertiesView(model: .constant(.init(type: .unsplash, parameters: ["query":"pug"], view: .image("{{url}}", type: .remote))))
     }
 }

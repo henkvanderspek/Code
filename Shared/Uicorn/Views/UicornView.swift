@@ -42,14 +42,22 @@ struct UicornView: View {
                 sheetView?
                     .frame(minWidth: 300, minHeight: 300)
             }
-            .onTapGesture {
-                guard let a = model.action else { return }
-                switch a.actionType {
+            .onSafeTapGesture(action: model.action) {
+                switch $0.actionType {
                 case .presentSelf:
                     sheetView = AnyView(content)
                     shouldShowSheet = true
                 }
             }
+    }
+}
+
+private extension View {
+    func onSafeTapGesture(action: Uicorn.View.Action?, perform p: @escaping (Uicorn.View.Action) -> Void) -> some View {
+        guard let a = action else { return AnyView(self) }
+        return AnyView(onTapGesture {
+            p(a)
+        })
     }
 }
 
@@ -79,9 +87,9 @@ private extension UicornView {
         case let .shape(s):
             Shape(s.binding, host: self)
         case .spacer:
-            SwiftUI.Text("Spacer")
+            Spacer()
         case .empty:
-            SwiftUI.Text("Empty")
+            EmptyView()
         }
     }
 }
@@ -153,6 +161,40 @@ extension Color {
         case .opaqueSeparator: self = .init(nativeColor: .opaqueSeparator)
         case .link: self = .init(nativeColor: .link)
         case .background: self = .init(nativeColor: .systemBackground)
+        }
+    }
+}
+
+extension Font {
+    init(_ f: Uicorn.Font.`Type`) {
+        switch f {
+        case .body: self = .body
+        case .callout: self = .callout
+        case .caption: self = .caption
+        case .caption2: self = .caption2
+        case .footnote: self = .footnote
+        case .headline: self = .headline
+        case .subheadline: self = .subheadline
+        case .largeTitle: self = .largeTitle
+        case .title: self = .title
+        case .title2: self = .title2
+        case .title3: self = .title3
+        }
+    }
+}
+
+extension Font.Weight {
+    init(_ f: Uicorn.Font.Weight) {
+        switch f {
+        case .regular: self = .regular
+        case .ultraLight: self = .ultraLight
+        case .thin: self = .thin
+        case .light: self = .light
+        case .medium: self = .medium
+        case .semibold: self = .semibold
+        case .bold: self = .bold
+        case .heavy: self = .heavy
+        case .black: self = .black
         }
     }
 }

@@ -13,7 +13,7 @@ struct ShapePropertiesView: View {
         Section {
             Header("Type")
             Picker("Type", selection: $model.type) {
-                ForEach(Uicorn.View.Shape.ShapeType.allCases, id: \.self) {
+                ForEach(Uicorn.View.Shape.allTypeCases, id: \.self) {
                     Text($0.localizedTitle)
                 }
             }

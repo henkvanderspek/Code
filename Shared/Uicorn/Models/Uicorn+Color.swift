@@ -9,12 +9,12 @@ import Foundation
 
 extension Uicorn {
     class Color: Codable {
-        enum ColorType: Codable {
+        enum `Type`: Codable {
             case system(System)
             case custom(Custom)
         }
-        var colorType: ColorType
-        init(_ t: ColorType) {
+        var colorType: `Type`
+        init(_ t: `Type`) {
             colorType = t
         }
     }
@@ -78,7 +78,7 @@ private extension Uicorn.Color {
 }
 
 private extension Uicorn.Color.SimpleColorType {
-    func complexType(using decoder: Decoder) throws -> Uicorn.Color.ColorType {
+    func complexType(using decoder: Decoder) throws -> Uicorn.Color.`Type` {
         switch self {
         case .system: return .system(try .init(from: decoder))
         case .custom: return .custom(try .init(from: decoder))
@@ -86,7 +86,7 @@ private extension Uicorn.Color.SimpleColorType {
     }
 }
 
-private extension Uicorn.Color.ColorType {
+private extension Uicorn.Color.`Type` {
     var string: String {
         switch self {
         case .system: return "system"

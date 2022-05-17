@@ -24,11 +24,11 @@ extension Uicorn.View {
 }
 
 extension Uicorn.View.Action {
+    fileprivate enum ActionType: String, Decodable {
+        case presentSelf
+    }
     enum CodingKeys: String, CodingKey {
         case actionType
-    }
-    enum ActionType: String, Decodable {
-        case presentSelf
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)

@@ -11,12 +11,15 @@ extension Uicorn.View {
     class Image: Codable {
         enum `Type`: String, Codable {
             case remote
+            case system
         }
-        let type: `Type`
-        let value: String
-        init(type t: `Type`, value v: String) {
+        var type: `Type`
+        var value: String
+        var fill: Uicorn.Color?
+        init(type t: `Type`, value v: String, fill f: Uicorn.Color?) {
             type = t
             value = v
+            fill = f
         }
     }
 }
