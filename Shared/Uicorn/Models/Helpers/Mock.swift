@@ -26,25 +26,25 @@ extension Uicorn.View {
                 .zstack([
                     .vstack([
                         .hstack([
-                                .image("heart.fill", type: .system),
-                                .image("house.fill", type: .system),
-                                .image("highlighter", type: .system),
+                                .image("heart.fill", type: .system, action: .presentSelf),
+                                .image("house.fill", type: .system, action: .presentSelf),
+                                .image("highlighter", type: .system, action: .presentSelf),
                             ],
                             spacing: 5,
                             padding: .all(5)
                         ),
                         .hstack([
-                                .image("gamecontroller.fill", type: .system),
-                                .image("logo.playstation", type: .system),
-                                .image("logo.xbox", type: .system),
+                                .image("gamecontroller.fill", type: .system, action: .presentSelf),
+                                .image("logo.playstation", type: .system, action: .presentSelf),
+                                .image("logo.xbox", type: .system, action: .presentSelf),
                             ],
                             spacing: 5,
                             padding: .all(5)
                         ),
                         .hstack([
-                                .image("airplane", type: .system),
-                                .image("car.fill", type: .system),
-                                .image("fuelpump.fill", type: .system),
+                                .image("airplane", type: .system, action: .presentSelf),
+                                .image("car.fill", type: .system, action: .presentSelf),
+                                .image("fuelpump.fill", type: .system, action: .presentSelf),
                             ],
                             spacing: 5,
                             padding: .all(5)

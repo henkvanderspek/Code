@@ -41,6 +41,7 @@ extension UicornView {
             case .system:
                 SwiftUI.Image(systemName: model.value)
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .foregroundColor(Color(model.fill ?? .system(.label)))
             }
