@@ -18,20 +18,6 @@ struct ShapePropertiesView: View {
                 }
             }
             ColorPropertiesView(header: "Color", model: $model.fill)
-            switch model.type {
-            case .roundedRectangle:
-                Header("Corner Radius")
-                HStack(spacing: 5) {
-                    Text("\(model.cornerRadius ?? Uicorn.defaultRoundedRectangleCornerRadius)")
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                    Stepper("Corner Radius", value: Binding($model.cornerRadius, default: Uicorn.defaultRoundedRectangleCornerRadius), in: 1...1000)
-                }
-                .frame(width: 80)
-                .background(.background)
-                .cornerRadius(4)
-            case .rectangle, .capsule, .ellipse:
-                EmptyView()
-            }
         }
         .labelsHidden()
         .id(UUID())

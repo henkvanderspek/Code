@@ -13,25 +13,7 @@ extension Uicorn.View {
         .vstack([
             .hstack([
                 .zstack([
-                    .vstack([
-                        .spacer,
-                        .hstack([
-                            .text("H", font: .init(.largeTitle, weight: .black)),
-                            .text("E", font: .init(.largeTitle, weight: .black)),
-                            .text("L", font: .init(.largeTitle, weight: .black)),
-                            .text("L", font: .init(.largeTitle, weight: .black)),
-                            .text("O", font: .init(.largeTitle, weight: .black)),
-                        ]),
-                        .hstack([
-                            .text("W", font: .init(.largeTitle, weight: .black)),
-                            .text("O", font: .init(.largeTitle, weight: .black)),
-                            .text("R", font: .init(.largeTitle, weight: .black)),
-                            .text("L", font: .init(.largeTitle, weight: .black)),
-                            .text("D", font: .init(.largeTitle, weight: .black)),
-                        ]),
-                        .text("🌎", font: .init(.largeTitle, weight: .black)),
-                        .spacer
-                    ]),
+                    .text("HELLO\nWORLD\n🌎", font: .init(.largeTitle, weight: .black)),
                     .rectangle(.system(.yellow))
                 ], action: .presentSelf),
                 .zstack([
@@ -41,49 +23,34 @@ extension Uicorn.View {
             ]),
             .hstack([
                 .rectangle(.system(.blue)),
-                .vstack([
-                    .hstack([
-                        .zstack([
-                            .image("heart.fill", type: .system),
-                            .rectangle(.system(.yellow))
-                        ]),
-                        .zstack([
-                            .image("house.fill", type: .system),
-                            .rectangle(.system(.yellow))
-                        ]),
-                        .zstack([
-                            .image("highlighter", type: .system),
-                            .rectangle(.system(.yellow))
-                        ])
+                .zstack([
+                    .vstack([
+                        .hstack([
+                                .image("heart.fill", type: .system),
+                                .image("house.fill", type: .system),
+                                .image("highlighter", type: .system),
+                            ],
+                            spacing: 5,
+                            padding: .all(5)
+                        ),
+                        .hstack([
+                                .image("gamecontroller.fill", type: .system),
+                                .image("logo.playstation", type: .system),
+                                .image("logo.xbox", type: .system),
+                            ],
+                            spacing: 5,
+                            padding: .all(5)
+                        ),
+                        .hstack([
+                                .image("airplane", type: .system),
+                                .image("car.fill", type: .system),
+                                .image("fuelpump.fill", type: .system),
+                            ],
+                            spacing: 5,
+                            padding: .all(5)
+                        ),
                     ]),
-                    .hstack([
-                        .zstack([
-                            .ellipse(.system(.primary)),
-                            .rectangle(.system(.yellow))
-                        ]),
-                        .zstack([
-                            .ellipse(.system(.primary)),
-                            .rectangle(.system(.yellow))
-                        ]),
-                        .zstack([
-                            .ellipse(.system(.primary)),
-                            .rectangle(.system(.yellow))
-                        ])
-                    ]),
-                    .hstack([
-                        .zstack([
-                            .ellipse(.system(.primary)),
-                            .rectangle(.system(.yellow))
-                        ]),
-                        .zstack([
-                            .ellipse(.system(.primary)),
-                            .rectangle(.system(.yellow))
-                        ]),
-                        .zstack([
-                            .ellipse(.system(.primary)),
-                            .rectangle(.system(.yellow))
-                        ])
-                    ]),
+                    .rectangle(.system(.yellow)),
                 ])
             ]),
             .hstack([

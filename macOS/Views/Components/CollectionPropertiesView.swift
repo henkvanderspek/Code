@@ -19,24 +19,8 @@ struct CollectionPropertiesView: View {
             }
             switch model.type {
             case .unsplash:
-                Header("Search")
-                VStack {
-                    TextEditor(text: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery))
-                        .frame(minHeight: 100)
-                        .padding(6)
-                }
-                .background(.background)
-                .cornerRadius(4)
-                .frame(minHeight: 20)
-                Header("Count")
-                HStack(spacing: 5) {
-                    Text("\(model.count ?? Uicorn.defaultUnsplashCollectionCount)")
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                    Stepper("Count", value: Binding($model.count, default: Uicorn.defaultUnsplashCollectionCount), in: 1...20)
-                }
-                .frame(width: 80)
-                .background(.background)
-                .cornerRadius(4)
+                TextEditorView(value: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery), header: "Search")
+                StepperView($model.count, default: Uicorn.defaultUnsplashCollectionCount, range: 1...30, header: "Count")
             }
         }
         .labelsHidden()

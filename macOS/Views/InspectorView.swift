@@ -1,5 +1,5 @@
 //
-//  PropertiesView.swift
+//  InspectorView.swift
 //  macOS
 //
 //  Created by Henk van der Spek on 06/05/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PropertiesView: View {
+struct InspectorView: View {
     @Binding var view: Uicorn.View
     var body: some View {
         Form {
@@ -36,12 +36,27 @@ struct PropertiesView: View {
             case .empty, .image, .hstack, .vstack, .zstack, .spacer:
                 EmptyView()
             }
+            switch view.type {
+            case .shape, .text, .image, .hstack, .vstack, .zstack:
+                PropertiesView(
+                    .init(
+                        get: {
+                            view.properties ?? .empty
+                        },
+                        set: {
+                            $view.properties.wrappedValue = $0
+                        }
+                    )
+                )
+            case .spacer, .empty, .collection:
+                EmptyView()
+            }
         }
     }
 }
 
-struct PropertiesView_Previews: PreviewProvider {
+struct InspectorView_Previews: PreviewProvider {
     static var previews: some View {
-        PropertiesView(view: .constant(.mock))
+        InspectorView(view: .constant(.mock))
     }
 }

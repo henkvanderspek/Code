@@ -12,7 +12,9 @@ struct TextPropertiesView: View {
     var body: some View {
         Section {
             FontPropertiesView(model: $model.font)
+            // TODO: text alignment
         }
+        .labelsHidden()
     }
 }
 

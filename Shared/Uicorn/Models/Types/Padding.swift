@@ -21,3 +21,23 @@ extension Uicorn {
         }
     }
 }
+
+extension Uicorn.Padding {
+    static var zero: Uicorn.Padding {
+        all(0)
+    }
+    static func all(_ v: Int) -> Uicorn.Padding {
+        .init(leading: v, trailing: v, top: v, bottom: v)
+    }
+    var all: Int {
+        set {
+            leading = newValue
+            trailing = newValue
+            top = newValue
+            bottom = newValue
+        }
+        get {
+            leading
+        }
+    }
+}

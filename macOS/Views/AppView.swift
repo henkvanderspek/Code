@@ -35,7 +35,7 @@ struct AppView: View {
             }.listStyle(.sidebar)
             ScreenView(observer.sanitizedScreen)
             List {
-                PropertiesView(view: observer.sanitizedSelectedItem)
+                InspectorView(view: observer.sanitizedSelectedItem)
             }.listStyle(.sidebar)
         }
         .navigationViewStyle(.columns)

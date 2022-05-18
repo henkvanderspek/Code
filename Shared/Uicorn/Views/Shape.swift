@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-extension Uicorn {
-    static let defaultRoundedRectangleCornerRadius = 15
-}
-
 extension UicornView {
     struct Shape: View {
         @Binding var model: Uicorn.View.Shape
@@ -23,9 +19,6 @@ extension UicornView {
             switch model.type {
             case .rectangle:
                 Rectangle()
-                    .fill(Color(model.fill))
-            case .roundedRectangle:
-                RoundedRectangle(cornerRadius: .init(model.cornerRadius ?? Uicorn.defaultRoundedRectangleCornerRadius))
                     .fill(Color(model.fill))
             case .ellipse:
                 Ellipse()

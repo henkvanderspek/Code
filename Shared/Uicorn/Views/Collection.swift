@@ -9,7 +9,7 @@ import SwiftUI
 
 extension Uicorn {
     static let defaultUnsplashCollectionQuery = "pug"
-    static let defaultUnsplashCollectionCount = 20
+    static let defaultUnsplashCollectionCount = 30
 }
 
 extension UicornView {

@@ -19,6 +19,7 @@ extension UicornView {
             SwiftUI.Text($model.wrappedValue.value)
                 .font(.init($model.font.type.wrappedValue))
                 .fontWeight(.init($model.font.weight.wrappedValue))
+                .multilineTextAlignment(.center)
         }
     }
 }
@@ -26,6 +27,6 @@ extension UicornView {
 
 struct UicornView_Text_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Text(.constant(.init("Foo", font: .default)), host: MockHost())
+        UicornView.Text(.constant(.init("Foo\nBar", font: .default)), host: MockHost())
     }
 }
