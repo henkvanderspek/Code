@@ -103,13 +103,9 @@
 		B6B125E02834DE42005E989F /* UicornView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F225028283A1B00A730F1 /* UicornView.swift */; };
 		B6B125E12834DE42005E989F /* ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89AD282975E300E842AE /* ZStack.swift */; };
 		B6B125E22834DE42005E989F /* UnsplashCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61433AC282AA1D200760F39 /* UnsplashCollection.swift */; };
-		B6B125E4283511C5005E989F /* PaddingPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E3283511C5005E989F /* PaddingPropertiesView.swift */; };
 		B6B125E5283511C5005E989F /* PaddingPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E3283511C5005E989F /* PaddingPropertiesView.swift */; };
-		B6B125E72835123E005E989F /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E62835123E005E989F /* StepperView.swift */; };
 		B6B125E82835123E005E989F /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E62835123E005E989F /* StepperView.swift */; };
-		B6B125EA28351A07005E989F /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E928351A07005E989F /* TextEditorView.swift */; };
 		B6B125EB28351A07005E989F /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E928351A07005E989F /* TextEditorView.swift */; };
-		B6B125ED28352F15005E989F /* PropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125EC28352F15005E989F /* PropertiesView.swift */; };
 		B6B125EE28352F15005E989F /* PropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125EC28352F15005E989F /* PropertiesView.swift */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
@@ -855,11 +851,8 @@
 				B6AE6D6F2828FF39001800F8 /* View+Text.swift in Sources */,
 				B6AE6D6C2828FF2C001800F8 /* View+HStack.swift in Sources */,
 				B61433AA282A84C600760F39 /* BackendController.swift in Sources */,
-				B6B125E4283511C5005E989F /* PaddingPropertiesView.swift in Sources */,
-				B6B125E72835123E005E989F /* StepperView.swift in Sources */,
 				B614339E282A5EFC00760F39 /* View+Collection.swift in Sources */,
 				B6AE6D692828FCFE001800F8 /* View.swift in Sources */,
-				B6B125EA28351A07005E989F /* TextEditorView.swift in Sources */,
 				B6FA89A52829753700E842AE /* View+VStack.swift in Sources */,
 				B6EECA5328338BD100774B42 /* Font.swift in Sources */,
 				B61433A1282A642200760F39 /* Sugar.swift in Sources */,
@@ -873,7 +866,6 @@
 				B6A2E5FA282D33F7002FCDFF /* Action.swift in Sources */,
 				B69F2BD92828689300877D04 /* Text.swift in Sources */,
 				B6AE6D662828FCEA001800F8 /* Screen.swift in Sources */,
-				B6B125ED28352F15005E989F /* PropertiesView.swift in Sources */,
 				B6AE6D742829319E001800F8 /* Color+Random.swift in Sources */,
 				B61737AB2829664A006DE98E /* View+Image.swift in Sources */,
 				B67692A8282E9E330026CA87 /* Shape.swift in Sources */,
