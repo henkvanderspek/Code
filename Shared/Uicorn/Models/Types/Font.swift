@@ -1,6 +1,6 @@
 //
-//  Uicorn+Font.swift
-//  Code
+//  Font.swift
+//  Uicorn
 //
 //  Created by Henk van der Spek on 17/05/2022.
 //

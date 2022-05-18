@@ -1,6 +1,6 @@
 //
-//  UicornView+UnsplashCollection.swift
-//  Code
+//  UnsplashCollection.swift
+//  Uicorn
 //
 //  Created by Henk van der Spek on 10/05/2022.
 //

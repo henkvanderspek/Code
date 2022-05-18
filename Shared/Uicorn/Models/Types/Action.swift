@@ -1,6 +1,6 @@
 //
-//  Uicorn+View+Action.swift
-//  Code
+//  Action.swift
+//  Uicorn
 //
 //  Created by Henk van der Spek on 12/05/2022.
 //
@@ -12,7 +12,7 @@ extension Uicorn.View {
         enum `Type` {
             case presentSelf
         }
-        let actionType: `Type`
+        var actionType: `Type`
         init(actionType t: `Type`) {
             actionType = t
         }

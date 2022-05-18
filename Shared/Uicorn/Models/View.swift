@@ -1,13 +1,11 @@
 //
-//  Uicorn+View.swift
-//  Code
+//  View.swift
+//  Uicorn
 //
 //  Created by Henk van der Spek on 09/05/2022.
 //
 
 import Foundation
-
-protocol UicornViewType {}
 
 extension Uicorn {
     class View: Codable {
@@ -116,3 +114,5 @@ private extension Uicorn.View.`Type` {
         }
     }
 }
+
+protocol UicornViewType {}
