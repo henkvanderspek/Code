@@ -20,7 +20,13 @@ struct FontPropertiesView: View {
             }
             Header("Weight")
             Picker("Weight", selection: $model.weight) {
-                ForEach(Uicorn.Font.allWeightCases, id: \.self) {
+                ForEach(Uicorn.Font.Weight.allCases, id: \.self) {
+                    Text($0.localizedString)
+                }
+            }
+            Header("Design")
+            Picker("Design", selection: $model.design) {
+                ForEach(Uicorn.Font.Design.allCases, id: \.self) {
                     Text($0.localizedString)
                 }
             }

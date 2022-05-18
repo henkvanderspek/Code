@@ -17,13 +17,11 @@ extension UicornView {
         }
         var body: some View {
             SwiftUI.Text($model.wrappedValue.value)
-                .font(.init($model.font.type.wrappedValue))
-                .fontWeight(.init($model.font.weight.wrappedValue))
+                .font(.init($model.font.wrappedValue))
                 .multilineTextAlignment(.center)
         }
     }
 }
-
 
 struct UicornView_Text_Previews: PreviewProvider {
     static var previews: some View {

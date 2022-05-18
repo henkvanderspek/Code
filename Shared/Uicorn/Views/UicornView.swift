@@ -171,8 +171,14 @@ extension Color {
 }
 
 extension Font {
-    init(_ f: Uicorn.Font.`Type`) {
-        switch f {
+    init(_ f: Uicorn.Font) {
+        self = .system(.init(f.type), design: .init(f.design)).weight(.init(f.weight))
+    }
+}
+
+extension Font.TextStyle {
+    init(_ t: Uicorn.Font.`Type`) {
+        switch t {
         case .body: self = .body
         case .callout: self = .callout
         case .caption: self = .caption
@@ -189,8 +195,8 @@ extension Font {
 }
 
 extension Font.Weight {
-    init(_ f: Uicorn.Font.Weight) {
-        switch f {
+    init(_ w: Uicorn.Font.Weight) {
+        switch w {
         case .regular: self = .regular
         case .ultraLight: self = .ultraLight
         case .thin: self = .thin
@@ -200,6 +206,17 @@ extension Font.Weight {
         case .bold: self = .bold
         case .heavy: self = .heavy
         case .black: self = .black
+        }
+    }
+}
+
+extension Font.Design {
+    init(_ d: Uicorn.Font.Design) {
+        switch d {
+        case .default: self = .default
+        case .monospaced: self = .monospaced
+        case .rounded: self = .rounded
+        case .serif: self = .serif
         }
     }
 }

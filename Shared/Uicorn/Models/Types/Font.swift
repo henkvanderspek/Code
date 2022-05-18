@@ -33,24 +33,29 @@ extension Uicorn {
             case heavy
             case black
         }
+        enum Design: String, Codable, CaseIterable {
+            case `default`
+            case rounded
+            case serif
+            case monospaced
+        }
         var type: `Type`
         var weight: Weight
-        init(_ t: `Type`, weight w: Weight) {
+        var design: Design
+        init(type t: `Type`, weight w: Weight, design d: Design) {
             type = t
             weight = w
+            design = d
         }
     }
 }
 
 extension Uicorn.Font {
     static var `default`: Uicorn.Font {
-        .init(.body, weight: .regular)
+        .init(type: .body, weight: .regular, design: .default)
     }
     static var allTypeCases: [Uicorn.Font.`Type`] {
         `Type`.allCases
-    }
-    static var allWeightCases: [Uicorn.Font.Weight] {
-        Weight.allCases
     }
 }
 
@@ -86,6 +91,17 @@ extension Uicorn.Font.Weight {
         case .black: return "Black"
         case .regular: fallthrough
         default: return "Regular"
+        }
+    }
+}
+
+extension Uicorn.Font.Design {
+    var localizedString: String {
+        switch self {
+        case .`default`: return "Default"
+        case .serif: return "Serif"
+        case .rounded: return "Rounded"
+        case .monospaced: return "Monospaced"
         }
     }
 }

@@ -13,7 +13,7 @@ extension Uicorn.View {
         .vstack([
             .hstack([
                 .zstack([
-                    .text("HELLO\nWORLD\n🌎", font: .init(.largeTitle, weight: .black)),
+                    .text("HELLO\nWORLD\n🌎", font: .init(type: .largeTitle, weight: .black, design: .rounded)),
                     .rectangle(.system(.yellow))
                 ], action: .presentSelf),
                 .zstack([
