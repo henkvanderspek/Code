@@ -27,6 +27,10 @@
 		B61737A92829651E006DE98E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737A72829651E006DE98E /* Image.swift */; };
 		B61737AB2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
 		B61737AC2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
+		B64C9F3F283695F600A4B7CF /* NonokiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */; };
+		B64C9F41283695F600A4B7CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C9F40283695F600A4B7CF /* ContentView.swift */; };
+		B64C9F43283695F700A4B7CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64C9F42283695F700A4B7CF /* Assets.xcassets */; };
+		B64C9F46283695F700A4B7CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64C9F45283695F700A4B7CF /* Preview Assets.xcassets */; };
 		B660EEC2283641E8008234A4 /* ImagePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */; };
 		B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC32836422F008234A4 /* TextFieldView.swift */; };
 		B676929B282E622D0026CA87 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929A282E622D0026CA87 /* Header.swift */; };
@@ -158,6 +162,11 @@
 		B63F547527CE254200C111A8 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		B63F547827CE2B1900C111A8 /* DynamicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGridView.swift; sourceTree = "<group>"; };
 		B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
+		B64C9F3C283695F600A4B7CF /* Nonokia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nonokia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonokiaApp.swift; sourceTree = "<group>"; };
+		B64C9F40283695F600A4B7CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B64C9F42283695F700A4B7CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B64C9F45283695F700A4B7CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePropertiesView.swift; sourceTree = "<group>"; };
 		B660EEC32836422F008234A4 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B66A8E092816D46D00BE9D55 /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
@@ -252,6 +261,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B64C9F39283695F600A4B7CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6A38E4C282BF851002777CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +308,7 @@
 				B6FDF7D927CCDB800008262D /* iOS */,
 				B6C2843427CCEAF60000C0E7 /* macOS */,
 				B6A38E50282BF851002777CA /* Renderer */,
+				B64C9F3D283695F600A4B7CF /* Nonokia */,
 				B62A6CF327C7C6D200798A2C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -302,8 +319,28 @@
 				B6FDF7D827CCDB800008262D /* Canvas.app */,
 				B6C2843327CCEAF60000C0E7 /* Canvas.app */,
 				B6A38E4F282BF851002777CA /* Renderer.app */,
+				B64C9F3C283695F600A4B7CF /* Nonokia.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B64C9F3D283695F600A4B7CF /* Nonokia */ = {
+			isa = PBXGroup;
+			children = (
+				B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */,
+				B64C9F40283695F600A4B7CF /* ContentView.swift */,
+				B64C9F42283695F700A4B7CF /* Assets.xcassets */,
+				B64C9F44283695F700A4B7CF /* Preview Content */,
+			);
+			path = Nonokia;
+			sourceTree = "<group>";
+		};
+		B64C9F44283695F700A4B7CF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B64C9F45283695F700A4B7CF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		B67B3D8A27DF3D3F00F50F2E /* JsonUI */ = {
@@ -619,6 +656,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B64C9F3B283695F600A4B7CF /* Nonokia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B64C9F49283695F700A4B7CF /* Build configuration list for PBXNativeTarget "Nonokia" */;
+			buildPhases = (
+				B64C9F38283695F600A4B7CF /* Sources */,
+				B64C9F39283695F600A4B7CF /* Frameworks */,
+				B64C9F3A283695F600A4B7CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nonokia;
+			productName = Nonokia;
+			productReference = B64C9F3C283695F600A4B7CF /* Nonokia.app */;
+			productType = "com.apple.product-type.application";
+		};
 		B6A38E4E282BF851002777CA /* Renderer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6A38E5A282BF852002777CA /* Build configuration list for PBXNativeTarget "Renderer" */;
@@ -684,6 +738,9 @@
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					B64C9F3B283695F600A4B7CF = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
 					B6A38E4E282BF851002777CA = {
 						CreatedOnToolsVersion = 13.3.1;
 						LastSwiftMigration = 1330;
@@ -714,11 +771,21 @@
 				B6FDF7D727CCDB800008262D /* iOS */,
 				B6C2843227CCEAF60000C0E7 /* macOS */,
 				B6A38E4E282BF851002777CA /* Renderer */,
+				B64C9F3B283695F600A4B7CF /* Nonokia */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B64C9F3A283695F600A4B7CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B64C9F46283695F700A4B7CF /* Preview Assets.xcassets in Resources */,
+				B64C9F43283695F700A4B7CF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6A38E4D282BF851002777CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -749,6 +816,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B64C9F38283695F600A4B7CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B64C9F41283695F600A4B7CF /* ContentView.swift in Sources */,
+				B64C9F3F283695F600A4B7CF /* NonokiaApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6A38E4B282BF851002777CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1003,6 +1079,71 @@
 			};
 			name = Release;
 		};
+		B64C9F47283695F700A4B7CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Nonokia/Preview Content\"";
+				DEVELOPMENT_TEAM = TY7XLLRKJW;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vdbyte.Nonokia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B64C9F48283695F700A4B7CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Nonokia/Preview Content\"";
+				DEVELOPMENT_TEAM = TY7XLLRKJW;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vdbyte.Nonokia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		B6A38E5B282BF852002777CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1212,6 +1353,15 @@
 			buildConfigurations = (
 				B62A6CFF27C7C6D300798A2C /* Debug */,
 				B62A6D0027C7C6D300798A2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B64C9F49283695F700A4B7CF /* Build configuration list for PBXNativeTarget "Nonokia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B64C9F47283695F700A4B7CF /* Debug */,
+				B64C9F48283695F700A4B7CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
