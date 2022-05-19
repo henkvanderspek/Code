@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ShapePropertiesView: View {
     @Binding var model: Uicorn.View.Shape
+    init(_ m: Binding<Uicorn.View.Shape>) {
+        _model = m
+    }
     var body: some View {
         Section {
             Header("Type")
@@ -26,6 +29,6 @@ struct ShapePropertiesView: View {
 
 struct ShapePropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        ShapePropertiesView(model: .constant(.rectangle(.system(.cyan))))
+        ShapePropertiesView(.constant(.rectangle(.system(.cyan))))
     }
 }

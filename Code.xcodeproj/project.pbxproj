@@ -27,6 +27,8 @@
 		B61737A92829651E006DE98E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737A72829651E006DE98E /* Image.swift */; };
 		B61737AB2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
 		B61737AC2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
+		B660EEC2283641E8008234A4 /* ImagePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */; };
+		B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC32836422F008234A4 /* TextFieldView.swift */; };
 		B676929B282E622D0026CA87 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929A282E622D0026CA87 /* Header.swift */; };
 		B676929D282E828C0026CA87 /* ColorPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929C282E828C0026CA87 /* ColorPropertiesView.swift */; };
 		B676929F282E9C9C0026CA87 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929E282E9C9C0026CA87 /* Properties.swift */; };
@@ -156,6 +158,8 @@
 		B63F547527CE254200C111A8 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		B63F547827CE2B1900C111A8 /* DynamicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGridView.swift; sourceTree = "<group>"; };
 		B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
+		B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePropertiesView.swift; sourceTree = "<group>"; };
+		B660EEC32836422F008234A4 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B66A8E092816D46D00BE9D55 /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
 		B676929A282E622D0026CA87 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		B676929C282E828C0026CA87 /* ColorPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPropertiesView.swift; sourceTree = "<group>"; };
@@ -451,12 +455,14 @@
 				B676929A282E622D0026CA87 /* Header.swift */,
 				B6B125E62835123E005E989F /* StepperView.swift */,
 				B6B125E928351A07005E989F /* TextEditorView.swift */,
+				B660EEC32836422F008234A4 /* TextFieldView.swift */,
 				B6A2E5F6282D064B002FCDFF /* CollectionPropertiesView.swift */,
 				B676929C282E828C0026CA87 /* ColorPropertiesView.swift */,
 				B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */,
 				B6EECA5528338D4000774B42 /* FontPropertiesView.swift */,
 				B6EECA572833937400774B42 /* TextPropertiesView.swift */,
 				B6B125E3283511C5005E989F /* PaddingPropertiesView.swift */,
+				B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 			);
 			path = Components;
@@ -801,6 +807,7 @@
 				B67692A6282E9DAA0026CA87 /* Color.swift in Sources */,
 				B6AE6D6D2828FF2C001800F8 /* View+HStack.swift in Sources */,
 				B67692A9282E9E330026CA87 /* Shape.swift in Sources */,
+				B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */,
 				B60F224F282839F700A730F1 /* Uicorn.swift in Sources */,
 				B6A2E5F7282D064B002FCDFF /* CollectionPropertiesView.swift in Sources */,
 				B6EECA582833937400774B42 /* TextPropertiesView.swift in Sources */,
@@ -823,6 +830,7 @@
 				B6AE6D702828FF39001800F8 /* View+Text.swift in Sources */,
 				B6FA89AF282975E300E842AE /* ZStack.swift in Sources */,
 				B6AE6D6A2828FCFE001800F8 /* View.swift in Sources */,
+				B660EEC2283641E8008234A4 /* ImagePropertiesView.swift in Sources */,
 				B6B125EB28351A07005E989F /* TextEditorView.swift in Sources */,
 				B61433A8282A656E00760F39 /* Collection.swift in Sources */,
 				B6D2B8F6283257EE00346B95 /* ShapePropertiesView.swift in Sources */,

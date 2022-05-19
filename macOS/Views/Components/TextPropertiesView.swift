@@ -9,6 +9,9 @@ import SwiftUI
 
 struct TextPropertiesView: View {
     @Binding var model: Uicorn.View.Text
+    init(_ m: Binding<Uicorn.View.Text>) {
+        _model = m
+    }
     var body: some View {
         Section {
             FontPropertiesView(model: $model.font)
@@ -20,6 +23,6 @@ struct TextPropertiesView: View {
 
 struct TextPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        TextPropertiesView(model: .constant(.init("", font: .default)))
+        TextPropertiesView(.constant(.init("", font: .default)))
     }
 }

@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CollectionPropertiesView: View {
     @Binding var model: Uicorn.View.Collection
+    init(_ m: Binding<Uicorn.View.Collection>) {
+        _model = m
+    }
     var body: some View {
         Section {
             Header("Type")
@@ -29,6 +32,6 @@ struct CollectionPropertiesView: View {
 
 struct CollectionPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionPropertiesView(model: .constant(.init(type: .unsplash, parameters: ["query":"pug"], view: .image("{{url}}", type: .remote))))
+        CollectionPropertiesView(.constant(.init(type: .unsplash, parameters: ["query":"pug"], view: .image("{{url}}", type: .remote))))
     }
 }

@@ -13,27 +13,14 @@ struct InspectorView: View {
         Form {
             switch view.type {
             case let .collection(c):
-                CollectionPropertiesView(
-                    model: c.binding {
-                        $view.type.wrappedValue = .collection($0)
-                        $view.wrappedValue.id = UUID().uuidString
-                    }
-                )
+                CollectionPropertiesView(c.binding(set: update))
             case let .shape(s):
-                ShapePropertiesView(
-                    model: s.binding {
-                        $view.type.wrappedValue = .shape($0)
-                        $view.wrappedValue.id = UUID().uuidString
-                    }
-                )
+                ShapePropertiesView(s.binding(set: update))
             case let .text(t):
-                TextPropertiesView(
-                    model: t.binding {
-                        $view.type.wrappedValue = .text($0)
-                        $view.wrappedValue.id = UUID().uuidString
-                    }
-                )
-            case .empty, .image, .hstack, .vstack, .zstack, .spacer:
+                TextPropertiesView(t.binding(set: update))
+            case let .image(i):
+                ImagePropertiesView(i.binding(set: update))
+            case .empty, .hstack, .vstack, .zstack, .spacer:
                 EmptyView()
             }
             switch view.type {
@@ -44,7 +31,7 @@ struct InspectorView: View {
                             view.properties ?? .empty
                         },
                         set: {
-                            $view.properties.wrappedValue = $0
+                            view.properties = $0
                         }
                     )
                 )
@@ -52,6 +39,25 @@ struct InspectorView: View {
                 EmptyView()
             }
         }
+    }
+}
+
+private extension InspectorView {
+    func update(_ c: Uicorn.View.Collection) {
+        $view.type.wrappedValue = .collection(c)
+        view.id = UUID().uuidString
+    }
+    func update(_ s: Uicorn.View.Shape) {
+        $view.type.wrappedValue = .shape(s)
+        view.id = UUID().uuidString
+    }
+    func update(_ t: Uicorn.View.Text) {
+        $view.type.wrappedValue = .text(t)
+        view.id = UUID().uuidString
+    }
+    func update(_ i: Uicorn.View.Image) {
+        $view.type.wrappedValue = .image(i)
+        view.id = UUID().uuidString
     }
 }
 
