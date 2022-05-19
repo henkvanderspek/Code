@@ -39,25 +39,22 @@ struct InspectorView: View {
                 EmptyView()
             }
         }
+        .id(view.id)
     }
 }
 
 private extension InspectorView {
     func update(_ c: Uicorn.View.Collection) {
         $view.type.wrappedValue = .collection(c)
-        view.id = UUID().uuidString
     }
     func update(_ s: Uicorn.View.Shape) {
         $view.type.wrappedValue = .shape(s)
-        view.id = UUID().uuidString
     }
     func update(_ t: Uicorn.View.Text) {
         $view.type.wrappedValue = .text(t)
-        view.id = UUID().uuidString
     }
     func update(_ i: Uicorn.View.Image) {
         $view.type.wrappedValue = .image(i)
-        view.id = UUID().uuidString
     }
 }
 
