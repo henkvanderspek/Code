@@ -35,7 +35,6 @@ struct ImagePropertiesView: View {
             }
         }
         .labelsHidden()
-//        .id(UUID())
     }
 }
 

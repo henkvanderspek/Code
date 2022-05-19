@@ -32,7 +32,6 @@ struct FontPropertiesView: View {
             }
         }
         .labelsHidden()
-        .id(UUID())
     }
 }
 
