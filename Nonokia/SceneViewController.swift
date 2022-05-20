@@ -45,6 +45,19 @@ class SceneViewController: UIViewController {
         return node
     }()
     
+    private lazy var testViewController: UIViewController = {
+        let vc = UIHostingController(
+            rootView: TestView()
+                .frame(width: 250, height: 250)
+        )
+        vc.loadView()
+        vc.view.frame = .init(origin: .zero, size: .init(width: 250, height: 250))
+        vc.willMove(toParent: self)
+        addChild(vc)
+        view.insertSubview(vc.view, at: 0)
+        return vc
+    }()
+    
     private lazy var captureDevice: AVCaptureDevice? = {
         .default(.builtInWideAngleCamera, for: .video, position: .front)
     }()
@@ -74,11 +87,12 @@ private extension SceneViewController {
         let s = scene.rootNode.childNode(withName: "Screen", recursively: true)!
         Task {
 //            s.geometry?.firstMaterial?.diffuse.contents = renderTestView()
-            s.geometry?.firstMaterial?.diffuse.contents = captureDevice
-            let translation = SCNMatrix4MakeTranslation(-1, 0, 1)
-            let rotation = SCNMatrix4MakeRotation(-Float.pi / 2, 0, 0, 1)
-            let transform = SCNMatrix4Mult(translation, rotation)
-            s.geometry?.firstMaterial?.diffuse.contentsTransform = transform
+            s.geometry?.firstMaterial?.diffuse.contents = testViewController.view.layer
+//            s.geometry?.firstMaterial?.diffuse.contents = captureDevice
+//            let translation = SCNMatrix4MakeTranslation(-1, 0, 1)
+//            let rotation = SCNMatrix4MakeRotation(-Float.pi / 2, 0, 0, 1)
+//            let transform = SCNMatrix4Mult(translation, rotation)
+//            s.geometry?.firstMaterial?.diffuse.contentsTransform = transform
         }
     }
     func renderTestView() -> UIImage {
@@ -126,16 +140,20 @@ extension SCNVector3 {
 }
 
 struct TestView: View {
+    @State private var scale = 0.5
     var body: some View {
         VStack(spacing: 20) {
-            Spacer()
+            Rectangle()
+                .fill(.pink)
+                .scaleEffect(scale)
+                .animation(Animation.linear(duration: 1).repeatForever(), value: scale)
+                .onAppear { scale = 1.0 }
             Text("Hello, World!")
-                .font(.system(.largeTitle, design: .default))
+                .font(.system(.title, design: .default))
                 .fontWeight(.black)
             Text("🤓👍")
                 .font(.largeTitle)
                 .fontWeight(.black)
-            Spacer()
         }
         .padding()
         .background(.white)
