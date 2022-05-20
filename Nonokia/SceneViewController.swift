@@ -45,12 +45,21 @@ class SceneViewController: UIViewController {
         return node
     }()
     
-    private lazy var testViewController: UIViewController = {
-        let vc = UIHostingController(
-            rootView: TestView()
-                .frame(width: 250, height: 250)
-        )
-        vc.loadView()
+    class TestViewController: UIHostingController<TestView> {
+        private var state = TestView.StateObject()
+        init() {
+            super.init(rootView: .init(state: state))
+        }
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        func doIt() {
+            state.shouldPresentPopover.toggle()
+        }
+    }
+    
+    private lazy var testViewController: TestViewController = {
+        let vc = TestViewController()
         vc.view.frame = .init(origin: .zero, size: .init(width: 250, height: 250))
         vc.willMove(toParent: self)
         addChild(vc)
@@ -70,6 +79,10 @@ class SceneViewController: UIViewController {
             sceneView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ]
     }()
+    
+    private var didAddMaterial = false
+    
+    @StateObject private var state = TestView.StateObject()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,13 +98,18 @@ private extension SceneViewController {
         let r = sceneView.hitTest(p)
         guard let n = r.first?.node, n.name == "Cylinder" else { return }
         let s = scene.rootNode.childNode(withName: "Screen", recursively: true)!
-        Task {
-            s.geometry?.firstMaterial?.diffuse.contents = testViewController.view.layer
-//            s.geometry?.firstMaterial?.diffuse.contents = captureDevice
-//            let translation = SCNMatrix4MakeTranslation(-1, 0, 1)
-//            let rotation = SCNMatrix4MakeRotation(-Float.pi / 2, 0, 0, 1)
-//            let transform = SCNMatrix4Mult(translation, rotation)
-//            s.geometry?.firstMaterial?.diffuse.contentsTransform = transform
+        if didAddMaterial {
+            testViewController.doIt()
+        } else {
+            Task {
+                didAddMaterial = true
+                s.geometry?.firstMaterial?.diffuse.contents = testViewController.view.layer
+    //            s.geometry?.firstMaterial?.diffuse.contents = captureDevice
+    //            let translation = SCNMatrix4MakeTranslation(-1, 0, 1)
+    //            let rotation = SCNMatrix4MakeRotation(-Float.pi / 2, 0, 0, 1)
+    //            let transform = SCNMatrix4Mult(translation, rotation)
+    //            s.geometry?.firstMaterial?.diffuse.contentsTransform = transform
+            }
         }
     }
 }
@@ -125,14 +143,21 @@ extension SCNVector3 {
 }
 
 struct TestView: View {
+    class StateObject: ObservableObject {
+        @Published var shouldPresentPopover: Bool = false
+    }
+    @ObservedObject var state: StateObject
     @State private var scale = 0.5
     var body: some View {
         VStack(spacing: 20) {
-            Rectangle()
-                .fill(.pink)
-                .scaleEffect(scale)
-                .animation(Animation.linear(duration: 1).repeatForever(), value: scale)
-                .onAppear { scale = 1.0 }
+            if !state.shouldPresentPopover {
+                Rectangle()
+                    .fill(.pink)
+                    .scaleEffect(scale)
+                    .animation(Animation.linear(duration: 1).repeatForever(), value: scale)
+                    .onAppear { scale = 1.0 }
+                    .onDisappear { scale = 0.5 }
+            }
             Text("Hello, World!")
                 .font(.system(.title, design: .default))
                 .fontWeight(.black)
