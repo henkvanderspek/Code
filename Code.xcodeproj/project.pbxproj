@@ -27,6 +27,11 @@
 		B61737A92829651E006DE98E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737A72829651E006DE98E /* Image.swift */; };
 		B61737AB2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
 		B61737AC2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
+		B64A9686283776A200F4334D /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A9685283776A200F4334D /* SceneViewController.swift */; };
+		B64A96872837770100F4334D /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9327DF419700F50F2E /* NSLayoutConstraint+Helpers.swift */; };
+		B64A96882837772900F4334D /* NSDirectionalEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9C27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift */; };
+		B64A96892837772C00F4334D /* UIEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9F27DF54C000F50F2E /* UIEdgeInsets+Helpers.swift */; };
+		B64A968A2837773F00F4334D /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
 		B64C9F3F283695F600A4B7CF /* NonokiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */; };
 		B64C9F41283695F600A4B7CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C9F40283695F600A4B7CF /* ContentView.swift */; };
 		B64C9F43283695F700A4B7CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64C9F42283695F700A4B7CF /* Assets.xcassets */; };
@@ -162,6 +167,7 @@
 		B63F547527CE254200C111A8 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		B63F547827CE2B1900C111A8 /* DynamicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGridView.swift; sourceTree = "<group>"; };
 		B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
+		B64A9685283776A200F4334D /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		B64C9F3C283695F600A4B7CF /* Nonokia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nonokia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonokiaApp.swift; sourceTree = "<group>"; };
 		B64C9F40283695F600A4B7CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -329,6 +335,7 @@
 			children = (
 				B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */,
 				B64C9F40283695F600A4B7CF /* ContentView.swift */,
+				B64A9685283776A200F4334D /* SceneViewController.swift */,
 				B64C9F42283695F700A4B7CF /* Assets.xcassets */,
 				B64C9F44283695F700A4B7CF /* Preview Content */,
 			);
@@ -820,7 +827,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B64A96892837772C00F4334D /* UIEdgeInsets+Helpers.swift in Sources */,
+				B64A9686283776A200F4334D /* SceneViewController.swift in Sources */,
 				B64C9F41283695F600A4B7CF /* ContentView.swift in Sources */,
+				B64A968A2837773F00F4334D /* Types.swift in Sources */,
+				B64A96882837772900F4334D /* NSDirectionalEdgeInsets+Helpers.swift in Sources */,
+				B64A96872837770100F4334D /* NSLayoutConstraint+Helpers.swift in Sources */,
 				B64C9F3F283695F600A4B7CF /* NonokiaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

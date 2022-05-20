@@ -11,8 +11,17 @@ import SwiftUI
 struct NonokiaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SceneView()
+//            ContentView()
                 .statusBar(hidden: true)
         }
+    }
+}
+
+struct SceneView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> SceneViewController {
+        .init()
+    }
+    func updateUIViewController(_ uiViewController: SceneViewController, context: Context) {
     }
 }
