@@ -32,6 +32,7 @@
 		B64A96882837772900F4334D /* NSDirectionalEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9C27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift */; };
 		B64A96892837772C00F4334D /* UIEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9F27DF54C000F50F2E /* UIEdgeInsets+Helpers.swift */; };
 		B64A968A2837773F00F4334D /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
+		B64A968E2837C16100F4334D /* nokia.old.scn in Resources */ = {isa = PBXBuildFile; fileRef = B64A968D2837C16100F4334D /* nokia.old.scn */; };
 		B64C9F3F283695F600A4B7CF /* NonokiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */; };
 		B64C9F41283695F600A4B7CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C9F40283695F600A4B7CF /* ContentView.swift */; };
 		B64C9F43283695F700A4B7CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64C9F42283695F700A4B7CF /* Assets.xcassets */; };
@@ -118,6 +119,7 @@
 		B6B125E82835123E005E989F /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E62835123E005E989F /* StepperView.swift */; };
 		B6B125EB28351A07005E989F /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E928351A07005E989F /* TextEditorView.swift */; };
 		B6B125EE28352F15005E989F /* PropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125EC28352F15005E989F /* PropertiesView.swift */; };
+		B6C2808E2837D0E300099DA3 /* nokia.scn in Resources */ = {isa = PBXBuildFile; fileRef = B6C2808D2837D0E300099DA3 /* nokia.scn */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
@@ -168,6 +170,7 @@
 		B63F547827CE2B1900C111A8 /* DynamicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGridView.swift; sourceTree = "<group>"; };
 		B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
 		B64A9685283776A200F4334D /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
+		B64A968D2837C16100F4334D /* nokia.old.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = nokia.old.scn; sourceTree = "<group>"; };
 		B64C9F3C283695F600A4B7CF /* Nonokia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nonokia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonokiaApp.swift; sourceTree = "<group>"; };
 		B64C9F40283695F600A4B7CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -235,6 +238,7 @@
 		B6B125E62835123E005E989F /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		B6B125E928351A07005E989F /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		B6B125EC28352F15005E989F /* PropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesView.swift; sourceTree = "<group>"; };
+		B6C2808D2837D0E300099DA3 /* nokia.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = nokia.scn; sourceTree = "<group>"; };
 		B6C2843327CCEAF60000C0E7 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C2843527CCEAF60000C0E7 /* macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSApp.swift; sourceTree = "<group>"; };
 		B6C2843927CCEAF70000C0E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -333,6 +337,8 @@
 		B64C9F3D283695F600A4B7CF /* Nonokia */ = {
 			isa = PBXGroup;
 			children = (
+				B6C2808D2837D0E300099DA3 /* nokia.scn */,
+				B64A968D2837C16100F4334D /* nokia.old.scn */,
 				B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */,
 				B64C9F40283695F600A4B7CF /* ContentView.swift */,
 				B64A9685283776A200F4334D /* SceneViewController.swift */,
@@ -789,6 +795,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B64C9F46283695F700A4B7CF /* Preview Assets.xcassets in Resources */,
+				B6C2808E2837D0E300099DA3 /* nokia.scn in Resources */,
+				B64A968E2837C16100F4334D /* nokia.old.scn in Resources */,
 				B64C9F43283695F700A4B7CF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

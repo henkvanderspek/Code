@@ -15,63 +15,39 @@ class SceneViewController: UIViewController {
         let view = SCNView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.scene = scene
+        view.allowsCameraControl = true
+//        view.showsStatistics = true
+        view.defaultCameraController.interactionMode = .orbitTurntable
+        view.defaultCameraController.minimumVerticalAngle = 0
+        view.defaultCameraController.maximumVerticalAngle = 0.1
+        view.autoenablesDefaultLighting = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         return view
     }()
     
     private lazy var scene: SCNScene = {
-        let s = SCNScene()
+        let s = SCNScene(named: "nokia.scn")!
         s.background.contents = UIColor.black
-        s.rootNode.addChildNode(ship)
         s.rootNode.addChildNode(camera)
-        s.rootNode.addChildNode(sun)
         return s
-    }()
-    
-    private lazy var screen: SCNNode = {
-        .init(geometry: SCNPlane(width: 5, height: 5))
-    }()
-    
-    private lazy var ship: SCNNode = {
-        let n = SCNNode()
-        n.addChildNode(screen)
-        return n
-    }()
-
-    private lazy var sun: SCNNode = {
-        let n = SCNNode()
-        let light = SCNLight()
-        light.type = .directional
-        light.castsShadow = true
-        light.orthographicScale = 10
-        light.intensity = 1000
-        light.temperature = 8000
-        n.light = light
-        //n.position = .init(x: 5, y: 2, z: 0)
-        n.position = .init(x: 5, y: 2, z: 10)
-        let c = SCNLookAtConstraint(target: ship)
-        c.isGimbalLockEnabled = true
-        n.constraints = [c]
-        return n
     }()
     
     private lazy var camera: SCNNode = {
         let camera = SCNCamera()
         let node = SCNNode()
         node.camera = camera
-        node.position = .init(x: 6, y: 8, z: 7)
-//        node.position = .init(x: 0, y: 0, z: 10)
-        let c = SCNLookAtConstraint(target: ship)
-        c.isGimbalLockEnabled = true
-        node.constraints = [c]
+        node.position = .init(x: 0, y: 0, z: 6)
+//        let c = SCNLookAtConstraint(target: ship)
+//        c.isGimbalLockEnabled = true
+//        node.constraints = [c]
         return node
     }()
     
     private lazy var image: UIImage = {
-        let w = view.bounds.size.width
-        let h = view.bounds.size.height
-        let c = UIHostingController(rootView: TestView().frame(width: w, height: h))
+        let c = UIHostingController(rootView: TestView())
         let v = c.view!
         let s = v.intrinsicContentSize
+        print(s)
         v.bounds = CGRect(origin: .zero, size: s)
         v.backgroundColor = .clear
         return UIGraphicsImageRenderer(size: s).image { _ in
@@ -93,8 +69,17 @@ class SceneViewController: UIViewController {
         view.backgroundColor = .black
         view.addSubview(sceneView)
         layoutConstraints.activate()
+    }
+}
+
+private extension SceneViewController {
+    @objc func tap(_ r: UIGestureRecognizer) {
+        let p = r.location(in: sceneView)
+        let r = sceneView.hitTest(p)
+        guard let n = r.first?.node, n.name == "Cylinder" else { return }
+        let s = scene.rootNode.childNode(withName: "Screen", recursively: true)!
         Task {
-            screen.geometry?.firstMaterial?.diffuse.contents = image
+            s.geometry?.firstMaterial?.diffuse.contents = image
         }
     }
 }
@@ -122,10 +107,18 @@ extension SCNVector3 {
 
 struct TestView: View {
     var body: some View {
-        VStack(spacing: 0) {
-            Color.yellow
-            Color.orange
-            Color.pink
+        VStack(spacing: 20) {
+            Spacer()
+            Text("Hello, World!")
+                .font(.system(.largeTitle, design: .rounded))
+                .fontWeight(.black)
+            Text("🤓👍")
+                .font(.system(.largeTitle, design: .rounded))
+                .fontWeight(.black)
+            Spacer()
         }
+        .padding()
+        .background(.white)
+        .frame(minHeight: 273.5)
     }
 }
