@@ -86,27 +86,12 @@ private extension SceneViewController {
         guard let n = r.first?.node, n.name == "Cylinder" else { return }
         let s = scene.rootNode.childNode(withName: "Screen", recursively: true)!
         Task {
-//            s.geometry?.firstMaterial?.diffuse.contents = renderTestView()
             s.geometry?.firstMaterial?.diffuse.contents = testViewController.view.layer
 //            s.geometry?.firstMaterial?.diffuse.contents = captureDevice
 //            let translation = SCNMatrix4MakeTranslation(-1, 0, 1)
 //            let rotation = SCNMatrix4MakeRotation(-Float.pi / 2, 0, 0, 1)
 //            let transform = SCNMatrix4Mult(translation, rotation)
 //            s.geometry?.firstMaterial?.diffuse.contentsTransform = transform
-        }
-    }
-    func renderTestView() -> UIImage {
-        let c = UIHostingController(rootView: TestView())
-        let v = c.view!
-        return capture(v)
-    }
-    func capture(_ v: UIView) -> UIImage {
-        let s = v.intrinsicContentSize.sanitized
-        print(s)
-        v.bounds = CGRect(origin: .zero, size: s)
-        v.backgroundColor = .clear
-        return UIGraphicsImageRenderer(size: s).image { _ in
-            v.drawHierarchy(in: v.bounds, afterScreenUpdates: true)
         }
     }
 }
