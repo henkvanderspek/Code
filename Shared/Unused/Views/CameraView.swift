@@ -64,6 +64,10 @@ class CameraView: UIView {
         super.layoutSubviews()
         previewLayer.frame = bounds
     }
+
+    var capturedDevice: AVCaptureDevice? {
+        return captureDevice
+    }
 }
 
 extension CameraView: AVCaptureVideoDataOutputSampleBufferDelegate {

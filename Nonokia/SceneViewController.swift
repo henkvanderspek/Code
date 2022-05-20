@@ -8,6 +8,7 @@
 import UIKit
 import SceneKit
 import SwiftUI
+import AVKit
 
 class SceneViewController: UIViewController {
 
@@ -22,6 +23,7 @@ class SceneViewController: UIViewController {
         view.defaultCameraController.maximumVerticalAngle = 0.1
         view.autoenablesDefaultLighting = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
+        view.rendersContinuously = true
         return view
     }()
     
@@ -43,16 +45,8 @@ class SceneViewController: UIViewController {
         return node
     }()
     
-    private lazy var image: UIImage = {
-        let c = UIHostingController(rootView: TestView())
-        let v = c.view!
-        let s = v.intrinsicContentSize.sanitized
-        print(s)
-        v.bounds = CGRect(origin: .zero, size: s)
-        v.backgroundColor = .clear
-        return UIGraphicsImageRenderer(size: s).image { _ in
-            v.drawHierarchy(in: v.bounds, afterScreenUpdates: true)
-        }
+    private lazy var captureDevice: AVCaptureDevice? = {
+        .default(.builtInWideAngleCamera, for: .video, position: .front)
     }()
 
     private lazy var layoutConstraints: [NSLayoutConstraint] = {
@@ -79,14 +73,33 @@ private extension SceneViewController {
         guard let n = r.first?.node, n.name == "Cylinder" else { return }
         let s = scene.rootNode.childNode(withName: "Screen", recursively: true)!
         Task {
-            s.geometry?.firstMaterial?.diffuse.contents = image
+//            s.geometry?.firstMaterial?.diffuse.contents = renderTestView()
+            s.geometry?.firstMaterial?.diffuse.contents = captureDevice
+            let translation = SCNMatrix4MakeTranslation(-1, 0, 1)
+            let rotation = SCNMatrix4MakeRotation(-Float.pi / 2, 0, 0, 1)
+            let transform = SCNMatrix4Mult(translation, rotation)
+            s.geometry?.firstMaterial?.diffuse.contentsTransform = transform
+        }
+    }
+    func renderTestView() -> UIImage {
+        let c = UIHostingController(rootView: TestView())
+        let v = c.view!
+        return capture(v)
+    }
+    func capture(_ v: UIView) -> UIImage {
+        let s = v.intrinsicContentSize.sanitized
+        print(s)
+        v.bounds = CGRect(origin: .zero, size: s)
+        v.backgroundColor = .clear
+        return UIGraphicsImageRenderer(size: s).image { _ in
+            v.drawHierarchy(in: v.bounds, afterScreenUpdates: true)
         }
     }
 }
 
 extension CGSize {
     var sanitized: Self {
-        let v = max(width, height)
+        let v = max(250, max(width, height))
         return .init(width: v, height: v)
     }
 }

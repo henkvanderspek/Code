@@ -120,6 +120,7 @@
 		B6B125EB28351A07005E989F /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E928351A07005E989F /* TextEditorView.swift */; };
 		B6B125EE28352F15005E989F /* PropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125EC28352F15005E989F /* PropertiesView.swift */; };
 		B6C2808E2837D0E300099DA3 /* nokia.scn in Resources */ = {isa = PBXBuildFile; fileRef = B6C2808D2837D0E300099DA3 /* nokia.scn */; };
+		B6C2808F2837DF6D00099DA3 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ECBE0727E7614E00185B7E /* CameraView.swift */; };
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
@@ -842,6 +843,7 @@
 				B64A96882837772900F4334D /* NSDirectionalEdgeInsets+Helpers.swift in Sources */,
 				B64A96872837770100F4334D /* NSLayoutConstraint+Helpers.swift in Sources */,
 				B64C9F3F283695F600A4B7CF /* NonokiaApp.swift in Sources */,
+				B6C2808F2837DF6D00099DA3 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1110,6 +1112,7 @@
 				DEVELOPMENT_TEAM = TY7XLLRKJW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "So you can make photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1142,6 +1145,7 @@
 				DEVELOPMENT_TEAM = TY7XLLRKJW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "So you can make photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
