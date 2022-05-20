@@ -46,7 +46,7 @@ class SceneViewController: UIViewController {
     private lazy var image: UIImage = {
         let c = UIHostingController(rootView: TestView())
         let v = c.view!
-        let s = v.intrinsicContentSize
+        let s = v.intrinsicContentSize.sanitized
         print(s)
         v.bounds = CGRect(origin: .zero, size: s)
         v.backgroundColor = .clear
@@ -84,6 +84,13 @@ private extension SceneViewController {
     }
 }
 
+extension CGSize {
+    var sanitized: Self {
+        let v = max(width, height)
+        return .init(width: v, height: v)
+    }
+}
+
 extension FloatingPoint {
     static func degrees(_ f: Self) -> Self {
         f * .pi / 180
@@ -110,15 +117,14 @@ struct TestView: View {
         VStack(spacing: 20) {
             Spacer()
             Text("Hello, World!")
-                .font(.system(.largeTitle, design: .rounded))
+                .font(.system(.largeTitle, design: .default))
                 .fontWeight(.black)
             Text("🤓👍")
-                .font(.system(.largeTitle, design: .rounded))
+                .font(.largeTitle)
                 .fontWeight(.black)
             Spacer()
         }
         .padding()
         .background(.white)
-        .frame(minHeight: 273.5)
     }
 }
