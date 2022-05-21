@@ -45,19 +45,6 @@ class SceneViewController: UIViewController {
         return node
     }()
     
-    class TestViewController: UIHostingController<TestView> {
-        private var state = TestView.StateObject()
-        init() {
-            super.init(rootView: .init(state: state))
-        }
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-        func doIt() {
-            state.shouldPresentPopover.toggle()
-        }
-    }
-    
     private lazy var testViewController: TestViewController = {
         let vc = TestViewController()
         vc.view.frame = .init(origin: .zero, size: .init(width: 250, height: 250))
@@ -82,8 +69,6 @@ class SceneViewController: UIViewController {
     
     private var didAddMaterial = false
     
-    @StateObject private var state = TestView.StateObject()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -99,7 +84,7 @@ private extension SceneViewController {
         guard let n = r.first?.node, n.name == "Cylinder" else { return }
         let s = scene.rootNode.childNode(withName: "Screen", recursively: true)!
         if didAddMaterial {
-            testViewController.doIt()
+            testViewController.toggleShouldPresentPover()
         } else {
             Task {
                 didAddMaterial = true
@@ -139,33 +124,5 @@ extension StringProtocol {
 extension SCNVector3 {
     init(_ x: Int, _ y: Int, _ z: Int) {
         self = .init(Double(x), Double(y), Double(z))
-    }
-}
-
-struct TestView: View {
-    class StateObject: ObservableObject {
-        @Published var shouldPresentPopover: Bool = false
-    }
-    @ObservedObject var state: StateObject
-    @State private var scale = 0.5
-    var body: some View {
-        VStack(spacing: 20) {
-            if !state.shouldPresentPopover {
-                Rectangle()
-                    .fill(.pink)
-                    .scaleEffect(scale)
-                    .animation(Animation.linear(duration: 1).repeatForever(), value: scale)
-                    .onAppear { scale = 1.0 }
-                    .onDisappear { scale = 0.5 }
-            }
-            Text("Hello, World!")
-                .font(.system(.title, design: .default))
-                .fontWeight(.black)
-            Text("🤓👍")
-                .font(.largeTitle)
-                .fontWeight(.black)
-        }
-        .padding()
-        .background(.white)
     }
 }

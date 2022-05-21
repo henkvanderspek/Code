@@ -33,6 +33,7 @@
 		B64A96892837772C00F4334D /* UIEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9F27DF54C000F50F2E /* UIEdgeInsets+Helpers.swift */; };
 		B64A968A2837773F00F4334D /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
 		B64A968E2837C16100F4334D /* nokia.old.scn in Resources */ = {isa = PBXBuildFile; fileRef = B64A968D2837C16100F4334D /* nokia.old.scn */; };
+		B64C15292838F2C500C078BD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C15282838F2C500C078BD /* TestView.swift */; };
 		B64C9F3F283695F600A4B7CF /* NonokiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */; };
 		B64C9F41283695F600A4B7CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C9F40283695F600A4B7CF /* ContentView.swift */; };
 		B64C9F43283695F700A4B7CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64C9F42283695F700A4B7CF /* Assets.xcassets */; };
@@ -171,6 +172,7 @@
 		B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
 		B64A9685283776A200F4334D /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		B64A968D2837C16100F4334D /* nokia.old.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = nokia.old.scn; sourceTree = "<group>"; };
+		B64C15282838F2C500C078BD /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		B64C9F3C283695F600A4B7CF /* Nonokia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nonokia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonokiaApp.swift; sourceTree = "<group>"; };
 		B64C9F40283695F600A4B7CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				B64C9F3E283695F600A4B7CF /* NonokiaApp.swift */,
 				B64C9F40283695F600A4B7CF /* ContentView.swift */,
 				B64A9685283776A200F4334D /* SceneViewController.swift */,
+				B64C15282838F2C500C078BD /* TestView.swift */,
 				B64C9F42283695F700A4B7CF /* Assets.xcassets */,
 				B64C9F44283695F700A4B7CF /* Preview Content */,
 			);
@@ -839,6 +842,7 @@
 				B64A9686283776A200F4334D /* SceneViewController.swift in Sources */,
 				B64C9F41283695F600A4B7CF /* ContentView.swift in Sources */,
 				B64A968A2837773F00F4334D /* Types.swift in Sources */,
+				B64C15292838F2C500C078BD /* TestView.swift in Sources */,
 				B64A96882837772900F4334D /* NSDirectionalEdgeInsets+Helpers.swift in Sources */,
 				B64A96872837770100F4334D /* NSLayoutConstraint+Helpers.swift in Sources */,
 				B64C9F3F283695F600A4B7CF /* NonokiaApp.swift in Sources */,
