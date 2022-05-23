@@ -13,7 +13,7 @@ struct macOSApp: App {
     @StateObject private var backendController = Backend.Controller(configuration: .live)
     var body: some Scene {
         WindowGroup {
-            AppView(.mock)
+            AppView(.mock(.custom(.helloWorld)))
                 .environmentObject(backendController)
         }
     }

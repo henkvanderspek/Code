@@ -21,7 +21,11 @@ struct InspectorView: View {
                 TextPropertiesView(t.binding(set: update))
             case let .image(i):
                 ImagePropertiesView(i.binding(set: update))
-            case .empty, .hstack, .vstack, .zstack, .spacer:
+            case let .hstack(s):
+                HStackPropertiesView(s.binding(set: update))
+            case let .vstack(s):
+                VStackPropertiesView(s.binding(set: update))
+            case .empty, .zstack, .spacer:
                 EmptyView()
             }
             // Generic properties
@@ -57,6 +61,12 @@ private extension InspectorView {
     }
     func update(_ i: Uicorn.View.Image) {
         $view.type.wrappedValue = .image(i)
+    }
+    func update(_ s: Uicorn.View.HStack) {
+        $view.type.wrappedValue = .hstack(s)
+    }
+    func update(_ s: Uicorn.View.VStack) {
+        $view.type.wrappedValue = .vstack(s)
     }
 }
 

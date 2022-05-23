@@ -49,6 +49,16 @@ extension Uicorn.View: TreeItem {
     var isView: Bool {
         return true
     }
+    var canAddView: Bool {
+        switch type {
+        case .hstack, .vstack, .zstack:
+            return true
+        case let .collection(c):
+            return c.view == nil
+        case .text, .spacer, .empty, .image, .shape:
+            return false
+        }
+    }
 }
 
 extension ViewType {
@@ -58,7 +68,11 @@ extension ViewType {
         case .vstack: self = .vstack
         case .zstack: self = .zstack
         case .text: self = .text
-        case .image: self = .image
+        case let .image(i):
+            switch i.type {
+            case .remote: self = .image
+            case .system: self = .sfSymbol
+            }
         case .collection: self = .collection
         case .shape: self = .shape
         case .spacer: self = .spacer

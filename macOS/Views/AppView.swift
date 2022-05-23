@@ -43,9 +43,9 @@ struct AppView: View {
         .toolbar {
             ToolbarItemGroup(placement: .navigation) {
                 Menu {
-                    ForEach(ViewType.allCases, id: \.self) { type in
+                    ForEach(ViewType.sanitizedCases, id: \.self) { type in
                         Button {
-                            print(type.name)
+                            observer.addView(ofType: type)
                         } label: {
                             Label(type.name, systemImage: type.systemImage)
                                 .labelStyle(.titleAndIcon)
@@ -54,17 +54,28 @@ struct AppView: View {
                 } label: {
                     Label("Add", systemImage: "plus")
                 }
+                .disabled(!observer.selectedItem.canAddView)
             }
         }
     }
     private func menuItems(_ i: TreeItem) -> [TreeItemMenu.Item] {
         return [
             .init(title: "Embed in HStack") {
-                guard let v = i as? Uicorn.View else { return }
-                v.embeddedInHStack()
-                observer.objectWillChange.send()
+                observer.embedInHStack(i)
+            },
+            .init(title: "Embed in VStack") {
+                observer.embedInVStack(i)
+            },
+            .init(title: "Embed in ZStack") {
+                observer.embedInZStack(i)
             }
         ]
+    }
+}
+
+extension TreeItem {
+    var view: Uicorn.View? {
+        self as? Uicorn.View
     }
 }
 
@@ -98,11 +109,64 @@ extension AppView.Observer {
             }
         )
     }
+    func embedInHStack(_ i: TreeItem) {
+        i.view?.embeddedInHStack()
+        objectWillChange.send()
+    }
+    func embedInVStack(_ i: TreeItem) {
+        i.view?.embeddedInVStack()
+        objectWillChange.send()
+    }
+    func embedInZStack(_ i: TreeItem) {
+        i.view?.embeddedInZStack()
+        objectWillChange.send()
+    }
+    func addView(ofType t: ViewType) {
+        selectedItem.view?.addView(ofType: t)
+        objectWillChange.send()
+    }
 }
 
 extension Uicorn.View {
     func embeddedInHStack() {
         type = .hstack(.init([.init(id: id, type: type, action: nil, properties: nil)], spacing: 0))
         id = UUID().uuidString
+    }
+    func embeddedInVStack() {
+        type = .vstack(.init([.init(id: id, type: type, action: nil, properties: nil)], spacing: 0))
+        id = UUID().uuidString
+    }
+    func embeddedInZStack() {
+        type = .zstack(.init([.init(id: id, type: type, action: nil, properties: nil)]))
+        id = UUID().uuidString
+    }
+    func addView(ofType t: ViewType) {
+        switch type {
+        case let .hstack(s):
+            s.children.append(.from(t))
+        case let .vstack(s):
+            s.children.append(.from(t))
+        case let .zstack(s):
+            s.children.append(.from(t))
+        default:
+            ()
+        }
+    }
+}
+
+extension Uicorn.View {
+    static func from(_ t: ViewType) -> Uicorn.View {
+        switch t {
+        case .text:
+            return .text("Text")
+        case .spacer:
+            return .spacer
+        case .sfSymbol:
+            return .randomSystemImage
+        case .image:
+            return .randomRemoteImage
+        default:
+            return .empty
+        }
     }
 }

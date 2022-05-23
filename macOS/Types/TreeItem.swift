@@ -13,6 +13,7 @@ protocol TreeItem {
     var systemImage: String { get }
     var children: [TreeItem]? { get }
     var isView: Bool { get }
+    var canAddView: Bool { get }
 }
 
 extension TreeItem {
@@ -34,5 +35,8 @@ extension TreeItem {
         return safeChildren.contains {
             $0.id == i.id || $0.contains(i)
         }
+    }
+    var canAddView: Bool {
+        return false
     }
 }

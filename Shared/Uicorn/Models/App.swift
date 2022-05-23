@@ -22,6 +22,9 @@ extension Uicorn {
 
 extension Uicorn.App {
     static var mock: Uicorn.App {
-        .init(id: .unique, title: "App", screens: [.mock])
+        .mock(.default)
+    }
+    static func mock(_ m: Uicorn.Screen.Mock) -> Uicorn.App {
+        .init(id: .unique, title: "App", screens: [.mock(m)])
     }
 }

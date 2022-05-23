@@ -14,6 +14,7 @@ struct TextPropertiesView: View {
     }
     var body: some View {
         Section {
+            TextEditorView(value: $model.value, header: "Text")
             FontPropertiesView(model: $model.font)
             // TODO: text alignment
         }

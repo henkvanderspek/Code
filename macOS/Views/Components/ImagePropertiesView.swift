@@ -18,13 +18,11 @@ struct ImagePropertiesView: View {
             case .remote:
                 TextFieldView(value: $model.value, header: "URL")
             case .system:
-                TextFieldView(value: $model.value, header: "Symbol")
+                TextFieldView(value: $model.value, header: "Name")
                 ColorPropertiesView(
                     header: "Color",
                     model: .init(
                         get: {
-                            // This uses the color of the previous selected view
-                            // Tried id on parent, but that causes reload on text field change and loosing focus
                             model.fill ?? .system(.label)
                         },
                         set: {

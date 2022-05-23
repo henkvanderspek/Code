@@ -17,6 +17,9 @@ extension Uicorn.View {
     static func text(_ s: String, font: Uicorn.Font = .default, action: Action? = nil) -> Uicorn.View {
         .init(id: .unique, type: .text(.init(s, font: font)), action: action, properties: nil)
     }
+    static var helloWorld: Uicorn.View {
+        .text("HELLO\nWORLD\n🌎", font: .init(type: .largeTitle, weight: .black, design: .rounded))
+    }
     static func hstack(_ c: [Uicorn.View], spacing: Int = 0, padding: Uicorn.Padding? = nil) -> Uicorn.View {
         .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: nil, properties: padding.map { .init(padding: $0, cornerRadius: 0) })
     }
@@ -28,6 +31,18 @@ extension Uicorn.View {
     }
     static func image(_ s: String, type: Image.`Type`, fill: Uicorn.Color? = nil, action: Action? = nil) -> Uicorn.View {
         .init(id: .unique, type: .image(.init(type: type, value: s, fill: fill)), action: action, properties: nil)
+    }
+    static var randomSystemImage: Uicorn.View {
+        randomSystemImage()
+    }
+    static func randomSystemImage(fill: Uicorn.Color? = nil, action: Action? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.randomSystem(fill: fill)), action: action, properties: nil)
+    }
+    static var randomRemoteImage: Uicorn.View {
+        randomRemoteImage()
+    }
+    static func randomRemoteImage(fill: Uicorn.Color? = nil, action: Action? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.randomRemote(fill: fill)), action: action, properties: nil)
     }
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View {
         .init(id: .unique, type: .collection(.unsplash(q, count: c)), action: nil, properties: nil)
