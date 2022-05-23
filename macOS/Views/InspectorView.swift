@@ -11,6 +11,7 @@ struct InspectorView: View {
     @Binding var view: Uicorn.View
     var body: some View {
         Form {
+            // Specific properties
             switch view.type {
             case let .collection(c):
                 CollectionPropertiesView(c.binding(set: update))
@@ -23,6 +24,7 @@ struct InspectorView: View {
             case .empty, .hstack, .vstack, .zstack, .spacer:
                 EmptyView()
             }
+            // Generic properties
             switch view.type {
             case .shape, .text, .image, .hstack, .vstack, .zstack:
                 PropertiesView(
@@ -31,7 +33,7 @@ struct InspectorView: View {
                             view.properties ?? .empty
                         },
                         set: {
-                            view.properties = $0
+                            $view.properties.wrappedValue = $0
                         }
                     )
                 )

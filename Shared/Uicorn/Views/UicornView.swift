@@ -43,7 +43,9 @@ struct UicornView: View {
             .padding(.trailing, .init(model.properties?.padding.trailing ?? 0))
             .padding(.top, .init(model.properties?.padding.top ?? 0))
             .padding(.bottom, .init(model.properties?.padding.bottom ?? 0))
-            .sheet(isPresented: $shouldShowSheet) {
+            // TODO: Use the approach in below link to show consistent iOS style popovers
+            // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
+            .popover(isPresented: $shouldShowSheet) {
                 sheetView?
                     .frame(minWidth: 300, minHeight: 300)
             }
