@@ -20,6 +20,7 @@ extension UicornView {
                 .font(.init($model.font.wrappedValue))
                 .multilineTextAlignment(.init($model.alignment.wrappedValue))
                 .textCase(.init($model.textCase.wrappedValue))
+                .foregroundColor($model.foregroundColor.wrappedValue.map { .init($0) })
         }
     }
 }

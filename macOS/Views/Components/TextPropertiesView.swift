@@ -34,6 +34,18 @@ struct TextPropertiesView: View {
                 }
             }
             Divider()
+            ColorPropertiesView(
+                header: "Foreground Color",
+                model: .init(
+                    get: {
+                        $model.foregroundColor.wrappedValue ?? .system(.label)
+                    },
+                    set: {
+                        $model.foregroundColor.wrappedValue = $0
+                    }
+                )
+            )
+            Divider()
             FontPropertiesView(model: $model.font)
         }
         .labelsHidden()

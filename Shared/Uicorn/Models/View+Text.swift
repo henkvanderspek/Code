@@ -13,11 +13,13 @@ extension Uicorn.View {
         var font: Uicorn.Font
         var alignment: Uicorn.TextAlignment
         var textCase: Uicorn.TextCase
-        init(_ v: String, font f: Uicorn.Font, alignment a: Uicorn.TextAlignment = .leading, c: Uicorn.TextCase = .standard) {
+        var foregroundColor: Uicorn.Color?
+        init(_ v: String, font f: Uicorn.Font, alignment a: Uicorn.TextAlignment = .leading, textCase c: Uicorn.TextCase = .standard, foregroundColor fc: Uicorn.Color? = nil) {
             value = v
             font = f
             alignment = a
             textCase = c
+            foregroundColor = fc
         }
     }
 }
