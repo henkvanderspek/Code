@@ -39,8 +39,7 @@ struct FontPropertiesView: View {
                         }
                     }
                 }
-                Text("")
-                    .frame(maxWidth: .infinity, minHeight: 10)
+                GreedySpacer()
             }
         }
         .labelsHidden()

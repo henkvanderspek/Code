@@ -19,6 +19,7 @@ struct PaddingPropertiesView: View {
                 .init($model.all),
                 default: `default`,
                 range: 0...100,
+                step: 1,
                 header: "Padding"
             )
         }

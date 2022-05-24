@@ -147,6 +147,9 @@
 		B6E13C62283D2639003BFDD4 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C61283D2639003BFDD4 /* Map.swift */; };
 		B6E13C63283D2639003BFDD4 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C61283D2639003BFDD4 /* Map.swift */; };
 		B6E13C64283D2639003BFDD4 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C61283D2639003BFDD4 /* Map.swift */; };
+		B6E13C66283D2CDA003BFDD4 /* GreedySpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C65283D2CDA003BFDD4 /* GreedySpacer.swift */; };
+		B6E13C67283D2CDA003BFDD4 /* GreedySpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C65283D2CDA003BFDD4 /* GreedySpacer.swift */; };
+		B6E13C68283D2CDA003BFDD4 /* GreedySpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C65283D2CDA003BFDD4 /* GreedySpacer.swift */; };
 		B6EECA5328338BD100774B42 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5228338BD100774B42 /* Font.swift */; };
 		B6EECA5428338BD100774B42 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5228338BD100774B42 /* Font.swift */; };
 		B6EECA5628338D4000774B42 /* FontPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5528338D4000774B42 /* FontPropertiesView.swift */; };
@@ -279,6 +282,7 @@
 		B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePropertiesView.swift; sourceTree = "<group>"; };
 		B6E13C5D283CFB36003BFDD4 /* TextCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCase.swift; sourceTree = "<group>"; };
 		B6E13C61283D2639003BFDD4 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		B6E13C65283D2CDA003BFDD4 /* GreedySpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreedySpacer.swift; sourceTree = "<group>"; };
 		B6ECBDEA27E1DC0F00185B7E /* ArticleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderView.swift; sourceTree = "<group>"; };
 		B6ECBDEE27E1DEAA00185B7E /* Caption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caption.swift; sourceTree = "<group>"; };
 		B6ECBDF227E1F2BA00185B7E /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 		B6A2E5F8282D066F002FCDFF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B6E13C65283D2CDA003BFDD4 /* GreedySpacer.swift */,
 				B6AE6D7628295130001800F8 /* TreeItemMenu.swift */,
 				B676929A282E622D0026CA87 /* Header.swift */,
 				B6B125E62835123E005E989F /* StepperView.swift */,
@@ -921,6 +926,7 @@
 				B6B125D52834DE33005E989F /* Color.swift in Sources */,
 				B6B125DE2834DE42005E989F /* Collection.swift in Sources */,
 				B6A38E6F282BF8AF002777CA /* View+Collection.swift in Sources */,
+				B6E13C68283D2CDA003BFDD4 /* GreedySpacer.swift in Sources */,
 				B6B125E12834DE42005E989F /* ZStack.swift in Sources */,
 				B6B125E22834DE42005E989F /* UnsplashCollection.swift in Sources */,
 				B6B125D72834DE33005E989F /* Properties.swift in Sources */,
@@ -966,6 +972,7 @@
 				B6EECA582833937400774B42 /* TextPropertiesView.swift in Sources */,
 				B69F2BD32828663900877D04 /* HStack.swift in Sources */,
 				B6AE6D642828FCDB001800F8 /* App.swift in Sources */,
+				B6E13C67283D2CDA003BFDD4 /* GreedySpacer.swift in Sources */,
 				B61737AC2829664A006DE98E /* View+Image.swift in Sources */,
 				B6B125E5283511C5005E989F /* PaddingPropertiesView.swift in Sources */,
 				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
@@ -1032,6 +1039,7 @@
 				B69F2BDB2828689A00877D04 /* UicornView.swift in Sources */,
 				B6FA89A82829755100E842AE /* View+ZStack.swift in Sources */,
 				B67692A2282E9D4C0026CA87 /* View+Shape.swift in Sources */,
+				B6E13C66283D2CDA003BFDD4 /* GreedySpacer.swift in Sources */,
 				B6A2E5FA282D33F7002FCDFF /* Action.swift in Sources */,
 				B69F2BD92828689300877D04 /* Text.swift in Sources */,
 				B6AE6D662828FCEA001800F8 /* Screen.swift in Sources */,

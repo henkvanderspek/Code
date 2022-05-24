@@ -29,7 +29,11 @@ struct PropertiesView: View {
         Section {
             HStack {
                 PaddingPropertiesView($model.padding)
-                StepperView(Binding($model.cornerRadius), default: 0, range: 0...1000, header: "Corner Radius")
+                StepperView(Binding($model.cornerRadius), default: 0, range: 0...1000, step: 1, header: "Corner Radius")
+            }
+            HStack {
+                StepperView($model.opacity, default: 1.0, range: 0...1, step: 0.1, header: "Opacity")
+                GreedySpacer()
             }
         }.labelsHidden()
     }

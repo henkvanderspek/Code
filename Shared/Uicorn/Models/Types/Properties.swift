@@ -12,7 +12,8 @@ extension Uicorn {
         var padding: Padding
         var cornerRadius: Int
         var backgroundColor: Uicorn.Color?
-        init(padding p: Padding, cornerRadius r: Int, backgroundColor b: Uicorn.Color?) {
+        var opacity: Double?
+        init(padding p: Padding, cornerRadius r: Int, backgroundColor b: Uicorn.Color?, opacity o: Double?) {
             padding = p
             cornerRadius = r
             backgroundColor = b
@@ -22,10 +23,10 @@ extension Uicorn {
 
 extension Uicorn.Properties {
     convenience init(padding: Uicorn.Padding) {
-        self.init(padding: padding, cornerRadius: 0, backgroundColor: nil)
+        self.init(padding: padding, cornerRadius: 0, backgroundColor: nil, opacity: nil)
     }
     static var empty: Uicorn.Properties {
-        .init(padding: .zero, cornerRadius: 0, backgroundColor: nil)
+        .init(padding: .zero, cornerRadius: 0, backgroundColor: nil, opacity: nil)
     }
     func padding(_ p: Uicorn.Padding) -> Self {
         let v = self
@@ -40,6 +41,11 @@ extension Uicorn.Properties {
     func backgroundColor(_ c: Uicorn.Color?) -> Self {
         let v = self
         v.backgroundColor = c
+        return v
+    }
+    func opacity(_ o: Double?) -> Self {
+        let v = self
+        v.opacity = o
         return v
     }
 }

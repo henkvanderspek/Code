@@ -23,7 +23,7 @@ struct CollectionPropertiesView: View {
             switch model.type {
             case .unsplash:
                 TextEditorView(value: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery), header: "Search")
-                StepperView($model.count, default: Uicorn.defaultUnsplashCollectionCount, range: 1...30, header: "Count")
+                StepperView($model.count, default: Uicorn.defaultUnsplashCollectionCount, range: 1...30, step: 1, header: "Count")
             }
         }
         .labelsHidden()

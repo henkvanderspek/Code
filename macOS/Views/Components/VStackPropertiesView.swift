@@ -23,7 +23,7 @@ struct VStackPropertiesView: View {
                         }
                     }
                 }
-                StepperView(Binding($model.spacing), default: 0, range: 0...1000, header: "Spacing")
+                StepperView(Binding($model.spacing), default: 0, range: 0...1000, step: 1, header: "Spacing")
             }
         }.labelsHidden()
     }
