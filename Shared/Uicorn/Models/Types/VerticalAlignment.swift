@@ -8,7 +8,7 @@
 import Foundation
 
 extension Uicorn {
-    enum VerticalAlignment: String, Codable, CaseIterable {
+    @frozen enum VerticalAlignment: String, Codable, CaseIterable {
         case top
         case center
         case bottom
@@ -24,8 +24,7 @@ extension Uicorn.VerticalAlignment {
         case .bottom: return "Bottom"
         case .firstTextBaseline: return "First Text Baseline"
         case .lastTextBaseline: return "Last Text Baseline"
-        case .center: fallthrough
-        @unknown default: return "Center"
+        case .center: return "Center"
         }
     }
 }

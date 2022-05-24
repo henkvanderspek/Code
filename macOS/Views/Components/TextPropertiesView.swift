@@ -21,6 +21,12 @@ struct TextPropertiesView: View {
                     Text($0.localizedString)
                 }
             }
+            Header("Transform")
+            Picker("Transform", selection: $model.textCase) {
+                ForEach(Uicorn.TextCase.allCases, id: \.self) {
+                    Text($0.localizedString)
+                }
+            }
             FontPropertiesView(model: $model.font)
         }
         .labelsHidden()

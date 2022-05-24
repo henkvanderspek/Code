@@ -141,6 +141,9 @@
 		B6D0F14F283BDDFC00A380BB /* HStackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0F14E283BDDFC00A380BB /* HStackPropertiesView.swift */; };
 		B6D0F151283BDEF000A380BB /* VStackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0F150283BDEF000A380BB /* VStackPropertiesView.swift */; };
 		B6D2B8F6283257EE00346B95 /* ShapePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */; };
+		B6E13C5E283CFB36003BFDD4 /* TextCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C5D283CFB36003BFDD4 /* TextCase.swift */; };
+		B6E13C5F283CFB36003BFDD4 /* TextCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C5D283CFB36003BFDD4 /* TextCase.swift */; };
+		B6E13C60283CFB36003BFDD4 /* TextCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C5D283CFB36003BFDD4 /* TextCase.swift */; };
 		B6EECA5328338BD100774B42 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5228338BD100774B42 /* Font.swift */; };
 		B6EECA5428338BD100774B42 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5228338BD100774B42 /* Font.swift */; };
 		B6EECA5628338D4000774B42 /* FontPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5528338D4000774B42 /* FontPropertiesView.swift */; };
@@ -271,6 +274,7 @@
 		B6D0F14E283BDDFC00A380BB /* HStackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackPropertiesView.swift; sourceTree = "<group>"; };
 		B6D0F150283BDEF000A380BB /* VStackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackPropertiesView.swift; sourceTree = "<group>"; };
 		B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePropertiesView.swift; sourceTree = "<group>"; };
+		B6E13C5D283CFB36003BFDD4 /* TextCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCase.swift; sourceTree = "<group>"; };
 		B6ECBDEA27E1DC0F00185B7E /* ArticleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderView.swift; sourceTree = "<group>"; };
 		B6ECBDEE27E1DEAA00185B7E /* Caption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caption.swift; sourceTree = "<group>"; };
 		B6ECBDF227E1F2BA00185B7E /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
@@ -616,6 +620,7 @@
 				B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */,
 				B69E39CB283CEB3200B65682 /* Alignment.swift */,
 				B6817DDF283CF82F006623A9 /* TextAlignment.swift */,
+				B6E13C5D283CFB36003BFDD4 /* TextCase.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -897,6 +902,7 @@
 				B69E39CA283CDCC000B65682 /* HorizontalAlignment.swift in Sources */,
 				B6B125D82834DE39005E989F /* View+Shape.swift in Sources */,
 				B69E39C6283CD82600B65682 /* VerticalAlignment.swift in Sources */,
+				B6E13C60283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B6B125E02834DE42005E989F /* UicornView.swift in Sources */,
 				B6B125D42834DE33005E989F /* Font.swift in Sources */,
 				B6A38E70282BF8AF002777CA /* View.swift in Sources */,
@@ -938,6 +944,7 @@
 				B6FA89AC282975D100E842AE /* VStack.swift in Sources */,
 				B6AE6D672828FCEA001800F8 /* Screen.swift in Sources */,
 				B6EECA5628338D4000774B42 /* FontPropertiesView.swift in Sources */,
+				B6E13C5F283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B6B125E82835123E005E989F /* StepperView.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B67692A6282E9DAA0026CA87 /* Color.swift in Sources */,
@@ -1010,6 +1017,7 @@
 				B61433A1282A642200760F39 /* Sugar.swift in Sources */,
 				B6FA89AB282975D100E842AE /* VStack.swift in Sources */,
 				B69E39C4283CD82600B65682 /* VerticalAlignment.swift in Sources */,
+				B6E13C5E283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B676929F282E9C9C0026CA87 /* Properties.swift in Sources */,
 				B6883D6B2825854C00544462 /* String+Unique.swift in Sources */,
 				B69F2BDA2828689700877D04 /* HStack.swift in Sources */,

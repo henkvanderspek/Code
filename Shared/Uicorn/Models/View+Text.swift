@@ -12,10 +12,12 @@ extension Uicorn.View {
         var value: String
         var font: Uicorn.Font
         var alignment: Uicorn.TextAlignment
-        init(_ v: String, font f: Uicorn.Font, alignment a: Uicorn.TextAlignment = .leading) {
+        var textCase: Uicorn.TextCase
+        init(_ v: String, font f: Uicorn.Font, alignment a: Uicorn.TextAlignment = .leading, c: Uicorn.TextCase = .standard) {
             value = v
             font = f
             alignment = a
+            textCase = c
         }
     }
 }

@@ -270,3 +270,13 @@ extension TextAlignment {
         }
     }
 }
+
+extension Text.Case {
+    init?(_ a: Uicorn.TextCase) {
+        switch a {
+        case .standard: return nil
+        case .uppercase: self = .uppercase
+        case .lowercase: self = .lowercase
+        }
+    }
+}

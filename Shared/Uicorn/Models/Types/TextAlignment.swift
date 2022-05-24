@@ -8,7 +8,7 @@
 import Foundation
 
 extension Uicorn {
-    enum TextAlignment: String, Codable, CaseIterable {
+    @frozen enum TextAlignment: String, Codable, CaseIterable {
         case leading
         case center
         case trailing
@@ -20,8 +20,7 @@ extension Uicorn.TextAlignment {
         switch self {
         case .leading: return "Leading"
         case .trailing: return "Trailing"
-        case .center: fallthrough
-        @unknown default: return "Center"
+        case .center: return "Center"
         }
     }
 }

@@ -19,6 +19,7 @@ extension UicornView {
             SwiftUI.Text(.init($model.wrappedValue.value))
                 .font(.init($model.font.wrappedValue))
                 .multilineTextAlignment(.init($model.alignment.wrappedValue))
+                .textCase(.init($model.textCase.wrappedValue))
         }
     }
 }

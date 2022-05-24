@@ -8,7 +8,7 @@
 import Foundation
 
 extension Uicorn {
-    enum Alignment: String, Codable, CaseIterable {
+    @frozen enum Alignment: String, Codable, CaseIterable {
         case topLeading
         case top
         case topTrailing
