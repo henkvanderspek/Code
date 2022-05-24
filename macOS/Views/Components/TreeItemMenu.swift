@@ -10,6 +10,7 @@ import SwiftUI
 struct TreeItemMenu: NSViewRepresentable {
     struct Item {
         let title: String
+        let image: NSImage?
         let action: ()->()
     }
     struct Coordinator {
@@ -35,6 +36,7 @@ struct TreeItemMenu: NSViewRepresentable {
                     let m = NSMenuItem(title: item.title, action: #selector(tappedItem), keyEquivalent: "")
                     m.target = self
                     m.tag = index
+                    m.image = item.image
                     menu?.addItem(m)
                 }
             }

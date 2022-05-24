@@ -60,16 +60,28 @@ struct AppView: View {
     }
     private func menuItems(_ i: TreeItem) -> [TreeItemMenu.Item] {
         return [
-            .init(title: "Embed in HStack") {
+            .init(title: "Embed in HStack", image: .init(.hstack)) {
                 observer.embedInHStack(i)
             },
-            .init(title: "Embed in VStack") {
+            .init(title: "Embed in VStack", image: .init(.vstack)) {
                 observer.embedInVStack(i)
             },
-            .init(title: "Embed in ZStack") {
+            .init(title: "Embed in ZStack", image: .init(.zstack)) {
                 observer.embedInZStack(i)
+            },
+            .init(title: "Delete", image: .init("trash")) {
+                observer.delete(i)
             }
         ]
+    }
+}
+
+extension NSImage {
+    convenience init?(_ s: String) {
+        self.init(systemSymbolName: s, accessibilityDescription: nil)
+    }
+    convenience init?(_ t: ViewType) {
+        self.init(systemSymbolName: t.systemImage, accessibilityDescription: nil)
     }
 }
 
@@ -121,6 +133,10 @@ extension AppView.Observer {
         i.view?.embeddedInZStack()
         objectWillChange.send()
     }
+    func delete(_ i: TreeItem) {
+        i.view?.delete()
+        objectWillChange.send()
+    }
     func addView(ofType t: ViewType) {
         selectedItem.view?.addView(ofType: t)
         objectWillChange.send()
@@ -139,6 +155,9 @@ extension Uicorn.View {
     func embeddedInZStack() {
         type = .zstack(.init([.init(id: id, type: type, action: nil, properties: nil)]))
         id = UUID().uuidString
+    }
+    func delete() {
+        print("TODO: Delete item")
     }
     func addView(ofType t: ViewType) {
         switch type {
