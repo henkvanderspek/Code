@@ -12,7 +12,7 @@ struct iOSApp: App {
     @StateObject private var backendController = Backend.Controller(configuration: .live)
     var body: some Scene {
         WindowGroup {
-            UicornView(.constant(.mock))
+            UicornView(.constant(.helloWorld))
                 .ignoresSafeArea()
                 .environmentObject(backendController)
         }
