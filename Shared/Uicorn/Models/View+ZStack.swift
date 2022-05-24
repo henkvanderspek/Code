@@ -10,8 +10,10 @@ import Foundation
 extension Uicorn.View {
     class ZStack: Codable {
         var children: [Uicorn.View]
-        init(_ c: [Uicorn.View]) {
+        var alignment: Uicorn.Alignment
+        init(_ c: [Uicorn.View], alignment a: Uicorn.Alignment = .center) {
             children = c
+            alignment = a
         }
     }
 }

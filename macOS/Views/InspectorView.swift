@@ -25,7 +25,9 @@ struct InspectorView: View {
                 HStackPropertiesView(s.binding(set: update))
             case let .vstack(s):
                 VStackPropertiesView(s.binding(set: update))
-            case .empty, .zstack, .spacer:
+            case let .zstack(s):
+                ZStackPropertiesView(s.binding(set: update))
+            case .empty, .spacer:
                 EmptyView()
             }
             // Generic properties
@@ -67,6 +69,9 @@ private extension InspectorView {
     }
     func update(_ s: Uicorn.View.VStack) {
         $view.type.wrappedValue = .vstack(s)
+    }
+    func update(_ s: Uicorn.View.ZStack) {
+        $view.type.wrappedValue = .zstack(s)
     }
 }
 

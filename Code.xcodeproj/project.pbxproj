@@ -65,6 +65,10 @@
 		B69E39C8283CDCC000B65682 /* HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */; };
 		B69E39C9283CDCC000B65682 /* HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */; };
 		B69E39CA283CDCC000B65682 /* HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */; };
+		B69E39CC283CEB3200B65682 /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39CB283CEB3200B65682 /* Alignment.swift */; };
+		B69E39CD283CEB3200B65682 /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39CB283CEB3200B65682 /* Alignment.swift */; };
+		B69E39CE283CEB3200B65682 /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39CB283CEB3200B65682 /* Alignment.swift */; };
+		B69E39D0283CECFC00B65682 /* ZStackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39CF283CECFC00B65682 /* ZStackPropertiesView.swift */; };
 		B69F2BD12828646800877D04 /* TreeItem+Uicorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD02828646800877D04 /* TreeItem+Uicorn.swift */; };
 		B69F2BD32828663900877D04 /* HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD22828663900877D04 /* HStack.swift */; };
 		B69F2BD52828673000877D04 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD42828673000877D04 /* Text.swift */; };
@@ -226,6 +230,8 @@
 		B6883D6C2825864500544462 /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
 		B69E39C3283CD82600B65682 /* VerticalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAlignment.swift; sourceTree = "<group>"; };
 		B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalAlignment.swift; sourceTree = "<group>"; };
+		B69E39CB283CEB3200B65682 /* Alignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment.swift; sourceTree = "<group>"; };
+		B69E39CF283CECFC00B65682 /* ZStackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZStackPropertiesView.swift; sourceTree = "<group>"; };
 		B69F2BD02828646800877D04 /* TreeItem+Uicorn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+Uicorn.swift"; sourceTree = "<group>"; };
 		B69F2BD22828663900877D04 /* HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStack.swift; sourceTree = "<group>"; };
 		B69F2BD42828673000877D04 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
@@ -531,6 +537,7 @@
 				B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */,
 				B6D0F14E283BDDFC00A380BB /* HStackPropertiesView.swift */,
 				B6D0F150283BDEF000A380BB /* VStackPropertiesView.swift */,
+				B69E39CF283CECFC00B65682 /* ZStackPropertiesView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 			);
 			path = Components;
@@ -603,6 +610,7 @@
 				B6B125CD2834DA33005E989F /* Padding.swift */,
 				B69E39C3283CD82600B65682 /* VerticalAlignment.swift */,
 				B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */,
+				B69E39CB283CEB3200B65682 /* Alignment.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -891,6 +899,7 @@
 				B6A38E6C282BF8AF002777CA /* View+ZStack.swift in Sources */,
 				B6B125D32834DE33005E989F /* Action.swift in Sources */,
 				B6A38E5F282BF8AF002777CA /* Sugar.swift in Sources */,
+				B69E39CE283CEB3200B65682 /* Alignment.swift in Sources */,
 				B6A38E60282BF8AF002777CA /* View+Image.swift in Sources */,
 				B6B125D52834DE33005E989F /* Color.swift in Sources */,
 				B6B125DE2834DE42005E989F /* Collection.swift in Sources */,
@@ -932,6 +941,7 @@
 				B6D0F151283BDEF000A380BB /* VStackPropertiesView.swift in Sources */,
 				B69E39C5283CD82600B65682 /* VerticalAlignment.swift in Sources */,
 				B60F224F282839F700A730F1 /* Uicorn.swift in Sources */,
+				B69E39D0283CECFC00B65682 /* ZStackPropertiesView.swift in Sources */,
 				B6A2E5F7282D064B002FCDFF /* CollectionPropertiesView.swift in Sources */,
 				B6EECA582833937400774B42 /* TextPropertiesView.swift in Sources */,
 				B69F2BD32828663900877D04 /* HStack.swift in Sources */,
@@ -963,6 +973,7 @@
 				B61433AB282A84C600760F39 /* BackendController.swift in Sources */,
 				B67692A0282E9C9C0026CA87 /* Properties.swift in Sources */,
 				B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */,
+				B69E39CD283CEB3200B65682 /* Alignment.swift in Sources */,
 				B6C2070E283BAE49001B9BB1 /* TreeItemMenu.swift in Sources */,
 				B69F2BD52828673000877D04 /* Text.swift in Sources */,
 				B61737A92829651E006DE98E /* Image.swift in Sources */,
@@ -984,6 +995,7 @@
 				B6AE6D6C2828FF2C001800F8 /* View+HStack.swift in Sources */,
 				B61433AA282A84C600760F39 /* BackendController.swift in Sources */,
 				B614339E282A5EFC00760F39 /* View+Collection.swift in Sources */,
+				B69E39CC283CEB3200B65682 /* Alignment.swift in Sources */,
 				B6AE6D692828FCFE001800F8 /* View.swift in Sources */,
 				B6FA89A52829753700E842AE /* View+VStack.swift in Sources */,
 				B6EECA5328338BD100774B42 /* Font.swift in Sources */,

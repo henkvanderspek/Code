@@ -16,7 +16,7 @@ extension UicornView {
             host = h
         }
         var body: some View {
-            SwiftUI.ZStack {
+            SwiftUI.ZStack(alignment: .init($model.alignment.wrappedValue)) {
                 ForEach($model.reversedEnumeratedChildren, id: \.offset) { v in
                     UicornView(v.element)
                 }
