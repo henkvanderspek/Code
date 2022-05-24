@@ -48,6 +48,7 @@ struct UicornView: View {
                 }
             }
             .cornerRadius(.init(model.properties?.cornerRadius ?? 0))
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
             // TODO: Use the approach in below link to show consistent iOS style popovers
             // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
             .popover(isPresented: $shouldShowSheet) {
