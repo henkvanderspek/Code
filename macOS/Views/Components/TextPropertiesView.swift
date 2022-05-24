@@ -15,8 +15,13 @@ struct TextPropertiesView: View {
     var body: some View {
         Section {
             TextEditorView(value: $model.value, header: "Text")
+            Header("Alignment")
+            Picker("Alignment", selection: $model.alignment) {
+                ForEach(Uicorn.TextAlignment.allCases, id: \.self) {
+                    Text($0.localizedString)
+                }
+            }
             FontPropertiesView(model: $model.font)
-            // TODO: text alignment
         }
         .labelsHidden()
     }

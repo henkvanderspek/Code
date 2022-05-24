@@ -52,6 +52,9 @@
 		B67692A9282E9E330026CA87 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67692A7282E9E330026CA87 /* Shape.swift */; };
 		B67B3D9727DF42B300F50F2E /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
 		B67B3D9827DF42B300F50F2E /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
+		B6817DE0283CF82F006623A9 /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6817DDF283CF82F006623A9 /* TextAlignment.swift */; };
+		B6817DE1283CF82F006623A9 /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6817DDF283CF82F006623A9 /* TextAlignment.swift */; };
+		B6817DE2283CF82F006623A9 /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6817DDF283CF82F006623A9 /* TextAlignment.swift */; };
 		B6883D5928242CC000544462 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B627C60D2821636D0029126A /* AppView.swift */; };
 		B6883D5B282523B400544462 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5A282523B400544462 /* TreeView.swift */; };
 		B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5C2825468100544462 /* ViewVisibility.swift */; };
@@ -214,6 +217,7 @@
 		B67B3DBC27E0F21D00F50F2E /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
 		B67B3DC127E1048F00F50F2E /* NewspaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewspaperView.swift; sourceTree = "<group>"; };
 		B67B3DC427E1057B00F50F2E /* Newspaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newspaper.swift; sourceTree = "<group>"; };
+		B6817DDF283CF82F006623A9 /* TextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignment.swift; sourceTree = "<group>"; };
 		B6838BEA27D76F4300C60C32 /* JsonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUI.swift; sourceTree = "<group>"; };
 		B6838BED27D794D300C60C32 /* JsonUI+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+SwiftUI.swift"; sourceTree = "<group>"; };
 		B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+Script.swift"; sourceTree = "<group>"; };
@@ -611,6 +615,7 @@
 				B69E39C3283CD82600B65682 /* VerticalAlignment.swift */,
 				B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */,
 				B69E39CB283CEB3200B65682 /* Alignment.swift */,
+				B6817DDF283CF82F006623A9 /* TextAlignment.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -886,6 +891,7 @@
 				B6A38E66282BF8AF002777CA /* Mock.swift in Sources */,
 				B6A38E5E282BF8A5002777CA /* String+Unique.swift in Sources */,
 				B6A38E63282BF8AF002777CA /* Uicorn.swift in Sources */,
+				B6817DE2283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B6A38E73282BF8B2002777CA /* BackendController.swift in Sources */,
 				B6B125DD2834DE42005E989F /* VStack.swift in Sources */,
 				B69E39CA283CDCC000B65682 /* HorizontalAlignment.swift in Sources */,
@@ -937,6 +943,7 @@
 				B67692A6282E9DAA0026CA87 /* Color.swift in Sources */,
 				B6AE6D6D2828FF2C001800F8 /* View+HStack.swift in Sources */,
 				B67692A9282E9E330026CA87 /* Shape.swift in Sources */,
+				B6817DE1283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */,
 				B6D0F151283BDEF000A380BB /* VStackPropertiesView.swift in Sources */,
 				B69E39C5283CD82600B65682 /* VerticalAlignment.swift in Sources */,
@@ -991,6 +998,7 @@
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
 				B67692A5282E9DAA0026CA87 /* Color.swift in Sources */,
 				B61433A7282A656E00760F39 /* Collection.swift in Sources */,
+				B6817DE0283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B6AE6D6F2828FF39001800F8 /* View+Text.swift in Sources */,
 				B6AE6D6C2828FF2C001800F8 /* View+HStack.swift in Sources */,
 				B61433AA282A84C600760F39 /* BackendController.swift in Sources */,

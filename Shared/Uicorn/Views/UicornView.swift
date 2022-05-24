@@ -260,3 +260,13 @@ extension Alignment {
         }
     }
 }
+
+extension TextAlignment {
+    init(_ a: Uicorn.TextAlignment) {
+        switch a {
+        case .leading: self = .leading
+        case .center: self = .center
+        case .trailing: self = .trailing
+        }
+    }
+}

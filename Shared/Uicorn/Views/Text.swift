@@ -18,7 +18,7 @@ extension UicornView {
         var body: some View {
             SwiftUI.Text(.init($model.wrappedValue.value))
                 .font(.init($model.font.wrappedValue))
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.init($model.alignment.wrappedValue))
         }
     }
 }
