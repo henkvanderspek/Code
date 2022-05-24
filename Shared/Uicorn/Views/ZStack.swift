@@ -17,8 +17,8 @@ extension UicornView {
         }
         var body: some View {
             SwiftUI.ZStack {
-                ForEach($model.children.reversed()) {
-                    UicornView($0, resolver: host.resolve)
+                ForEach($model.reversedEnumeratedChildren, id: \.offset) { v in
+                    UicornView(v.element)
                 }
             }
         }
@@ -28,5 +28,12 @@ extension UicornView {
 struct UicornView_ZStack_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.ZStack(.constant(.init([])), host: MockHost())
+    }
+}
+
+extension Uicorn.View.ZStack {
+    var reversedEnumeratedChildren: Array<EnumeratedSequence<Uicorn.View>.Element> {
+        get { Array(children.reversed().enumerated()) }
+        set {}
     }
 }

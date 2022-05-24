@@ -116,3 +116,33 @@ private extension Uicorn.View.`Type` {
 }
 
 protocol UicornViewType {}
+
+extension Uicorn.View: RandomAccessCollection {
+    private var subviews: [Uicorn.View] {
+        switch type {
+        case let .zstack(s):
+            return s.children
+        case let .hstack(s):
+            return s.children
+        case let .vstack(s):
+            return s.children
+        default:
+            return []
+        }
+    }
+    var startIndex: Int {
+        subviews.startIndex
+    }
+    var endIndex: Int {
+        subviews.endIndex
+    }
+    func formIndex(after i: inout Int) {
+        subviews.formIndex(after: &i)
+    }
+    func formIndex(before i: inout Int) {
+        subviews.formIndex(before: &i)
+    }
+    subscript(index: Int) -> Uicorn.View {
+        subviews[index]
+    }
+}
