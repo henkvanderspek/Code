@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct PropertiesView: View {
-    @Binding var properties: Uicorn.Properties
-    init(_ p: Binding<Uicorn.Properties>) {
-        _properties = p
+    @Binding var model: Uicorn.Properties
+    init(_ m: Binding<Uicorn.Properties>) {
+        _model = m
     }
     var body: some View {
-        PaddingPropertiesView($properties.padding)
+        Divider()
+        ColorPropertiesView(
+            header: "Background Color",
+            model: .init(
+                get: {
+                    $model.backgroundColor.wrappedValue ?? .system(.background)
+                },
+                set: {
+                    $model.backgroundColor.wrappedValue = $0
+                }
+            )
+        )
+        Divider()
         Section {
-            StepperView(Binding($properties.cornerRadius), default: 0, range: 0...1000, header: "Corner Radius")
+            HStack {
+                PaddingPropertiesView($model.padding)
+                StepperView(Binding($model.cornerRadius), default: 0, range: 0...1000, header: "Corner Radius")
+            }
         }.labelsHidden()
     }
 }

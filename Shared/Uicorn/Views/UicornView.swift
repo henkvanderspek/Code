@@ -43,6 +43,11 @@ struct UicornView: View {
             .padding(.trailing, .init(model.properties?.padding.trailing ?? 0))
             .padding(.top, .init(model.properties?.padding.top ?? 0))
             .padding(.bottom, .init(model.properties?.padding.bottom ?? 0))
+            .background {
+                if let v = backgroundView() {
+                    v
+                }
+            }
             // TODO: Use the approach in below link to show consistent iOS style popovers
             // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
             .popover(isPresented: $shouldShowSheet) {
@@ -65,6 +70,12 @@ private extension View {
         return AnyView(onTapGesture {
             p(a)
         })
+    }
+}
+
+private extension UicornView {
+    @ViewBuilder func backgroundView() -> (some View)? {
+        model.properties?.backgroundColor.map { Color($0) }
     }
 }
 

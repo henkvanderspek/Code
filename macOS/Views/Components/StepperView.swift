@@ -21,15 +21,17 @@ struct StepperView<V: Comparable & Strideable & CustomStringConvertible>: View {
         label = l
     }
     var body: some View {
-        Header(header)
-        HStack(spacing: 5) {
-            Text(label(value ?? `default`))
-                .frame(maxWidth: .infinity, alignment: .trailing)
-            Stepper(header, value: Binding($value, default: `default`), in: range)
+        VStack(alignment: .leading) {
+            Header(header)
+            HStack(spacing: 5) {
+                Text(label(value ?? `default`))
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                Stepper(header, value: Binding($value, default: `default`), in: range)
+            }
+            .frame(minWidth: 80)
+            .background(.background)
+            .cornerRadius(4)
         }
-        .frame(width: 80)
-        .background(.background)
-        .cornerRadius(4)
     }
 }
 

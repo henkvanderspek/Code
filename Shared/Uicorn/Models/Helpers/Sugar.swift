@@ -21,13 +21,13 @@ extension Uicorn.View {
         .text("~HI~ *HELLO*\n**WORLD**\n🌎", font: .init(type: .largeTitle, weight: .regular, design: .default), alignment: .center)
     }
     static func hstack(_ c: [Uicorn.View], spacing: Int = 0, padding: Uicorn.Padding? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: nil, properties: padding.map { .init(padding: $0, cornerRadius: 0) })
+        .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: nil, properties: padding.map { .init(padding: $0) })
     }
     static func vstack(_ c: [Uicorn.View], spacing: Int = 0, padding: Uicorn.Padding? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .vstack(.init(c, spacing: spacing)), action: nil, properties: padding.map { .init(padding: $0, cornerRadius: 0) })
+        .init(id: .unique, type: .vstack(.init(c, spacing: spacing)), action: nil, properties: padding.map { .init(padding: $0) })
     }
     static func zstack(_ c: [Uicorn.View], action: Action? = nil, padding: Uicorn.Padding? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .zstack(.init(c)), action: action, properties: padding.map { .init(padding: $0, cornerRadius: 0) })
+        .init(id: .unique, type: .zstack(.init(c)), action: action, properties: padding.map { .init(padding: $0) })
     }
     static func image(_ s: String, type: Image.`Type`, fill: Uicorn.Color? = nil, action: Action? = nil) -> Uicorn.View {
         .init(id: .unique, type: .image(.init(type: type, value: s, fill: fill)), action: action, properties: nil)

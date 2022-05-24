@@ -15,18 +15,25 @@ struct TextPropertiesView: View {
     var body: some View {
         Section {
             TextEditorView(value: $model.value, header: "Text")
-            Header("Alignment")
-            Picker("Alignment", selection: $model.alignment) {
-                ForEach(Uicorn.TextAlignment.allCases, id: \.self) {
-                    Text($0.localizedString)
+            HStack {
+                VStack(alignment: .leading) {
+                    Header("Alignment")
+                    Picker("Alignment", selection: $model.alignment) {
+                        ForEach(Uicorn.TextAlignment.allCases, id: \.self) {
+                            Text($0.localizedString)
+                        }
+                    }
+                }
+                VStack(alignment: .leading) {
+                    Header("Transform")
+                    Picker("Transform", selection: $model.textCase) {
+                        ForEach(Uicorn.TextCase.allCases, id: \.self) {
+                            Text($0.localizedString)
+                        }
+                    }
                 }
             }
-            Header("Transform")
-            Picker("Transform", selection: $model.textCase) {
-                ForEach(Uicorn.TextCase.allCases, id: \.self) {
-                    Text($0.localizedString)
-                }
-            }
+            Divider()
             FontPropertiesView(model: $model.font)
         }
         .labelsHidden()

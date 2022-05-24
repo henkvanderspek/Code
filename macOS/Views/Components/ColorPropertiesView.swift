@@ -90,32 +90,42 @@ private extension ColorPropertiesView {
             custom = cs
         }
         var body: some View {
-            Header(header)
-            Picker(header, selection: $category) {
-                ForEach(Category.allCases, id: \.self) {
-                    Text($0.rawValue.localizedCapitalized)
-                }
-            }
-            .onChange(of: category) {
-                colorType = determineColorType(category: $0)
-            }
-            switch category {
-            case .system:
-                Picker("", selection: $system) {
-                    ForEach(System.allCases, id: \.self) {
-                        Text($0.localizedCapitalized)
+            VStack(alignment: .leading) {
+                Header(header)
+                HStack {
+                    Picker(header, selection: $category) {
+                        ForEach(Category.allCases, id: \.self) {
+                            Text($0.rawValue.localizedCapitalized)
+                        }
+                    }
+                    .onChange(of: category) {
+                        colorType = determineColorType(category: $0)
+                    }
+                    switch category {
+                    case .system:
+                        Picker("", selection: $system) {
+                            ForEach(System.allCases, id: \.self) {
+                                Text($0.localizedCapitalized)
+                            }
+                        }
+                        .onChange(of: system) {
+                            colorType = determineColorType(system: $0)
+                        }
+                    case .custom:
+                        EmptyView()
                     }
                 }
-                .onChange(of: system) {
-                    colorType = determineColorType(system: $0)
-                }
                 RoundedRectangle(cornerRadius: 5)
-                    .fill(Color(.init(system)))
-                    .frame(minHeight: 20)
+                    .fill(color)
+                    .frame(height: 20)
+            }
+        }
+        private var color: SwiftUI.Color {
+            switch category {
+            case .system:
+                return .init(.init(system))
             case .custom:
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(custom)
-                    .frame(minHeight: 20)
+                return custom
             }
         }
     }
