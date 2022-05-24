@@ -14,6 +14,12 @@ struct HStackPropertiesView: View {
     }
     var body: some View {
         Section {
+            Header("Alignment")
+            Picker("Alignment", selection: $model.alignment) {
+                ForEach(Uicorn.VerticalAlignment.allCases, id: \.self) {
+                    Text($0.localizedString)
+                }
+            }
             StepperView(Binding($model.spacing), default: 0, range: 0...1000, header: "Spacing")
         }.labelsHidden()
     }

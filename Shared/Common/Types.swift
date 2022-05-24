@@ -134,7 +134,6 @@ extension Binding where Value: Equatable {
             },
             set: {
                 s.wrappedValue = $0 == s.wrappedValue ? d : $0
-                print(s.wrappedValue)
             }
         )
     }

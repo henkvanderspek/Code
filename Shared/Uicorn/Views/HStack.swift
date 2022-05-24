@@ -16,7 +16,7 @@ extension UicornView {
             host = h
         }
         var body: some View {
-            SwiftUI.HStack(spacing: .init($model.spacing.wrappedValue)) {
+            SwiftUI.HStack(alignment: .init($model.alignment.wrappedValue), spacing: .init($model.spacing.wrappedValue)) {
                 ForEach($model.children) {
                     UicornView($0)
                 }

@@ -222,3 +222,25 @@ extension Font.Design {
         }
     }
 }
+
+extension VerticalAlignment {
+    init(_ a: Uicorn.VerticalAlignment) {
+        switch a {
+        case .top: self = .top
+        case .center: self = .center
+        case .bottom: self = .bottom
+        case .firstTextBaseline: self = .firstTextBaseline
+        case .lastTextBaseline: self = .lastTextBaseline
+        }
+    }
+}
+
+extension HorizontalAlignment {
+    init(_ a: Uicorn.HorizontalAlignment) {
+        switch a {
+        case .leading: self = .leading
+        case .center: self = .center
+        case .trailing: self = .trailing
+        }
+    }
+}

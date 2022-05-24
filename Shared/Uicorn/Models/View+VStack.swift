@@ -10,9 +10,11 @@ import Foundation
 extension Uicorn.View {
     class VStack: Codable {
         var children: [Uicorn.View]
+        var alignment: Uicorn.HorizontalAlignment
         var spacing: Int
-        init(_ c: [Uicorn.View], spacing s: Int) {
+        init(_ c: [Uicorn.View], alignment a: Uicorn.HorizontalAlignment = .center, spacing s: Int) {
             children = c
+            alignment = a
             spacing = s
         }
     }
