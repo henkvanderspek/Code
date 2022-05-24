@@ -105,6 +105,8 @@ private extension UicornView {
             Collection(c.binding, host: self)
         case let .shape(s):
             Shape(s.binding, host: self)
+        case .map:
+            Map()
         case .spacer:
             Spacer()
         case .empty:

@@ -14,13 +14,17 @@ struct VStackPropertiesView: View {
     }
     var body: some View {
         Section {
-            Header("Alignment")
-            Picker("Alignment", selection: $model.alignment) {
-                ForEach(Uicorn.HorizontalAlignment.allCases, id: \.self) {
-                    Text($0.localizedString)
+            HStack {
+                VStack(alignment: .leading) {
+                    Header("Alignment")
+                    Picker("Alignment", selection: $model.alignment) {
+                        ForEach(Uicorn.HorizontalAlignment.allCases, id: \.self) {
+                            Text($0.localizedString)
+                        }
+                    }
                 }
+                StepperView(Binding($model.spacing), default: 0, range: 0...1000, header: "Spacing")
             }
-            StepperView(Binding($model.spacing), default: 0, range: 0...1000, header: "Spacing")
         }.labelsHidden()
     }
 }

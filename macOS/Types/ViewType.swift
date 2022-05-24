@@ -60,9 +60,9 @@ extension ViewType {
     }
     var canAddItem: Bool {
         switch self {
-        case .text, .spacer, .sfSymbol, .image:
+        case .text, .spacer, .sfSymbol, .image, .vstack, .hstack, .zstack, .map:
             return true
-        case .script, .vstack, .zstack, .hstack, .map, .collection, .shape, .empty:
+        case .script, .collection, .shape, .empty:
             return false
         }
     }

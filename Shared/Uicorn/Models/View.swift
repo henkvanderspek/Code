@@ -19,6 +19,7 @@ extension Uicorn {
             case shape(Shape)
             case spacer
             case empty
+            case map
         }
         var id: String
         var type: `Type`
@@ -65,6 +66,7 @@ private extension Uicorn.View {
         case image
         case collection
         case shape
+        case map
         case spacer
         case empty
     }
@@ -80,6 +82,7 @@ private extension Uicorn.View.ViewType {
         case .image: return .image(try .init(from: decoder))
         case .collection: return .collection(try .init(from: decoder))
         case .shape: return .shape(try .init(from: decoder))
+        case .map: return .map
         case .spacer: return .spacer
         case .empty: return .empty
         }
@@ -97,6 +100,7 @@ private extension Uicorn.View.`Type` {
         case .collection: return "collection"
         case .shape: return "shape"
         case .spacer: return "spacer"
+        case .map: return "map"
         case .empty: return "empty"
         }
     }
@@ -110,6 +114,7 @@ private extension Uicorn.View.`Type` {
         case let .collection(c): return c
         case let .shape(s): return s
         case .spacer: return nil
+        case .map: return nil
         case .empty: return nil
         }
     }

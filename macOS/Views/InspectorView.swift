@@ -27,7 +27,7 @@ struct InspectorView: View {
                 VStackPropertiesView(s.binding(set: update))
             case let .zstack(s):
                 ZStackPropertiesView(s.binding(set: update))
-            case .empty, .spacer:
+            case .empty, .spacer, .map:
                 EmptyView()
             }
             // Generic properties
@@ -43,7 +43,7 @@ struct InspectorView: View {
                         }
                     )
                 )
-            case .spacer, .empty, .collection:
+            case .spacer, .empty, .collection, .map:
                 EmptyView()
             }
         }

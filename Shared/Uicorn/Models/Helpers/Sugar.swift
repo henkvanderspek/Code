@@ -59,6 +59,9 @@ extension Uicorn.View {
     static func capsule(_ c: Uicorn.Color) -> Uicorn.View {
         .init(id: .unique, type: .shape(.capsule(c)), action: nil, properties: nil)
     }
+    static var map: Uicorn.View {
+        .init(id: .unique, type: .map, action: nil, properties: nil)
+    }
 }
 
 extension Uicorn.View.Collection {

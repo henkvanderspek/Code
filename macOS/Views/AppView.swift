@@ -183,8 +183,16 @@ extension Uicorn.View {
             return .randomSystemImage
         case .image:
             return .randomRemoteImage
+        case .hstack:
+            return .hstack([])
+        case .vstack:
+            return .vstack([])
+        case .zstack:
+            return .zstack([])
+        case .map:
+            return .map
         default:
-            return .empty
+            fatalError()
         }
     }
 }
