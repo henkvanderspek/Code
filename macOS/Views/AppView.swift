@@ -34,10 +34,10 @@ struct AppView: View {
                     }
                 }
             }.listStyle(.sidebar)
-            AppearanceView(
-                colorScheme: shouldShowDarkMode ? .dark : .light,
-                content: ScreenView(observer.sanitizedScreen)
-            )
+            AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
+                ScreenView(observer.sanitizedScreen)
+            }.id(UUID())
+//            ScreenView(observer.sanitizedScreen)
             List {
                 InspectorView(view: observer.sanitizedSelectedItem)
             }.listStyle(.sidebar)

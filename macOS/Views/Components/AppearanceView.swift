@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct AppearanceView<Content: View>: NSViewRepresentable {
+    typealias CreateContent = () -> Content
     var colorScheme: ColorScheme?
-    let content: Content
+    let createContent: CreateContent
     private var customAppearance: NSAppearance? {
         colorScheme.map { .init($0) } ?? nil
     }
-    init(colorScheme cs: ColorScheme, content c: Content) {
+    init(colorScheme cs: ColorScheme, createContent c: @escaping CreateContent) {
         colorScheme = cs
-        content = c
+        createContent = c
     }
     func makeNSView(context: Context) -> NSAppearanceView<Content> {
-        return .init(frame: .zero, customAppearance: customAppearance, content: content)
+        return .init(frame: .zero, content: createContent())
     }
     func updateNSView(_ nsView: NSAppearanceView<Content>, context: Context) {
         nsView.customAppearance = customAppearance
@@ -32,11 +33,9 @@ class NSAppearanceView<Content: View>: NSView {
             appearance = customAppearance
         }
     }
-    init(frame f: NSRect = .zero, customAppearance a: NSAppearance?, content: Content) {
+    init(frame f: NSRect = .zero, content: Content) {
         child = .init(rootView: content)
         super.init(frame: f)
-        customAppearance = a
-        appearance = a
         addSubview(child)
     }
     required init?(coder: NSCoder) {
