@@ -22,10 +22,13 @@ struct InspectorView: View {
             case let .image(i):
                 ImagePropertiesView(i.binding(set: update))
             case let .hstack(s):
+//                StackPropertiesView(Stack(s.binding(set: update)).binding(set: update))
                 HStackPropertiesView(s.binding(set: update))
             case let .vstack(s):
+//                StackPropertiesView(Stack(s.binding(set: update)).binding(set: update))
                 VStackPropertiesView(s.binding(set: update))
             case let .zstack(s):
+//                StackPropertiesView(Stack(s.binding(set: update)).binding(set: update))
                 ZStackPropertiesView(s.binding(set: update))
             case .empty, .spacer, .map:
                 EmptyView()
@@ -64,6 +67,28 @@ private extension InspectorView {
     func update(_ i: Uicorn.View.Image) {
         $view.type.wrappedValue = .image(i)
     }
+    func update(_ a: Stack) {
+        switch a.axis {
+        case .horizontal:
+            if let s = a.model as? Uicorn.View.HStack {
+                update(s)
+            } else {
+                print("TODO: convert to HStack")
+            }
+        case .vertical:
+            if let s = a.model as? Uicorn.View.VStack {
+                update(s)
+            } else {
+                print("TODO: convert to VStack")
+            }
+        case .depth:
+            if let s = a.model as? Uicorn.View.ZStack {
+                update(s)
+            } else {
+                print("TODO: convert to zStack")
+            }
+        }
+    }
     func update(_ s: Uicorn.View.HStack) {
         $view.type.wrappedValue = .hstack(s)
     }
@@ -80,3 +105,5 @@ struct InspectorView_Previews: PreviewProvider {
         InspectorView(view: .constant(.mock))
     }
 }
+
+extension Stack: UicornViewType {}

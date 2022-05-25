@@ -42,6 +42,7 @@
 		B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC32836422F008234A4 /* TextFieldView.swift */; };
 		B66B4475283E15BE00230758 /* iPhone12ProMax.scn in Resources */ = {isa = PBXBuildFile; fileRef = B66B4474283E15BE00230758 /* iPhone12ProMax.scn */; };
 		B66B4477283E297800230758 /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4476283E297800230758 /* AppearanceView.swift */; };
+		B66B4479283E32F500230758 /* StackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4478283E32F500230758 /* StackPropertiesView.swift */; };
 		B676929B282E622D0026CA87 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929A282E622D0026CA87 /* Header.swift */; };
 		B676929D282E828C0026CA87 /* ColorPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929C282E828C0026CA87 /* ColorPropertiesView.swift */; };
 		B676929F282E9C9C0026CA87 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929E282E9C9C0026CA87 /* Properties.swift */; };
@@ -210,6 +211,7 @@
 		B66A8E092816D46D00BE9D55 /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
 		B66B4474283E15BE00230758 /* iPhone12ProMax.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = iPhone12ProMax.scn; sourceTree = "<group>"; };
 		B66B4476283E297800230758 /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
+		B66B4478283E32F500230758 /* StackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackPropertiesView.swift; sourceTree = "<group>"; };
 		B676929A282E622D0026CA87 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		B676929C282E828C0026CA87 /* ColorPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPropertiesView.swift; sourceTree = "<group>"; };
 		B676929E282E9C9C0026CA87 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 				B6EECA572833937400774B42 /* TextPropertiesView.swift */,
 				B6B125E3283511C5005E989F /* PaddingPropertiesView.swift */,
 				B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */,
+				B66B4478283E32F500230758 /* StackPropertiesView.swift */,
 				B6D0F14E283BDDFC00A380BB /* HStackPropertiesView.swift */,
 				B6D0F150283BDEF000A380BB /* VStackPropertiesView.swift */,
 				B69E39CF283CECFC00B65682 /* ZStackPropertiesView.swift */,
@@ -1008,6 +1011,7 @@
 				B67692A0282E9C9C0026CA87 /* Properties.swift in Sources */,
 				B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */,
 				B69E39CD283CEB3200B65682 /* Alignment.swift in Sources */,
+				B66B4479283E32F500230758 /* StackPropertiesView.swift in Sources */,
 				B66B4477283E297800230758 /* AppearanceView.swift in Sources */,
 				B6E13C63283D2639003BFDD4 /* Map.swift in Sources */,
 				B6C2070E283BAE49001B9BB1 /* TreeItemMenu.swift in Sources */,
