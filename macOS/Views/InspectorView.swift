@@ -22,14 +22,32 @@ struct InspectorView: View {
             case let .image(i):
                 ImagePropertiesView(i.binding(set: update))
             case let .hstack(s):
-//                StackPropertiesView(Stack(s.binding(set: update)).binding(set: update))
-                HStackPropertiesView(s.binding(set: update))
+                StackPropertiesView(
+                    Stack(.horizontal).binding(
+                        set: {
+                            update($0, s)
+                        }
+                    ),
+                    s.binding(set: update)
+                )
             case let .vstack(s):
-//                StackPropertiesView(Stack(s.binding(set: update)).binding(set: update))
-                VStackPropertiesView(s.binding(set: update))
+                StackPropertiesView(
+                    Stack(.vertical).binding(
+                        set: {
+                            update($0, s)
+                        }
+                    ),
+                    s.binding(set: update)
+                )
             case let .zstack(s):
-//                StackPropertiesView(Stack(s.binding(set: update)).binding(set: update))
-                ZStackPropertiesView(s.binding(set: update))
+                StackPropertiesView(
+                    Stack(.depth).binding(
+                        set: {
+                            update($0, s)
+                        }
+                    ),
+                    s.binding(set: update)
+                )
             case .empty, .spacer, .map:
                 EmptyView()
             }
@@ -67,26 +85,31 @@ private extension InspectorView {
     func update(_ i: Uicorn.View.Image) {
         $view.type.wrappedValue = .image(i)
     }
-    func update(_ a: Stack) {
-        switch a.axis {
-        case .horizontal:
-            if let s = a.model as? Uicorn.View.HStack {
-                update(s)
-            } else {
-                print("TODO: convert to HStack")
-            }
+    func update(_ s: Stack, _ v: Uicorn.View.HStack) {
+        switch s.axis {
         case .vertical:
-            if let s = a.model as? Uicorn.View.VStack {
-                update(s)
-            } else {
-                print("TODO: convert to VStack")
-            }
+            update(Uicorn.View.VStack(v.children, alignment: .init(v.alignment), spacing: v.spacing))
         case .depth:
-            if let s = a.model as? Uicorn.View.ZStack {
-                update(s)
-            } else {
-                print("TODO: convert to zStack")
-            }
+            update(Uicorn.View.ZStack(v.children, alignment: .init(v.alignment)))
+        case .horizontal: ()
+        }
+    }
+    func update(_ s: Stack, _ v: Uicorn.View.VStack) {
+        switch s.axis {
+        case .horizontal:
+            update(Uicorn.View.HStack(v.children, alignment: .init(v.alignment), spacing: v.spacing))
+        case .depth:
+            update(Uicorn.View.ZStack(v.children, alignment: .init(v.alignment)))
+        case .vertical: ()
+        }
+    }
+    func update(_ s: Stack, _ v: Uicorn.View.ZStack) {
+        switch s.axis {
+        case .horizontal:
+            update(Uicorn.View.HStack(v.children, alignment: .init(v.alignment), spacing: 0))
+        case .vertical:
+            update(Uicorn.View.VStack(v.children, alignment: .init(v.alignment), spacing: 0))
+        case .depth: ()
         }
     }
     func update(_ s: Uicorn.View.HStack) {
@@ -107,3 +130,71 @@ struct InspectorView_Previews: PreviewProvider {
 }
 
 extension Stack: UicornViewType {}
+
+extension Uicorn.VerticalAlignment {
+    init(_ a: Uicorn.HorizontalAlignment) {
+        switch a {
+        case .leading: self = .top
+        case .center: self = .center
+        case .trailing: self = .bottom
+        }
+    }
+}
+
+extension Uicorn.HorizontalAlignment {
+    init(_ a: Uicorn.VerticalAlignment) {
+        switch a {
+        case .top: self = .leading
+        case .bottom: self = .trailing
+        case .center: fallthrough
+        default: self = .center
+        }
+    }
+}
+
+extension Uicorn.HorizontalAlignment {
+    init(_ a: Uicorn.Alignment) {
+        switch a {
+        case .topLeading, .top, .topTrailing:
+            self = .leading
+        case .leading, .center, .trailing:
+            self = .center
+        case .bottomLeading, .bottom, .bottomTrailing:
+            self = .trailing
+        }
+    }
+}
+
+extension Uicorn.VerticalAlignment {
+    init(_ a: Uicorn.Alignment) {
+        switch a {
+        case .topLeading, .top, .topTrailing:
+            self = .top
+        case .leading, .center, .trailing:
+            self = .center
+        case .bottomLeading, .bottom, .bottomTrailing:
+            self = .bottom
+        }
+    }
+}
+
+extension Uicorn.Alignment {
+    init(_ a: Uicorn.VerticalAlignment) {
+        switch a {
+        case .top: self = .leading
+        case .bottom: self = .trailing
+        case .center: fallthrough
+        default: self = .center
+        }
+    }
+}
+
+extension Uicorn.Alignment {
+    init(_ a: Uicorn.HorizontalAlignment) {
+        switch a {
+        case .leading: self = .leading
+        case .trailing: self = .trailing
+        case .center: self = .center
+        }
+    }
+}

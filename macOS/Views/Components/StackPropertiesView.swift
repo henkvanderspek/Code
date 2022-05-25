@@ -14,25 +14,25 @@ class Stack {
         case depth
     }
     var axis: Axis
-    var model: Codable
-    init(_ m: Binding<Uicorn.View.HStack>) {
-        axis = .horizontal
-        model = m.wrappedValue
-    }
-    init(_ m: Binding<Uicorn.View.VStack>) {
-        axis = .vertical
-        model = m.wrappedValue
-    }
-    init(_ m: Binding<Uicorn.View.ZStack>) {
-        axis = .depth
-        model = m.wrappedValue
+    init(_ a: Axis) {
+        axis = a
     }
 }
 
 struct StackPropertiesView: View {
     @Binding var model: Stack
-    init(_ m: Binding<Stack>) {
+    private var content: AnyView
+    init(_ m: Binding<Stack>, _ v: Binding<Uicorn.View.HStack>) {
         _model = m
+        content = AnyView(HStackPropertiesView(v))
+    }
+    init(_ m: Binding<Stack>, _ v: Binding<Uicorn.View.VStack>) {
+        _model = m
+        content = AnyView(VStackPropertiesView(v))
+    }
+    init(_ m: Binding<Stack>, _ v: Binding<Uicorn.View.ZStack>) {
+        _model = m
+        content = AnyView(ZStackPropertiesView(v))
     }
     var body: some View {
         Section {
@@ -42,6 +42,7 @@ struct StackPropertiesView: View {
                     Text($0.localizedString)
                 }
             }
+            content
         }
         .labelsHidden()
     }
@@ -49,7 +50,7 @@ struct StackPropertiesView: View {
 
 struct StackPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        StackPropertiesView(.constant(.init(.constant(Uicorn.View.ZStack([])))))
+        StackPropertiesView(.constant(.init(.horizontal)), .constant(Uicorn.View.HStack([], spacing: 0)))
     }
 }
 
