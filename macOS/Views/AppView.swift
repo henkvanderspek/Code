@@ -17,6 +17,7 @@ struct AppView: View {
         @Published var selectedItem: TreeItem
     }
     @ObservedObject private var observer: Observer
+    @State var shouldShowDarkMode: Bool = false
     init(_ a: Uicorn.App) {
         observer = .init(a)
     }
@@ -33,7 +34,10 @@ struct AppView: View {
                     }
                 }
             }.listStyle(.sidebar)
-            ScreenView(observer.sanitizedScreen)
+            AppearanceView(
+                colorScheme: shouldShowDarkMode ? .dark : .light,
+                content: ScreenView(observer.sanitizedScreen)
+            )
             List {
                 InspectorView(view: observer.sanitizedSelectedItem)
             }.listStyle(.sidebar)
@@ -55,6 +59,10 @@ struct AppView: View {
                     Label("Add", systemImage: "plus")
                 }
                 .disabled(!observer.selectedItem.canAddView)
+                Toggle(isOn: $shouldShowDarkMode) {
+                    Label("Toggle Appearance", systemImage: shouldShowDarkMode ? "moon.fill" : "sun.max.fill")
+                        .labelStyle(.iconOnly)
+                }
             }
         }
     }

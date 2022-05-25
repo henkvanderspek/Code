@@ -91,7 +91,9 @@ extension NativeColor {
         .linkColor
     }
     static var systemBackground: NativeColor {
-        .windowBackgroundColor
+        .init(name: nil) {
+            $0.isDarkMode ? .windowBackgroundColor : .white
+        }
     }
 }
 
@@ -111,6 +113,17 @@ extension NSTextView {
     var alwaysBounceVertical: Bool {
         set {}
         get { return false }
+    }
+}
+
+extension NSAppearance {
+    @objc(rsIsDarkMode)
+    var isDarkMode: Bool {
+        if #available(macOS 10.14, *) {
+            return bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+        } else {
+            return false
+        }
     }
 }
 
