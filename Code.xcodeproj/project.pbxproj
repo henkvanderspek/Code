@@ -52,6 +52,10 @@
 		B65C0272283FA3570073FA4A /* View+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C026F283FA3570073FA4A /* View+Map.swift */; };
 		B65C0275283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */; };
 		B65C0279283FA67F0073FA4A /* MapPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0277283FA67F0073FA4A /* MapPropertiesView.swift */; };
+		B65C027C283FBFF20073FA4A /* FramePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C027B283FBFF20073FA4A /* FramePropertiesView.swift */; };
+		B65C027E283FC0970073FA4A /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C027D283FC0970073FA4A /* Frame.swift */; };
+		B65C027F283FC0970073FA4A /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C027D283FC0970073FA4A /* Frame.swift */; };
+		B65C0280283FC0970073FA4A /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C027D283FC0970073FA4A /* Frame.swift */; };
 		B660EEC2283641E8008234A4 /* ImagePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */; };
 		B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC32836422F008234A4 /* TextFieldView.swift */; };
 		B66B4475283E15BE00230758 /* iPhone12ProMax.scn in Resources */ = {isa = PBXBuildFile; fileRef = B66B4474283E15BE00230758 /* iPhone12ProMax.scn */; };
@@ -225,6 +229,8 @@
 		B65C026F283FA3570073FA4A /* View+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Map.swift"; sourceTree = "<group>"; };
 		B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPropertiesView.swift; sourceTree = "<group>"; };
 		B65C0277283FA67F0073FA4A /* MapPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPropertiesView.swift; sourceTree = "<group>"; };
+		B65C027B283FBFF20073FA4A /* FramePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramePropertiesView.swift; sourceTree = "<group>"; };
+		B65C027D283FC0970073FA4A /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 		B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePropertiesView.swift; sourceTree = "<group>"; };
 		B660EEC32836422F008234A4 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B66A8E092816D46D00BE9D55 /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
@@ -584,6 +590,7 @@
 				B69E39CF283CECFC00B65682 /* ZStackPropertiesView.swift */,
 				B65C0277283FA67F0073FA4A /* MapPropertiesView.swift */,
 				B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */,
+				B65C027B283FBFF20073FA4A /* FramePropertiesView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 				B66B4476283E297800230758 /* AppearanceView.swift */,
 				B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */,
@@ -666,6 +673,7 @@
 				B6817DDF283CF82F006623A9 /* TextAlignment.swift */,
 				B6E13C5D283CFB36003BFDD4 /* TextCase.swift */,
 				B65C0267283F9E9D0073FA4A /* Axis.swift */,
+				B65C027D283FC0970073FA4A /* Frame.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -974,6 +982,7 @@
 				B6A38E72282BF8AF002777CA /* App.swift in Sources */,
 				B6B125DA2834DE42005E989F /* Text.swift in Sources */,
 				B6A38E6B282BF8AF002777CA /* View+HStack.swift in Sources */,
+				B65C0280283FC0970073FA4A /* Frame.swift in Sources */,
 				B6E13C64283D2639003BFDD4 /* Map.swift in Sources */,
 				B65C0266283F9D540073FA4A /* View+Scroll.swift in Sources */,
 			);
@@ -998,6 +1007,7 @@
 				B6AE6D672828FCEA001800F8 /* Screen.swift in Sources */,
 				B6EECA5628338D4000774B42 /* FontPropertiesView.swift in Sources */,
 				B6E13C5F283CFB36003BFDD4 /* TextCase.swift in Sources */,
+				B65C027F283FC0970073FA4A /* Frame.swift in Sources */,
 				B6B125E82835123E005E989F /* StepperView.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B67692A6282E9DAA0026CA87 /* Color.swift in Sources */,
@@ -1023,6 +1033,7 @@
 				B61433A2282A642200760F39 /* Sugar.swift in Sources */,
 				B6EECA5428338BD100774B42 /* Font.swift in Sources */,
 				B6D0F14F283BDDFC00A380BB /* HStackPropertiesView.swift in Sources */,
+				B65C027C283FBFF20073FA4A /* FramePropertiesView.swift in Sources */,
 				B65C0275283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */,
 				B676929B282E622D0026CA87 /* Header.swift in Sources */,
 				B65C0265283F9D540073FA4A /* View+Scroll.swift in Sources */,
@@ -1095,6 +1106,7 @@
 				B6AE6D742829319E001800F8 /* Color+Random.swift in Sources */,
 				B61737AB2829664A006DE98E /* View+Image.swift in Sources */,
 				B65C026C283FA1380073FA4A /* Scroll.swift in Sources */,
+				B65C027E283FC0970073FA4A /* Frame.swift in Sources */,
 				B69E39C8283CDCC000B65682 /* HorizontalAlignment.swift in Sources */,
 				B67692A8282E9E330026CA87 /* Shape.swift in Sources */,
 				B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */,

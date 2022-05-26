@@ -49,3 +49,4 @@ protocol Formatible {
 
 extension Int: Formatible {}
 extension Double: Formatible {}
+extension Float: Formatible {}

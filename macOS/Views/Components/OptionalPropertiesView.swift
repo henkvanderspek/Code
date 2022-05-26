@@ -16,7 +16,10 @@ struct OptionalPropertiesView<T, V: View>: View {
         Section {
             createHeader()
             if let v = Binding($value) {
-                content(v)
+                VStack {
+                    content(v)
+                }
+                .padding(.top, 5)
             }
         }
         .labelsHidden()

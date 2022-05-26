@@ -11,25 +11,30 @@ extension Uicorn {
     class Properties: Codable {
         var padding: Padding
         var cornerRadius: Int
-        var backgroundColor: Uicorn.Color?
+        var backgroundColor: Color?
         var opacity: Double?
-        init(padding p: Padding, cornerRadius r: Int, backgroundColor b: Uicorn.Color?, opacity o: Double?) {
+        var frame: Frame?
+        init(padding p: Padding = .zero, cornerRadius r: Int = 0, backgroundColor b: Color? = nil, opacity o: Double? = nil, frame f: Frame? = nil) {
             padding = p
             cornerRadius = r
             backgroundColor = b
+            frame = f
         }
     }
 }
 
 extension Uicorn.Properties {
     static func padding(_ p: Uicorn.Padding) -> Uicorn.Properties {
-        .init(padding: p, cornerRadius: 0, backgroundColor: nil, opacity: nil)
+        .init(padding: p)
     }
     static func backgroundColor(_ b: Uicorn.Color) -> Uicorn.Properties {
-        .init(padding: .zero, cornerRadius: 0, backgroundColor: b, opacity: nil)
+        .init(backgroundColor: b)
+    }
+    static func frame(_ f: Uicorn.Frame) -> Uicorn.Properties {
+        .init(frame: f)
     }
     static var empty: Uicorn.Properties {
-        .init(padding: .zero, cornerRadius: 0, backgroundColor: nil, opacity: nil)
+        .init()
     }
     func padding(_ p: Uicorn.Padding) -> Self {
         let v = self

@@ -49,7 +49,7 @@ struct UicornView: View {
             }
             .cornerRadius(.init(model.properties?.cornerRadius ?? 0))
             .opacity(.init(model.properties?.opacity ?? 1.0))
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(model.properties?.frame ?? .default)
             // TODO: Use the approach in below link to show consistent iOS style popovers
             // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
             .popover(isPresented: $shouldShowSheet) {
@@ -72,6 +72,23 @@ private extension View {
         return AnyView(onTapGesture {
             p(a)
         })
+    }
+    func frame(_ f: Uicorn.Frame) -> some View {
+        frame(width: f.w, height: f.h, alignment: f.a)
+    }
+}
+
+private extension Uicorn.Frame {
+    var w: CGFloat? {
+        let v = width.map { CGFloat($0) }
+        return v ?? 0 > 0 ? v : nil
+    }
+    var h: CGFloat? {
+        let v = height.map { CGFloat($0) }
+        return v ?? 0 > 0 ? v : nil
+    }
+    var a: Alignment {
+        .init(alignment)
     }
 }
 
