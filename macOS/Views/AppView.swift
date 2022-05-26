@@ -200,6 +200,10 @@ extension Uicorn.View {
             return .zstack([])
         case .map:
             return .map
+        case .shape:
+            return .rectangle
+        case .collection:
+            return .unsplash
         default:
             fatalError()
         }

@@ -47,6 +47,9 @@ extension Uicorn.View {
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View {
         .init(id: .unique, type: .collection(.unsplash(q, count: c)), action: nil, properties: nil)
     }
+    static var unsplash: Uicorn.View {
+        unsplash(nil)
+    }
     static var rectangle: Uicorn.View {
         rectangle(.system(.yellow))
     }
