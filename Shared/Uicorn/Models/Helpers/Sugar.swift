@@ -18,16 +18,16 @@ extension Uicorn.View {
         .init(id: .unique, type: .text(.init(s, font: font, alignment: alignment, textCase: textCase, foregroundColor: foregroundColor)), action: action, properties: properties)
     }
     static var helloWorld: Uicorn.View {
-        .text("hello\nworld\n🌎", font: .init(type: .largeTitle, weight: .regular, design: .default), alignment: .center, textCase: .uppercase)
+        .zstack([.text("hello\nworld\n🌎", font: .init(type: .largeTitle, weight: .regular, design: .default), alignment: .center, textCase: .uppercase), .rectangle])
     }
-    static func hstack(_ c: [Uicorn.View], spacing: Int = 0, padding: Uicorn.Padding? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: nil, properties: padding.map { .init(padding: $0) })
+    static func hstack(_ c: [Uicorn.View], spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: action, properties: properties)
     }
-    static func vstack(_ c: [Uicorn.View], spacing: Int = 0, padding: Uicorn.Padding? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .vstack(.init(c, spacing: spacing)), action: nil, properties: padding.map { .init(padding: $0) })
+    static func vstack(_ c: [Uicorn.View], spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .vstack(.init(c, spacing: spacing)), action: action, properties: properties)
     }
-    static func zstack(_ c: [Uicorn.View], action: Action? = nil, padding: Uicorn.Padding? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .zstack(.init(c)), action: action, properties: padding.map { .init(padding: $0) })
+    static func zstack(_ c: [Uicorn.View], action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .zstack(.init(c)), action: action, properties: properties)
     }
     static var hstack: Uicorn.View {
         .hstack([])

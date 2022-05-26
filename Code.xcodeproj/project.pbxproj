@@ -50,12 +50,8 @@
 		B65C0270283FA3570073FA4A /* View+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C026F283FA3570073FA4A /* View+Map.swift */; };
 		B65C0271283FA3570073FA4A /* View+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C026F283FA3570073FA4A /* View+Map.swift */; };
 		B65C0272283FA3570073FA4A /* View+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C026F283FA3570073FA4A /* View+Map.swift */; };
-		B65C0274283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */; };
 		B65C0275283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */; };
-		B65C0276283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */; };
-		B65C0278283FA67F0073FA4A /* MapPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0277283FA67F0073FA4A /* MapPropertiesView.swift */; };
 		B65C0279283FA67F0073FA4A /* MapPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0277283FA67F0073FA4A /* MapPropertiesView.swift */; };
-		B65C027A283FA67F0073FA4A /* MapPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0277283FA67F0073FA4A /* MapPropertiesView.swift */; };
 		B660EEC2283641E8008234A4 /* ImagePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */; };
 		B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC32836422F008234A4 /* TextFieldView.swift */; };
 		B66B4475283E15BE00230758 /* iPhone12ProMax.scn in Resources */ = {isa = PBXBuildFile; fileRef = B66B4474283E15BE00230758 /* iPhone12ProMax.scn */; };
@@ -966,11 +962,9 @@
 				B69E39CE283CEB3200B65682 /* Alignment.swift in Sources */,
 				B6A38E60282BF8AF002777CA /* View+Image.swift in Sources */,
 				B6B125D52834DE33005E989F /* Color.swift in Sources */,
-				B65C027A283FA67F0073FA4A /* MapPropertiesView.swift in Sources */,
 				B65C026A283F9E9D0073FA4A /* Axis.swift in Sources */,
 				B65C0272283FA3570073FA4A /* View+Map.swift in Sources */,
 				B6B125DE2834DE42005E989F /* Collection.swift in Sources */,
-				B65C0276283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */,
 				B6A38E6F282BF8AF002777CA /* View+Collection.swift in Sources */,
 				B6B125E12834DE42005E989F /* ZStack.swift in Sources */,
 				B6B125E22834DE42005E989F /* UnsplashCollection.swift in Sources */,
@@ -1070,7 +1064,6 @@
 			files = (
 				B6AE6D632828FCDB001800F8 /* App.swift in Sources */,
 				B6B125CE2834DA33005E989F /* Padding.swift in Sources */,
-				B65C0274283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */,
 				B6FA89AE282975E300E842AE /* ZStack.swift in Sources */,
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
 				B67692A5282E9DAA0026CA87 /* Color.swift in Sources */,
@@ -1088,7 +1081,6 @@
 				B61433A1282A642200760F39 /* Sugar.swift in Sources */,
 				B6FA89AB282975D100E842AE /* VStack.swift in Sources */,
 				B69E39C4283CD82600B65682 /* VerticalAlignment.swift in Sources */,
-				B65C0278283FA67F0073FA4A /* MapPropertiesView.swift in Sources */,
 				B6E13C5E283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B676929F282E9C9C0026CA87 /* Properties.swift in Sources */,
 				B65C0270283FA3570073FA4A /* View+Map.swift in Sources */,

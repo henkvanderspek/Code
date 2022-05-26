@@ -31,7 +31,7 @@ extension Uicorn.View {
                                 .image("highlighter", type: .system, action: .presentSelf),
                             ],
                             spacing: 5,
-                            padding: .all(5)
+                            properties: .padding(.all(5))
                         ),
                         .hstack([
                                 .image("gamecontroller.fill", type: .system, action: .presentSelf),
@@ -39,7 +39,7 @@ extension Uicorn.View {
                                 .image("logo.xbox", type: .system, action: .presentSelf),
                             ],
                             spacing: 5,
-                            padding: .all(5)
+                            properties: .padding(.all(5))
                         ),
                         .hstack([
                                 .image("airplane", type: .system, action: .presentSelf),
@@ -47,7 +47,7 @@ extension Uicorn.View {
                                 .image("fuelpump.fill", type: .system, action: .presentSelf),
                             ],
                             spacing: 5,
-                            padding: .all(5)
+                            properties: .padding(.all(5))
                         ),
                     ]),
                     .rectangle(.system(.yellow)),
