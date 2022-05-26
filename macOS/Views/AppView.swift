@@ -162,29 +162,23 @@ extension TreeItem {
 
 extension Uicorn.View {
     func embeddedInHStack() {
-        type = .hstack(.init([.init(id: id, type: type, action: nil, properties: nil)], spacing: 0))
-        id = UUID().uuidString
+        modified(type: .hstack(.init([cloned()], spacing: 0)))
     }
     func embeddedInVStack() {
-        type = .vstack(.init([.init(id: id, type: type, action: nil, properties: nil)], spacing: 0))
-        id = UUID().uuidString
+        modified(type: .vstack(.init([cloned()], spacing: 0)))
     }
     func embeddedInZStack() {
-        type = .zstack(.init([.init(id: id, type: type, action: nil, properties: nil)]))
-        id = UUID().uuidString
+        modified(type: .zstack(.init([cloned()])))
     }
-//    func addView(ofType t: ViewType) {
-//        switch type {
-//        case let .hstack(s):
-//            s.children.append(.from(t))
-//        case let .vstack(s):
-//            s.children.append(.from(t))
-//        case let .zstack(s):
-//            s.children.append(.from(t))
-//        default:
-//            ()
-//        }
-//    }
+    func cloned() -> Uicorn.View {
+        .init(id: id, type: type, action: action, properties: properties)
+    }
+    func modified(type t: Uicorn.View.`Type`) {
+        id = UUID().uuidString
+        type = t
+        properties = nil
+        action = nil
+    }
 }
 
 extension Uicorn.View {
