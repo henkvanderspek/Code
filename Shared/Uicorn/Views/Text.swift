@@ -27,6 +27,6 @@ extension UicornView {
 
 struct Text_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Text(.constant(.init("Foo\nBar", font: .default)), host: MockHost())
+        UicornView.Text(.constant(.init("Foo\nBar", font: .default, alignment: .leading, textCase: .standard, foregroundColor: nil)), host: MockHost())
     }
 }

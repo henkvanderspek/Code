@@ -14,11 +14,11 @@ extension Uicorn.View {
     static var spacer: Uicorn.View {
         .init(id: .unique, type: .spacer, action: nil, properties: nil)
     }
-    static func text(_ s: String, font: Uicorn.Font = .default, alignment: Uicorn.TextAlignment = .leading, action: Action? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .text(.init(s, font: font, alignment: alignment)), action: action, properties: nil)
+    static func text(_ s: String, font: Uicorn.Font = .default, alignment: Uicorn.TextAlignment = .leading, textCase: Uicorn.TextCase = .standard, foregroundColor: Uicorn.Color? = nil, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .text(.init(s, font: font, alignment: alignment, textCase: textCase, foregroundColor: foregroundColor)), action: action, properties: properties)
     }
     static var helloWorld: Uicorn.View {
-        .text("~HI~ *HELLO*\n**WORLD**\n🌎", font: .init(type: .largeTitle, weight: .regular, design: .default), alignment: .center)
+        .text("hello\nworld\n🌎", font: .init(type: .largeTitle, weight: .regular, design: .default), alignment: .center, textCase: .uppercase)
     }
     static func hstack(_ c: [Uicorn.View], spacing: Int = 0, padding: Uicorn.Padding? = nil) -> Uicorn.View {
         .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: nil, properties: padding.map { .init(padding: $0) })

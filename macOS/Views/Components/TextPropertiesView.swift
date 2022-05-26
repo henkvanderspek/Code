@@ -54,6 +54,6 @@ struct TextPropertiesView: View {
 
 struct TextPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        TextPropertiesView(.constant(.init("", font: .default)))
+        TextPropertiesView(.constant(.init("", font: .default, alignment: .leading, textCase: .standard, foregroundColor: nil)))
     }
 }
