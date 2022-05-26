@@ -1,6 +1,6 @@
 //
 //  View.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 09/05/2022.
 //
@@ -19,7 +19,8 @@ extension Uicorn {
             case shape(Shape)
             case spacer
             case empty
-            case map
+            case scroll(Scroll)
+            case map(Map)
         }
         var id: String
         var type: `Type`
@@ -67,6 +68,7 @@ private extension Uicorn.View {
         case collection
         case shape
         case map
+        case scroll
         case spacer
         case empty
     }
@@ -82,7 +84,8 @@ private extension Uicorn.View.ViewType {
         case .image: return .image(try .init(from: decoder))
         case .collection: return .collection(try .init(from: decoder))
         case .shape: return .shape(try .init(from: decoder))
-        case .map: return .map
+        case .map: return .map(try .init(from: decoder))
+        case .scroll: return .scroll(try .init(from: decoder))
         case .spacer: return .spacer
         case .empty: return .empty
         }
@@ -101,6 +104,7 @@ private extension Uicorn.View.`Type` {
         case .shape: return "shape"
         case .spacer: return "spacer"
         case .map: return "map"
+        case .scroll: return "scroll"
         case .empty: return "empty"
         }
     }
@@ -115,6 +119,7 @@ private extension Uicorn.View.`Type` {
         case let .shape(s): return s
         case .spacer: return nil
         case .map: return nil
+        case let .scroll(s): return s
         case .empty: return nil
         }
     }
@@ -131,7 +136,9 @@ extension Uicorn.View: RandomAccessCollection {
             return s.children
         case let .vstack(s):
             return s.children
-        default:
+        case let .scroll(s):
+            return s.children
+        case .empty, .collection, .image, .map, .spacer, .shape, .text:
             return []
         }
     }

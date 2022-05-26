@@ -1,6 +1,6 @@
 //
-//  UicornView.swift
-//  Uicorn
+//  CodeView.swift
+//  Code
 //
 //  Created by Henk van der Spek on 08/05/2022.
 //
@@ -89,6 +89,12 @@ extension UicornView: UicornHost {
 
 struct MockHost: UicornHost {}
 
+extension UicornHost where Self == MockHost {
+    static var mock: MockHost {
+        .init()
+    }
+}
+
 private extension UicornView {
     @ViewBuilder var content: some View {
         switch $model.wrappedValue.type {
@@ -106,10 +112,12 @@ private extension UicornView {
             Collection(c.binding, host: self)
         case let .shape(s):
             Shape(s.binding, host: self)
-        case .map:
-            Map()
+        case let .map(m):
+            Map(m.binding, host: self)
         case .spacer:
             Spacer()
+        case let .scroll(s):
+            Scroll(s.binding, host: self)
         case .empty:
             EmptyView()
         }
@@ -292,6 +300,15 @@ extension Text.Case {
         case .standard: return nil
         case .uppercase: self = .uppercase
         case .lowercase: self = .lowercase
+        }
+    }
+}
+
+extension Axis.Set {
+    init(_ a: Uicorn.Axis) {
+        switch a {
+        case .horizontal: self = .horizontal
+        case .vertical: self = .vertical
         }
     }
 }

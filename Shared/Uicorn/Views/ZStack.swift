@@ -1,6 +1,6 @@
 //
 //  ZStack.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 09/05/2022.
 //
@@ -25,7 +25,7 @@ extension UicornView {
     }
 }
 
-struct UicornView_ZStack_Previews: PreviewProvider {
+struct ZStack_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.ZStack(.constant(.init([])), host: MockHost())
     }

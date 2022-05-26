@@ -1,6 +1,6 @@
 //
 //  UnsplashCollection.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 10/05/2022.
 //
@@ -107,7 +107,7 @@ private extension UicornView.UnsplashCollection {
     }
 }
 
-struct UicornView_UnsplashCollection_Previews: PreviewProvider {
+struct UnsplashCollection_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.UnsplashCollection(query: .constant("pug"), count: .constant(10), view: .constant(.empty), host: MockHost())
     }

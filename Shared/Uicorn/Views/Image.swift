@@ -1,6 +1,6 @@
 //
 //  Image.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 09/05/2022.
 //
@@ -62,7 +62,7 @@ private extension UicornView.Image {
     }
 }
 
-struct UicornView_Image_Previews: PreviewProvider {
+struct Image_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.Image(.constant(.init(type: .remote, value: .init(), fill: nil)), host: MockHost())
     }

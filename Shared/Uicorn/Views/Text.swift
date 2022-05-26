@@ -1,6 +1,6 @@
 //
 //  Text.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 08/05/2022.
 //
@@ -25,7 +25,7 @@ extension UicornView {
     }
 }
 
-struct UicornView_Text_Previews: PreviewProvider {
+struct Text_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.Text(.constant(.init("Foo\nBar", font: .default)), host: MockHost())
     }

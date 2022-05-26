@@ -1,6 +1,6 @@
 //
 //  App.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 09/05/2022.
 //

@@ -19,6 +19,8 @@ enum ViewType: String, Equatable, CaseIterable {
     case map
     case collection
     case shape
+    case hscroll
+    case vscroll
     case empty
 }
 
@@ -36,6 +38,8 @@ extension ViewType {
         case .map: return "Map"
         case .collection: return "Collection"
         case .shape: return "Shape"
+        case .hscroll: return "HScroll"
+        case .vscroll: return "VScroll"
         case .empty: return "Empty"
         }
     }
@@ -52,6 +56,8 @@ extension ViewType {
         case .map: return "map"
         case .collection: return "square.grid.3x2"
         case .shape: return "square.on.circle"
+        case .hscroll: return "arrow.left.arrow.right"
+        case .vscroll: return "arrow.up.arrow.down"
         case .empty: return "rectangle.dashed"
         }
     }
@@ -60,7 +66,7 @@ extension ViewType {
     }
     var canAddItem: Bool {
         switch self {
-        case .text, .spacer, .sfSymbol, .image, .vstack, .hstack, .zstack, .map, .shape, .collection:
+        case .text, .spacer, .sfSymbol, .image, .vstack, .hstack, .zstack, .map, .shape, .collection, .vscroll, .hscroll:
             return true
         case .script, .empty:
             return false

@@ -1,6 +1,6 @@
 //
 //  VStack.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 09/05/2022.
 //
@@ -25,7 +25,7 @@ extension UicornView {
     }
 }
 
-struct UicornView_VStack_Previews: PreviewProvider {
+struct VStack_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.VStack(.constant(.init([], spacing: 0)), host: MockHost())
     }

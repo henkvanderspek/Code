@@ -1,6 +1,6 @@
 //
 //  Color.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 13/05/2022.
 //

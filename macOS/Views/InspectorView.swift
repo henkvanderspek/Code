@@ -48,12 +48,16 @@ struct InspectorView: View {
                     ),
                     s.binding(set: update)
                 )
-            case .empty, .spacer, .map:
+            case let .map(m):
+                MapPropertiesView(m.binding(set: update))
+            case let .scroll(s):
+                ScrollPropertiesView(s.binding(set: update))
+            case .empty, .spacer:
                 EmptyView()
             }
             // Generic properties
             switch view.type {
-            case .shape, .text, .image, .hstack, .vstack, .zstack:
+            case .shape, .text, .image, .hstack, .vstack, .zstack, .scroll, .collection, .map:
                 PropertiesView(
                     .init(
                         get: {
@@ -64,7 +68,7 @@ struct InspectorView: View {
                         }
                     )
                 )
-            case .spacer, .empty, .collection, .map:
+            case .spacer, .empty:
                 EmptyView()
             }
         }
@@ -120,6 +124,12 @@ private extension InspectorView {
     }
     func update(_ s: Uicorn.View.ZStack) {
         $view.type.wrappedValue = .zstack(s)
+    }
+    func update(_ m: Uicorn.View.Map) {
+        $view.type.wrappedValue = .map(m)
+    }
+    func update(_ s: Uicorn.View.Scroll) {
+        $view.type.wrappedValue = .scroll(s)
     }
 }
 

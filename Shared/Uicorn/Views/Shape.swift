@@ -1,6 +1,6 @@
 //
 //  Shape.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 13/05/2022.
 //
@@ -32,7 +32,7 @@ extension UicornView {
     }
 }
 
-struct UicornView_Shape_Previews: PreviewProvider {
+struct Shape_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.Shape(.constant(.rectangle(.system(.cyan))), host: MockHost())
     }

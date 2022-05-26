@@ -1,6 +1,6 @@
 //
 //  Padding.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 18/05/2022.
 //

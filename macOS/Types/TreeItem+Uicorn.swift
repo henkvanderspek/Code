@@ -56,6 +56,8 @@ extension Uicorn.View: TreeItem {
                 return v.children
             case let .collection(c):
                 return c.view.map { [$0] }
+            case let .scroll(s):
+                return s.children
             case .text, .spacer, .empty, .image, .shape, .map:
                 return nil
             }
@@ -71,6 +73,8 @@ extension Uicorn.View: TreeItem {
                 v.children = children
             case let .collection(c):
                 c.view = children.first
+            case let .scroll(s):
+                s.children = children
             case .text, .spacer, .empty, .image, .shape, .map:
                 fatalError("Can't set children on \(type)")
             }
@@ -81,7 +85,7 @@ extension Uicorn.View: TreeItem {
     }
     var canAddView: Bool {
         switch type {
-        case .hstack, .vstack, .zstack:
+        case .hstack, .vstack, .zstack, .scroll:
             return true
         case let .collection(c):
             return c.view == nil
@@ -107,6 +111,11 @@ extension ViewType {
         case .shape: self = .shape
         case .map: self = .map
         case .spacer: self = .spacer
+        case let .scroll(s):
+            switch s.axis {
+            case .horizontal: self = .hscroll
+            case .vertical: self = .vscroll
+            }
         case .empty: self = .empty
         }
     }

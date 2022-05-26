@@ -193,17 +193,21 @@ extension Uicorn.View {
         case .image:
             return .randomRemoteImage
         case .hstack:
-            return .hstack([])
+            return .hstack
         case .vstack:
-            return .vstack([])
+            return .vstack
         case .zstack:
-            return .zstack([])
+            return .zstack
         case .map:
             return .map
         case .shape:
             return .rectangle
         case .collection:
             return .unsplash
+        case .vscroll:
+            return .vscroll
+        case .hscroll:
+            return .hscroll
         default:
             fatalError()
         }

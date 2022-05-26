@@ -1,6 +1,6 @@
 //
 //  HStack.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 08/05/2022.
 //
@@ -25,7 +25,7 @@ extension UicornView {
     }
 }
 
-struct UicornView_HStack_Previews: PreviewProvider {
+struct HStack_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.HStack(.constant(.init([], spacing: 0)), host: MockHost())
     }

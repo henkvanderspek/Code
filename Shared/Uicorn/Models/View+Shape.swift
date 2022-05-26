@@ -1,6 +1,6 @@
 //
-//  Shape.swift
-//  Uicorn
+//  View+Shape.swift
+//  Code
 //
 //  Created by Henk van der Spek on 13/05/2022.
 //

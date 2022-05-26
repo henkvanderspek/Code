@@ -1,6 +1,6 @@
 //
 //  Sugar.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 10/05/2022.
 //
@@ -28,6 +28,15 @@ extension Uicorn.View {
     }
     static func zstack(_ c: [Uicorn.View], action: Action? = nil, padding: Uicorn.Padding? = nil) -> Uicorn.View {
         .init(id: .unique, type: .zstack(.init(c)), action: action, properties: padding.map { .init(padding: $0) })
+    }
+    static var hstack: Uicorn.View {
+        .hstack([])
+    }
+    static var vstack: Uicorn.View {
+        .vstack([])
+    }
+    static var zstack: Uicorn.View {
+        .zstack([])
     }
     static func image(_ s: String, type: Image.`Type`, fill: Uicorn.Color? = nil, action: Action? = nil) -> Uicorn.View {
         .init(id: .unique, type: .image(.init(type: type, value: s, fill: fill)), action: action, properties: nil)
@@ -63,7 +72,13 @@ extension Uicorn.View {
         .init(id: .unique, type: .shape(.capsule(c)), action: nil, properties: nil)
     }
     static var map: Uicorn.View {
-        .init(id: .unique, type: .map, action: nil, properties: nil)
+        .init(id: .unique, type: .map(.init()), action: nil, properties: nil)
+    }
+    static var hscroll: Uicorn.View {
+        .init(id: .unique, type: .scroll(.init(axis: .horizontal, children: [])), action: nil, properties: nil)
+    }
+    static var vscroll: Uicorn.View {
+        .init(id: .unique, type: .scroll(.init(axis: .vertical, children: [])), action: nil, properties: nil)
     }
 }
 

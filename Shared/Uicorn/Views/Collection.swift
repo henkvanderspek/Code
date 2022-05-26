@@ -1,6 +1,6 @@
 //
 //  Collection.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 10/05/2022.
 //
@@ -30,7 +30,7 @@ extension UicornView {
     }
 }
 
-struct UicornView_Collection_Previews: PreviewProvider {
+struct Collection_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.Collection(.constant(.init(type: .unsplash, parameters: [:], view: nil)), host: MockHost())
     }

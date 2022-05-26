@@ -1,6 +1,6 @@
 //
 //  Mock.swift
-//  Uicorn
+//  Code
 //
 //  Created by Henk van der Spek on 10/05/2022.
 //
