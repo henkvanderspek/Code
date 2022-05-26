@@ -27,7 +27,7 @@ struct TreeView<V: View>: View {
         // TODO: Support arrow keys for selecting
         LazyVStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 2) {
-                TreeItemStateView(state) // TODO: This should refresh on item change
+                TreeItemStateView(state)
                     .font(.subheadline.weight(.bold))
                     .imageScale(.small)
                     .fixedSize()
@@ -69,6 +69,9 @@ struct TreeView<V: View>: View {
             }
         }
         .frame(maxWidth: .infinity)
+        .onChange(of: item.hasChildren) { b in
+            state = b ? .parent(.expanded) : .leaf
+        }
     }
     private var isExpanded: Bool {
         guard case .parent(.expanded) = state else { return false }
