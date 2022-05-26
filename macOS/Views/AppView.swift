@@ -24,20 +24,19 @@ struct AppView: View {
     var body: some View {
         NavigationView {
             List {
-                TreeView($observer.rootItem, selectedItem: $observer.selectedItem) { item in
+                TreeView($observer.rootItem, selectedItem: $observer.selectedItem) { view in
                     TreeItemMenu {
-                        menuItems(item)
+                        menuItems(view.item, parent: view.parent)
                     }
-                    .isDisabled(!item.isView)
+                    .isDisabled(!view.item.isView)
                     .tapGesture {
-                        observer.selectedItem = item
+                        observer.selectedItem = view.item
                     }
                 }
             }.listStyle(.sidebar)
             AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
                 ScreenView(observer.sanitizedScreen)
             }.id(UUID())
-//            ScreenView(observer.sanitizedScreen)
             List {
                 InspectorView(view: observer.sanitizedSelectedItem)
             }.listStyle(.sidebar)
@@ -66,7 +65,7 @@ struct AppView: View {
             }
         }
     }
-    private func menuItems(_ i: TreeItem) -> [TreeItemMenu.Item] {
+    private func menuItems(_ i: TreeItem, parent: Binding<TreeItem>?) -> [TreeItemMenu.Item] {
         return [
             .init(title: "Embed in HStack", image: .init(.hstack)) {
                 observer.embedInHStack(i)
@@ -78,7 +77,7 @@ struct AppView: View {
                 observer.embedInZStack(i)
             },
             .init(title: "Delete", image: .init("trash")) {
-                observer.delete(i)
+                observer.delete(i, from: parent!)
             }
         ]
     }
@@ -140,13 +139,24 @@ extension AppView.Observer {
         i.view?.embeddedInZStack()
         objectWillChange.send()
     }
-    func delete(_ i: TreeItem) {
-        i.view?.delete()
+    func delete(_ i: TreeItem, from parent: Binding<TreeItem>) {
+        var p = parent.wrappedValue
+        p.removeChild(byId: i.id)
+        selectedItem = p
         objectWillChange.send()
     }
     func addView(ofType t: ViewType) {
-        selectedItem.view?.addView(ofType: t)
+        selectedItem.addView(.from(t))
+        selectedItem = selectedItem.children?.last ?? selectedItem
         objectWillChange.send()
+    }
+}
+
+extension TreeItem {
+    mutating func addView(_ v: Uicorn.View) {
+        var c = children ?? []
+        c.append(v)
+        children = c
     }
 }
 
@@ -163,21 +173,18 @@ extension Uicorn.View {
         type = .zstack(.init([.init(id: id, type: type, action: nil, properties: nil)]))
         id = UUID().uuidString
     }
-    func delete() {
-        print("TODO: Delete item")
-    }
-    func addView(ofType t: ViewType) {
-        switch type {
-        case let .hstack(s):
-            s.children.append(.from(t))
-        case let .vstack(s):
-            s.children.append(.from(t))
-        case let .zstack(s):
-            s.children.append(.from(t))
-        default:
-            ()
-        }
-    }
+//    func addView(ofType t: ViewType) {
+//        switch type {
+//        case let .hstack(s):
+//            s.children.append(.from(t))
+//        case let .vstack(s):
+//            s.children.append(.from(t))
+//        case let .zstack(s):
+//            s.children.append(.from(t))
+//        default:
+//            ()
+//        }
+//    }
 }
 
 extension Uicorn.View {

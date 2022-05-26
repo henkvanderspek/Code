@@ -13,12 +13,18 @@ struct ScreenView: View {
         _screen = s
     }
     var body: some View {
-        UicornView($screen.view)
-            .frame(width: 320, height: 568)
-            .background(Color(.background))
-            .cornerRadius(15.0)
-            .shadow(color: .black.opacity(0.1), radius: 5, x: 1, y: 1)
-            .allowsHitTesting(false)
+        HStack {
+            if let v = Binding($screen.view) {
+                UicornView(v)
+            } else {
+                EmptyView()
+            }
+        }
+        .frame(width: 320, height: 568)
+        .background(Color(.background))
+        .cornerRadius(15.0)
+        .shadow(color: .black.opacity(0.1), radius: 5, x: 1, y: 1)
+        .allowsHitTesting(false)
     }
 }
 

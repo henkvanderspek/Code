@@ -11,7 +11,7 @@ extension Uicorn {
     class Screen: Codable {
         let id: String
         let title: String
-        var view: View
+        var view: View?
         init(id: String, title: String, view: View) {
             self.id = id
             self.title = title

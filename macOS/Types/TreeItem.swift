@@ -11,9 +11,10 @@ protocol TreeItem {
     var id: String { get }
     var title: String { get }
     var systemImage: String { get }
-    var children: [TreeItem]? { get }
+    var children: [TreeItem]? { get set }
     var isView: Bool { get }
     var canAddView: Bool { get }
+    mutating func removeChild(byId: String)
 }
 
 extension TreeItem {
@@ -38,5 +39,8 @@ extension TreeItem {
     }
     var canAddView: Bool {
         return false
+    }
+    mutating func removeChild(byId id: String) {
+        children = children?.filter { $0.id != id }
     }
 }

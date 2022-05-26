@@ -12,7 +12,12 @@ extension Uicorn.App: TreeItem {
         return "iphone.homebutton"
     }
     var children: [TreeItem]? {
-        return screens
+        get {
+            return screens
+        }
+        set {
+            screens = newValue?.compactMap { $0 as? Uicorn.Screen } ?? []
+        }
     }
 }
 
@@ -21,7 +26,15 @@ extension Uicorn.Screen: TreeItem {
         return "rectangle.portrait"
     }
     var children: [TreeItem]? {
-        return [view]
+        get {
+            view.map { [$0] }
+        }
+        set {
+            view = newValue?.compactMap { $0 as? Uicorn.View }.first
+        }
+    }
+    var canAddView: Bool {
+        view == nil
     }
 }
 
@@ -33,17 +46,34 @@ extension Uicorn.View: TreeItem {
         ViewType(from: type).name
     }
     var children: [TreeItem]? {
-        switch type {
-        case let .hstack(v):
-            return v.children
-        case let .vstack(v):
-            return v.children
-        case let .zstack(v):
-            return v.children
-        case let .collection(c):
-            return c.view.map { [$0] }
-        case .text, .spacer, .empty, .image, .shape, .map:
-            return nil
+        get {
+            switch type {
+            case let .hstack(v):
+                return v.children
+            case let .vstack(v):
+                return v.children
+            case let .zstack(v):
+                return v.children
+            case let .collection(c):
+                return c.view.map { [$0] }
+            case .text, .spacer, .empty, .image, .shape, .map:
+                return nil
+            }
+        }
+        set {
+            let children = newValue?.compactMap { $0 as? Uicorn.View } ?? []
+            switch type {
+            case let .hstack(v):
+                v.children = children
+            case let .vstack(v):
+                v.children = children
+            case let .zstack(v):
+                v.children = children
+            case let .collection(c):
+                c.view = children.first
+            case .text, .spacer, .empty, .image, .shape, .map:
+                fatalError("Can't set children on \(type)")
+            }
         }
     }
     var isView: Bool {

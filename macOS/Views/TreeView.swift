@@ -9,13 +9,15 @@ import SwiftUI
 
 struct TreeView<V: View>: View {
     @Binding var item: TreeItem
+    var parent: Binding<TreeItem>?
     let level: Int
     @State private var state: TreeItemState
     @Binding var selectedItem: TreeItem
     @State private var menuVisible = false
-    private var menu: (TreeItem)->V
-    init(_ i: Binding<TreeItem>, level l: Int = 0, selectedItem s: Binding<TreeItem>, menu m: @escaping (TreeItem)->V) {
+    private var menu: (TreeView)->V
+    init(_ i: Binding<TreeItem>, parent p: Binding<TreeItem>? = nil, level l: Int = 0, selectedItem s: Binding<TreeItem>, menu m: @escaping (TreeView)->V) {
         _item = i
+        parent = p
         level = l
         _state = .init(initialValue: i.wrappedValue.hasChildren ? .parent(.expanded) : .leaf)
         _selectedItem = s
@@ -56,11 +58,11 @@ struct TreeView<V: View>: View {
             .cornerRadius(4)
             .contentShape(Rectangle())
             .overlay {
-                menu(item)
+                menu(self)
             }
             if isExpanded {
-                ForEach($item.safeChildren, id: \.id) { $item in
-                    TreeView($item, level: level + 1, selectedItem: $selectedItem, menu: menu)
+                ForEach($item.safeChildren, id: \.id) { $child in
+                    TreeView($child, parent: $item, level: level + 1, selectedItem: $selectedItem, menu: menu)
                 }
                 .frame(maxWidth: .infinity)
                 .animation(.easeInOut, value: isExpanded)
