@@ -18,7 +18,10 @@ extension Uicorn.View {
         .init(id: .unique, type: .text(.init(s, font: font, alignment: alignment, textCase: textCase, foregroundColor: foregroundColor)), action: action, properties: properties)
     }
     static var helloWorld: Uicorn.View {
-        .zstack([.text("hello\nworld\n🌎", font: .init(type: .largeTitle, weight: .regular, design: .default), alignment: .center, textCase: .uppercase), .rectangle])
+        .zstack([
+            .text("hello\nworld\n🌎", font: .init(type: .largeTitle, weight: .regular, design: .default), alignment: .center, textCase: .uppercase),
+            .rectangle]
+        )
     }
     static func hstack(_ c: [Uicorn.View], spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
         .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: action, properties: properties)
