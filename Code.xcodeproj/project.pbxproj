@@ -168,6 +168,7 @@
 		B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FDF7DA27CCDB800008262D /* iOSApp.swift */; };
 		B6FDF7DF27CCDB810008262D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6FDF7DE27CCDB810008262D /* Assets.xcassets */; };
 		B6FDF7E227CCDB810008262D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6FDF7E127CCDB810008262D /* Preview Assets.xcassets */; };
+		B6FDFF4C283F8CFC009E40E1 /* OptionalPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -311,6 +312,7 @@
 		B6FDF7DA27CCDB800008262D /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		B6FDF7DE27CCDB810008262D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6FDF7E127CCDB810008262D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalPropertiesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,6 +566,7 @@
 				B69E39CF283CECFC00B65682 /* ZStackPropertiesView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 				B66B4476283E297800230758 /* AppearanceView.swift */,
+				B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -986,6 +989,7 @@
 				B61737AC2829664A006DE98E /* View+Image.swift in Sources */,
 				B6B125E5283511C5005E989F /* PaddingPropertiesView.swift in Sources */,
 				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
+				B6FDFF4C283F8CFC009E40E1 /* OptionalPropertiesView.swift in Sources */,
 				B67692A3282E9D4C0026CA87 /* View+Shape.swift in Sources */,
 				B6883D5928242CC000544462 /* AppView.swift in Sources */,
 				B61433A2282A642200760F39 /* Sugar.swift in Sources */,

@@ -10,8 +10,17 @@ import SwiftUI
 struct ColorPropertiesView: View {
     let header: String
     @Binding var model: Uicorn.Color
+    let showHeader: Bool
+    init(header h: String, model m: Binding<Uicorn.Color>, showHeader s: Bool = true) {
+        header = h
+        _model = m
+        showHeader = s
+    }
     var body: some View {
         Section {
+            if showHeader {
+                Header(header)
+            }
             Colors(header: header, $model.colorType)
                 .pickerStyle(.menu)
         }
@@ -90,35 +99,32 @@ private extension ColorPropertiesView {
             custom = cs
         }
         var body: some View {
-            VStack(alignment: .leading) {
-                Header(header)
-                HStack {
-                    Picker(header, selection: $category) {
-                        ForEach(Category.allCases, id: \.self) {
-                            Text($0.rawValue.localizedCapitalized)
-                        }
-                    }
-                    .onChange(of: category) {
-                        colorType = determineColorType(category: $0)
-                    }
-                    switch category {
-                    case .system:
-                        Picker("", selection: $system) {
-                            ForEach(System.allCases, id: \.self) {
-                                Text($0.localizedCapitalized)
-                            }
-                        }
-                        .onChange(of: system) {
-                            colorType = determineColorType(system: $0)
-                        }
-                    case .custom:
-                        EmptyView()
+            HStack {
+                Picker(header, selection: $category) {
+                    ForEach(Category.allCases, id: \.self) {
+                        Text($0.rawValue.localizedCapitalized)
                     }
                 }
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(color)
-                    .frame(height: 20)
+                .onChange(of: category) {
+                    colorType = determineColorType(category: $0)
+                }
+                switch category {
+                case .system:
+                    Picker("", selection: $system) {
+                        ForEach(System.allCases, id: \.self) {
+                            Text($0.localizedCapitalized)
+                        }
+                    }
+                    .onChange(of: system) {
+                        colorType = determineColorType(system: $0)
+                    }
+                case .custom:
+                    EmptyView()
+                }
             }
+            RoundedRectangle(cornerRadius: 5)
+                .fill(color)
+                .frame(height: 20)
         }
         private var color: SwiftUI.Color {
             switch category {

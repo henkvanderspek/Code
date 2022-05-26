@@ -16,16 +16,17 @@ extension UicornView {
             host = h
         }
         var body: some View {
+            let c = Color(model.fill ?? .system(.background))
             switch model.type {
             case .rectangle:
                 Rectangle()
-                    .fill(Color(model.fill))
+                    .fill(c)
             case .ellipse:
                 Ellipse()
-                    .fill(Color(model.fill))
+                    .fill(c)
             case .capsule:
                 Capsule()
-                    .fill(Color(model.fill))
+                    .fill(c)
             }
         }
     }

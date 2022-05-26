@@ -19,9 +19,9 @@ extension Uicorn.View {
             case `none`
         }
         var type: `Type`
-        var fill: Uicorn.Color
+        var fill: Uicorn.Color?
         var parameters: Parameters
-        init(type t: `Type`, fill f: Uicorn.Color, parameters p: Parameters = [:]) {
+        init(type t: `Type`, fill f: Uicorn.Color?, parameters p: Parameters = [:]) {
             type = t
             fill = f
             parameters = p

@@ -14,18 +14,6 @@ struct PropertiesView: View {
     }
     var body: some View {
         Divider()
-        ColorPropertiesView(
-            header: "Background Color",
-            model: .init(
-                get: {
-                    $model.backgroundColor.wrappedValue ?? .system(.background)
-                },
-                set: {
-                    $model.backgroundColor.wrappedValue = $0
-                }
-            )
-        )
-        Divider()
         Section {
             HStack {
                 PaddingPropertiesView($model.padding)
@@ -36,6 +24,21 @@ struct PropertiesView: View {
                 GreedySpacer()
             }
         }.labelsHidden()
+        Divider()
+        OptionalPropertiesView(header: "Background Color", value: $model.backgroundColor, defaultValue: .system(.background)) { value in
+            ColorPropertiesView(
+                header: "Background Color",
+                model: .init(
+                    get: {
+                        value.wrappedValue
+                    },
+                    set: {
+                        $model.backgroundColor.wrappedValue = $0
+                    }
+                ),
+                showHeader: false
+            )
+        }
     }
 }
 
