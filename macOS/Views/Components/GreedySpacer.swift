@@ -9,7 +9,9 @@ import SwiftUI
 
 struct GreedySpacer: View {
     var body: some View {
-        Spacer().frame(maxWidth: .infinity, minHeight: 10)
+        Spacer()
+            .frame(maxWidth: .infinity, minHeight: 10)
+            .padding(.leading, 5)
     }
 }
 

@@ -14,7 +14,7 @@ struct VStackPropertiesView: View {
     }
     var body: some View {
         Section {
-            HStack {
+            HGroup {
                 VStack(alignment: .leading) {
                     Header("Alignment")
                     Picker("Alignment", selection: $model.alignment) {

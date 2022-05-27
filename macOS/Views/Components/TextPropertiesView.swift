@@ -15,7 +15,8 @@ struct TextPropertiesView: View {
     var body: some View {
         Section {
             TextEditorView(value: $model.value, header: "Text")
-            HStack {
+            FontPropertiesView(model: $model.font)
+            HGroup {
                 VStack(alignment: .leading) {
                     Header("Alignment")
                     Picker("Alignment", selection: $model.alignment) {
@@ -34,19 +35,20 @@ struct TextPropertiesView: View {
                 }
             }
             Divider()
-            ColorPropertiesView(
-                header: "Foreground Color",
-                model: .init(
-                    get: {
-                        $model.foregroundColor.wrappedValue ?? .system(.label)
-                    },
-                    set: {
-                        $model.foregroundColor.wrappedValue = $0
-                    }
+            OptionalPropertiesView(header: "Foreground Color", value: $model.foregroundColor, defaultValue: .system(.label)) { value in
+                ColorPropertiesView(
+                    header: "Foreground Color",
+                    model: .init(
+                        get: {
+                            value.wrappedValue
+                        },
+                        set: {
+                            $model.foregroundColor.wrappedValue = $0
+                        }
+                    ),
+                    showHeader: false
                 )
-            )
-            Divider()
-            FontPropertiesView(model: $model.font)
+            }
         }
         .labelsHidden()
     }

@@ -20,17 +20,21 @@ struct ShapePropertiesView: View {
                     Text($0.localizedTitle)
                 }
             }
-            ColorPropertiesView(
-                header: "Color",
-                model: .init(
-                    get: {
-                        $model.fill.wrappedValue ?? .system(.background)
-                    },
-                    set: {
-                        $model.fill.wrappedValue = $0
-                    }
+            Divider()
+            OptionalPropertiesView(header: "Color", value: $model.fill, defaultValue: .system(.background)) { value in
+                ColorPropertiesView(
+                    header: "Color",
+                    model: .init(
+                        get: {
+                            value.wrappedValue
+                        },
+                        set: {
+                            $model.fill.wrappedValue = $0
+                        }
+                    ),
+                    showHeader: false
                 )
-            )
+            }
         }
         .labelsHidden()
         .id(UUID())

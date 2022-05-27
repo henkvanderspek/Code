@@ -14,10 +14,12 @@ struct ZStackPropertiesView: View {
     }
     var body: some View {
         Section {
-            Header("Alignment")
-            Picker("Alignment", selection: $model.alignment) {
-                ForEach(Uicorn.Alignment.allCases, id: \.self) {
-                    Text($0.localizedString)
+            HGroup {
+                Header("Alignment")
+                Picker("Alignment", selection: $model.alignment) {
+                    ForEach(Uicorn.Alignment.allCases, id: \.self) {
+                        Text($0.localizedString)
+                    }
                 }
             }
         }.labelsHidden()

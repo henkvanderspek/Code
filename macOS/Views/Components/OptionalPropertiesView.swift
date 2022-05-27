@@ -16,10 +16,7 @@ struct OptionalPropertiesView<T, V: View>: View {
         Section {
             createHeader()
             if let v = Binding($value) {
-                VStack {
-                    content(v)
-                }
-                .padding(.top, 5)
+                content(v)
             }
         }
         .labelsHidden()
@@ -31,7 +28,7 @@ extension OptionalPropertiesView {
         let add = $value.wrappedValue == nil
         let action = add ? "Add" : "Delete"
         let icon = add ? "plus" : "trash"
-        HStack {
+        HGroup {
             Header(header, fontWeight: .regular).opacity(add ? 0.5 : 1.0)
             Spacer()
             Button {

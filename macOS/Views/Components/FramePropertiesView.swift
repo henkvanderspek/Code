@@ -14,7 +14,7 @@ struct FramePropertiesView: View {
     }
     var body: some View {
         Section {
-            HStack {
+            HGroup {
                 StepperView($model.width, default: 0, range: 0...10000, step: 1, header: "Width")
                 StepperView($model.height, default: 0, range: 0...10000, step: 1, header: "Height")
             }

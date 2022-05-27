@@ -76,6 +76,9 @@
 		B6817DE0283CF82F006623A9 /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6817DDF283CF82F006623A9 /* TextAlignment.swift */; };
 		B6817DE1283CF82F006623A9 /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6817DDF283CF82F006623A9 /* TextAlignment.swift */; };
 		B6817DE2283CF82F006623A9 /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6817DDF283CF82F006623A9 /* TextAlignment.swift */; };
+		B68563232840D97000D39A8D /* HGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68563222840D97000D39A8D /* HGroup.swift */; };
+		B68563252840DCCC00D39A8D /* VGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68563242840DCCC00D39A8D /* VGroup.swift */; };
+		B68563272840DDBD00D39A8D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68563262840DDBD00D39A8D /* Group.swift */; };
 		B6883D5928242CC000544462 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B627C60D2821636D0029126A /* AppView.swift */; };
 		B6883D5B282523B400544462 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5A282523B400544462 /* TreeView.swift */; };
 		B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5C2825468100544462 /* ViewVisibility.swift */; };
@@ -263,6 +266,9 @@
 		B6838BF027D7B7E100C60C32 /* JsonUI+Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+Script.swift"; sourceTree = "<group>"; };
 		B6838BF327D7BE4400C60C32 /* JsonUI+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonUI+Codable.swift"; sourceTree = "<group>"; };
 		B6838BF927D7D94A00C60C32 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		B68563222840D97000D39A8D /* HGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HGroup.swift; sourceTree = "<group>"; };
+		B68563242840DCCC00D39A8D /* VGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VGroup.swift; sourceTree = "<group>"; };
+		B68563262840DDBD00D39A8D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		B6883D5A282523B400544462 /* TreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
 		B6883D5C2825468100544462 /* ViewVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVisibility.swift; sourceTree = "<group>"; };
 		B6883D5E2825531400544462 /* ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
@@ -594,6 +600,9 @@
 				B65C027B283FBFF20073FA4A /* FramePropertiesView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 				B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */,
+				B68563222840D97000D39A8D /* HGroup.swift */,
+				B68563242840DCCC00D39A8D /* VGroup.swift */,
+				B68563262840DDBD00D39A8D /* Group.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -992,9 +1001,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B68563272840DDBD00D39A8D /* Group.swift in Sources */,
 				B6AE6D752829319E001800F8 /* Color+Random.swift in Sources */,
 				B69E39C9283CDCC000B65682 /* HorizontalAlignment.swift in Sources */,
 				B67B3D9827DF42B300F50F2E /* Types.swift in Sources */,
+				B68563232840D97000D39A8D /* HGroup.swift in Sources */,
 				B6883D5B282523B400544462 /* TreeView.swift in Sources */,
 				B6B125EE28352F15005E989F /* PropertiesView.swift in Sources */,
 				B6FA89A92829755100E842AE /* View+ZStack.swift in Sources */,
@@ -1009,6 +1020,7 @@
 				B6E13C5F283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B65C027F283FC0970073FA4A /* Frame.swift in Sources */,
 				B6B125E82835123E005E989F /* StepperView.swift in Sources */,
+				B68563252840DCCC00D39A8D /* VGroup.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B67692A6282E9DAA0026CA87 /* Color.swift in Sources */,
 				B6AE6D6D2828FF2C001800F8 /* View+HStack.swift in Sources */,

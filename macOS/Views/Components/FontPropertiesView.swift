@@ -12,7 +12,7 @@ struct FontPropertiesView: View {
     @Binding var model: Uicorn.Font
     var body: some View {
         Section {
-            HStack {
+            HGroup {
                 VStack(alignment: .leading) {
                     Header("Type")
                     Picker("Type", selection: $model.type) {
@@ -30,7 +30,7 @@ struct FontPropertiesView: View {
                     }
                 }
             }
-            HStack {
+            HGroup {
                 VStack(alignment: .leading) {
                     Header("Design")
                     Picker("Design", selection: $model.design) {
