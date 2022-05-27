@@ -592,6 +592,9 @@
 				B6B125E62835123E005E989F /* StepperView.swift */,
 				B6B125E928351A07005E989F /* TextEditorView.swift */,
 				B660EEC32836422F008234A4 /* TextFieldView.swift */,
+				B68563222840D97000D39A8D /* HGroup.swift */,
+				B68563242840DCCC00D39A8D /* VGroup.swift */,
+				B68563262840DDBD00D39A8D /* Group.swift */,
 				B6A2E5F6282D064B002FCDFF /* CollectionPropertiesView.swift */,
 				B676929C282E828C0026CA87 /* ColorPropertiesView.swift */,
 				B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */,
@@ -608,9 +611,6 @@
 				B65C027B283FBFF20073FA4A /* FramePropertiesView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 				B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */,
-				B68563222840D97000D39A8D /* HGroup.swift */,
-				B68563242840DCCC00D39A8D /* VGroup.swift */,
-				B68563262840DDBD00D39A8D /* Group.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
