@@ -18,7 +18,8 @@ struct AppView: View {
     }
     @ObservedObject private var observer: Observer
     @State var shouldShowDarkMode: Bool = false
-    private var storage: AppStoring?
+    private let storage: AppStoring?
+    private let pasteboard: NSPasteboard = .general
     init(_ a: Uicorn.App, storage s: AppStoring? = nil) {
         observer = .init(a)
         storage = s
@@ -68,7 +69,10 @@ struct AppView: View {
         }
         .onReceive(observer.objectWillChange.first()) {
             guard let a = observer.rootItem as? Uicorn.App else { return }
-            storage?.store(a)
+            storage?.store(a) {
+                pasteboard.clearContents()
+                pasteboard.setString($0, forType: .string)
+            }
         }
     }
     private func menuItems(_ i: TreeItem, parent: Binding<TreeItem>?) -> [TreeItemMenu.Item] {

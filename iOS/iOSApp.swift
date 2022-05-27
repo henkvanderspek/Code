@@ -11,8 +11,12 @@ import Combine
 @main
 struct iOSApp: App {
     @StateObject private var backendController = Backend.Controller(configuration: .live)
-    @State private var view: Uicorn.View = .helloWorld
+    @State private var view: Uicorn.View
     private let pasteboard: UIPasteboard = .general
+    private let storage = AppStorageCoreData()
+    init() {
+        view = storage.fetchApps().first?.screens.first?.view ?? .helloWorld
+    }
     var body: some Scene {
         WindowGroup {
             UicornView($view)
@@ -27,6 +31,7 @@ struct iOSApp: App {
                     else {
                         return
                     }
+                    storage.store(a)
                     view = v
                 }
         }

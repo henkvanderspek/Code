@@ -27,6 +27,9 @@
 		B61737A92829651E006DE98E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737A72829651E006DE98E /* Image.swift */; };
 		B61737AB2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
 		B61737AC2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
+		B6418D552841622E00FA7C04 /* CoreData+Uicorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6418D542841622E00FA7C04 /* CoreData+Uicorn.swift */; };
+		B6418D562841626F00FA7C04 /* StorageControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685632828410F9800D39A8D /* StorageControlling.swift */; };
+		B6418D572841633600FA7C04 /* CoreData+Uicorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6418D542841622E00FA7C04 /* CoreData+Uicorn.swift */; };
 		B64A9686283776A200F4334D /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A9685283776A200F4334D /* SceneViewController.swift */; };
 		B64A96872837770100F4334D /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9327DF419700F50F2E /* NSLayoutConstraint+Helpers.swift */; };
 		B64A96882837772900F4334D /* NSDirectionalEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9C27DF541B00F50F2E /* NSDirectionalEdgeInsets+Helpers.swift */; };
@@ -79,7 +82,7 @@
 		B68563232840D97000D39A8D /* HGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68563222840D97000D39A8D /* HGroup.swift */; };
 		B68563252840DCCC00D39A8D /* VGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68563242840DCCC00D39A8D /* VGroup.swift */; };
 		B68563272840DDBD00D39A8D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68563262840DDBD00D39A8D /* Group.swift */; };
-		B685632928410F9800D39A8D /* AppStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685632828410F9800D39A8D /* AppStoring.swift */; };
+		B685632928410F9800D39A8D /* StorageControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685632828410F9800D39A8D /* StorageControlling.swift */; };
 		B6883D5928242CC000544462 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B627C60D2821636D0029126A /* AppView.swift */; };
 		B6883D5B282523B400544462 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5A282523B400544462 /* TreeView.swift */; };
 		B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5C2825468100544462 /* ViewVisibility.swift */; };
@@ -219,6 +222,7 @@
 		B63F547527CE254200C111A8 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		B63F547827CE2B1900C111A8 /* DynamicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGridView.swift; sourceTree = "<group>"; };
 		B63F547B27CE2BD000C111A8 /* LiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
+		B6418D542841622E00FA7C04 /* CoreData+Uicorn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Uicorn.swift"; sourceTree = "<group>"; };
 		B64A9685283776A200F4334D /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		B64A968D2837C16100F4334D /* nokia.old.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = nokia.old.scn; sourceTree = "<group>"; };
 		B64C15282838F2C500C078BD /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
@@ -270,7 +274,7 @@
 		B68563222840D97000D39A8D /* HGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HGroup.swift; sourceTree = "<group>"; };
 		B68563242840DCCC00D39A8D /* VGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VGroup.swift; sourceTree = "<group>"; };
 		B68563262840DDBD00D39A8D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		B685632828410F9800D39A8D /* AppStoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoring.swift; sourceTree = "<group>"; };
+		B685632828410F9800D39A8D /* StorageControlling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageControlling.swift; sourceTree = "<group>"; };
 		B6883D5A282523B400544462 /* TreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
 		B6883D5C2825468100544462 /* ViewVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVisibility.swift; sourceTree = "<group>"; };
 		B6883D5E2825531400544462 /* ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
@@ -521,7 +525,8 @@
 				B60F22472827C53900A730F1 /* ViewType.swift */,
 				B60F22492827C63E00A730F1 /* TreeItem.swift */,
 				B69F2BD02828646800877D04 /* TreeItem+Uicorn.swift */,
-				B685632828410F9800D39A8D /* AppStoring.swift */,
+				B6418D542841622E00FA7C04 /* CoreData+Uicorn.swift */,
+				B685632828410F9800D39A8D /* StorageControlling.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -1040,6 +1045,7 @@
 				B6AE6D642828FCDB001800F8 /* App.swift in Sources */,
 				B6E13C67283D2CDA003BFDD4 /* GreedySpacer.swift in Sources */,
 				B61737AC2829664A006DE98E /* View+Image.swift in Sources */,
+				B6418D552841622E00FA7C04 /* CoreData+Uicorn.swift in Sources */,
 				B6B125E5283511C5005E989F /* PaddingPropertiesView.swift in Sources */,
 				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
 				B6FDFF4C283F8CFC009E40E1 /* OptionalPropertiesView.swift in Sources */,
@@ -1073,7 +1079,7 @@
 				B65C026D283FA1380073FA4A /* Scroll.swift in Sources */,
 				B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */,
 				B69E39CD283CEB3200B65682 /* Alignment.swift in Sources */,
-				B685632928410F9800D39A8D /* AppStoring.swift in Sources */,
+				B685632928410F9800D39A8D /* StorageControlling.swift in Sources */,
 				B66B4479283E32F500230758 /* StackPropertiesView.swift in Sources */,
 				B65C0271283FA3570073FA4A /* View+Map.swift in Sources */,
 				B66B4477283E297800230758 /* AppearanceView.swift in Sources */,
@@ -1103,6 +1109,7 @@
 				B614339E282A5EFC00760F39 /* View+Collection.swift in Sources */,
 				B69E39CC283CEB3200B65682 /* Alignment.swift in Sources */,
 				B6AE6D692828FCFE001800F8 /* View.swift in Sources */,
+				B6418D562841626F00FA7C04 /* StorageControlling.swift in Sources */,
 				B6FA89A52829753700E842AE /* View+VStack.swift in Sources */,
 				B6EECA5328338BD100774B42 /* Font.swift in Sources */,
 				B61433A1282A642200760F39 /* Sugar.swift in Sources */,
@@ -1121,6 +1128,7 @@
 				B6AE6D662828FCEA001800F8 /* Screen.swift in Sources */,
 				B6AE6D742829319E001800F8 /* Color+Random.swift in Sources */,
 				B61737AB2829664A006DE98E /* View+Image.swift in Sources */,
+				B6418D572841633600FA7C04 /* CoreData+Uicorn.swift in Sources */,
 				B65C026C283FA1380073FA4A /* Scroll.swift in Sources */,
 				B65C027E283FC0970073FA4A /* Frame.swift in Sources */,
 				B69E39C8283CDCC000B65682 /* HorizontalAlignment.swift in Sources */,
