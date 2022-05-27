@@ -38,18 +38,18 @@ struct UicornView: View {
     }
     var body: some View {
         content
+            .cornerRadius(.init(model.properties?.cornerRadius ?? 0))
             .padding(.leading, .init(model.properties?.padding.leading ?? 0))
             .padding(.trailing, .init(model.properties?.padding.trailing ?? 0))
             .padding(.top, .init(model.properties?.padding.top ?? 0))
             .padding(.bottom, .init(model.properties?.padding.bottom ?? 0))
             .opacity(.init(model.properties?.opacity ?? 1.0))
+            .frame(model.properties?.frame ?? .default)
             .background {
                 if let v = backgroundView() {
                     v
                 }
             }
-            .frame(model.properties?.frame ?? .default)
-            .cornerRadius(.init(model.properties?.cornerRadius ?? 0))
             // TODO: Use the approach in below link to show consistent iOS style popovers
             // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
             .popover(isPresented: $shouldShowSheet) {
