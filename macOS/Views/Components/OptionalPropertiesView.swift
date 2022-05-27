@@ -36,7 +36,7 @@ extension OptionalPropertiesView {
             } label: {
                 Label("\(action) \(header)", systemImage: icon)
                     .labelStyle(.iconOnly)
-                    .frame(width: 10)
+                    .frame(width: 10, height: 15)
             }
             .buttonStyle(.borderless)
             .opacity(add ? 1.0 : 0.5)

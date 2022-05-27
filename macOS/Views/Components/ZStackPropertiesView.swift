@@ -14,7 +14,7 @@ struct ZStackPropertiesView: View {
     }
     var body: some View {
         Section {
-            HGroup {
+            VGroup {
                 Header("Alignment")
                 Picker("Alignment", selection: $model.alignment) {
                     ForEach(Uicorn.Alignment.allCases, id: \.self) {

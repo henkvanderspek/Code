@@ -21,7 +21,7 @@ struct Group<Content: View>: View {
                 content()
             }
         } else {
-            VStack {
+            VStack(alignment: .leading) {
                 content()
             }
         }
