@@ -9,18 +9,18 @@ import Foundation
 
 extension Uicorn {
     class View: Codable {
-        enum `Type` {
-            case hstack(HStack)
-            case vstack(VStack)
-            case zstack(ZStack)
-            case text(Text)
-            case image(Image)
-            case collection(Collection)
-            case shape(Shape)
+        enum `Type`: Codable {
+            case hstack(value: HStack)
+            case vstack(value: VStack)
+            case zstack(value: ZStack)
+            case text(value: Text)
+            case image(value: Image)
+            case collection(value: Collection)
+            case shape(value: Shape)
+            case scroll(value: Scroll)
+            case map(value: Map)
             case spacer
             case empty
-            case scroll(Scroll)
-            case map(Map)
         }
         var id: String
         var type: `Type`
@@ -32,98 +32,40 @@ extension Uicorn {
             self.action = action
             self.properties = properties
         }
-        required init(from decoder: Decoder) throws {
-            let c = try decoder.container(keyedBy: CodingKeys.self)
-            id = try c.decodeIfPresent(String.self, forKey: .id) ?? .unique
-            type = try c.decode(ViewType.self, forKey: .type).complexType(using: decoder)
-            action = try c.decodeIfPresent(Action.self, forKey: .action)
-        }
+    }
+}
+
+extension Uicorn.View.`Type` {
+    static func hstack(_ v: Uicorn.View.HStack) -> Self {
+        .hstack(value: v)
+    }
+    static func vstack(_ v: Uicorn.View.VStack) -> Self {
+        .vstack(value: v)
+    }
+    static func zstack(_ v: Uicorn.View.ZStack) -> Self {
+        .zstack(value: v)
+    }
+    static func text(_ v: Uicorn.View.Text) -> Self {
+        .text(value: v)
+    }
+    static func image(_ v: Uicorn.View.Image) -> Self {
+        .image(value: v)
+    }
+    static func collection(_ v: Uicorn.View.Collection) -> Self {
+        .collection(value: v)
+    }
+    static func shape(_ v: Uicorn.View.Shape) -> Self {
+        .shape(value: v)
+    }
+    static func scroll(_ v: Uicorn.View.Scroll) -> Self {
+        .scroll(value: v)
+    }
+    static func map(_ v: Uicorn.View.Map) -> Self {
+        .map(value: v)
     }
 }
 
 extension Uicorn.View: Identifiable {}
-
-extension Uicorn.View {
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(type.string, forKey: .type)
-        try type.encodable?.encode(to: encoder)
-    }
-}
-
-private extension Uicorn.View {
-    enum CodingKeys: String, CodingKey {
-        case id
-        case type
-        case attributes
-        case action
-    }
-    enum ViewType: String, Decodable {
-        case hstack
-        case vstack
-        case zstack
-        case text
-        case image
-        case collection
-        case shape
-        case map
-        case scroll
-        case spacer
-        case empty
-    }
-}
-
-private extension Uicorn.View.ViewType {
-    func complexType(using decoder: Decoder) throws -> Uicorn.View.`Type` {
-        switch self {
-        case .hstack: return .hstack(try .init(from: decoder))
-        case .vstack: return .vstack(try .init(from: decoder))
-        case .zstack: return .zstack(try .init(from: decoder))
-        case .text: return .text(try .init(from: decoder))
-        case .image: return .image(try .init(from: decoder))
-        case .collection: return .collection(try .init(from: decoder))
-        case .shape: return .shape(try .init(from: decoder))
-        case .map: return .map(try .init(from: decoder))
-        case .scroll: return .scroll(try .init(from: decoder))
-        case .spacer: return .spacer
-        case .empty: return .empty
-        }
-    }
-}
-
-private extension Uicorn.View.`Type` {
-    var string: String {
-        switch self {
-        case .hstack: return "hstack"
-        case .vstack: return "vstack"
-        case .zstack: return "zstack"
-        case .text: return "text"
-        case .image: return "image"
-        case .collection: return "collection"
-        case .shape: return "shape"
-        case .spacer: return "spacer"
-        case .map: return "map"
-        case .scroll: return "scroll"
-        case .empty: return "empty"
-        }
-    }
-    var encodable: Encodable? {
-        switch self {
-        case let .hstack(s): return s
-        case let .vstack(s): return s
-        case let .zstack(s): return s
-        case let .text(t): return t
-        case let .image(i): return i
-        case let .collection(c): return c
-        case let .shape(s): return s
-        case .spacer: return nil
-        case .map: return nil
-        case let .scroll(s): return s
-        case .empty: return nil
-        }
-    }
-}
 
 protocol UicornViewType {}
 

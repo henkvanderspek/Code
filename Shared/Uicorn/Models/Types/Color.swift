@@ -10,13 +10,22 @@ import Foundation
 extension Uicorn {
     class Color: Codable {
         enum `Type`: Codable {
-            case system(System)
-            case custom(Custom)
+            case system(value: System)
+            case custom(value: Custom)
         }
-        var colorType: `Type`
+        var type: `Type`
         init(_ t: `Type`) {
-            colorType = t
+            type = t
         }
+    }
+}
+
+extension Uicorn.Color.`Type` {
+    static func system(_ v: Uicorn.Color.System) -> Self {
+        .system(value: v)
+    }
+    static func custom(_ v: Uicorn.Color.Custom) -> Self {
+        .custom(value: v)
     }
 }
 
@@ -56,48 +65,6 @@ extension Uicorn.Color {
         let green: UInt8
         let blue: UInt8
         let alpha: Float
-    }
-}
-
-extension Uicorn.Color {
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(colorType.string, forKey: .colorType)
-        try colorType.encodable?.encode(to: encoder)
-    }
-}
-
-private extension Uicorn.Color {
-    enum CodingKeys: String, CodingKey {
-        case colorType
-    }
-    enum SimpleColorType: String, Decodable {
-        case system
-        case custom
-    }
-}
-
-private extension Uicorn.Color.SimpleColorType {
-    func complexType(using decoder: Decoder) throws -> Uicorn.Color.`Type` {
-        switch self {
-        case .system: return .system(try .init(from: decoder))
-        case .custom: return .custom(try .init(from: decoder))
-        }
-    }
-}
-
-private extension Uicorn.Color.`Type` {
-    var string: String {
-        switch self {
-        case .system: return "system"
-        case .custom: return "custom"
-        }
-    }
-    var encodable: Encodable? {
-        switch self {
-        case let .system(s): return s
-        case let .custom(c): return c
-        }
     }
 }
 

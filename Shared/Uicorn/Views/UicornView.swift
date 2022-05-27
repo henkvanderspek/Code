@@ -57,7 +57,7 @@ struct UicornView: View {
                     .frame(minWidth: 300, minHeight: 300)
             }
             .onSafeTapGesture(action: model.action) {
-                switch $0.actionType {
+                switch $0.type {
                 case .presentSelf:
                     sheetView = AnyView(content)
                     shouldShowSheet = true
@@ -171,7 +171,7 @@ extension Uicorn.Color.Custom {
 
 extension Color {
     init(_ c: Uicorn.Color) {
-        switch c.colorType {
+        switch c.type {
         case let .system(s):
             self = .init(s)
         case let .custom(c):

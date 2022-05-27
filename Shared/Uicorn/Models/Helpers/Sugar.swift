@@ -105,6 +105,6 @@ extension Uicorn.View.Shape {
 
 extension Uicorn.View.Action {
     static var presentSelf: Uicorn.View.Action {
-        .init(actionType: .presentSelf)
+        .init(type: .presentSelf)
     }
 }

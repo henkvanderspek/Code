@@ -22,7 +22,7 @@ struct ColorPropertiesView: View {
                 if showHeader {
                     Header(header)
                 }
-                Colors(header: header, $model.colorType)
+                Colors(header: header, $model.type)
                     .pickerStyle(.menu)
             }
         }

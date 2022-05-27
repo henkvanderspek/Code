@@ -18,8 +18,10 @@ struct AppView: View {
     }
     @ObservedObject private var observer: Observer
     @State var shouldShowDarkMode: Bool = false
-    init(_ a: Uicorn.App) {
+    private var storage: AppStoring?
+    init(_ a: Uicorn.App, storage s: AppStoring? = nil) {
         observer = .init(a)
+        storage = s
     }
     var body: some View {
         NavigationView {
@@ -63,6 +65,10 @@ struct AppView: View {
                         .labelStyle(.iconOnly)
                 }
             }
+        }
+        .onReceive(observer.objectWillChange.first()) {
+            guard let a = observer.rootItem as? Uicorn.App else { return }
+            storage?.store(a)
         }
     }
     private func menuItems(_ i: TreeItem, parent: Binding<TreeItem>?) -> [TreeItemMenu.Item] {

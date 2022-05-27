@@ -11,9 +11,10 @@ import SwiftUI
 @main
 struct macOSApp: App {
     @StateObject private var backendController = Backend.Controller(configuration: .live)
+    private var localStorage = LocalAppStorage()
     var body: some Scene {
         WindowGroup {
-            AppView(.mock(.custom(.helloWorld)))
+            AppView(.mock(.custom(.helloWorld)), storage: localStorage)
                 .environmentObject(backendController)
         }
     }
