@@ -27,6 +27,9 @@ extension UicornView {
             case .capsule:
                 Capsule()
                     .fill(c)
+            case .circle:
+                Circle()
+                    .fill(c)
             }
         }
     }

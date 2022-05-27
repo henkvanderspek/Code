@@ -13,6 +13,7 @@ extension Uicorn.View {
             case rectangle
             case ellipse
             case capsule
+            case circle
         }
         typealias Parameters = [ParameterType: String?]
         enum ParameterType: String, Codable {
@@ -43,6 +44,7 @@ extension Uicorn.View.Shape.`Type` {
         case .rectangle: return "Rectangle"
         case .ellipse: return "Ellipse"
         case .capsule: return "Capsule"
+        case .circle: return "Circle"
         }
     }
 }
