@@ -29,7 +29,7 @@ extension OptionalPropertiesView {
         let action = add ? "Add" : "Delete"
         let icon = add ? "plus" : "trash"
         HGroup {
-            Header(header, fontWeight: .regular).opacity(add ? 0.5 : 1.0)
+            Header(header, fontWeight: .regular).opacity(0.5)
             Spacer()
             Button {
                 $value.wrappedValue = add ? defaultValue : nil
@@ -39,7 +39,7 @@ extension OptionalPropertiesView {
                     .frame(width: 10, height: 15)
             }
             .buttonStyle(.borderless)
-            .opacity(add ? 1.0 : 0.5)
+            .opacity(0.5)
         }
     }
 }
