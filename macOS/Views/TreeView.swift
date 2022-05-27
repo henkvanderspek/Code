@@ -43,7 +43,8 @@ struct TreeView<V: View>: View {
                     .id(selectedItem.id)
                 Image(systemName: $item.wrappedValue.systemImage)
                     .fixedSize()
-                    .frame(width: 20)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 16)
                 Text(item.title)
                 Spacer()
             }
