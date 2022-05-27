@@ -571,6 +571,7 @@
 		B6A2E5F8282D066F002FCDFF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B66B4476283E297800230758 /* AppearanceView.swift */,
 				B6E13C65283D2CDA003BFDD4 /* GreedySpacer.swift */,
 				B6AE6D7628295130001800F8 /* TreeItemMenu.swift */,
 				B676929A282E622D0026CA87 /* Header.swift */,
@@ -592,7 +593,6 @@
 				B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */,
 				B65C027B283FBFF20073FA4A /* FramePropertiesView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
-				B66B4476283E297800230758 /* AppearanceView.swift */,
 				B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */,
 			);
 			path = Components;

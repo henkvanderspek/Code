@@ -14,9 +14,18 @@ struct PropertiesView: View {
         _model = m
     }
     var body: some View {
+//        Divider()
+//        OptionalPropertiesView(header: "Appearance", value: $showAppearance, defaultValue: false) { _ in
+//        }
         Divider()
-        OptionalPropertiesView(header: "Appearance", value: $showAppearance, defaultValue: false) { _ in
+        OptionalPropertiesView(header: "Layout", value: $model.frame, defaultValue: .default) { value in
             Section {
+                FramePropertiesView(
+                    .init(
+                        get: { value.wrappedValue },
+                        set: { $model.frame.wrappedValue = $0 }
+                    )
+                )
                 HStack {
                     PaddingPropertiesView($model.padding)
                     StepperView(Binding($model.cornerRadius), default: 0, range: 0...1000, step: 1, header: "Corner Radius")
@@ -25,16 +34,8 @@ struct PropertiesView: View {
                     StepperView($model.opacity, default: 1.0, range: 0...1, step: 0.1, header: "Opacity")
                     GreedySpacer()
                 }
-            }.labelsHidden()
-        }
-        Divider()
-        OptionalPropertiesView(header: "Layout", value: $model.frame, defaultValue: .default) { value in
-            FramePropertiesView(
-                .init(
-                    get: { value.wrappedValue },
-                    set: { $model.frame.wrappedValue = $0 }
-                )
-            )
+            }
+            .labelsHidden()
         }
         Divider()
         OptionalPropertiesView(header: "Background Color", value: $model.backgroundColor, defaultValue: .system(.background)) { value in

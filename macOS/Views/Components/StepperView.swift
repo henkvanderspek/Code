@@ -7,32 +7,67 @@
 
 import SwiftUI
 
-struct StepperView<V: Comparable & Strideable & CustomStringConvertible & Formatible>: View {
+extension Formatter {
+    static var stepper: Formatter {
+        let f = NumberFormatter()
+        f.numberStyle = .decimal
+        f.maximumFractionDigits = 1
+        f.locale = .init(identifier: "US")
+        return f
+    }
+}
+
+struct StepperView<V: Comparable & Strideable & CustomStringConvertible>: View {
     @Binding var value: V?
     let `default`: V
     let range: ClosedRange<V>
     let step: V.Stride
     let header: String
-    let label: (V)->String
-    init(_ v: Binding<V?>, default d: V, range r: ClosedRange<V>, step s: V.Stride, header h: String, label l: @escaping (V)->String = { "\($0.formatted())" }) {
+    @FocusState private var isTextFieldFocused: Bool
+    private var formatter: Formatter
+    init(_ v: Binding<V?>, default d: V, range r: ClosedRange<V>, step s: V.Stride, header h: String, formatter f: Formatter = .stepper) {
         _value = v
         `default` = d
         range = r
         step = s
         header = h
-        label = l
+        formatter = f
     }
     var body: some View {
         VStack(alignment: .leading) {
             Header(header)
-            HStack(spacing: 5) {
-                Text(label(value ?? `default`))
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+            HStack(spacing: 0) {
+                TextField(
+                    "Value",
+                    value: .init(
+                        get: {
+                            $value.wrappedValue ?? `default`
+                        },
+                        set: {
+                            value = $0
+                        }
+                    ),
+                    formatter: formatter
+                )
+                .textFieldStyle(.plain)
+                .padding(.horizontal, 5)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .focused($isTextFieldFocused)
+                .overlay {
+                    Color(nativeColor: .systemBackground)
+                        .opacity(0.1)
+                        .onTapGesture {
+                            isTextFieldFocused = true
+                        }
+                }
+//                Text(label(value ?? `default`))
+//                    .frame(maxWidth: .infinity, alignment: .trailing)
                 Stepper(header, value: Binding($value, default: `default`), in: range, step: step)
             }
             .frame(minWidth: 80)
             .background(.background)
             .cornerRadius(4)
+            .labelsHidden()
         }
     }
 }
@@ -44,9 +79,25 @@ struct StepperView_Previews: PreviewProvider {
 }
 
 protocol Formatible {
+    init?<S>(_ text: S) where S: StringProtocol
     func formatted() -> String
 }
 
-extension Int: Formatible {}
-extension Double: Formatible {}
-extension Float: Formatible {}
+extension Int: Formatible {
+    init?<S>(_ text: S) where S : StringProtocol {
+        guard let v = Int(String(text)) else { return nil }
+        self = v
+    }
+}
+
+extension Double: Formatible {
+    func formatted() -> String {
+        return formatted(.number.locale(.init(identifier: "US")).precision(.significantDigits(1)))
+    }
+}
+
+extension Float: Formatible {
+    func formatted() -> String {
+        return formatted(.number.locale(.init(identifier: "US")).precision(.significantDigits(1)))
+    }
+}

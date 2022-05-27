@@ -9,13 +9,17 @@ import SwiftUI
 
 struct Header: View {
     let text: String
-    init(_ s: String) {
+    let font: Font?
+    let fontWeight: Font.Weight?
+    init(_ s: String, font f: Font? = nil, fontWeight w: Font.Weight? = nil) {
         text = s
+        font = f
+        fontWeight = w
     }
     var body: some View {
         Text(text)
-            .font(.headline)
-            .fontWeight(.light)
+            .font(font ?? .headline)
+            .fontWeight(fontWeight ?? .light)
     }
 }
 

@@ -11,6 +11,9 @@ struct InspectorView: View {
     @Binding var view: Uicorn.View
     var body: some View {
         Form {
+            Header("Settings", fontWeight: .regular)
+                .padding(.bottom, 5)
+                .isHidden(view.isEmpty)
             // Specific properties
             switch view.type {
             case let .collection(c):
@@ -73,6 +76,17 @@ struct InspectorView: View {
             }
         }
         .id(view.id)
+    }
+}
+
+extension Uicorn.View {
+    var isEmpty: Bool {
+        switch type {
+        case .spacer, .empty:
+            return true
+        default:
+            return false
+        }
     }
 }
 

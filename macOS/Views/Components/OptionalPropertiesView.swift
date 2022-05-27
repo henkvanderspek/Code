@@ -32,7 +32,7 @@ extension OptionalPropertiesView {
         let action = add ? "Add" : "Delete"
         let icon = add ? "plus" : "trash"
         HStack {
-            Header(header).opacity(add ? 0.5 : 1.0)
+            Header(header, fontWeight: .regular).opacity(add ? 0.5 : 1.0)
             Spacer()
             Button {
                 $value.wrappedValue = add ? defaultValue : nil

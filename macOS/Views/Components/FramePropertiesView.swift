@@ -15,8 +15,8 @@ struct FramePropertiesView: View {
     var body: some View {
         Section {
             HStack {
-                StepperView($model.width, default: 0, range: 0...1000, step: 1, header: "Width")
-                StepperView($model.height, default: 0, range: 0...1000, step: 1, header: "Height")
+                StepperView($model.width, default: 0, range: 0...10000, step: 1, header: "Width")
+                StepperView($model.height, default: 0, range: 0...10000, step: 1, header: "Height")
             }
             // TODO: Study this a bit more, doesn't seem to have much effect
 //            Header("Alignment")
