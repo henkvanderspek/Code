@@ -14,8 +14,8 @@ struct ShapePropertiesView: View {
     }
     var body: some View {
         Section {
-            Header("Type")
-            Picker("Type", selection: $model.type) {
+            Header("Shape")
+            Picker("Shape", selection: $model.type) {
                 ForEach(Uicorn.View.Shape.allTypeCases, id: \.self) {
                     Text($0.localizedTitle)
                 }
