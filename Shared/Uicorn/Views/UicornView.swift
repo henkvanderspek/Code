@@ -47,9 +47,7 @@ struct UicornView: View {
             .padding(.bottom, .init(model.properties?.padding.bottom ?? 0).multiplied(by: scaleFactor))
             .opacity(.init(model.properties?.opacity ?? 1.0))
             .background {
-                if let v = backgroundView() {
-                    v
-                }
+                backgroundView()
             }
             // TODO: Use the approach in below link to show consistent iOS style popovers
             // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
@@ -100,8 +98,8 @@ private extension Uicorn.Frame {
 }
 
 private extension UicornView {
-    @ViewBuilder func backgroundView() -> (some View)? {
-        model.properties?.backgroundColor.map { Color($0) }
+    @ViewBuilder func backgroundView() -> some View {
+        model.properties?.backgroundColor.map { AnyView(Color($0)) } ?? AnyView(EmptyView())
     }
 }
 

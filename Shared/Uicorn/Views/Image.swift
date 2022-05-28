@@ -19,31 +19,28 @@ extension UicornView {
         var body: some View {
             switch $model.wrappedValue.type {
             case .remote:
-                GeometryReader { geo in
-                    AsyncImage(url: .init(string: host.resolve($model.wrappedValue.value))) { phase in
-                        if let image = phase.image {
-                            createView(for: image, width: geo.size.width, height: geo.size.height)
-                                .onAppear {
-                                    cachedImage = image
-                                }
-                        } else if let cachedImage = cachedImage {
-                            createView(for: cachedImage, width: geo.size.width, height: geo.size.height)
-                        } else if phase.error != nil {
-                            SwiftUI.Rectangle()
-                                .foregroundColor(.black)
-                        } else {
-                            SwiftUI.Rectangle()
-                                .foregroundColor(.white)
-                        }
+                AsyncImage(url: .init(string: host.resolve($model.wrappedValue.value))) { phase in
+                    if let image = phase.image {
+                        createView(for: image, width: .infinity, height: .infinity)
+                            .onAppear {
+                                cachedImage = image
+                            }
+                    } else if let cachedImage = cachedImage {
+                        createView(for: cachedImage, width: .infinity, height: .infinity)
+                    } else if phase.error != nil {
+                        SwiftUI.Rectangle()
+                            .foregroundColor(.black)
+                    } else {
+                        SwiftUI.Rectangle()
+                            .foregroundColor(.white)
                     }
-                    .frame(width: geo.size.width, height: geo.size.height)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             case .system:
                 SwiftUI.Image(systemName: model.value)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .foregroundColor(Color(model.fill ?? .system(.label)))
+                    .font(.body.weight(.medium))
+                    .imageScale(.large)
             }
         }
     }
@@ -57,13 +54,14 @@ private extension UicornView.Image {
                 .scaledToFill()
                 .id(UUID())
         }
-        .frame(width: width, height: height)
+        .frame(maxWidth: width, maxHeight: height)
         .clipped()
     }
 }
 
 struct Image_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Image(.constant(.init(type: .remote, value: .init(), fill: nil)), host: MockHost())
+        UicornView.Image(.constant(.init(type: .system, value: "mustache", fill: nil)), host: MockHost())
+        UicornView.Image(.constant(.init(type: .remote, value: "https://images.unsplash.com/photo-1653624840011-5f74bdd7c1b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80", fill: nil)), host: MockHost())
     }
 }
