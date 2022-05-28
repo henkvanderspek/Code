@@ -32,19 +32,20 @@ struct UicornView: View {
     private let resolver: Resolve?
     @State private var sheetView: AnyView?
     @State private var shouldShowSheet = false
+    @ScaledMetric private var scaleFactor = 1.0
     init(_ v: Binding<Uicorn.View>, resolver r: Resolve? = nil) {
         _model = v
         resolver = r
     }
     var body: some View {
         content
-            .cornerRadius(.init(model.properties?.cornerRadius ?? 0))
-            .padding(.leading, .init(model.properties?.padding.leading ?? 0))
-            .padding(.trailing, .init(model.properties?.padding.trailing ?? 0))
-            .padding(.top, .init(model.properties?.padding.top ?? 0))
-            .padding(.bottom, .init(model.properties?.padding.bottom ?? 0))
+            .frame(model.properties?.frame ?? .default, scaleFactor: scaleFactor)
+            .cornerRadius(.init(model.properties?.cornerRadius ?? 0).multiplied(by: scaleFactor))
+            .padding(.leading, .init(model.properties?.padding.leading ?? 0).multiplied(by: scaleFactor))
+            .padding(.trailing, .init(model.properties?.padding.trailing ?? 0).multiplied(by: scaleFactor))
+            .padding(.top, .init(model.properties?.padding.top ?? 0).multiplied(by: scaleFactor))
+            .padding(.bottom, .init(model.properties?.padding.bottom ?? 0).multiplied(by: scaleFactor))
             .opacity(.init(model.properties?.opacity ?? 1.0))
-            .frame(model.properties?.frame ?? .default)
             .background {
                 if let v = backgroundView() {
                     v
@@ -73,8 +74,14 @@ private extension View {
             p(a)
         })
     }
-    func frame(_ f: Uicorn.Frame) -> some View {
-        frame(width: f.w, height: f.h, alignment: f.a)
+    func frame(_ f: Uicorn.Frame, scaleFactor s: CGFloat) -> some View {
+        frame(width: f.w?.multiplied(by: s), height: f.h?.multiplied(by: s), alignment: f.a)
+    }
+}
+
+private extension FloatingPoint {
+    func multiplied(by f: Self) -> Self {
+        self * f
     }
 }
 
