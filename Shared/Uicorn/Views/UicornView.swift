@@ -41,10 +41,7 @@ struct UicornView: View {
         content
             .frame(model.properties?.frame ?? .default, scaleFactor: scaleFactor)
             .cornerRadius(.init(model.properties?.cornerRadius ?? 0).multiplied(by: scaleFactor))
-            .padding(.leading, .init(model.properties?.padding.leading ?? 0).multiplied(by: scaleFactor))
-            .padding(.trailing, .init(model.properties?.padding.trailing ?? 0).multiplied(by: scaleFactor))
-            .padding(.top, .init(model.properties?.padding.top ?? 0).multiplied(by: scaleFactor))
-            .padding(.bottom, .init(model.properties?.padding.bottom ?? 0).multiplied(by: scaleFactor))
+            .padding(.init(model.properties?.padding ?? .zero, scaleFactor: scaleFactor))
             .opacity(.init(model.properties?.opacity ?? 1.0))
             .background {
                 backgroundView()
@@ -74,6 +71,20 @@ private extension View {
     }
     func frame(_ f: Uicorn.Frame, scaleFactor s: CGFloat) -> some View {
         frame(width: f.w?.multiplied(by: s), height: f.h?.multiplied(by: s), alignment: f.a)
+    }
+}
+
+private extension EdgeInsets {
+    static var zero: Self {
+        .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+    }
+    init(_ p: Uicorn.Padding, scaleFactor: CGFloat) {
+        self.init(
+            top: .init(p.top).multiplied(by: scaleFactor),
+            leading: .init(p.leading).multiplied(by: scaleFactor),
+            bottom: .init(p.bottom).multiplied(by: scaleFactor),
+            trailing: .init(p.trailing).multiplied(by: scaleFactor)
+        )
     }
 }
 

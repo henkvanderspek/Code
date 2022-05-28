@@ -15,7 +15,7 @@ struct iOSApp: App {
     private let pasteboard: UIPasteboard = .general
     private let storage = AppStorageCoreData()
     init() {
-        view = storage.fetchApps().first?.screens.first?.view ?? .helloWorld
+        view = storage.fetchApps().last?.screens.first?.view ?? .helloWorld
     }
     var body: some Scene {
         WindowGroup {
