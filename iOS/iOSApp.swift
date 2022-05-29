@@ -8,23 +8,41 @@
 import SwiftUI
 import Combine
 
+class DataModel: ObservableObject {
+    class Item: ObservableObject {
+        @Published var app: Uicorn.App
+        @Published var color: Color
+        init(_ a: Uicorn.App, _ c: Color = .systemRandom) {
+            app = a
+            color = c
+        }
+    }
+    let storage: AppStoring
+    init(_ s: AppStoring = AppStorageCoreData()) {
+        storage = s
+    }
+    @Published var items: [Item] = []
+    func add(_ a: Uicorn.App) {
+        storage.store(a)
+        load()
+    }
+    func load() {
+        items = storage.fetchApps().map { .init($0) }
+        objectWillChange.send()
+    }
+}
+
 @main
 struct iOSApp: App {
     @StateObject private var backendController = Backend.Controller(configuration: .live)
     private let pasteboard: UIPasteboard = .general
-    private let storage = AppStorageCoreData()
     private let spacing = 12.0
     private let cols = 3
     private let columns: [GridItem]
-    fileprivate struct Item {
-        var app: Uicorn.App
-        var color: Color
-    }
-    @State private var items: [Item]
+    @ObservedObject private var model: DataModel = .init()
     @State private var isSheetPresented = false
-    @State private var activeItem: Item?
+    @State private var activeItem: DataModel.Item?
     init() {
-        items = storage.fetchApps().map { .init(app: $0, color: .systemRandom) }
         columns = .init(repeating: .init(.flexible(), spacing: spacing), count: cols)
         //UINavigationBar.setupAppearance()
     }
@@ -34,7 +52,7 @@ struct iOSApp: App {
                 GeometryReader { geo in
                     ScrollView {
                         LazyVGrid(columns: columns) {
-                            ForEach($items, id: \.app.id) { $item in
+                            ForEach($model.items, id: \.app.id) { $item in
                                 VStack {
                                     $item.wrappedValue.color
                                         .frame(itemSize(forTotalSize: geo.size))
@@ -54,6 +72,9 @@ struct iOSApp: App {
                 .navigationTitle("Uicorn 🦄")
             }
             .navigationViewStyle(.stack)
+            .onAppear {
+                model.load()
+            }
             .onReceive(pasteboard.changedPublisher) { hasStrings in
                 guard
                     let d = pasteboard.data(forPasteboardType: .pasteboardIdUicornApp),
@@ -61,9 +82,8 @@ struct iOSApp: App {
                 else {
                     return
                 }
-                storage.store(a)
                 pasteboard.items = []
-                items = storage.fetchApps().map { .init(app: $0, color: .systemRandom) }
+                model.add(a)
             }
             .onChange(of: activeItem) { _ in
                 isSheetPresented.toggle()
@@ -130,8 +150,8 @@ struct iOSApp: App {
     }
 }
 
-extension iOSApp.Item: Equatable {
-    static func == (lhs: Self, rhs: Self) -> Bool {
+extension DataModel.Item: Equatable {
+    static func == (lhs: DataModel.Item, rhs: DataModel.Item) -> Bool {
         lhs.app.id == rhs.app.id
     }
 }
