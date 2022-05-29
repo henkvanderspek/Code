@@ -15,4 +15,20 @@ extension Color {
             blue: .random(in: 0...1)
         )
     }
+    static var systemRandom: Color {
+        return [
+            .yellow,
+            .blue,
+            .red,
+            .orange,
+            .green,
+            .mint,
+            .teal,
+            .cyan,
+            .indigo,
+            .purple,
+            .pink,
+            .brown
+        ].randomElement()!
+    }
 }
