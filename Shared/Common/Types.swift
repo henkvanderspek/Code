@@ -127,6 +127,12 @@ extension NSAppearance {
     }
 }
 
+extension NSPasteboard.PasteboardType {
+    static var uicornApp: Self {
+        .init(.pasteboardIdUicornApp)
+    }
+}
+
 #endif
 
 extension Binding where Value: Equatable {
@@ -150,4 +156,8 @@ extension Binding where Value: Equatable {
             }
         )
     }
+}
+
+extension String {
+    static var pasteboardIdUicornApp = "com.vdbyte.uicornapp"
 }

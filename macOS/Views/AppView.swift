@@ -70,8 +70,8 @@ struct AppView: View {
         .onReceive(observer.objectWillChange.first()) {
             guard let a = observer.rootItem as? Uicorn.App else { return }
             storage?.store(a) {
-                pasteboard.clearContents()
-                pasteboard.setString($0, forType: .string)
+                pasteboard.declareTypes([.uicornApp], owner: nil)
+                pasteboard.setData($0, forType: .uicornApp)
             }
         }
     }

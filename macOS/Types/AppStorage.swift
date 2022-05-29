@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-typealias EncodingCompletion = (String)->()
+typealias EncodingCompletion = (Data?)->()
 
 protocol AppStoring {
     func fetchApps() -> [Uicorn.App]
@@ -79,9 +79,7 @@ private extension AppStorageCoreData {
         i.key = app.id
         i.type = `Type`.app.rawValue
         i.data = try? encoder.encode(app)
-        if let d = i.data, let s = String(data: d, encoding: .utf8) {
-            encoded?(s)
-        }
+        encoded?(i.data)
         guard s else { return }
         save()
     }

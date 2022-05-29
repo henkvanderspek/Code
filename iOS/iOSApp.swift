@@ -16,14 +16,16 @@ struct iOSApp: App {
     private let spacing = 12.0
     private let cols = 3
     private let columns: [GridItem]
-    private let apps: [Uicorn.App]
     private let colors: [String: Color]
+    @State private var apps: [Uicorn.App]
     @State private var isSheetPresented = false
     @State private var activeView: Uicorn.View?
     init() {
-        apps = storage.fetchApps()
-        colors = apps.reduce(into: [:]) { $0[$1.id] = .systemRandom }
+        let a = storage.fetchApps()
+        apps = a
+        colors = a.reduce(into: [:]) { $0[$1.id] = .systemRandom }
         columns = .init(repeating: .init(.flexible(), spacing: spacing), count: cols)
+        //UINavigationBar.setupAppearance()
     }
     var body: some Scene {
         WindowGroup {
@@ -42,34 +44,51 @@ struct iOSApp: App {
                                 .id(app.id)
                                 .onTapGesture {
                                     activeView = app.screens.first?.view
-                                    isSheetPresented = true
-                                }
-                                .sheet(isPresented: $isSheetPresented) {
-                                    if let v = activeView {
-                                        UicornView(.constant(v))
-                                            .environmentObject(backendController)
-                                    } else {
-                                        Text("😱")
-                                            .font(.system(.largeTitle).weight(.black))
-                                            .scaleEffect(5)
-                                    }
                                 }
                             }
                         }
                         .padding(16)
                     }
                 }
-                .navigationTitle("Uicorn")
+                .navigationTitle("Uicorn 🦄")
             }
+            .navigationViewStyle(.stack)
             .onReceive(pasteboard.changedPublisher) { hasStrings in
                 guard
-                    let s = pasteboard.string,
-                    let d = s.data(using: .utf8),
+                    let d = pasteboard.data(forPasteboardType: .pasteboardIdUicornApp),
                     let a = try? JSONDecoder().decode(Uicorn.App.self, from: d)
                 else {
                     return
                 }
                 storage.store(a)
+                pasteboard.items = []
+            }
+            .onChange(of: activeView) {
+                isSheetPresented = $0 != nil
+            }
+            .fullScreenCover(isPresented: $isSheetPresented, onDismiss: clearActiveView) {
+                NavigationView {
+                    if let v = Binding($activeView) {
+                        UicornView(v)
+                            .environmentObject(backendController)
+                            .navigationBarTitle("App")
+                            .toolbar {
+                                ToolbarItemGroup(placement: .navigationBarLeading) {
+                                    Button {
+                                        activeView = nil
+                                    } label: {
+                                        Label("Dashboard", systemImage: "")
+                                            .labelStyle(.titleOnly)
+                                    }
+                                }
+                            }
+                    } else {
+                        Text("😱")
+                            .font(.system(.largeTitle).weight(.black))
+                            .scaleEffect(5)
+                    }
+                }
+                .navigationViewStyle(.stack)
             }
         }
     }
@@ -77,6 +96,15 @@ struct iOSApp: App {
         let s = .init(cols - 1) * spacing
         let v = max(0, (size.width / .init(cols)) - s)
         return .init(width: v, height: v)
+    }
+    private func clearActiveView() {
+        activeView = nil
+    }
+}
+
+extension Uicorn.View: Equatable {
+    static func == (lhs: Uicorn.View, rhs: Uicorn.View) -> Bool {
+        lhs.id == rhs.id
     }
 }
 
@@ -93,14 +121,32 @@ extension UIPasteboard {
                 with: NotificationCenter
                     .default
                     .publisher(for: UIPasteboard.changedNotification, object: self)
-                    .map { _ in self.hasStrings }
+                    .map { _ in self.containsUicornApp }
             )
             .merge(
                 with: NotificationCenter
                     .default
                     .publisher(for: UIApplication.didBecomeActiveNotification, object: nil)
-                    .map { _ in self.hasStrings }
+                    .map { _ in self.containsUicornApp }
             )
             .eraseToAnyPublisher()
+    }
+    var containsUicornApp: Bool {
+        contains(pasteboardTypes: [.pasteboardIdUicornApp])
+    }
+}
+
+extension UINavigationBar {
+    static func setupAppearance() {
+        let attributes: [NSAttributedString.Key : Any] = [
+            .foregroundColor: UIColor.white
+        ]
+        let a = UINavigationBarAppearance()
+        a.backgroundColor = .systemCyan
+        a.titleTextAttributes = attributes
+        a.largeTitleTextAttributes = attributes
+        appearance().standardAppearance = a
+        appearance().compactAppearance = a
+        appearance().scrollEdgeAppearance = a
     }
 }
