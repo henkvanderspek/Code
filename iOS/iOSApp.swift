@@ -16,14 +16,15 @@ struct iOSApp: App {
     private let spacing = 12.0
     private let cols = 3
     private let columns: [GridItem]
-    private let colors: [String: Color]
-    @State private var apps: [Uicorn.App]
+    fileprivate struct Item {
+        var app: Uicorn.App
+        var color: Color
+    }
+    @State private var items: [Item]
     @State private var isSheetPresented = false
-    @State private var activeView: Uicorn.View?
+    @State private var activeItem: Item?
     init() {
-        let a = storage.fetchApps()
-        apps = a
-        colors = a.reduce(into: [:]) { $0[$1.id] = .systemRandom }
+        items = storage.fetchApps().map { .init(app: $0, color: .systemRandom) }
         columns = .init(repeating: .init(.flexible(), spacing: spacing), count: cols)
         //UINavigationBar.setupAppearance()
     }
@@ -33,17 +34,17 @@ struct iOSApp: App {
                 GeometryReader { geo in
                     ScrollView {
                         LazyVGrid(columns: columns) {
-                            ForEach(apps, id: \.id) { app in
+                            ForEach($items, id: \.app.id) { $item in
                                 VStack {
-                                    colors[app.id]
+                                    $item.wrappedValue.color
                                         .frame(itemSize(forTotalSize: geo.size))
                                         .cornerRadius(15)
-                                    Text(app.title)
+                                    Text($item.wrappedValue.app.title)
                                         .lineLimit(1)
                                 }
-                                .id(app.id)
+                                .id($item.wrappedValue.app.id) // TODO: This is not updated on pasteboard fetch
                                 .onTapGesture {
-                                    activeView = app.screens.first?.view
+                                    activeItem = $item.wrappedValue
                                 }
                             }
                         }
@@ -62,31 +63,58 @@ struct iOSApp: App {
                 }
                 storage.store(a)
                 pasteboard.items = []
+                items = storage.fetchApps().map { .init(app: $0, color: .systemRandom) }
             }
-            .onChange(of: activeView) {
-                isSheetPresented = $0 != nil
+            .onChange(of: activeItem) { _ in
+                isSheetPresented.toggle()
             }
-            .fullScreenCover(isPresented: $isSheetPresented, onDismiss: clearActiveView) {
+            .fullScreenCover(isPresented: $isSheetPresented) {
                 NavigationView {
-                    if let v = Binding($activeView) {
-                        UicornView(v)
-                            .environmentObject(backendController)
-                            .navigationBarTitle("App")
+                    ZStack {
+                        if let $i = Binding($activeItem) {
+                            VStack(spacing: 0) {
+                                $i.wrappedValue.color
+                                    .ignoresSafeArea()
+                                HStack {
+                                    if let $v = $i.app.screens.first?.view, let b = Binding($v) {
+                                        UicornView(b)
+                                            .environmentObject(backendController)
+                                            .id(UUID())
+                                    }
+                                }
+                                .layoutPriority(1)
+                            }
                             .toolbar {
-                                ToolbarItemGroup(placement: .navigationBarLeading) {
+                                ToolbarItem(placement: .navigationBarLeading) {
                                     Button {
-                                        activeView = nil
+                                        activeItem = nil
                                     } label: {
-                                        Label("Dashboard", systemImage: "")
+                                        Label("Close", systemImage: "")
+                                            .foregroundColor(.white)
                                             .labelStyle(.titleOnly)
                                     }
                                 }
+                                ToolbarItem(placement: .principal) {
+                                    Text($i.wrappedValue.app.title)
+                                        .foregroundColor(.white)
+                                }
                             }
-                    } else {
-                        Text("😱")
-                            .font(.system(.largeTitle).weight(.black))
-                            .scaleEffect(5)
+                        } else {
+                            VStack {
+                                Text("😱")
+                                    .font(.system(.largeTitle).weight(.black))
+                                    .scaleEffect(5)
+                                    .navigationBarTitle("Error")
+                                Button {
+                                    isSheetPresented.toggle()
+                                } label: {
+                                    Label("Close", systemImage: "")
+                                        .labelStyle(.titleOnly)
+                                }
+                            }
+                        }
                     }
+                    .navigationBarTitleDisplayMode(.inline)
                 }
                 .navigationViewStyle(.stack)
             }
@@ -97,8 +125,14 @@ struct iOSApp: App {
         let v = max(0, (size.width / .init(cols)) - s)
         return .init(width: v, height: v)
     }
-    private func clearActiveView() {
-        activeView = nil
+    private func clearActiveItem() {
+        activeItem = nil
+    }
+}
+
+extension iOSApp.Item: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.app.id == rhs.app.id
     }
 }
 
