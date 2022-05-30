@@ -52,6 +52,8 @@ struct InspectorView: View {
                 MapPropertiesView(m.binding(set: update))
             case let .scroll(s):
                 ScrollPropertiesView(s.binding(set: update))
+            case let .instance(i):
+                InstancePropertiesView(i.binding(set: update))
             case .empty, .spacer:
                 EmptyView()
             }
@@ -69,7 +71,7 @@ struct InspectorView: View {
                         }
                     )
                 )
-            case .spacer, .empty:
+            case .spacer, .empty, .instance:
                 EmptyView()
             }
         }
@@ -131,6 +133,9 @@ private extension InspectorView {
     }
     func update(_ s: Uicorn.View.Scroll) {
         $view.type.wrappedValue = .scroll(s)
+    }
+    func update(_ i: Uicorn.View.Instance) {
+        $view.type.wrappedValue = .instance(i)
     }
 }
 

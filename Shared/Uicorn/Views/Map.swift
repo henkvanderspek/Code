@@ -24,6 +24,6 @@ extension UicornView {
 
 struct Map_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Map(.constant(.init()), host: MockHost())
+        UicornView.Map(.constant(.init()), host: .mock)
     }
 }

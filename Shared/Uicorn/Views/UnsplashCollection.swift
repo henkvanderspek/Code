@@ -109,6 +109,6 @@ private extension UicornView.UnsplashCollection {
 
 struct UnsplashCollection_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.UnsplashCollection(query: .constant("pug"), count: .constant(10), view: .constant(.empty), host: MockHost())
+        UicornView.UnsplashCollection(query: .constant("pug"), count: .constant(10), view: .constant(.empty), host: .mock)
     }
 }

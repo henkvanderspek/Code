@@ -39,7 +39,14 @@ struct FontPropertiesView: View {
                         }
                     }
                 }
-                GreedySpacer()
+                VStack(alignment: .leading) {
+                    Header("Leading")
+                    Picker("Leading", selection: $model.leading) {
+                        ForEach(Uicorn.Font.Leading.allCases, id: \.self) {
+                            Text($0.localizedString)
+                        }
+                    }
+                }
             }
         }
         .labelsHidden()

@@ -47,7 +47,7 @@ private extension Uicorn.View.Image.System {
     var image: some View {
         SwiftUI.Image(systemName: name)
             .foregroundColor(Color(fill ?? .system(.label)))
-            .font(.init(.init(type: type, weight: weight, design: .default)))
+            .font(.init(.init(type: type, weight: weight, design: .default, leading: .standard)))
             .imageScale(.init(scale))
     }
 }
@@ -68,7 +68,7 @@ private extension UicornView.Image {
 
 struct Image_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Image(.constant(.randomRemote), host: MockHost())
-        UicornView.Image(.constant(.randomSystem(fill: nil)), host: MockHost())
+        UicornView.Image(.constant(.randomRemote), host: .mock)
+        UicornView.Image(.constant(.randomSystem(fill: nil)), host: .mock)
     }
 }

@@ -19,9 +19,19 @@ extension Uicorn.View {
     }
     static var helloWorld: Uicorn.View {
         .zstack([
-            .text("hello\nworld\n🌎", font: .init(type: .largeTitle, weight: .regular, design: .default), alignment: .center, textCase: .uppercase),
-            .rectangle]
-        )
+            .text("hello\nworld\n🌎", font: .init(type: .largeTitle, weight: .regular, design: .default, leading: .standard), alignment: .center, textCase: .uppercase),
+            .rectangle
+        ])
+    }
+    static var cardInstance: Uicorn.View {
+        .zstack([
+            .vstack([
+                .instance(.cardComponentId),
+                .instance(.cardComponentId),
+                .instance(.cardComponentId)
+            ], spacing: 10),
+            .rectangle
+        ])
     }
     static func hstack(_ c: [Uicorn.View], spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
         .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: action, properties: properties)
@@ -85,6 +95,12 @@ extension Uicorn.View {
     }
     static var vscroll: Uicorn.View {
         .init(id: .unique, type: .scroll(.init(axis: .vertical, children: [])), action: nil, properties: nil)
+    }
+    static func instance(_ id: String) -> Uicorn.View {
+        .init(id: .unique, type: .instance(.init(componentId: id)), action: nil, properties: nil)
+    }
+    static var instance: Uicorn.View {
+        .instance(.cardComponentId)
     }
 }
 

@@ -18,7 +18,7 @@ extension UicornView {
         var body: some View {
             SwiftUI.ScrollView(.init($model.axis.wrappedValue)) {
                 ForEach($model.children) {
-                    UicornView($0)
+                    UicornView($0, resolver: host.resolve)
                 }
             }
         }

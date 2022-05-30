@@ -19,6 +19,7 @@ extension Uicorn {
             case shape(value: Shape)
             case scroll(value: Scroll)
             case map(value: Map)
+            case instance(value: Instance)
             case spacer
             case empty
         }
@@ -63,6 +64,9 @@ extension Uicorn.View.`Type` {
     static func map(_ v: Uicorn.View.Map) -> Self {
         .map(value: v)
     }
+    static func instance(_ v: Uicorn.View.Instance) -> Self {
+        .instance(value: v)
+    }
 }
 
 extension Uicorn.View: Identifiable {}
@@ -80,7 +84,7 @@ extension Uicorn.View: RandomAccessCollection {
             return s.children
         case let .scroll(s):
             return s.children
-        case .empty, .collection, .image, .map, .spacer, .shape, .text:
+        case .empty, .collection, .image, .map, .spacer, .shape, .text, .instance:
             return []
         }
     }

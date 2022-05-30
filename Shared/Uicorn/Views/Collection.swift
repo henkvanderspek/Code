@@ -32,6 +32,6 @@ extension UicornView {
 
 struct Collection_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Collection(.constant(.init(type: .unsplash, parameters: [:], view: nil)), host: MockHost())
+        UicornView.Collection(.constant(.init(type: .unsplash, parameters: [:], view: nil)), host: .mock)
     }
 }

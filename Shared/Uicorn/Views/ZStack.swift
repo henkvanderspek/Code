@@ -27,7 +27,7 @@ extension UicornView {
 
 struct ZStack_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.ZStack(.constant(.init([])), host: MockHost())
+        UicornView.ZStack(.constant(.init([])), host: .mock)
     }
 }
 

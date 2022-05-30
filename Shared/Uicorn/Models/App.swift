@@ -13,12 +13,16 @@ extension Uicorn {
     }
     class App: Base, Codable {
         let id: String
-        let title: String
+        var title: String
+        var color: Color
         var screens: [Screen]
-        init(id: String, title: String, screens: [Screen]) {
-            self.id = id
-            self.title = title
-            self.screens = screens
+        var components: [Component]
+        init(id i: String, title t: String, color clr: Color, screens s: [Screen], components c: [Component]) {
+            id = i
+            title = t
+            color = clr
+            screens = s
+            components = c
         }
     }
 }
@@ -28,6 +32,31 @@ extension Uicorn.App {
         .mock(.default)
     }
     static func mock(_ m: Uicorn.Screen.Mock) -> Uicorn.App {
-        .init(id: .unique, title: "App", screens: [.mock(m)])
+        .init(
+            id: .unique,
+            title: "App",
+            color: .system(.yellow),
+            screens: [.mock(m)],
+            components: [
+                .card
+            ]
+        )
     }
+}
+
+extension Uicorn.Component {
+    static var card: Uicorn.Component {
+        .init(
+            id: .cardComponentId,
+            title: "Card",
+            view: .vstack([
+                .text("Foo"),
+                .text("Bar")]
+            )
+        )
+    }
+}
+
+extension String {
+    static let cardComponentId: Self = .unique
 }

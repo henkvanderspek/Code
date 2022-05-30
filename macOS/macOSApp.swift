@@ -14,7 +14,9 @@ struct macOSApp: App {
     private let storage = AppStorageCoreData()
     private let app: Uicorn.App
     init() {
-        app = storage.fetchApps().first ?? .mock(.custom(.helloWorld))
+        // TODO: enable
+        //app = storage.fetchApps().first ?? .mock(.custom(.cardInstance))
+        app = .mock(.custom(.cardInstance))
     }
     var body: some Scene {
         WindowGroup {

@@ -35,6 +35,7 @@ class DataModel: ObservableObject {
 @main
 struct iOSApp: App {
     @StateObject private var backendController = Backend.Controller(configuration: .live)
+    @StateObject private var componentController = ComponentController()
     private let pasteboard: UIPasteboard = .general
     private let spacing = 12.0
     private let cols = 3
@@ -99,6 +100,7 @@ struct iOSApp: App {
                                     if let $v = $i.app.screens.first?.view, let b = Binding($v) {
                                         UicornView(b)
                                             .environmentObject(backendController)
+                                            .environmentObject(componentController)
                                             .id(UUID())
                                     }
                                 }

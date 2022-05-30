@@ -37,6 +37,6 @@ extension UicornView {
 
 struct Shape_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Shape(.constant(.rectangle(.system(.cyan))), host: MockHost())
+        UicornView.Shape(.constant(.rectangle(.system(.cyan))), host: .mock)
     }
 }

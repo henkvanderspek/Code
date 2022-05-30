@@ -10,9 +10,11 @@ import SwiftUI
 struct AppView: View {
     class Observer: ObservableObject {
         init(_ a: Uicorn.App) {
+            app = a
             rootItem = a
             selectedItem = a
         }
+        @Published var app: Uicorn.App // TODO: use rootItem
         @Published var rootItem: TreeItem
         @Published var selectedItem: TreeItem
     }
@@ -20,6 +22,7 @@ struct AppView: View {
     @State var shouldShowDarkMode: Bool = false
     private let storage: AppStoring?
     private let pasteboard: NSPasteboard = .general
+    @StateObject private var componentController = ComponentController()
     init(_ a: Uicorn.App, storage s: AppStoring? = nil) {
         observer = .init(a)
         storage = s
@@ -49,6 +52,7 @@ struct AppView: View {
                 InspectorView(view: observer.sanitizedSelectedItem)
             }.listStyle(.sidebar)
         }
+        .environmentObject(componentController)
         .navigationViewStyle(.columns)
         .navigationTitle("")
         .toolbar {
@@ -79,6 +83,9 @@ struct AppView: View {
                 pasteboard.setData($0, forType: .uicornApp)
                 print(String(data: $0 ?? .init(), encoding: .utf8))
             }
+        }
+        .onAppear {
+            componentController.app = $observer.app
         }
     }
     private func menuItems(_ i: TreeItem, parent: Binding<TreeItem>?) -> [TreeItemMenu.Item] {
@@ -228,6 +235,8 @@ extension Uicorn.View {
             return .vscroll
         case .hscroll:
             return .hscroll
+        case .instance:
+            return .instance
         default:
             fatalError()
         }

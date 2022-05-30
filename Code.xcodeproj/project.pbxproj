@@ -95,6 +95,16 @@
 		B6883D61282578BD00544462 /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D60282578BD00544462 /* InspectorView.swift */; };
 		B6883D6A2825850700544462 /* String+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D692825850700544462 /* String+Unique.swift */; };
 		B6883D6B2825854C00544462 /* String+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D692825850700544462 /* String+Unique.swift */; };
+		B69093B8284550C800CB2F42 /* View+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093B7284550C800CB2F42 /* View+Instance.swift */; };
+		B69093B9284550C800CB2F42 /* View+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093B7284550C800CB2F42 /* View+Instance.swift */; };
+		B69093BA284550C800CB2F42 /* View+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093B7284550C800CB2F42 /* View+Instance.swift */; };
+		B69093BC2845516000CB2F42 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093BB2845516000CB2F42 /* Instance.swift */; };
+		B69093BD2845516000CB2F42 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093BB2845516000CB2F42 /* Instance.swift */; };
+		B69093BE2845516000CB2F42 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093BB2845516000CB2F42 /* Instance.swift */; };
+		B69093C02845527600CB2F42 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093BF2845527600CB2F42 /* Component.swift */; };
+		B69093C12845527600CB2F42 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093BF2845527600CB2F42 /* Component.swift */; };
+		B69093C22845527600CB2F42 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093BF2845527600CB2F42 /* Component.swift */; };
+		B69093C42845611500CB2F42 /* InstancePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093C32845611500CB2F42 /* InstancePropertiesView.swift */; };
 		B69E39C4283CD82600B65682 /* VerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39C3283CD82600B65682 /* VerticalAlignment.swift */; };
 		B69E39C5283CD82600B65682 /* VerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39C3283CD82600B65682 /* VerticalAlignment.swift */; };
 		B69E39C6283CD82600B65682 /* VerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39C3283CD82600B65682 /* VerticalAlignment.swift */; };
@@ -290,6 +300,10 @@
 		B6883D672825846E00544462 /* ConfigurationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationType.swift; sourceTree = "<group>"; };
 		B6883D692825850700544462 /* String+Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Unique.swift"; sourceTree = "<group>"; };
 		B6883D6C2825864500544462 /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
+		B69093B7284550C800CB2F42 /* View+Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Instance.swift"; sourceTree = "<group>"; };
+		B69093BB2845516000CB2F42 /* Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
+		B69093BF2845527600CB2F42 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		B69093C32845611500CB2F42 /* InstancePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstancePropertiesView.swift; sourceTree = "<group>"; };
 		B69E39C3283CD82600B65682 /* VerticalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAlignment.swift; sourceTree = "<group>"; };
 		B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalAlignment.swift; sourceTree = "<group>"; };
 		B69E39CB283CEB3200B65682 /* Alignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment.swift; sourceTree = "<group>"; };
@@ -615,6 +629,7 @@
 				B65C0277283FA67F0073FA4A /* MapPropertiesView.swift */,
 				B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */,
 				B65C027B283FBFF20073FA4A /* FramePropertiesView.swift */,
+				B69093C32845611500CB2F42 /* InstancePropertiesView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 				B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */,
 			);
@@ -651,6 +666,7 @@
 				B6AE6D622828FCDB001800F8 /* App.swift */,
 				B6AE6D652828FCEA001800F8 /* Screen.swift */,
 				B6AE6D682828FCFE001800F8 /* View.swift */,
+				B69093BF2845527600CB2F42 /* Component.swift */,
 				B6AE6D6B2828FF2C001800F8 /* View+HStack.swift */,
 				B6FA89A42829753700E842AE /* View+VStack.swift */,
 				B6FA89A72829755100E842AE /* View+ZStack.swift */,
@@ -660,6 +676,7 @@
 				B67692A1282E9D4C0026CA87 /* View+Shape.swift */,
 				B65C0263283F9D540073FA4A /* View+Scroll.swift */,
 				B65C026F283FA3570073FA4A /* View+Map.swift */,
+				B69093B7284550C800CB2F42 /* View+Instance.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -678,6 +695,7 @@
 				B67692A7282E9E330026CA87 /* Shape.swift */,
 				B6E13C61283D2639003BFDD4 /* Map.swift */,
 				B65C026B283FA1380073FA4A /* Scroll.swift */,
+				B69093BB2845516000CB2F42 /* Instance.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -975,6 +993,8 @@
 				B6B125DB2834DE42005E989F /* HStack.swift in Sources */,
 				B6A38E66282BF8AF002777CA /* Mock.swift in Sources */,
 				B6A38E5E282BF8A5002777CA /* String+Unique.swift in Sources */,
+				B69093BA284550C800CB2F42 /* View+Instance.swift in Sources */,
+				B69093C22845527600CB2F42 /* Component.swift in Sources */,
 				B6A38E63282BF8AF002777CA /* Uicorn.swift in Sources */,
 				B6817DE2283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B6A38E73282BF8B2002777CA /* BackendController.swift in Sources */,
@@ -982,6 +1002,7 @@
 				B69E39CA283CDCC000B65682 /* HorizontalAlignment.swift in Sources */,
 				B6B125D82834DE39005E989F /* View+Shape.swift in Sources */,
 				B69E39C6283CD82600B65682 /* VerticalAlignment.swift in Sources */,
+				B69093BE2845516000CB2F42 /* Instance.swift in Sources */,
 				B6E13C60283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B6B125E02834DE42005E989F /* UicornView.swift in Sources */,
 				B6B125D42834DE33005E989F /* Font.swift in Sources */,
@@ -1037,9 +1058,11 @@
 				B6E13C5F283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B65C027F283FC0970073FA4A /* Frame.swift in Sources */,
 				B6B125E82835123E005E989F /* StepperView.swift in Sources */,
+				B69093C42845611500CB2F42 /* InstancePropertiesView.swift in Sources */,
 				B68563252840DCCC00D39A8D /* VGroup.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B67692A6282E9DAA0026CA87 /* Color.swift in Sources */,
+				B69093BD2845516000CB2F42 /* Instance.swift in Sources */,
 				B6AE6D6D2828FF2C001800F8 /* View+HStack.swift in Sources */,
 				B67692A9282E9E330026CA87 /* Shape.swift in Sources */,
 				B6817DE1283CF82F006623A9 /* TextAlignment.swift in Sources */,
@@ -1063,6 +1086,7 @@
 				B6883D5928242CC000544462 /* AppView.swift in Sources */,
 				B61433A2282A642200760F39 /* Sugar.swift in Sources */,
 				B6EECA5428338BD100774B42 /* Font.swift in Sources */,
+				B69093C12845527600CB2F42 /* Component.swift in Sources */,
 				B6D0F14F283BDDFC00A380BB /* HStackPropertiesView.swift in Sources */,
 				B65C027C283FBFF20073FA4A /* FramePropertiesView.swift in Sources */,
 				B65C0275283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */,
@@ -1071,6 +1095,7 @@
 				B61433AE282AA1D200760F39 /* UnsplashCollection.swift in Sources */,
 				B676929D282E828C0026CA87 /* ColorPropertiesView.swift in Sources */,
 				B6FA89A62829753700E842AE /* View+VStack.swift in Sources */,
+				B69093B9284550C800CB2F42 /* View+Instance.swift in Sources */,
 				B6883D61282578BD00544462 /* InspectorView.swift in Sources */,
 				B6A2E5FB282D33F7002FCDFF /* Action.swift in Sources */,
 				B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */,
@@ -1114,6 +1139,7 @@
 				B66F4CED284509CA00E941ED /* ImageScale.swift in Sources */,
 				B6817DE0283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B6E13C62283D2639003BFDD4 /* Map.swift in Sources */,
+				B69093C02845527600CB2F42 /* Component.swift in Sources */,
 				B6AE6D6F2828FF39001800F8 /* View+Text.swift in Sources */,
 				B6AE6D6C2828FF2C001800F8 /* View+HStack.swift in Sources */,
 				B66F4CF12845187300E941ED /* ViewVisibility.swift in Sources */,
@@ -1146,10 +1172,12 @@
 				B69E39C8283CDCC000B65682 /* HorizontalAlignment.swift in Sources */,
 				B67692A8282E9E330026CA87 /* Shape.swift in Sources */,
 				B6FDF7DB27CCDB800008262D /* iOSApp.swift in Sources */,
+				B69093B8284550C800CB2F42 /* View+Instance.swift in Sources */,
 				B61737A82829651E006DE98E /* Image.swift in Sources */,
 				B61433A4282A644800760F39 /* Mock.swift in Sources */,
 				B65C0268283F9E9D0073FA4A /* Axis.swift in Sources */,
 				B69F2BDC282868A000877D04 /* Uicorn.swift in Sources */,
+				B69093BC2845516000CB2F42 /* Instance.swift in Sources */,
 				B65C0264283F9D540073FA4A /* View+Scroll.swift in Sources */,
 				B61433AD282AA1D200760F39 /* UnsplashCollection.swift in Sources */,
 			);

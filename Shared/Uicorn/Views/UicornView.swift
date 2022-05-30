@@ -14,6 +14,18 @@ class ScreenSettings: ObservableObject {
     }
 }
 
+class ComponentController: ObservableObject {
+    var app: Binding<Uicorn.App>? = nil
+    func instance(from id: String) -> Binding<Uicorn.View>? {
+        guard let $a = app?.components.first(where: { $0.wrappedValue.id == id }) else { return nil }
+        return $a.view
+    }
+    func component(from id: String) -> Binding<Uicorn.Component>? {
+        guard let $a = app?.components.first(where: { $0.wrappedValue.id == id }) else { return nil }
+        return $a
+    }
+}
+
 enum ResolveContext {
     case `default`
     case sheet
@@ -168,10 +180,12 @@ private extension UicornView {
             Shape(s.binding, host: self)
         case let .map(m):
             Map(m.binding, host: self)
-        case .spacer:
-            Spacer()
         case let .scroll(s):
             Scroll(s.binding, host: self)
+        case let .instance(i):
+            Instance(i.binding, host: self)
+        case .spacer:
+            Spacer()
         case .empty:
             EmptyView()
         }
@@ -251,7 +265,9 @@ extension Color {
 
 extension Font {
     init(_ f: Uicorn.Font) {
-        self = .system(.init(f.type), design: .init(f.design)).weight(.init(f.weight))
+        self = .system(.init(f.type), design: .init(f.design))
+            .weight(.init(f.weight))
+            .leading(.init(f.leading))
     }
 }
 
@@ -373,6 +389,16 @@ extension Image.Scale {
         case .small: self = .small
         case .medium: self = .medium
         case .large: self = .large
+        }
+    }
+}
+
+extension Font.Leading {
+    init(_ d: Uicorn.Font.Leading) {
+        switch d {
+        case .standard: self = .standard
+        case .loose: self = .loose
+        case .tight: self = .tight
         }
     }
 }
