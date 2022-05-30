@@ -58,5 +58,5 @@ extension Uicorn.Component {
 }
 
 extension String {
-    static let cardComponentId: Self = .unique
+    static let cardComponentId: Self = "__cardComponentId"
 }

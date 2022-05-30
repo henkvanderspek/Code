@@ -99,6 +99,9 @@ struct iOSApp: App {
                                 HStack {
                                     if let $v = $i.app.screens.first?.view, let b = Binding($v) {
                                         UicornView(b)
+                                            .onAppear {
+                                                componentController.app = $i.app
+                                            }
                                             .environmentObject(backendController)
                                             .environmentObject(componentController)
                                             .id(UUID())

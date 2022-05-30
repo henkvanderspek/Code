@@ -26,9 +26,9 @@ extension Uicorn.View {
     static var cardInstance: Uicorn.View {
         .zstack([
             .vstack([
-                .instance(.cardComponentId),
-                .instance(.cardComponentId),
-                .instance(.cardComponentId)
+                .instance,
+                .instance,
+                .instance
             ], spacing: 10),
             .rectangle
         ])
