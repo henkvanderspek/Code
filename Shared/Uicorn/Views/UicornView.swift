@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+class ScreenSettings: ObservableObject {
+    @Published var size: CGSize
+    init(size s: CGSize) {
+        size = s
+    }
+}
+
 enum ResolveContext {
     case `default`
     case sheet
@@ -28,6 +35,7 @@ extension UicornHost {
 }
 
 struct UicornView: View {
+    @EnvironmentObject private var screenSettings: ScreenSettings
     @Binding var model: Uicorn.View
     private let resolver: Resolve?
     @State private var sheetView: AnyView?
@@ -40,16 +48,18 @@ struct UicornView: View {
     var body: some View {
         content
             .frame(model.properties?.frame ?? .default, scaleFactor: scaleFactor)
-            .cornerRadius(.init(model.properties?.cornerRadius ?? 0).multiplied(by: scaleFactor))
+            .cornerRadius(cornerRadius)
             .padding(.init(model.properties?.padding ?? .zero, scaleFactor: scaleFactor))
-            .opacity(.init(model.properties?.opacity ?? 1.0))
             .background {
                 backgroundView()
+                    .cornerRadius(cornerRadius)
             }
+            .opacity(.init(model.properties?.opacity ?? 1.0))
             .overlay {
-                    Rectangle()
-                        .strokeBorder(.orange, lineWidth: 2.0)
-                        .isHidden(!model.isSelected)
+                Rectangle()
+                    .strokeBorder(.orange, lineWidth: 2.0)
+                    .isHidden(!model.isSelected)
+                    .clipped()
             }
             // TODO: Use the approach in below link to show consistent iOS style popovers
             // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
@@ -64,6 +74,12 @@ struct UicornView: View {
                     shouldShowSheet = true
                 }
             }
+    }
+}
+
+extension UicornView {
+    var cornerRadius: Double {
+        .init(model.properties?.cornerRadius ?? 0).multiplied(by: scaleFactor)
     }
 }
 
@@ -347,6 +363,16 @@ extension Axis.Set {
         switch a {
         case .horizontal: self = .horizontal
         case .vertical: self = .vertical
+        }
+    }
+}
+
+extension Image.Scale {
+    init(_ a: Uicorn.ImageScale) {
+        switch a {
+        case .small: self = .small
+        case .medium: self = .medium
+        case .large: self = .large
         }
     }
 }

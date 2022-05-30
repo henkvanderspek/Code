@@ -7,8 +7,15 @@
 
 import SwiftUI
 
+extension CGSize {
+    static var defaultScreenSize: CGSize {
+        .init(width: 320, height: 568)
+    }
+}
+
 struct ScreenView: View {
     @Binding var screen: Uicorn.Screen
+    @StateObject private var settings = ScreenSettings(size: .defaultScreenSize)
     init(_ s: Binding<Uicorn.Screen>) {
         _screen = s
     }
@@ -16,15 +23,22 @@ struct ScreenView: View {
         HStack {
             if let v = Binding($screen.view) {
                 UicornView(v)
+                    .environmentObject(settings)
             } else {
                 EmptyView()
             }
         }
-        .frame(width: 320, height: 568)
+        .frame(settings.size)
         .background(Color(.background))
         //.cornerRadius(15.0)
         .shadow(color: .black.opacity(0.1), radius: 5, x: 1, y: 1)
         .allowsHitTesting(false)
+    }
+}
+
+private extension View {
+    func frame(_ s: CGSize) -> some View {
+        frame(width: s.width, height: s.height)
     }
 }
 

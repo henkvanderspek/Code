@@ -41,8 +41,11 @@ extension Uicorn.View {
     static var zstack: Uicorn.View {
         .zstack([])
     }
-    static func image(_ s: String, type: Image.`Type`, fill: Uicorn.Color? = nil, action: Action? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .image(.init(type: type, value: s, fill: fill)), action: action, properties: nil)
+    static func image(_ s: String, action: Action? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.remote(s)), action: action, properties: nil)
+    }
+    static func image(_ s: String, fill: Uicorn.Color?, action: Action? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.system(name: s, fill: fill, type: .body, weight: .regular, scale: .large)), action: action, properties: nil)
     }
     static var randomSystemImage: Uicorn.View {
         randomSystemImage()
@@ -53,8 +56,8 @@ extension Uicorn.View {
     static var randomRemoteImage: Uicorn.View {
         randomRemoteImage()
     }
-    static func randomRemoteImage(fill: Uicorn.Color? = nil, action: Action? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .image(.randomRemote(fill: fill)), action: action, properties: nil)
+    static func randomRemoteImage(action: Action? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.randomRemote), action: action, properties: nil)
     }
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View {
         .init(id: .unique, type: .collection(.unsplash(q, count: c)), action: nil, properties: nil)
@@ -87,7 +90,7 @@ extension Uicorn.View {
 
 extension Uicorn.View.Collection {
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View.Collection {
-        .init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{url}}", type: .remote, action: .presentSelf))
+        .init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{url}}", action: .presentSelf))
     }
 }
 

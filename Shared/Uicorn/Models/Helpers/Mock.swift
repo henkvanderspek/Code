@@ -26,25 +26,25 @@ extension Uicorn.View {
                 .zstack([
                     .vstack([
                         .hstack([
-                                .image("heart.fill", type: .system, action: .presentSelf),
-                                .image("house.fill", type: .system, action: .presentSelf),
-                                .image("highlighter", type: .system, action: .presentSelf),
+                                .image("heart.fill", fill: nil, action: .presentSelf),
+                                .image("house.fill", fill: nil, action: .presentSelf),
+                                .image("highlighter", fill: nil, action: .presentSelf),
                             ],
                             spacing: 5,
                             properties: .padding(.all(5))
                         ),
                         .hstack([
-                                .image("gamecontroller.fill", type: .system, action: .presentSelf),
-                                .image("logo.playstation", type: .system, action: .presentSelf),
-                                .image("logo.xbox", type: .system, action: .presentSelf),
+                                .image("gamecontroller.fill", fill: nil, action: .presentSelf),
+                                .image("logo.playstation", fill: nil, action: .presentSelf),
+                                .image("logo.xbox", fill: nil, action: .presentSelf),
                             ],
                             spacing: 5,
                             properties: .padding(.all(5))
                         ),
                         .hstack([
-                                .image("airplane", type: .system, action: .presentSelf),
-                                .image("car.fill", type: .system, action: .presentSelf),
-                                .image("fuelpump.fill", type: .system, action: .presentSelf),
+                                .image("airplane", fill: nil, action: .presentSelf),
+                                .image("car.fill", fill: nil, action: .presentSelf),
+                                .image("fuelpump.fill", fill: nil, action: .presentSelf),
                             ],
                             spacing: 5,
                             properties: .padding(.all(5))

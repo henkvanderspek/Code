@@ -64,6 +64,11 @@
 		B66B4475283E15BE00230758 /* iPhone12ProMax.scn in Resources */ = {isa = PBXBuildFile; fileRef = B66B4474283E15BE00230758 /* iPhone12ProMax.scn */; };
 		B66B4477283E297800230758 /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4476283E297800230758 /* AppearanceView.swift */; };
 		B66B4479283E32F500230758 /* StackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4478283E32F500230758 /* StackPropertiesView.swift */; };
+		B66F4CED284509CA00E941ED /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F4CEC284509CA00E941ED /* ImageScale.swift */; };
+		B66F4CEE284509CA00E941ED /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F4CEC284509CA00E941ED /* ImageScale.swift */; };
+		B66F4CEF284509CA00E941ED /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F4CEC284509CA00E941ED /* ImageScale.swift */; };
+		B66F4CF02845187200E941ED /* ViewVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5C2825468100544462 /* ViewVisibility.swift */; };
+		B66F4CF12845187300E941ED /* ViewVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6883D5C2825468100544462 /* ViewVisibility.swift */; };
 		B676929B282E622D0026CA87 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929A282E622D0026CA87 /* Header.swift */; };
 		B676929D282E828C0026CA87 /* ColorPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929C282E828C0026CA87 /* ColorPropertiesView.swift */; };
 		B676929F282E9C9C0026CA87 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B676929E282E9C9C0026CA87 /* Properties.swift */; };
@@ -245,6 +250,7 @@
 		B66B4474283E15BE00230758 /* iPhone12ProMax.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = iPhone12ProMax.scn; sourceTree = "<group>"; };
 		B66B4476283E297800230758 /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
 		B66B4478283E32F500230758 /* StackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackPropertiesView.swift; sourceTree = "<group>"; };
+		B66F4CEC284509CA00E941ED /* ImageScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScale.swift; sourceTree = "<group>"; };
 		B676929A282E622D0026CA87 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		B676929C282E828C0026CA87 /* ColorPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPropertiesView.swift; sourceTree = "<group>"; };
 		B676929E282E9C9C0026CA87 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
@@ -691,6 +697,7 @@
 				B6E13C5D283CFB36003BFDD4 /* TextCase.swift */,
 				B65C0267283F9E9D0073FA4A /* Axis.swift */,
 				B65C027D283FC0970073FA4A /* Frame.swift */,
+				B66F4CEC284509CA00E941ED /* ImageScale.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -983,12 +990,14 @@
 				B6A38E6A282BF8AF002777CA /* View+Text.swift in Sources */,
 				B6A38E6C282BF8AF002777CA /* View+ZStack.swift in Sources */,
 				B6B125D32834DE33005E989F /* Action.swift in Sources */,
+				B66F4CEF284509CA00E941ED /* ImageScale.swift in Sources */,
 				B6A38E5F282BF8AF002777CA /* Sugar.swift in Sources */,
 				B69E39CE283CEB3200B65682 /* Alignment.swift in Sources */,
 				B6A38E60282BF8AF002777CA /* View+Image.swift in Sources */,
 				B6B125D52834DE33005E989F /* Color.swift in Sources */,
 				B65C026A283F9E9D0073FA4A /* Axis.swift in Sources */,
 				B65C0272283FA3570073FA4A /* View+Map.swift in Sources */,
+				B66F4CF02845187200E941ED /* ViewVisibility.swift in Sources */,
 				B6B125DE2834DE42005E989F /* Collection.swift in Sources */,
 				B6A38E6F282BF8AF002777CA /* View+Collection.swift in Sources */,
 				B6B125E12834DE42005E989F /* ZStack.swift in Sources */,
@@ -1047,6 +1056,7 @@
 				B61737AC2829664A006DE98E /* View+Image.swift in Sources */,
 				B6418D552841622E00FA7C04 /* CoreData+Uicorn.swift in Sources */,
 				B6B125E5283511C5005E989F /* PaddingPropertiesView.swift in Sources */,
+				B66F4CEE284509CA00E941ED /* ImageScale.swift in Sources */,
 				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
 				B6FDFF4C283F8CFC009E40E1 /* OptionalPropertiesView.swift in Sources */,
 				B67692A3282E9D4C0026CA87 /* View+Shape.swift in Sources */,
@@ -1101,10 +1111,12 @@
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
 				B67692A5282E9DAA0026CA87 /* Color.swift in Sources */,
 				B61433A7282A656E00760F39 /* Collection.swift in Sources */,
+				B66F4CED284509CA00E941ED /* ImageScale.swift in Sources */,
 				B6817DE0283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B6E13C62283D2639003BFDD4 /* Map.swift in Sources */,
 				B6AE6D6F2828FF39001800F8 /* View+Text.swift in Sources */,
 				B6AE6D6C2828FF2C001800F8 /* View+HStack.swift in Sources */,
+				B66F4CF12845187300E941ED /* ViewVisibility.swift in Sources */,
 				B61433AA282A84C600760F39 /* BackendController.swift in Sources */,
 				B614339E282A5EFC00760F39 /* View+Collection.swift in Sources */,
 				B69E39CC283CEB3200B65682 /* Alignment.swift in Sources */,

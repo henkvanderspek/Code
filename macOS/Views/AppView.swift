@@ -77,6 +77,7 @@ struct AppView: View {
             storage?.store(a) {
                 pasteboard.declareTypes([.uicornApp], owner: nil)
                 pasteboard.setData($0, forType: .uicornApp)
+                print(String(data: $0 ?? .init(), encoding: .utf8))
             }
         }
     }
@@ -121,8 +122,9 @@ struct App_Previews: PreviewProvider {
 
 extension TreeItem {
     func screen(by id: String) -> TreeItem? {
+        guard id != self.id else { return self }
         guard let c = children else { return nil }
-        return c.first(where: { $0.contains(id) })
+        return c.first(where: { $0.id == id || $0.contains(id) })
     }
 }
 
@@ -135,18 +137,6 @@ extension AppView.Observer {
             fatalError()
         }
     }
-//    var sanitizedScreen: Binding<Uicorn.Screen> {
-//        let children = rootItem.safeChildren
-//        let child = children.first(where: { $0.contains(selectedItem.id) }) ?? children.first
-//        return .init(
-//            get: {
-//                return child as! Uicorn.Screen
-//            },
-//            set: {
-//                print($0)
-//            }
-//        )
-//    }
     var sanitizedSelectedItem: Binding<Uicorn.View> {
         return .init(
             get: {

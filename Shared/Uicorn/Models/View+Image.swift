@@ -9,17 +9,13 @@ import Foundation
 
 extension Uicorn.View {
     class Image: Codable {
-        enum `Type`: String, Codable {
-            case remote
-            case system
+        enum `Type`: Codable {
+            case remote(value: Remote)
+            case system(value: System)
         }
         var type: `Type`
-        var value: String
-        var fill: Uicorn.Color?
-        init(type t: `Type`, value v: String, fill f: Uicorn.Color?) {
+        init(type t: `Type`) {
             type = t
-            value = v
-            fill = f
         }
     }
 }
@@ -27,11 +23,81 @@ extension Uicorn.View {
 extension Uicorn.View.Image: UicornViewType {}
 
 extension Uicorn.View.Image {
-    static func randomRemote(fill f: Uicorn.Color?) -> Uicorn.View.Image {
-        .init(type: .remote, value: .randomImageUrl, fill: f)
+    static func remote(_ url: String) -> Uicorn.View.Image {
+        .init(type: .remote(value: .init(url)))
     }
-    static func randomSystem(fill f: Uicorn.Color?) -> Uicorn.View.Image {
-        .init(type: .system, value: .randomSymbol, fill: f)
+    static func system(name: String, fill: Uicorn.Color?, type: Uicorn.Font.`Type`, weight: Uicorn.Font.Weight, scale: Uicorn.ImageScale) -> Uicorn.View.Image {
+        .init(type: .system(value: .init(name: name, fill: fill, type: type, weight: weight, scale: scale)))
+    }
+    static var randomRemote: Uicorn.View.Image {
+        .remote(.randomImageUrl)
+    }
+    static func randomSystem(fill: Uicorn.Color?) -> Uicorn.View.Image {
+        .init(type: .system(value: .random(fill: fill)))
+    }
+}
+
+extension Uicorn.View.Image {
+    class Remote: Codable {
+        var url: String
+        init(_ u: String) {
+            url = u
+        }
+    }
+    class System: Codable {
+        var name: String
+        var fill: Uicorn.Color?
+        var type: Uicorn.Font.`Type`
+        var weight: Uicorn.Font.Weight
+        var scale: Uicorn.ImageScale
+        init(name n: String, fill f: Uicorn.Color?, type t: Uicorn.Font.`Type`, weight w: Uicorn.Font.Weight, scale s: Uicorn.ImageScale) {
+            name = n
+            fill = f
+            type = t
+            weight = w
+            scale = s
+        }
+    }
+}
+
+extension Uicorn.View.Image {
+    var remote: Uicorn.View.Image.Remote {
+        get {
+            switch type {
+            case let .remote(r):
+                return r
+            default:
+                fatalError()
+            }
+        }
+        set {
+            type = .remote(value: newValue)
+        }
+    }
+    var system: Uicorn.View.Image.System {
+        get {
+            switch type {
+            case let .system(s):
+                return s
+            default:
+                fatalError()
+            }
+        }
+        set {
+            type = .system(value: newValue)
+        }
+    }
+}
+
+extension Uicorn.View.Image.Remote {
+    static var random: Uicorn.View.Image.Remote {
+        .init(.randomImageUrl)
+    }
+}
+
+extension Uicorn.View.Image.System {
+    static func random(fill: Uicorn.Color?) -> Uicorn.View.Image.System {
+        .init(name: .randomSymbol, fill: fill, type: .body, weight: .regular, scale: .large)
     }
 }
 

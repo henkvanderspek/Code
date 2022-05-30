@@ -19,14 +19,14 @@ extension UicornView {
         var body: some View {
             switch $model.wrappedValue.type {
             case .remote:
-                AsyncImage(url: .init(string: host.resolve($model.wrappedValue.value))) { phase in
+                AsyncImage(url: .init(string: host.resolve(model.remote.url))) { phase in
                     if let image = phase.image {
-                        createView(for: image, width: .infinity, height: .infinity)
+                        createView(for: image)
                             .onAppear {
                                 cachedImage = image
                             }
                     } else if let cachedImage = cachedImage {
-                        createView(for: cachedImage, width: .infinity, height: .infinity)
+                        createView(for: cachedImage)
                     } else if phase.error != nil {
                         SwiftUI.Rectangle()
                             .foregroundColor(.black)
@@ -37,31 +37,38 @@ extension UicornView {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             case .system:
-                SwiftUI.Image(systemName: model.value)
-                    .foregroundColor(Color(model.fill ?? .system(.label)))
-                    .font(.body.weight(.medium))
-                    .imageScale(.large)
+                $model.system.wrappedValue.image
             }
         }
     }
 }
 
+private extension Uicorn.View.Image.System {
+    var image: some View {
+        SwiftUI.Image(systemName: name)
+            .foregroundColor(Color(fill ?? .system(.label)))
+            .font(.init(.init(type: type, weight: weight, design: .default)))
+            .imageScale(.init(scale))
+    }
+}
+
 private extension UicornView.Image {
-    @ViewBuilder func createView(for image: SwiftUI.Image, width: CGFloat, height: CGFloat) -> some SwiftUI.View {
-        SwiftUI.VStack(alignment: .center) {
-            image
-                .resizable()
-                .scaledToFill()
-                .id(UUID())
-        }
-        .frame(maxWidth: width, maxHeight: height)
-        .clipped()
+    @ViewBuilder func createView(for image: SwiftUI.Image) -> some SwiftUI.View {
+        Color
+            .clear
+            .overlay {
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .clipped()
+                    .id(UUID())
+            }
     }
 }
 
 struct Image_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Image(.constant(.init(type: .system, value: "mustache", fill: nil)), host: MockHost())
-        UicornView.Image(.constant(.init(type: .remote, value: "https://images.unsplash.com/photo-1653624840011-5f74bdd7c1b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80", fill: nil)), host: MockHost())
+        UicornView.Image(.constant(.randomRemote), host: MockHost())
+        UicornView.Image(.constant(.randomSystem(fill: nil)), host: MockHost())
     }
 }
