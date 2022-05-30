@@ -37,9 +37,12 @@ struct AppView: View {
                     }
                 }
             }.listStyle(.sidebar)
-            AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
-                ScreenView(observer.sanitizedScreen)
-            }.id(UUID())
+            if let b = Binding($observer.sanitizedScreen) {
+                AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
+                    ScreenView(b)
+                        .id(b.id)
+                }
+            }
             List {
                 InspectorView(view: observer.sanitizedSelectedItem)
             }.listStyle(.sidebar)
@@ -114,19 +117,34 @@ struct App_Previews: PreviewProvider {
     }
 }
 
-extension AppView.Observer {
-    var sanitizedScreen: Binding<Uicorn.Screen> {
-        let children = rootItem.safeChildren
-        let child = children.first(where: { $0.contains(selectedItem) }) ?? children.first
-        return .init(
-            get: {
-                return child as! Uicorn.Screen
-            },
-            set: {
-                print($0)
-            }
-        )
+extension TreeItem {
+    func screen(by id: String) -> TreeItem? {
+        guard let c = children else { return nil }
+        return c.first(where: { $0.contains(id) })
     }
+}
+
+extension AppView.Observer {
+    var sanitizedScreen: Uicorn.Screen? {
+        get {
+            rootItem.screen(by: selectedItem.id) as? Uicorn.Screen
+        }
+        set {
+            fatalError()
+        }
+    }
+//    var sanitizedScreen: Binding<Uicorn.Screen> {
+//        let children = rootItem.safeChildren
+//        let child = children.first(where: { $0.contains(selectedItem.id) }) ?? children.first
+//        return .init(
+//            get: {
+//                return child as! Uicorn.Screen
+//            },
+//            set: {
+//                print($0)
+//            }
+//        )
+//    }
     var sanitizedSelectedItem: Binding<Uicorn.View> {
         return .init(
             get: {

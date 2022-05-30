@@ -32,9 +32,9 @@ extension TreeItem {
     var isView: Bool {
         return false
     }
-    func contains(_ i: TreeItem) -> Bool {
+    func contains(_ id: String) -> Bool {
         return safeChildren.contains {
-            $0.id == i.id || $0.contains(i)
+            $0.id == id || $0.contains(id)
         }
     }
     var canAddView: Bool {
