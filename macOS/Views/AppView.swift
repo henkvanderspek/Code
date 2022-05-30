@@ -33,6 +33,8 @@ struct AppView: View {
                     }
                     .isDisabled(!view.item.isView)
                     .tapGesture {
+                        observer.selectedItem.isSelected = false
+                        view.item.isSelected = true
                         observer.selectedItem = view.item
                     }
                 }

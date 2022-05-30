@@ -8,7 +8,7 @@
 import Foundation
 
 extension Uicorn {
-    class Screen: Codable {
+    class Screen: Base, Codable {
         let id: String
         let title: String
         var view: View?

@@ -22,7 +22,7 @@ struct ScreenView: View {
         }
         .frame(width: 320, height: 568)
         .background(Color(.background))
-        .cornerRadius(15.0)
+        //.cornerRadius(15.0)
         .shadow(color: .black.opacity(0.1), radius: 5, x: 1, y: 1)
         .allowsHitTesting(false)
     }

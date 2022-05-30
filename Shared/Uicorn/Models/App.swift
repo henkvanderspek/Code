@@ -8,7 +8,10 @@
 import Foundation
 
 extension Uicorn {
-    class App: Codable {
+    class Base {
+        var isSelected: Bool = false
+    }
+    class App: Base, Codable {
         let id: String
         let title: String
         var screens: [Screen]

@@ -8,7 +8,7 @@
 import Foundation
 
 extension Uicorn {
-    class View: Codable {
+    class View: Base, Codable {
         enum `Type`: Codable {
             case hstack(value: HStack)
             case vstack(value: VStack)

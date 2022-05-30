@@ -14,6 +14,7 @@ protocol TreeItem {
     var children: [TreeItem]? { get set }
     var isView: Bool { get }
     var canAddView: Bool { get }
+    var isSelected: Bool { get set }
     mutating func removeChild(byId: String)
 }
 

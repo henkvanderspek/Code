@@ -83,6 +83,9 @@ extension Uicorn.View: TreeItem {
     var isView: Bool {
         return true
     }
+    var isSpacer: Bool {
+        type.isSpacer
+    }
     var canAddView: Bool {
         switch type {
         case .hstack, .vstack, .zstack, .scroll:
@@ -91,6 +94,15 @@ extension Uicorn.View: TreeItem {
             return c.view == nil
         case .text, .spacer, .empty, .image, .shape, .map:
             return false
+        }
+    }
+}
+
+extension Uicorn.View.`Type` {
+    var isSpacer: Bool {
+        switch self {
+        case .spacer: return true
+        default: return false
         }
     }
 }
