@@ -15,13 +15,12 @@ struct InstancePropertiesView: View {
     }
     var body: some View {
         Section {
-            // TODO: Create picker with components
-            if let $c = componentController.component(from: $model.wrappedValue.componentId) {
-                TextFieldView(value: .constant($c.wrappedValue.title), header: "Component")
-            } else {
-                EmptyView()
+            Header("Component")
+            Picker("Component", selection: $model.componentId) {
+                ForEach(componentController.components ?? [], id: \.id) {
+                    Text($0.title)
+                }
             }
-            
         }.labelsHidden()
     }
 }

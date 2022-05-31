@@ -24,6 +24,9 @@ class ComponentController: ObservableObject {
         guard let $a = app?.components.first(where: { $0.wrappedValue.id == id }) else { return nil }
         return $a
     }
+    var components: [Uicorn.Component]? {
+        return app?.components.wrappedValue
+    }
 }
 
 enum ResolveContext {

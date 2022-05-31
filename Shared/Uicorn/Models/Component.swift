@@ -10,7 +10,7 @@ import Foundation
 extension Uicorn {
     class Component: Base, Codable {
         let id: String
-        let title: String
+        var title: String
         var view: Uicorn.View
         init(id: String, title: String, view: Uicorn.View) {
             self.id = id

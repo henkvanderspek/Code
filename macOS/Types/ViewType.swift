@@ -41,7 +41,7 @@ extension ViewType {
         case .shape: return "Shape"
         case .hscroll: return "HScroll"
         case .vscroll: return "VScroll"
-        case .instance: return "Instance"
+        case .instance: return "Component"
         case .empty: return "Empty"
         }
     }
