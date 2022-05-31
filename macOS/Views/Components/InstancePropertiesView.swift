@@ -62,6 +62,6 @@ private extension InstancePropertiesView {
 
 struct ComponentPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        InstancePropertiesView(.constant(.init(componentId: .postComponentId, values: [:])))
+        InstancePropertiesView(.constant(.init(id: .unique, componentId: .postComponentId, values: [:])))
     }
 }

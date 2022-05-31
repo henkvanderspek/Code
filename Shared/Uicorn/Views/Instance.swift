@@ -26,6 +26,6 @@ extension UicornView {
 
 struct Instance_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Instance(.constant(.init(componentId: .unique, values: [:])))
+        UicornView.Instance(.constant(.init(id: .unique, componentId: .unique, values: [:])))
     }
 }

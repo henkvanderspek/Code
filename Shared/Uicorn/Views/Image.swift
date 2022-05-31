@@ -30,10 +30,13 @@ extension UicornView {
                             .foregroundColor(.black)
                     } else {
                         SwiftUI.Rectangle()
-                            .foregroundColor(.white)
+                            .foregroundColor(.init(.background))
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onAppear {
+                    print("Appeared: \($model.wrappedValue.remote.url.suffix(10))")
+                }
             case .system:
                 $model.system.wrappedValue.image
             }

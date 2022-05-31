@@ -24,7 +24,7 @@ extension TreeItem {
             children ?? []
         }
         set {
-            print(newValue)
+            // print(newValue)
         }
     }
     var hasChildren: Bool {

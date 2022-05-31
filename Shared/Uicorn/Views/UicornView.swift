@@ -36,29 +36,18 @@ class ValueProvider: ObservableObject {
     init(instance i: Uicorn.View.Instance? = nil) {
         instance = i
     }
-    func provideValues(for v: Binding<Uicorn.View>) {
+    func provideValues(for v: Uicorn.View) -> Uicorn.View {
         if let val = instance?.values[v.id] {
-            switch v.wrappedValue.type {
+            switch v.type {
             case let .image(i):
-                v.wrappedValue.type = .image(val.string.map { i.string($0) } ?? i)
-            default: ()
+                print("Original: \(i.remote.url.suffix(10))")
+                let img: Uicorn.View.Image = .init(type: .remote(value: .init(val.string ?? i.remote.url)))
+                print("Modified: \(img.remote.url.suffix(10))")
+                return .init(id: v.id, type: .image(value: img), action: v.action, properties: v.properties)
+            default: () // TODO
             }
-        } else {
-            //print("Ignore request for values")
         }
-    }
-}
-
-extension Uicorn.View.Image {
-    func string(_ v: String) -> Self {
-        var i = self
-        switch type {
-        case .remote:
-            i.type = .remote(value: .init(v))
-        case let .system(s):
-            i.type = .system(value: .init(name: v, fill: s.fill, type: s.type, weight: s.weight, scale: s.scale))
-        }
-        return i
+        return v
     }
 }
 
@@ -165,8 +154,7 @@ private extension UicornView {
 
 private extension UicornView {
     private var sanitizedModel: Uicorn.View {
-        valueProvider?.provideValues(for: $model)
-        return $model.wrappedValue
+        valueProvider?.provideValues(for: model) ?? model
     }
     @ViewBuilder var content: some View {
         switch sanitizedModel.type {

@@ -14,9 +14,11 @@ extension Uicorn.View {
             case int(value: Int)
         }
         typealias Values = [String:Value]
+        var id: String
         var componentId: String
         var values: [String:Value]
-        init(componentId cid: String, values v: Values) {
+        init(id i: String, componentId cid: String, values v: Values) {
+            id = i
             componentId = cid
             values = v
         }

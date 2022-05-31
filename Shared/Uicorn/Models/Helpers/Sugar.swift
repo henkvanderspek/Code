@@ -90,7 +90,7 @@ extension Uicorn.View {
         .vscroll([])
     }
     static func instance(_ id: String, values: Uicorn.View.Instance.Values) -> Uicorn.View {
-        .init(id: .unique, type: .instance(.init(componentId: id, values: values)), action: nil, properties: nil)
+        .init(id: .unique, type: .instance(.init(id: .unique, componentId: id, values: values)), action: nil, properties: nil)
     }
     static func postInstance(values: Uicorn.View.Instance.Values) -> Uicorn.View {
         .instance(.postComponentId, values: values)

@@ -81,7 +81,7 @@ struct AppView: View {
             storage?.store(a) {
                 pasteboard.declareTypes([.uicornApp], owner: nil)
                 pasteboard.setData($0, forType: .uicornApp)
-                print(String(data: $0 ?? .init(), encoding: .utf8))
+                //print(String(data: $0 ?? .init(), encoding: .utf8))
             }
         }
         .onAppear {
