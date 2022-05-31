@@ -34,7 +34,7 @@ extension Uicorn.App {
     static func mock(_ m: Uicorn.Screen.Mock) -> Uicorn.App {
         .init(
             id: .unique,
-            title: "App",
+            title: "Social",
             color: .system(.yellow),
             screens: [.mock(m)],
             components: [
@@ -44,18 +44,6 @@ extension Uicorn.App {
     }
 }
 
-extension Uicorn.Component {
-    static var card: Uicorn.Component {
-        .init(
-            id: .cardComponentId,
-            title: "Card",
-            view: .vstack([
-                .text("Foo"),
-                .text("Bar")]
-            )
-        )
-    }
-}
 
 extension String {
     static let cardComponentId: Self = "__cardComponentId"

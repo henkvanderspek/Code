@@ -12,7 +12,7 @@ extension Uicorn.View {
         var children: [Uicorn.View]
         var alignment: Uicorn.VerticalAlignment
         var spacing: Int
-        init(_ c: [Uicorn.View], alignment a: Uicorn.VerticalAlignment = .center, spacing s: Int) {
+        init(_ c: [Uicorn.View], alignment a: Uicorn.VerticalAlignment, spacing s: Int) {
             children = c
             alignment = a
             spacing = s

@@ -27,11 +27,23 @@ extension Uicorn.Properties {
     static func padding(_ p: Uicorn.Padding) -> Uicorn.Properties {
         .init(padding: p)
     }
+    static func padding(_ v: Int) -> Uicorn.Properties {
+        .init(padding: .all(v))
+    }
     static func backgroundColor(_ b: Uicorn.Color) -> Uicorn.Properties {
         .init(backgroundColor: b)
     }
     static func frame(_ f: Uicorn.Frame) -> Uicorn.Properties {
         .init(frame: f)
+    }
+    static func size(_ v: Int) -> Uicorn.Properties {
+        .init(frame: .init(width: .init(v), height: .init(v), alignment: .center))
+    }
+    static func height(_ v: Int) -> Uicorn.Properties {
+        .init(frame: .init(width: nil, height: .init(v), alignment: .center))
+    }
+    static func width(_ v: Int) -> Uicorn.Properties {
+        .init(frame: .init(width: .init(v), height: nil, alignment: .center))
     }
     static var empty: Uicorn.Properties {
         .init()

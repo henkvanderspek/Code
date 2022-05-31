@@ -27,6 +27,6 @@ extension UicornView {
 
 struct HStack_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.HStack(.constant(.init([], spacing: 0)), host: .mock)
+        UicornView.HStack(.constant(.init([], alignment: .center, spacing: 0)), host: .mock)
     }
 }

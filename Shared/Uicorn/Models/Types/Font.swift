@@ -64,6 +64,11 @@ extension Uicorn.Font {
     static var allTypeCases: [Uicorn.Font.`Type`] {
         `Type`.allCases
     }
+    func weight(_ w: Weight) -> Uicorn.Font {
+        let f = self
+        f.weight = w
+        return f
+    }
 }
 
 extension Uicorn.Font.`Type` {

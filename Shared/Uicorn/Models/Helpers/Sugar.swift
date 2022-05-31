@@ -24,20 +24,17 @@ extension Uicorn.View {
         ])
     }
     static var cardInstance: Uicorn.View {
-        .zstack([
-            .vstack([
-                .instance,
-                .instance,
-                .instance
-            ], spacing: 10),
-            .rectangle
+        .vscroll([
+            .instance,
+            .instance,
+            .instance
         ])
     }
-    static func hstack(_ c: [Uicorn.View], spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .hstack(.init(c, spacing: spacing)), action: action, properties: properties)
+    static func hstack(_ c: [Uicorn.View], alignment: Uicorn.VerticalAlignment = .center, spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .hstack(.init(c, alignment: alignment, spacing: spacing)), action: action, properties: properties)
     }
-    static func vstack(_ c: [Uicorn.View], spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .vstack(.init(c, spacing: spacing)), action: action, properties: properties)
+    static func vstack(_ c: [Uicorn.View], alignment: Uicorn.HorizontalAlignment = .center, spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .vstack(.init(c, alignment: alignment, spacing: spacing)), action: action, properties: properties)
     }
     static func zstack(_ c: [Uicorn.View], action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
         .init(id: .unique, type: .zstack(.init(c)), action: action, properties: properties)
@@ -51,14 +48,17 @@ extension Uicorn.View {
     static var zstack: Uicorn.View {
         .zstack([])
     }
-    static func image(_ s: String, action: Action? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .image(.remote(s)), action: action, properties: nil)
+    static func image(_ s: String, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.remote(s)), action: action, properties: properties)
     }
-    static func image(_ s: String, fill: Uicorn.Color?, action: Action? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .image(.system(name: s, fill: fill, type: .body, weight: .regular, scale: .large)), action: action, properties: nil)
+    static func image(_ s: String, fill: Uicorn.Color?, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.system(name: s, fill: fill, type: type, weight: weight, scale: scale)), action: action, properties: properties)
+    }
+    static func sfSymbol(_ s: String, fill: Uicorn.Color? = nil, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .image(s, fill: fill, type: type, weight: weight, scale: scale, properties: properties)
     }
     static var randomSystemImage: Uicorn.View {
-        randomSystemImage()
+        .randomSystemImage()
     }
     static func randomSystemImage(fill: Uicorn.Color? = nil, action: Action? = nil) -> Uicorn.View {
         .init(id: .unique, type: .image(.randomSystem(fill: fill)), action: action, properties: nil)
@@ -73,10 +73,10 @@ extension Uicorn.View {
         .init(id: .unique, type: .collection(.unsplash(q, count: c)), action: nil, properties: nil)
     }
     static var unsplash: Uicorn.View {
-        unsplash(nil)
+        .unsplash(nil)
     }
     static var rectangle: Uicorn.View {
-        rectangle(.system(.yellow))
+        .rectangle(.system(.yellow))
     }
     static func rectangle(_ c: Uicorn.Color) -> Uicorn.View {
         .init(id: .unique, type: .shape(.rectangle(c)), action: nil, properties: nil)
@@ -90,11 +90,17 @@ extension Uicorn.View {
     static var map: Uicorn.View {
         .init(id: .unique, type: .map(.init()), action: nil, properties: nil)
     }
+    static func hscroll(_ c: [Uicorn.View]) -> Uicorn.View {
+        .init(id: .unique, type: .scroll(.init(axis: .horizontal, children: c)), action: nil, properties: nil)
+    }
+    static func vscroll(_ c: [Uicorn.View]) -> Uicorn.View {
+        .init(id: .unique, type: .scroll(.init(axis: .vertical, children: c)), action: nil, properties: nil)
+    }
     static var hscroll: Uicorn.View {
-        .init(id: .unique, type: .scroll(.init(axis: .horizontal, children: [])), action: nil, properties: nil)
+        .hscroll([])
     }
     static var vscroll: Uicorn.View {
-        .init(id: .unique, type: .scroll(.init(axis: .vertical, children: [])), action: nil, properties: nil)
+        .vscroll([])
     }
     static func instance(_ id: String) -> Uicorn.View {
         .init(id: .unique, type: .instance(.init(componentId: id)), action: nil, properties: nil)
@@ -125,5 +131,11 @@ extension Uicorn.View.Shape {
 extension Uicorn.View.Action {
     static var presentSelf: Uicorn.View.Action {
         .init(type: .presentSelf)
+    }
+}
+
+extension String {
+    static func random(of e: [String]) -> String {
+        e.randomElement()!
     }
 }

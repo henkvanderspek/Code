@@ -31,6 +31,6 @@ struct VStackPropertiesView: View {
 
 struct VStackPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        VStackPropertiesView(.constant(.init([], spacing: 0)))
+        VStackPropertiesView(.constant(.init([], alignment: .center, spacing: 0)))
     }
 }

@@ -31,6 +31,6 @@ struct HStackPropertiesView: View {
 
 struct HStackPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        HStackPropertiesView(.constant(.init([], spacing: 0)))
+        HStackPropertiesView(.constant(.init([], alignment: .center, spacing: 0)))
     }
 }

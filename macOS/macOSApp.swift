@@ -15,6 +15,7 @@ struct macOSApp: App {
     private let app: Uicorn.App
     init() {
         // TODO: clear data model schema
+        // TODO: update components if needed
         app = storage.fetchApps().first ?? .mock(.custom(.cardInstance))
     }
     var body: some Scene {

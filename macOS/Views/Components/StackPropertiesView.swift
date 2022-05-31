@@ -50,7 +50,7 @@ struct StackPropertiesView: View {
 
 struct StackPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        StackPropertiesView(.constant(.init(.horizontal)), .constant(Uicorn.View.HStack([], spacing: 0)))
+        StackPropertiesView(.constant(.init(.horizontal)), .constant(Uicorn.View.HStack([], alignment: .center, spacing: 0)))
     }
 }
 

@@ -189,10 +189,10 @@ extension TreeItem {
 
 extension Uicorn.View {
     func embeddedInHStack() {
-        modified(type: .hstack(.init([cloned()], spacing: 0)))
+        modified(type: .hstack(.init([cloned()], alignment: .center, spacing: 0)))
     }
     func embeddedInVStack() {
-        modified(type: .vstack(.init([cloned()], spacing: 0)))
+        modified(type: .vstack(.init([cloned()], alignment: .center, spacing: 0)))
     }
     func embeddedInZStack() {
         modified(type: .zstack(.init([cloned()])))

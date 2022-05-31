@@ -45,7 +45,6 @@ struct iOSApp: App {
     @State private var activeItem: DataModel.Item?
     init() {
         columns = .init(repeating: .init(.flexible(), spacing: spacing), count: cols)
-        //UINavigationBar.setupAppearance()
     }
     var body: some Scene {
         WindowGroup {
@@ -73,6 +72,7 @@ struct iOSApp: App {
                 .navigationTitle("Uicorn 🦄")
             }
             .navigationViewStyle(.stack)
+            .navigationBarAppearance(.cyan)
             .onAppear {
                 model.load()
             }
@@ -94,8 +94,6 @@ struct iOSApp: App {
                     ZStack {
                         if let $i = Binding($activeItem) {
                             VStack(spacing: 0) {
-                                $i.wrappedValue.color
-                                    .ignoresSafeArea()
                                 HStack {
                                     if let $v = $i.app.screens.first?.view, let b = Binding($v) {
                                         UicornView(b)
@@ -109,6 +107,7 @@ struct iOSApp: App {
                                 }
                                 .layoutPriority(1)
                             }
+                            .navigationBarAppearance($i.wrappedValue.color)
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarLeading) {
                                     Button {
@@ -195,17 +194,18 @@ extension UIPasteboard {
     }
 }
 
-extension UINavigationBar {
-    static func setupAppearance() {
-        let attributes: [NSAttributedString.Key : Any] = [
-            .foregroundColor: UIColor.white
-        ]
-        let a = UINavigationBarAppearance()
-        a.backgroundColor = .systemCyan
-        a.titleTextAttributes = attributes
-        a.largeTitleTextAttributes = attributes
-        appearance().standardAppearance = a
-        appearance().compactAppearance = a
-        appearance().scrollEdgeAppearance = a
+struct NavigationBarAppearanceModifier: ViewModifier {
+    let color: Color
+    func body(content: Content) -> some View {
+        content
+            .onAppear {
+                UINavigationBar.setupAppearance(.init(color))
+            }
+    }
+}
+
+extension View {
+    func navigationBarAppearance(_ color: Color) -> some View {
+        modifier(NavigationBarAppearanceModifier(color: color))
     }
 }

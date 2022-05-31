@@ -61,6 +61,7 @@
 		B65C0280283FC0970073FA4A /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C027D283FC0970073FA4A /* Frame.swift */; };
 		B660EEC2283641E8008234A4 /* ImagePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */; };
 		B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC32836422F008234A4 /* TextFieldView.swift */; };
+		B66400832846256400F228D7 /* UINavigationBar+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66400822846256400F228D7 /* UINavigationBar+Appearance.swift */; };
 		B66B4475283E15BE00230758 /* iPhone12ProMax.scn in Resources */ = {isa = PBXBuildFile; fileRef = B66B4474283E15BE00230758 /* iPhone12ProMax.scn */; };
 		B66B4477283E297800230758 /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4476283E297800230758 /* AppearanceView.swift */; };
 		B66B4479283E32F500230758 /* StackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4478283E32F500230758 /* StackPropertiesView.swift */; };
@@ -256,6 +257,7 @@
 		B65C027D283FC0970073FA4A /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 		B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePropertiesView.swift; sourceTree = "<group>"; };
 		B660EEC32836422F008234A4 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		B66400822846256400F228D7 /* UINavigationBar+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Appearance.swift"; sourceTree = "<group>"; };
 		B66A8E092816D46D00BE9D55 /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
 		B66B4474283E15BE00230758 /* iPhone12ProMax.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = iPhone12ProMax.scn; sourceTree = "<group>"; };
 		B66B4476283E297800230758 /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 			children = (
 				B6883D692825850700544462 /* String+Unique.swift */,
 				B6AE6D732829319E001800F8 /* Color+Random.swift */,
+				B66400822846256400F228D7 /* UINavigationBar+Appearance.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1163,6 +1166,7 @@
 				B67692A2282E9D4C0026CA87 /* View+Shape.swift in Sources */,
 				B6A2E5FA282D33F7002FCDFF /* Action.swift in Sources */,
 				B69F2BD92828689300877D04 /* Text.swift in Sources */,
+				B66400832846256400F228D7 /* UINavigationBar+Appearance.swift in Sources */,
 				B6AE6D662828FCEA001800F8 /* Screen.swift in Sources */,
 				B6AE6D742829319E001800F8 /* Color+Random.swift in Sources */,
 				B61737AB2829664A006DE98E /* View+Image.swift in Sources */,
