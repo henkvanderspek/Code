@@ -39,7 +39,7 @@ extension Uicorn.View {
                                     ],
                                     spacing: 10
                                 ),
-                                .text("View all 12 comments", foregroundColor: .system(.gray3))
+                                .text("View all 12 comments", foregroundColor: .system(.gray))  
                             ],
                             alignment: .leading,
                             spacing: 6
