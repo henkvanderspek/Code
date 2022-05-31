@@ -16,7 +16,7 @@ struct macOSApp: App {
     init() {
         // TODO: clear data model schema
         // TODO: update components if needed
-        app = storage.fetchApps().first ?? .mock(.custom(.cardInstance))
+        app = storage.fetchApps().first ?? .mock(.custom(.postInstances))
     }
     var body: some Scene {
         WindowGroup {

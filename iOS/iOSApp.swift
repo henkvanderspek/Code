@@ -36,6 +36,7 @@ class DataModel: ObservableObject {
 struct iOSApp: App {
     @StateObject private var backendController = Backend.Controller(configuration: .live)
     @StateObject private var componentController = ComponentController()
+    @StateObject private var valueProvider = EmptyValueProvider()
     private let pasteboard: UIPasteboard = .general
     private let spacing = 12.0
     private let cols = 3

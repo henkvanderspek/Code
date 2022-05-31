@@ -10,10 +10,8 @@ import SwiftUI
 extension UicornView {
     struct Shape: View {
         @Binding var model: Uicorn.View.Shape
-        private var host: UicornHost
-        init(_ m: Binding<Uicorn.View.Shape>, host h: UicornHost) {
+        init(_ m: Binding<Uicorn.View.Shape>) {
             _model = m
-            host = h
         }
         var body: some View {
             let c = Color(model.fill ?? .system(.background))
@@ -37,6 +35,6 @@ extension UicornView {
 
 struct Shape_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Shape(.constant(.rectangle(.system(.cyan))), host: .mock)
+        UicornView.Shape(.constant(.rectangle(.system(.cyan))))
     }
 }

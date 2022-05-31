@@ -11,11 +11,32 @@ extension Uicorn {
     class Component: Base, Codable {
         let id: String
         var title: String
-        var view: Uicorn.View
-        init(id: String, title: String, view: Uicorn.View) {
-            self.id = id
-            self.title = title
-            self.view = view
+        var view: View
+        var paramaters: [Parameter]
+        init(id i: String, title t: String, view v: View, parameters p: [Parameter]) {
+            id = i
+            title = t
+            view = v
+            paramaters = p
+        }
+    }
+}
+
+extension Uicorn.Component {
+    class Parameter: Codable {
+        enum `Type`: Codable {
+            case string
+            case int
+        }
+        let id: String
+        let viewId: String
+        var title: String
+        var type: `Type`
+        init(id i: String, viewId v: String, title t: String, type ty: `Type`) {
+            id = i
+            viewId = v
+            title = t
+            type = ty
         }
     }
 }

@@ -10,10 +10,8 @@ import SwiftUI
 extension UicornView {
     struct Text: View {
         @Binding var model: Uicorn.View.Text
-        private var host: UicornHost
-        init(_ m: Binding<Uicorn.View.Text>, host h: UicornHost) {
+        init(_ m: Binding<Uicorn.View.Text>) {
             _model = m
-            host = h
         }
         var body: some View {
             SwiftUI.Text(.init($model.wrappedValue.value))
@@ -27,6 +25,6 @@ extension UicornView {
 
 struct Text_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Text(.constant(.init("Foo\nBar", font: .default, alignment: .leading, textCase: .standard, foregroundColor: nil)), host: .mock)
+        UicornView.Text(.constant(.init("Foo\nBar", font: .default, alignment: .leading, textCase: .standard, foregroundColor: nil)))
     }
 }

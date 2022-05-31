@@ -10,16 +10,14 @@ import SwiftUI
 extension UicornView {
     struct Image: View {
         @Binding var model: Uicorn.View.Image
-        private var host: UicornHost
         @State private var cachedImage: SwiftUI.Image?
-        init(_ m: Binding<Uicorn.View.Image>, host h: UicornHost) {
+        init(_ m: Binding<Uicorn.View.Image>) {
             _model = m
-            host = h
         }
         var body: some View {
             switch $model.wrappedValue.type {
             case .remote:
-                AsyncImage(url: .init(string: host.resolve(model.remote.url))) { phase in
+                AsyncImage(url: .init(string: model.remote.url)) { phase in
                     if let image = phase.image {
                         createView(for: image)
                             .onAppear {
@@ -68,7 +66,7 @@ private extension UicornView.Image {
 
 struct Image_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Image(.constant(.randomRemote), host: .mock)
-        UicornView.Image(.constant(.randomSystem(fill: nil)), host: .mock)
+        UicornView.Image(.constant(.randomRemote))
+        UicornView.Image(.constant(.randomSystem(fill: nil)))
     }
 }

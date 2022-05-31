@@ -38,7 +38,7 @@ extension Uicorn.App {
             color: .system(.yellow),
             screens: [.mock(m)],
             components: [
-                .card
+                .post
             ]
         )
     }
@@ -46,5 +46,7 @@ extension Uicorn.App {
 
 
 extension String {
-    static let cardComponentId: Self = "__cardComponentId"
+    static let postComponentId: Self = "__postComponentId"
+    static let postAvatarId: Self = "__postAvatarId"
+    static let postImageId: Self = "__postImageId"
 }

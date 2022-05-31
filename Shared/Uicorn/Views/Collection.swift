@@ -15,16 +15,14 @@ extension Uicorn {
 extension UicornView {
     struct Collection: View {
         @Binding var model: Uicorn.View.Collection
-        private var host: UicornHost
-        init(_ m: Binding<Uicorn.View.Collection>, host h: UicornHost) {
+        init(_ m: Binding<Uicorn.View.Collection>) {
             _model = m
-            host = h
         }
         var body: some View {
             switch $model.wrappedValue.type {
             case .unsplash:
                 // TODO: rewrite this in a generic (vertical) grid with optional lazy loader
-                UnsplashCollection(query: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery), count: Binding($model.count, default: Uicorn.defaultUnsplashCollectionCount), view: $model.view, host: host)
+                UnsplashCollection(query: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery), count: Binding($model.count, default: Uicorn.defaultUnsplashCollectionCount), view: $model.view)
             }
         }
     }
@@ -32,6 +30,6 @@ extension UicornView {
 
 struct Collection_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Collection(.constant(.init(type: .unsplash, parameters: [:], view: nil)), host: .mock)
+        UicornView.Collection(.constant(.init(type: .unsplash, parameters: [:], view: nil)))
     }
 }

@@ -29,36 +29,48 @@ class ComponentController: ObservableObject {
     }
 }
 
-enum ResolveContext {
-    case `default`
-    case sheet
-}
+typealias EmptyValueProvider = ValueProvider
 
-typealias Resolve = (String, ResolveContext) -> String
-
-protocol UicornHost {
-    func resolve(_ s: String, context: ResolveContext) -> String
-}
-
-extension UicornHost {
-    func resolve(_ s: String, context: ResolveContext) -> String {
-        return s
+class ValueProvider: ObservableObject {
+    let instance: Uicorn.View.Instance?
+    init(instance i: Uicorn.View.Instance? = nil) {
+        instance = i
     }
-    func resolve(_ s: String) -> String {
-        return resolve(s, context: .default)
+    func provideValues(for v: Binding<Uicorn.View>) {
+        if let val = instance?.values[v.id] {
+            switch v.wrappedValue.type {
+            case let .image(i):
+                v.wrappedValue.type = .image(val.string.map { i.string($0) } ?? i)
+            default: ()
+            }
+        } else {
+            print("Ignore request for values")
+        }
+    }
+}
+
+extension Uicorn.View.Image {
+    func string(_ v: String) -> Self {
+        var i = self
+        switch type {
+        case .remote:
+            i.type = .remote(value: .init(v))
+        case let .system(s):
+            i.type = .system(value: .init(name: v, fill: s.fill, type: s.type, weight: s.weight, scale: s.scale))
+        }
+        return i
     }
 }
 
 struct UicornView: View {
     @EnvironmentObject private var screenSettings: ScreenSettings
+    @EnvironmentObject private var valueProvider: ValueProvider
     @Binding var model: Uicorn.View
-    private let resolver: Resolve?
     @State private var sheetView: AnyView?
     @State private var shouldShowSheet = false
     @ScaledMetric private var scaleFactor = 1.0
-    init(_ v: Binding<Uicorn.View>, resolver r: Resolve? = nil) {
+    init(_ v: Binding<Uicorn.View>) {
         _model = v
-        resolver = r
     }
     var body: some View {
         content
@@ -150,43 +162,33 @@ private extension UicornView {
     }
 }
 
-extension UicornView: UicornHost {
-    func resolve(_ s: String, context c: ResolveContext) -> String {
-        resolver?(s, shouldShowSheet ? .sheet : .`default`) ?? s
-    }
-}
-
-struct MockHost: UicornHost {}
-
-extension UicornHost where Self == MockHost {
-    static var mock: MockHost {
-        .init()
-    }
-}
-
 private extension UicornView {
+    private var sanitizedModel: Uicorn.View {
+        valueProvider.provideValues(for: $model)
+        return $model.wrappedValue
+    }
     @ViewBuilder var content: some View {
-        switch $model.wrappedValue.type {
+        switch sanitizedModel.type {
         case let .hstack(v):
-            HStack(v.binding, host: self)
+            HStack(v.binding)
         case let .vstack(v):
-            VStack(v.binding, host: self)
+            VStack(v.binding)
         case let .zstack(v):
-            ZStack(v.binding, host: self)
+            ZStack(v.binding)
         case let .text(t):
-            Text(t.binding, host: self)
+            Text(t.binding)
         case let .image(i):
-            Image(i.binding, host: self)
+            Image(i.binding)
         case let .collection(c):
-            Collection(c.binding, host: self)
+            Collection(c.binding)
         case let .shape(s):
-            Shape(s.binding, host: self)
+            Shape(s.binding)
         case let .map(m):
-            Map(m.binding, host: self)
+            Map(m.binding)
         case let .scroll(s):
-            Scroll(s.binding, host: self)
+            Scroll(s.binding)
         case let .instance(i):
-            Instance(i.binding, host: self)
+            Instance(i.binding)
         case .spacer:
             Spacer()
         case .empty:

@@ -11,10 +11,8 @@ import MapKit
 extension UicornView {
     struct Map: View {
         @Binding var model: Uicorn.View.Map
-        private var host: UicornHost
-        init(_ m: Binding<Uicorn.View.Map>, host h: UicornHost) {
+        init(_ m: Binding<Uicorn.View.Map>) {
             _model = m
-            host = h
         }
         var body: some View {
             MapKit.Map(mapRect: .constant(.world))
@@ -24,6 +22,6 @@ extension UicornView {
 
 struct Map_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Map(.constant(.init()), host: .mock)
+        UicornView.Map(.constant(.init()))
     }
 }

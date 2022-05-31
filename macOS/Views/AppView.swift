@@ -53,6 +53,7 @@ struct AppView: View {
             }.listStyle(.sidebar)
         }
         .environmentObject(componentController)
+        .environmentObject(EmptyValueProvider())
         .navigationViewStyle(.columns)
         .navigationTitle("")
         .toolbar {
@@ -236,7 +237,7 @@ extension Uicorn.View {
         case .hscroll:
             return .hscroll
         case .instance:
-            return .instance
+            return .postInstance
         default:
             fatalError()
         }

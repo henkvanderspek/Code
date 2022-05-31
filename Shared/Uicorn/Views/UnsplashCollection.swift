@@ -14,15 +14,13 @@ extension UicornView {
         @Binding var view: Uicorn.View?
         @EnvironmentObject var backendController: Backend.Controller
         @State private var images: [Backend.Images.Item]?
-        private var host: UicornHost
         private static let spacing = 2.0
         private static let cols = 3
         private var columns: [GridItem] = .init(repeating: .init(.flexible(), spacing: spacing), count: cols)
-        init(query q: Binding<String>, count c: Binding<Int>, view v: Binding<Uicorn.View?>, host h: UicornHost) {
+        init(query q: Binding<String>, count c: Binding<Int>, view v: Binding<Uicorn.View?>) {
             _query = q
             _count = c
             _view  = v
-            host = h
         }
         var body: some View {
             SwiftUI.ZStack {
@@ -32,14 +30,13 @@ extension UicornView {
                             SwiftUI.LazyVGrid(columns: columns, spacing: Self.spacing) {
                                 ForEach(i) { image in
                                     if let v = Binding($view) {
-                                        UicornView(v) { value, context in
-                                            switch context {
-                                            case .`default`:
-                                                return value.replacingOccurrences(of: "{{url}}", with: image.thumb)
-                                            case .sheet:
-                                                return value.replacingOccurrences(of: "{{url}}", with: image.regular)
-                                            }
-                                        }
+                                        UicornView(v)
+                                        // TODO: Resolver environment object
+//                                            switch context {
+//                                            case .`default`:
+//                                                return value.replacingOccurrences(of: "{{url}}", with: image.thumb)
+//                                            case .sheet:
+//                                                return value.replacingOccurrences(of: "{{url}}", with: image.regular)
                                         .frame(height: (geo.size.width / .init(Self.cols)))
                                     } else {
                                         SwiftUI.Text(image.id.uuidString)
@@ -109,6 +106,6 @@ private extension UicornView.UnsplashCollection {
 
 struct UnsplashCollection_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.UnsplashCollection(query: .constant("pug"), count: .constant(10), view: .constant(.empty), host: .mock)
+        UicornView.UnsplashCollection(query: .constant("pug"), count: .constant(10), view: .constant(.empty))
     }
 }
