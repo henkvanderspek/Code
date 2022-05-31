@@ -44,7 +44,7 @@ class ValueProvider: ObservableObject {
             default: ()
             }
         } else {
-            print("Ignore request for values")
+            //print("Ignore request for values")
         }
     }
 }
@@ -64,13 +64,14 @@ extension Uicorn.View.Image {
 
 struct UicornView: View {
     @EnvironmentObject private var screenSettings: ScreenSettings
-    @EnvironmentObject private var valueProvider: ValueProvider
     @Binding var model: Uicorn.View
     @State private var sheetView: AnyView?
     @State private var shouldShowSheet = false
     @ScaledMetric private var scaleFactor = 1.0
-    init(_ v: Binding<Uicorn.View>) {
+    private let valueProvider: ValueProvider?
+    init(_ v: Binding<Uicorn.View>, valueProvider vp: ValueProvider? = nil) {
         _model = v
+        valueProvider = vp
     }
     var body: some View {
         content
@@ -164,29 +165,29 @@ private extension UicornView {
 
 private extension UicornView {
     private var sanitizedModel: Uicorn.View {
-        valueProvider.provideValues(for: $model)
+        valueProvider?.provideValues(for: $model)
         return $model.wrappedValue
     }
     @ViewBuilder var content: some View {
         switch sanitizedModel.type {
         case let .hstack(v):
-            HStack(v.binding)
+            HStack(v.binding, valueProvider: valueProvider)
         case let .vstack(v):
-            VStack(v.binding)
+            VStack(v.binding, valueProvider: valueProvider)
         case let .zstack(v):
-            ZStack(v.binding)
+            ZStack(v.binding, valueProvider: valueProvider)
         case let .text(t):
             Text(t.binding)
         case let .image(i):
             Image(i.binding)
         case let .collection(c):
-            Collection(c.binding)
+            Collection(c.binding, valueProvider: valueProvider)
         case let .shape(s):
             Shape(s.binding)
         case let .map(m):
             Map(m.binding)
         case let .scroll(s):
-            Scroll(s.binding)
+            Scroll(s.binding, valueProvider: valueProvider)
         case let .instance(i):
             Instance(i.binding)
         case .spacer:

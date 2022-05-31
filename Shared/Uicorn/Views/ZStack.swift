@@ -10,13 +10,15 @@ import SwiftUI
 extension UicornView {
     struct ZStack: View {
         @Binding var model: Uicorn.View.ZStack
-        init(_ m: Binding<Uicorn.View.ZStack>) {
+        private let valueProvider: ValueProvider?
+        init(_ m: Binding<Uicorn.View.ZStack>, valueProvider v: ValueProvider? = nil) {
             _model = m
+            valueProvider = v
         }
         var body: some View {
             SwiftUI.ZStack(alignment: .init($model.alignment.wrappedValue)) {
                 ForEach($model.reversedEnumeratedChildren, id: \.offset) { v in
-                    UicornView(v.element)
+                    UicornView(v.element, valueProvider: valueProvider)
                 }
             }
         }

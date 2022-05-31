@@ -17,7 +17,7 @@ extension UicornView {
         var body: some View {
             switch $model.wrappedValue.type {
             case .remote:
-                AsyncImage(url: .init(string: model.remote.url)) { phase in
+                AsyncImage(url: .init(string: $model.wrappedValue.remote.url)) { phase in
                     if let image = phase.image {
                         createView(for: image)
                             .onAppear {

@@ -53,7 +53,6 @@ struct AppView: View {
             }.listStyle(.sidebar)
         }
         .environmentObject(componentController)
-        .environmentObject(EmptyValueProvider())
         .navigationViewStyle(.columns)
         .navigationTitle("")
         .toolbar {

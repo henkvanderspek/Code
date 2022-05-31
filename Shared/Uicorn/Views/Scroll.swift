@@ -10,13 +10,15 @@ import SwiftUI
 extension UicornView {
     struct Scroll: View {
         @Binding var model: Uicorn.View.Scroll
-        init(_ m: Binding<Uicorn.View.Scroll>) {
+        private let valueProvider: ValueProvider?
+        init(_ m: Binding<Uicorn.View.Scroll>, valueProvider v: ValueProvider? = nil) {
             _model = m
+            valueProvider = v
         }
         var body: some View {
             SwiftUI.ScrollView(.init($model.axis.wrappedValue)) {
                 ForEach($model.children) {
-                    UicornView($0)
+                    UicornView($0, valueProvider: valueProvider)
                 }
             }
         }

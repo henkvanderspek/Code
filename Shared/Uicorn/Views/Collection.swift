@@ -15,14 +15,16 @@ extension Uicorn {
 extension UicornView {
     struct Collection: View {
         @Binding var model: Uicorn.View.Collection
-        init(_ m: Binding<Uicorn.View.Collection>) {
+        private let valueProvider: ValueProvider?
+        init(_ m: Binding<Uicorn.View.Collection>, valueProvider v: ValueProvider? = nil) {
             _model = m
+            valueProvider = v
         }
         var body: some View {
             switch $model.wrappedValue.type {
             case .unsplash:
                 // TODO: rewrite this in a generic (vertical) grid with optional lazy loader
-                UnsplashCollection(query: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery), count: Binding($model.count, default: Uicorn.defaultUnsplashCollectionCount), view: $model.view)
+                UnsplashCollection(query: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery), count: Binding($model.count, default: Uicorn.defaultUnsplashCollectionCount), view: $model.view, valueProvider: valueProvider)
             }
         }
     }
