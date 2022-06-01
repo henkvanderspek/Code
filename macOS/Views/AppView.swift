@@ -130,6 +130,7 @@ struct App_Previews: PreviewProvider {
 
 extension TreeItem {
     func screen(by id: String) -> TreeItem? {
+        guard !(self is Uicorn.App) else { return (self as? Uicorn.App)?.screens.first }
         guard id != self.id else { return self }
         guard let c = children else { return nil }
         return c.first(where: { $0.id == id || $0.contains(id) })
