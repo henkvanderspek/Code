@@ -32,3 +32,16 @@ extension Uicorn.Location {
         eiffelTower
     }
 }
+
+extension Uicorn.Location: Equatable {
+    static func == (lhs: Uicorn.Location, rhs: Uicorn.Location) -> Bool {
+        lhs.name == rhs.name && lhs.coordinate == rhs.coordinate
+    }
+}
+
+extension Uicorn.Location: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(coordinate)
+    }
+}

@@ -10,12 +10,19 @@ import MapKit
 
 extension UicornView {
     struct Map: View {
+        struct AnnotationItem: Identifiable {
+            let id = UUID()
+            let name: String
+            let coordinate: CLLocationCoordinate2D
+        }
         @Binding var model: Uicorn.View.Map
         init(_ m: Binding<Uicorn.View.Map>) {
             _model = m
         }
         var body: some View {
-            MapKit.Map(coordinateRegion: $model.location.coordinateRegion)
+            MapKit.Map(coordinateRegion: $model.location.coordinateRegion, annotationItems: [model.location.annotationItem]) {
+                MapMarker(coordinate: $0.coordinate)
+            }
         }
     }
 }
@@ -34,5 +41,8 @@ extension Uicorn.Location {
         set {
             coordinate = .init(newValue.center)
         }
+    }
+    var annotationItem: UicornView.Map.AnnotationItem {
+        .init(name: name, coordinate: .init(coordinate))
     }
 }

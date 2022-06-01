@@ -32,3 +32,16 @@ extension Uicorn.Coordinate {
         .init(52.113456583059126, 4.279874927463718)
     }
 }
+
+extension Uicorn.Coordinate: Equatable {
+    static func == (lhs: Uicorn.Coordinate, rhs: Uicorn.Coordinate) -> Bool {
+        lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+}
+
+extension Uicorn.Coordinate: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(latitude)
+        hasher.combine(longitude)
+    }
+}
