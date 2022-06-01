@@ -13,12 +13,26 @@ struct MapPropertiesView: View {
         _model = m
     }
     var body: some View {
-        EmptyView()
+        Section {
+            TextFieldView(value: $model.location.coordinate.latitude.string, header: "Latitude")
+            TextFieldView(value: $model.location.coordinate.longitude.string, header: "Longitude")
+        }.labelsHidden()
     }
 }
 
 struct MapPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        MapPropertiesView(.constant(.init()))
+        MapPropertiesView(.constant(.init(location: .mock)))
+    }
+}
+
+extension Double {
+    var string: String {
+        get {
+            .init(self)
+        }
+        set {
+            self = .init(newValue) ?? 0.0
+        }
     }
 }

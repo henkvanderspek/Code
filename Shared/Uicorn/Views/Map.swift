@@ -15,13 +15,24 @@ extension UicornView {
             _model = m
         }
         var body: some View {
-            MapKit.Map(mapRect: .constant(.world))
+            MapKit.Map(coordinateRegion: $model.location.coordinateRegion)
         }
     }
 }
 
 struct Map_Previews: PreviewProvider {
     static var previews: some View {
-        UicornView.Map(.constant(.init()))
+        UicornView.Map(.constant(.init(location: .mock)))
+    }
+}
+
+extension Uicorn.Location {
+    var coordinateRegion: MKCoordinateRegion {
+        get {
+            .init(center: .init(coordinate), latitudinalMeters: 800, longitudinalMeters: 800)
+        }
+        set {
+            coordinate = .init(newValue.center)
+        }
     }
 }

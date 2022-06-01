@@ -9,7 +9,10 @@ import Foundation
 
 extension Uicorn.View {
     class Map: Codable {
-        init() {}
+        var location: Uicorn.Location
+        init(location l: Uicorn.Location) {
+            location = l
+        }
     }
 }
 

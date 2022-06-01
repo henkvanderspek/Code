@@ -75,7 +75,10 @@ extension Uicorn.View {
         .init(id: .unique, type: .shape(.capsule(c)), action: nil, properties: nil)
     }
     static var map: Uicorn.View {
-        .init(id: .unique, type: .map(.init()), action: nil, properties: nil)
+        .map(name: "Eiffel Tower", coordinate: .eiffelTower)
+    }
+    static func map(id: String = .unique, name: String, coordinate: Uicorn.Coordinate) -> Uicorn.View {
+        .init(id: .unique, type: .map(.init(location: .init(name: name, coordinate: coordinate))), action: nil, properties: nil)
     }
     static func hscroll(_ c: [Uicorn.View]) -> Uicorn.View {
         .init(id: .unique, type: .scroll(.init(axis: .horizontal, children: c)), action: nil, properties: nil)
