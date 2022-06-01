@@ -45,8 +45,8 @@ struct AppView: View {
             if let b = Binding($observer.sanitizedScreen) {
                 AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
                     ScreenView(b)
-                        .id(b.id)
                 }
+                .id($observer.sanitizedScreen.wrappedValue?.view?.id ?? "empty")
             }
             List {
                 InspectorView(view: observer.sanitizedSelectedItem)
