@@ -20,6 +20,11 @@ class ValueProvider: ObservableObject {
                 let img: Uicorn.View.Image = .init(type: .remote(value: .init(val.string ?? i.remote.url)))
                 print("Modified: \(img.remote.url.suffix(10))")
                 return .init(id: v.id, type: .image(value: img), action: v.action, properties: v.properties)
+            case let .text(t):
+                print("Original: \(t.value)")
+                let txt: Uicorn.View.Text = .init(val.string ?? t.value, font: t.font, alignment: t.alignment, textCase: t.textCase, foregroundColor: t.foregroundColor)
+                print("Modified: \(txt.value)")
+                return .init(id: v.id, type: .text(value: txt), action: v.action, properties: v.properties)
             default: () // TODO
             }
         }

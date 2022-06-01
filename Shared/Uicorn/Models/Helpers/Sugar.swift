@@ -14,8 +14,8 @@ extension Uicorn.View {
     static var spacer: Uicorn.View {
         .init(id: .unique, type: .spacer, action: nil, properties: nil)
     }
-    static func text(_ s: String, font: Uicorn.Font = .default, alignment: Uicorn.TextAlignment = .leading, textCase: Uicorn.TextCase = .standard, foregroundColor: Uicorn.Color? = nil, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .text(.init(s, font: font, alignment: alignment, textCase: textCase, foregroundColor: foregroundColor)), action: action, properties: properties)
+    static func text(id: String = .unique, _ s: String = "", font: Uicorn.Font = .default, alignment: Uicorn.TextAlignment = .leading, textCase: Uicorn.TextCase = .standard, foregroundColor: Uicorn.Color? = nil, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .init(id: id, type: .text(.init(s, font: font, alignment: alignment, textCase: textCase, foregroundColor: foregroundColor)), action: action, properties: properties)
     }
     static func hstack(_ c: [Uicorn.View], alignment: Uicorn.VerticalAlignment = .center, spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
         .init(id: .unique, type: .hstack(.init(c, alignment: alignment, spacing: spacing)), action: action, properties: properties)
@@ -35,14 +35,14 @@ extension Uicorn.View {
     static var zstack: Uicorn.View {
         .zstack([])
     }
-    static func image(_ s: String, id: String = .unique, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+    static func image(id: String = .unique, _ s: String = "", action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
         .init(id: id, type: .image(.remote(s)), action: action, properties: properties)
     }
-    static func image(_ s: String, id: String = .unique, fill: Uicorn.Color?, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+    static func image(id: String = .unique, _ s: String, fill: Uicorn.Color?, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
         .init(id: id, type: .image(.system(name: s, fill: fill, type: type, weight: weight, scale: scale)), action: action, properties: properties)
     }
-    static func sfSymbol(_ s: String, id: String = .unique, fill: Uicorn.Color? = nil, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, properties: Uicorn.Properties? = nil) -> Uicorn.View {
-        .image(s, id: id, fill: fill, type: type, weight: weight, scale: scale, properties: properties)
+    static func sfSymbol(id: String = .unique, _ s: String, fill: Uicorn.Color? = nil, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, properties: Uicorn.Properties? = nil) -> Uicorn.View {
+        .image(id: id, s, fill: fill, type: type, weight: weight, scale: scale, properties: properties)
     }
     static var randomSystemImage: Uicorn.View {
         .randomSystemImage()

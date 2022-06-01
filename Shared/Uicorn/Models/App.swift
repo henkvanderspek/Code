@@ -49,4 +49,9 @@ extension String {
     static let postComponentId: Self = "__postComponentId"
     static let postAvatarId: Self = "__postAvatarId"
     static let postImageId: Self = "__postImageId"
+    static let postLikesId: Self = "__postLikesId"
+    static let postCommentsId: Self = "__postCommentsId"
+    static let postAuthorId: Self = "__postAuthorId"
+    static let postCaptionId: Self = "__postCaptionId"
+    static let postTagsId: Self = "__postTagsId"
 }
