@@ -17,12 +17,10 @@ extension UicornView {
         private static let spacing = 2.0
         private static let cols = 3
         private var columns: [GridItem] = .init(repeating: .init(.flexible(), spacing: spacing), count: cols)
-        private let valueProvider: ValueProvider?
-        init(query q: Binding<String>, count c: Binding<Int>, view v: Binding<Uicorn.View?>, valueProvider vp: ValueProvider? = nil) {
+        init(query q: Binding<String>, count c: Binding<Int>, view v: Binding<Uicorn.View?>) {
             _query = q
             _count = c
             _view  = v
-            valueProvider = vp
         }
         var body: some View {
             SwiftUI.ZStack {
@@ -32,8 +30,8 @@ extension UicornView {
                             SwiftUI.LazyVGrid(columns: columns, spacing: Self.spacing) {
                                 ForEach(i) { image in
                                     if let v = Binding($view) {
-                                        UicornView(v, valueProvider: valueProvider)
-                                        // TODO: Resolver environment object
+                                        UicornView(v)
+                                        // TODO: Create proxy value provider and pass as environment object
 //                                            switch context {
 //                                            case .`default`:
 //                                                return value.replacingOccurrences(of: "{{url}}", with: image.thumb)

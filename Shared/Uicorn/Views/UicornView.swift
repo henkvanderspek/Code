@@ -7,60 +7,15 @@
 
 import SwiftUI
 
-class ScreenSettings: ObservableObject {
-    @Published var size: CGSize
-    init(size s: CGSize) {
-        size = s
-    }
-}
-
-class ComponentController: ObservableObject {
-    var app: Binding<Uicorn.App>? = nil
-    func instance(from id: String) -> Binding<Uicorn.View>? {
-        guard let $a = app?.components.first(where: { $0.wrappedValue.id == id }) else { return nil }
-        return $a.view
-    }
-    func component(from id: String) -> Binding<Uicorn.Component>? {
-        guard let $a = app?.components.first(where: { $0.wrappedValue.id == id }) else { return nil }
-        return $a
-    }
-    var components: [Uicorn.Component]? {
-        return app?.components.wrappedValue
-    }
-}
-
-typealias EmptyValueProvider = ValueProvider
-
-class ValueProvider: ObservableObject {
-    let instance: Uicorn.View.Instance?
-    init(instance i: Uicorn.View.Instance? = nil) {
-        instance = i
-    }
-    func provideValues(for v: Uicorn.View) -> Uicorn.View {
-        if let val = instance?.values[v.id] {
-            switch v.type {
-            case let .image(i):
-                print("Original: \(i.remote.url.suffix(10))")
-                let img: Uicorn.View.Image = .init(type: .remote(value: .init(val.string ?? i.remote.url)))
-                print("Modified: \(img.remote.url.suffix(10))")
-                return .init(id: v.id, type: .image(value: img), action: v.action, properties: v.properties)
-            default: () // TODO
-            }
-        }
-        return v
-    }
-}
-
 struct UicornView: View {
     @EnvironmentObject private var screenSettings: ScreenSettings
+    @EnvironmentObject private var valueProvider: ValueProvider
     @Binding var model: Uicorn.View
     @State private var sheetView: AnyView?
     @State private var shouldShowSheet = false
     @ScaledMetric private var scaleFactor = 1.0
-    private let valueProvider: ValueProvider?
-    init(_ v: Binding<Uicorn.View>, valueProvider vp: ValueProvider? = nil) {
+    init(_ v: Binding<Uicorn.View>) {
         _model = v
-        valueProvider = vp
     }
     var body: some View {
         content
@@ -154,28 +109,28 @@ private extension UicornView {
 
 private extension UicornView {
     private var sanitizedModel: Uicorn.View {
-        valueProvider?.provideValues(for: model) ?? model
+        valueProvider.provideValues(for: model)
     }
     @ViewBuilder var content: some View {
         switch sanitizedModel.type {
         case let .hstack(v):
-            HStack(v.binding, valueProvider: valueProvider)
+            HStack(v.binding)
         case let .vstack(v):
-            VStack(v.binding, valueProvider: valueProvider)
+            VStack(v.binding)
         case let .zstack(v):
-            ZStack(v.binding, valueProvider: valueProvider)
+            ZStack(v.binding)
         case let .text(t):
             Text(t.binding)
         case let .image(i):
             Image(i.binding)
         case let .collection(c):
-            Collection(c.binding, valueProvider: valueProvider)
+            Collection(c.binding)
         case let .shape(s):
             Shape(s.binding)
         case let .map(m):
             Map(m.binding)
         case let .scroll(s):
-            Scroll(s.binding, valueProvider: valueProvider)
+            Scroll(s.binding)
         case let .instance(i):
             Instance(i.binding)
         case .spacer:

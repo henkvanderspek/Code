@@ -102,6 +102,7 @@ struct iOSApp: App {
                                             }
                                             .environmentObject(backendController)
                                             .environmentObject(componentController)
+                                            .environmentObject(EmptyValueProvider())
                                             .id(UUID())
                                     }
                                 }

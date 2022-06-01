@@ -10,15 +10,13 @@ import SwiftUI
 extension UicornView {
     struct VStack: View {
         @Binding var model: Uicorn.View.VStack
-        private let valueProvider: ValueProvider?
-        init(_ m: Binding<Uicorn.View.VStack>, valueProvider v: ValueProvider? = nil) {
+        init(_ m: Binding<Uicorn.View.VStack>) {
             _model = m
-            valueProvider = v
         }
         var body: some View {
             SwiftUI.VStack(alignment: .init($model.alignment.wrappedValue), spacing: .init($model.spacing.wrappedValue)) {
                 ForEach($model.children) {
-                    UicornView($0, valueProvider: valueProvider)
+                    UicornView($0)
                 }
             }
         }

@@ -62,6 +62,15 @@
 		B660EEC2283641E8008234A4 /* ImagePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */; };
 		B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660EEC32836422F008234A4 /* TextFieldView.swift */; };
 		B66400832846256400F228D7 /* UINavigationBar+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66400822846256400F228D7 /* UINavigationBar+Appearance.swift */; };
+		B665A3E9284762EF0076DB3F /* ScreenSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A3E8284762EF0076DB3F /* ScreenSettings.swift */; };
+		B665A3EA284762EF0076DB3F /* ScreenSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A3E8284762EF0076DB3F /* ScreenSettings.swift */; };
+		B665A3EB284762EF0076DB3F /* ScreenSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A3E8284762EF0076DB3F /* ScreenSettings.swift */; };
+		B665A3ED284763030076DB3F /* ComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A3EC284763030076DB3F /* ComponentController.swift */; };
+		B665A3EE284763030076DB3F /* ComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A3EC284763030076DB3F /* ComponentController.swift */; };
+		B665A3EF284763030076DB3F /* ComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A3EC284763030076DB3F /* ComponentController.swift */; };
+		B665A3F1284763100076DB3F /* ValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A3F0284763100076DB3F /* ValueProvider.swift */; };
+		B665A3F2284763100076DB3F /* ValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A3F0284763100076DB3F /* ValueProvider.swift */; };
+		B665A3F3284763100076DB3F /* ValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A3F0284763100076DB3F /* ValueProvider.swift */; };
 		B66B4475283E15BE00230758 /* iPhone12ProMax.scn in Resources */ = {isa = PBXBuildFile; fileRef = B66B4474283E15BE00230758 /* iPhone12ProMax.scn */; };
 		B66B4477283E297800230758 /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4476283E297800230758 /* AppearanceView.swift */; };
 		B66B4479283E32F500230758 /* StackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4478283E32F500230758 /* StackPropertiesView.swift */; };
@@ -258,6 +267,9 @@
 		B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePropertiesView.swift; sourceTree = "<group>"; };
 		B660EEC32836422F008234A4 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B66400822846256400F228D7 /* UINavigationBar+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Appearance.swift"; sourceTree = "<group>"; };
+		B665A3E8284762EF0076DB3F /* ScreenSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSettings.swift; sourceTree = "<group>"; };
+		B665A3EC284763030076DB3F /* ComponentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentController.swift; sourceTree = "<group>"; };
+		B665A3F0284763100076DB3F /* ValueProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueProvider.swift; sourceTree = "<group>"; };
 		B66A8E092816D46D00BE9D55 /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
 		B66B4474283E15BE00230758 /* iPhone12ProMax.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = iPhone12ProMax.scn; sourceTree = "<group>"; };
 		B66B4476283E297800230758 /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
@@ -458,6 +470,16 @@
 				B64C9F45283695F700A4B7CF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B665A3E7284762DC0076DB3F /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				B665A3E8284762EF0076DB3F /* ScreenSettings.swift */,
+				B665A3EC284763030076DB3F /* ComponentController.swift */,
+				B665A3F0284763100076DB3F /* ValueProvider.swift */,
+			);
+			path = Environment;
 			sourceTree = "<group>";
 		};
 		B67B3D8A27DF3D3F00F50F2E /* JsonUI */ = {
@@ -687,6 +709,7 @@
 		B6AE6D72282902E2001800F8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B665A3E7284762DC0076DB3F /* Environment */,
 				B60F225028283A1B00A730F1 /* UicornView.swift */,
 				B69F2BD22828663900877D04 /* HStack.swift */,
 				B6FA89AA282975D100E842AE /* VStack.swift */,
@@ -998,12 +1021,14 @@
 				B6A38E5E282BF8A5002777CA /* String+Unique.swift in Sources */,
 				B69093BA284550C800CB2F42 /* View+Instance.swift in Sources */,
 				B69093C22845527600CB2F42 /* Component.swift in Sources */,
+				B665A3F3284763100076DB3F /* ValueProvider.swift in Sources */,
 				B6A38E63282BF8AF002777CA /* Uicorn.swift in Sources */,
 				B6817DE2283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B6A38E73282BF8B2002777CA /* BackendController.swift in Sources */,
 				B6B125DD2834DE42005E989F /* VStack.swift in Sources */,
 				B69E39CA283CDCC000B65682 /* HorizontalAlignment.swift in Sources */,
 				B6B125D82834DE39005E989F /* View+Shape.swift in Sources */,
+				B665A3EB284762EF0076DB3F /* ScreenSettings.swift in Sources */,
 				B69E39C6283CD82600B65682 /* VerticalAlignment.swift in Sources */,
 				B69093BE2845516000CB2F42 /* Instance.swift in Sources */,
 				B6E13C60283CFB36003BFDD4 /* TextCase.swift in Sources */,
@@ -1028,6 +1053,7 @@
 				B6B125E22834DE42005E989F /* UnsplashCollection.swift in Sources */,
 				B6B125D72834DE33005E989F /* Properties.swift in Sources */,
 				B6B125DF2834DE42005E989F /* Shape.swift in Sources */,
+				B665A3EF284763030076DB3F /* ComponentController.swift in Sources */,
 				B6A38E65282BF8AF002777CA /* View+VStack.swift in Sources */,
 				B6A38E72282BF8AF002777CA /* App.swift in Sources */,
 				B6B125DA2834DE42005E989F /* Text.swift in Sources */,
@@ -1063,6 +1089,7 @@
 				B6B125E82835123E005E989F /* StepperView.swift in Sources */,
 				B69093C42845611500CB2F42 /* InstancePropertiesView.swift in Sources */,
 				B68563252840DCCC00D39A8D /* VGroup.swift in Sources */,
+				B665A3EE284763030076DB3F /* ComponentController.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B67692A6282E9DAA0026CA87 /* Color.swift in Sources */,
 				B69093BD2845516000CB2F42 /* Instance.swift in Sources */,
@@ -1109,6 +1136,7 @@
 				B6B125EB28351A07005E989F /* TextEditorView.swift in Sources */,
 				B61433A8282A656E00760F39 /* Collection.swift in Sources */,
 				B6D2B8F6283257EE00346B95 /* ShapePropertiesView.swift in Sources */,
+				B665A3EA284762EF0076DB3F /* ScreenSettings.swift in Sources */,
 				B65C0269283F9E9D0073FA4A /* Axis.swift in Sources */,
 				B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */,
 				B60F225128283A1B00A730F1 /* UicornView.swift in Sources */,
@@ -1116,6 +1144,7 @@
 				B67692A0282E9C9C0026CA87 /* Properties.swift in Sources */,
 				B65C026D283FA1380073FA4A /* Scroll.swift in Sources */,
 				B60F224A2827C63E00A730F1 /* TreeItem.swift in Sources */,
+				B665A3F2284763100076DB3F /* ValueProvider.swift in Sources */,
 				B69E39CD283CEB3200B65682 /* Alignment.swift in Sources */,
 				B685632928410F9800D39A8D /* AppStorage.swift in Sources */,
 				B66B4479283E32F500230758 /* StackPropertiesView.swift in Sources */,
@@ -1137,12 +1166,14 @@
 				B6B125CE2834DA33005E989F /* Padding.swift in Sources */,
 				B6FA89AE282975E300E842AE /* ZStack.swift in Sources */,
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
+				B665A3F1284763100076DB3F /* ValueProvider.swift in Sources */,
 				B67692A5282E9DAA0026CA87 /* Color.swift in Sources */,
 				B61433A7282A656E00760F39 /* Collection.swift in Sources */,
 				B66F4CED284509CA00E941ED /* ImageScale.swift in Sources */,
 				B6817DE0283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B6E13C62283D2639003BFDD4 /* Map.swift in Sources */,
 				B69093C02845527600CB2F42 /* Component.swift in Sources */,
+				B665A3ED284763030076DB3F /* ComponentController.swift in Sources */,
 				B6AE6D6F2828FF39001800F8 /* View+Text.swift in Sources */,
 				B6AE6D6C2828FF2C001800F8 /* View+HStack.swift in Sources */,
 				B66F4CF12845187300E941ED /* ViewVisibility.swift in Sources */,
@@ -1161,6 +1192,7 @@
 				B65C0270283FA3570073FA4A /* View+Map.swift in Sources */,
 				B6883D6B2825854C00544462 /* String+Unique.swift in Sources */,
 				B69F2BDA2828689700877D04 /* HStack.swift in Sources */,
+				B665A3E9284762EF0076DB3F /* ScreenSettings.swift in Sources */,
 				B69F2BDB2828689A00877D04 /* UicornView.swift in Sources */,
 				B6FA89A82829755100E842AE /* View+ZStack.swift in Sources */,
 				B67692A2282E9D4C0026CA87 /* View+Shape.swift in Sources */,
