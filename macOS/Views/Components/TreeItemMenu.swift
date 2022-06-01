@@ -44,10 +44,14 @@ struct TreeItemMenu: NSViewRepresentable {
         override func hitTest(_ point: NSPoint) -> NSView? {
             switch window?.currentEvent?.type {
             case .rightMouseDown:
-                settings?.mouseHandler()
+                Task {
+                    settings?.mouseHandler()
+                }
                 return super.hitTest(point)
             case .leftMouseDown:
-                settings?.mouseHandler()
+                Task {
+                    settings?.mouseHandler()
+                }
             default: ()
             }
             return nil
