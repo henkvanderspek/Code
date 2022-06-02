@@ -13,11 +13,41 @@ struct ModifiersView: View {
         _model = m
     }
     var body: some View {
-        ForEach(ViewModifier.allCases, id: \.self) { m in
-            OptionalPropertiesView(header: m.localizedString, value: .constant(nil), defaultValue: 1) { _ in
-                Text(m.localizedString)
+        Section {
+            ForEach(ViewModifier.allCases, id: \.self) { m in
+                switch m {
+                case .opacity:
+                    OptionalPropertiesView(header: m.localizedString, value: $model.opacity, defaultValue: 1.0) { value in
+                        HGroup {
+                            StepperView($model.opacity, default: 1.0, range: 0...1, step: 0.1, header: "Opacity")
+                            GreedySpacer()
+                        }
+                    }
+                default:
+                    OptionalPropertiesView(header: m.localizedString, value: .constant(nil), defaultValue: 1) { _ in
+                        Text(m.localizedString)
+                    }
+                }
+                Divider()
             }
-            Divider()
+        }.labelsHidden()
+    }
+}
+
+private extension Uicorn.View.Modifiers {
+    var opacity: Double? {
+        get {
+            compactMap {
+                switch $0.type {
+                case let .opacity(o):
+                    return o
+                default:
+                    return nil
+                }
+            }.first
+        }
+        set {
+            append(.opacity(newValue!))
         }
     }
 }
