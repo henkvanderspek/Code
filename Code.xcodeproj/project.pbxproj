@@ -109,7 +109,6 @@
 		B665A4232847AE2D0076DB3F /* Axis+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B665A4202847AE2D0076DB3F /* Axis+SwiftUI.swift */; };
 		B66B4475283E15BE00230758 /* iPhone12ProMax.scn in Resources */ = {isa = PBXBuildFile; fileRef = B66B4474283E15BE00230758 /* iPhone12ProMax.scn */; };
 		B66B4477283E297800230758 /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4476283E297800230758 /* AppearanceView.swift */; };
-		B66B4479283E32F500230758 /* StackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B4478283E32F500230758 /* StackPropertiesView.swift */; };
 		B66F4CED284509CA00E941ED /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F4CEC284509CA00E941ED /* ImageScale.swift */; };
 		B66F4CEE284509CA00E941ED /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F4CEC284509CA00E941ED /* ImageScale.swift */; };
 		B66F4CEF284509CA00E941ED /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F4CEC284509CA00E941ED /* ImageScale.swift */; };
@@ -157,6 +156,7 @@
 		B68D9CAE2848B45200F2129F /* UicornView+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68D9CAC2848B45200F2129F /* UicornView+Color.swift */; };
 		B68D9CAF2848B45200F2129F /* UicornView+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68D9CAC2848B45200F2129F /* UicornView+Color.swift */; };
 		B68D9CB12848D71500F2129F /* ModifiersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68D9CB02848D71500F2129F /* ModifiersView.swift */; };
+		B68D9CB32849047300F2129F /* StackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68D9CB22849047300F2129F /* StackPropertiesView.swift */; };
 		B69093B8284550C800CB2F42 /* View+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093B7284550C800CB2F42 /* View+Instance.swift */; };
 		B69093B9284550C800CB2F42 /* View+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093B7284550C800CB2F42 /* View+Instance.swift */; };
 		B69093BA284550C800CB2F42 /* View+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093B7284550C800CB2F42 /* View+Instance.swift */; };
@@ -176,7 +176,6 @@
 		B69E39CC283CEB3200B65682 /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39CB283CEB3200B65682 /* Alignment.swift */; };
 		B69E39CD283CEB3200B65682 /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39CB283CEB3200B65682 /* Alignment.swift */; };
 		B69E39CE283CEB3200B65682 /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39CB283CEB3200B65682 /* Alignment.swift */; };
-		B69E39D0283CECFC00B65682 /* ZStackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39CF283CECFC00B65682 /* ZStackPropertiesView.swift */; };
 		B69F2BD12828646800877D04 /* TreeItem+Uicorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD02828646800877D04 /* TreeItem+Uicorn.swift */; };
 		B69F2BD32828663900877D04 /* UicornView+HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD22828663900877D04 /* UicornView+HStack.swift */; };
 		B69F2BD52828673000877D04 /* UicornView+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F2BD42828673000877D04 /* UicornView+Text.swift */; };
@@ -243,8 +242,6 @@
 		B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2843527CCEAF60000C0E7 /* macOSApp.swift */; };
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
-		B6D0F14F283BDDFC00A380BB /* HStackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0F14E283BDDFC00A380BB /* HStackPropertiesView.swift */; };
-		B6D0F151283BDEF000A380BB /* VStackPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0F150283BDEF000A380BB /* VStackPropertiesView.swift */; };
 		B6D2B8F6283257EE00346B95 /* ShapePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */; };
 		B6E13C5E283CFB36003BFDD4 /* TextCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C5D283CFB36003BFDD4 /* TextCase.swift */; };
 		B6E13C5F283CFB36003BFDD4 /* TextCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C5D283CFB36003BFDD4 /* TextCase.swift */; };
@@ -328,7 +325,6 @@
 		B66A8E092816D46D00BE9D55 /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
 		B66B4474283E15BE00230758 /* iPhone12ProMax.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = iPhone12ProMax.scn; sourceTree = "<group>"; };
 		B66B4476283E297800230758 /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
-		B66B4478283E32F500230758 /* StackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackPropertiesView.swift; sourceTree = "<group>"; };
 		B66F4CEC284509CA00E941ED /* ImageScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScale.swift; sourceTree = "<group>"; };
 		B676929A282E622D0026CA87 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		B676929C282E828C0026CA87 /* ColorPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPropertiesView.swift; sourceTree = "<group>"; };
@@ -371,6 +367,7 @@
 		B68D9CA42848ACFD00F2129F /* Padding+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Padding+SwiftUI.swift"; sourceTree = "<group>"; };
 		B68D9CAC2848B45200F2129F /* UicornView+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Color.swift"; sourceTree = "<group>"; };
 		B68D9CB02848D71500F2129F /* ModifiersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiersView.swift; sourceTree = "<group>"; };
+		B68D9CB22849047300F2129F /* StackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackPropertiesView.swift; sourceTree = "<group>"; };
 		B69093B7284550C800CB2F42 /* View+Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Instance.swift"; sourceTree = "<group>"; };
 		B69093BB2845516000CB2F42 /* UicornView+Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Instance.swift"; sourceTree = "<group>"; };
 		B69093BF2845527600CB2F42 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -378,7 +375,6 @@
 		B69E39C3283CD82600B65682 /* VerticalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAlignment.swift; sourceTree = "<group>"; };
 		B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalAlignment.swift; sourceTree = "<group>"; };
 		B69E39CB283CEB3200B65682 /* Alignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment.swift; sourceTree = "<group>"; };
-		B69E39CF283CECFC00B65682 /* ZStackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZStackPropertiesView.swift; sourceTree = "<group>"; };
 		B69F2BD02828646800877D04 /* TreeItem+Uicorn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+Uicorn.swift"; sourceTree = "<group>"; };
 		B69F2BD22828663900877D04 /* UicornView+HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+HStack.swift"; sourceTree = "<group>"; };
 		B69F2BD42828673000877D04 /* UicornView+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Text.swift"; sourceTree = "<group>"; };
@@ -411,8 +407,6 @@
 		B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B6C2843E27CCEAF70000C0E7 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		B6C2844327CCFBCC0000C0E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		B6D0F14E283BDDFC00A380BB /* HStackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackPropertiesView.swift; sourceTree = "<group>"; };
-		B6D0F150283BDEF000A380BB /* VStackPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackPropertiesView.swift; sourceTree = "<group>"; };
 		B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePropertiesView.swift; sourceTree = "<group>"; };
 		B6E13C5D283CFB36003BFDD4 /* TextCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCase.swift; sourceTree = "<group>"; };
 		B6E13C61283D2639003BFDD4 /* UicornView+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Map.swift"; sourceTree = "<group>"; };
@@ -693,14 +687,11 @@
 				B6EECA572833937400774B42 /* TextPropertiesView.swift */,
 				B6B125E3283511C5005E989F /* PaddingPropertiesView.swift */,
 				B660EEC1283641E8008234A4 /* ImagePropertiesView.swift */,
-				B66B4478283E32F500230758 /* StackPropertiesView.swift */,
-				B6D0F14E283BDDFC00A380BB /* HStackPropertiesView.swift */,
-				B6D0F150283BDEF000A380BB /* VStackPropertiesView.swift */,
-				B69E39CF283CECFC00B65682 /* ZStackPropertiesView.swift */,
 				B65C0277283FA67F0073FA4A /* MapPropertiesView.swift */,
 				B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */,
 				B65C027B283FBFF20073FA4A /* FramePropertiesView.swift */,
 				B69093C32845611500CB2F42 /* InstancePropertiesView.swift */,
+				B68D9CB22849047300F2129F /* StackPropertiesView.swift */,
 				B68D9CB02848D71500F2129F /* ModifiersView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 				B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */,
@@ -1184,12 +1175,10 @@
 				B665A3F62847A4A90076DB3F /* Coordinate.swift in Sources */,
 				B6817DE1283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B660EEC42836422F008234A4 /* TextFieldView.swift in Sources */,
-				B6D0F151283BDEF000A380BB /* VStackPropertiesView.swift in Sources */,
 				B69E39C5283CD82600B65682 /* VerticalAlignment.swift in Sources */,
 				B60F224F282839F700A730F1 /* Uicorn.swift in Sources */,
 				B665A3FA2847A81E0076DB3F /* Location.swift in Sources */,
 				B665A3FE2847AB600076DB3F /* Font+SwiftUI.swift in Sources */,
-				B69E39D0283CECFC00B65682 /* ZStackPropertiesView.swift in Sources */,
 				B6A2E5F7282D064B002FCDFF /* CollectionPropertiesView.swift in Sources */,
 				B6EECA582833937400774B42 /* TextPropertiesView.swift in Sources */,
 				B69F2BD32828663900877D04 /* UicornView+HStack.swift in Sources */,
@@ -1201,12 +1190,12 @@
 				B66F4CEE284509CA00E941ED /* ImageScale.swift in Sources */,
 				B60F22482827C53900A730F1 /* ViewType.swift in Sources */,
 				B6FDFF4C283F8CFC009E40E1 /* OptionalPropertiesView.swift in Sources */,
+				B68D9CB32849047300F2129F /* StackPropertiesView.swift in Sources */,
 				B67692A3282E9D4C0026CA87 /* View+Shape.swift in Sources */,
 				B6883D5928242CC000544462 /* AppView.swift in Sources */,
 				B61433A2282A642200760F39 /* Sugar.swift in Sources */,
 				B6EECA5428338BD100774B42 /* Font.swift in Sources */,
 				B69093C12845527600CB2F42 /* Component.swift in Sources */,
-				B6D0F14F283BDDFC00A380BB /* HStackPropertiesView.swift in Sources */,
 				B65C027C283FBFF20073FA4A /* FramePropertiesView.swift in Sources */,
 				B65C0275283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */,
 				B676929B282E622D0026CA87 /* Header.swift in Sources */,
@@ -1241,7 +1230,6 @@
 				B665A3F2284763100076DB3F /* ValueProvider.swift in Sources */,
 				B69E39CD283CEB3200B65682 /* Alignment.swift in Sources */,
 				B685632928410F9800D39A8D /* AppStorage.swift in Sources */,
-				B66B4479283E32F500230758 /* StackPropertiesView.swift in Sources */,
 				B65C0271283FA3570073FA4A /* View+Map.swift in Sources */,
 				B665A4122847AD7D0076DB3F /* HorizontalAlignment+SwiftUI.swift in Sources */,
 				B665A4222847AE2D0076DB3F /* Axis+SwiftUI.swift in Sources */,

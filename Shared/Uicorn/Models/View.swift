@@ -93,3 +93,5 @@ extension Uicorn.View: RandomAccessCollection {
         subviews[index]
     }
 }
+
+extension Uicorn.View.`Type`: UicornViewType {}

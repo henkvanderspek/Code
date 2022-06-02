@@ -28,3 +28,26 @@ extension Uicorn.VerticalAlignment {
         }
     }
 }
+
+extension Uicorn.VerticalAlignment {
+    init(_ a: Uicorn.HorizontalAlignment) {
+        switch a {
+        case .leading: self = .top
+        case .center: self = .center
+        case .trailing: self = .bottom
+        }
+    }
+}
+
+extension Uicorn.VerticalAlignment {
+    init(_ a: Uicorn.Alignment) {
+        switch a {
+        case .topLeading, .top, .topTrailing:
+            self = .top
+        case .leading, .center, .trailing:
+            self = .center
+        case .bottomLeading, .bottom, .bottomTrailing:
+            self = .bottom
+        }
+    }
+}

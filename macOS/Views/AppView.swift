@@ -49,11 +49,12 @@ struct AppView: View {
                 .id($observer.sanitizedScreen.wrappedValue?.view?.id ?? "empty")
             }
             List {
-                InspectorView(view: observer.sanitizedSelectedItem)
+                InspectorView()
             }.listStyle(.sidebar)
         }
         .environmentObject(componentController)
         .environmentObject(EmptyValueProvider())
+        .environmentObject(observer)
         .navigationViewStyle(.columns)
         .navigationTitle("")
         .toolbar {
@@ -178,6 +179,34 @@ extension AppView.Observer {
         selectedItem.addView(.from(t))
         selectedItem = selectedItem.children?.last ?? selectedItem
         objectWillChange.send()
+    }
+    func update(_ t: Uicorn.View.`Type`) {
+        selectedItem.view?.type = t
+        objectWillChange.send()
+    }
+    func update(_ c: Uicorn.View.Collection) {
+        update(.collection(c))
+    }
+    func update(_ s: Uicorn.View.Shape) {
+        update(.shape(s))
+    }
+    func update(_ t: Uicorn.View.Text) {
+        update(.text(t))
+    }
+    func update(_ i: Uicorn.View.Image) {
+        update(.image(i))
+    }
+    func update(_ m: Uicorn.View.Map) {
+        update(.map(m))
+    }
+    func update(_ s: Uicorn.View.Scroll) {
+        update(.scroll(s))
+    }
+    func update(_ i: Uicorn.View.Instance) {
+        update(.instance(i))
+    }
+    func update(_ c: Uicorn.Color) {
+        update(.color(c))
     }
 }
 

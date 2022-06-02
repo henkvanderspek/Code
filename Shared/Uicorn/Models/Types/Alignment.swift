@@ -36,3 +36,24 @@ extension Uicorn.Alignment {
         }
     }
 }
+
+extension Uicorn.Alignment {
+    init(_ a: Uicorn.VerticalAlignment) {
+        switch a {
+        case .top: self = .leading
+        case .bottom: self = .trailing
+        case .center: fallthrough
+        default: self = .center
+        }
+    }
+}
+
+extension Uicorn.Alignment {
+    init(_ a: Uicorn.HorizontalAlignment) {
+        switch a {
+        case .leading: self = .leading
+        case .trailing: self = .trailing
+        case .center: self = .center
+        }
+    }
+}

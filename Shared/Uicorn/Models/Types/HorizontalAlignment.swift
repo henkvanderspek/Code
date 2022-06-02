@@ -24,3 +24,27 @@ extension Uicorn.HorizontalAlignment {
         }
     }
 }
+
+extension Uicorn.HorizontalAlignment {
+    init(_ a: Uicorn.VerticalAlignment) {
+        switch a {
+        case .top: self = .leading
+        case .bottom: self = .trailing
+        case .center: fallthrough
+        default: self = .center
+        }
+    }
+}
+
+extension Uicorn.HorizontalAlignment {
+    init(_ a: Uicorn.Alignment) {
+        switch a {
+        case .topLeading, .top, .topTrailing:
+            self = .leading
+        case .leading, .center, .trailing:
+            self = .center
+        case .bottomLeading, .bottom, .bottomTrailing:
+            self = .trailing
+        }
+    }
+}
