@@ -41,12 +41,13 @@ extension Uicorn {
                 type = t
             }
         }
+        typealias Modifiers = [Modifier]
         var id: String
         var type: `Type`
         var action: Action?
         var properties: Properties?
-        var modifiers: [Modifier]?
-        init(id i: String, type t: `Type`, action a: Action?, properties p: Properties?, modifiers m: [Modifier]?) {
+        var modifiers: Modifiers?
+        init(id i: String, type t: `Type`, action a: Action?, properties p: Properties?, modifiers m: Modifiers?) {
             id = i
             type = t
             action = a

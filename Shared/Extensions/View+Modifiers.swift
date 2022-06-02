@@ -51,11 +51,12 @@ extension Uicorn.Properties {
     var modifiers: [Uicorn.View.Modifier] {
         get {
             return [
-                .init(id: .unique, type: .frame(frame ?? .default)),
-                .init(id: .unique, type: .padding(padding)),
-                .init(id: .unique, type: .background(.color(backgroundColor ?? .clear))),
-                .init(id: .unique, type: .cornerRadius(cornerRadius)),
-            ]
+                frame.map { .frame($0) },
+                .padding(padding),
+                backgroundColor.map { .background(.color($0)) },
+                .cornerRadius(cornerRadius),
+                opacity.map { .opacity($0) }
+            ].compactMap { $0 }
         }
         set {
             fatalError()

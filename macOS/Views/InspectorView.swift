@@ -55,25 +55,35 @@ struct InspectorView: View {
             case let .instance(i):
                 InstancePropertiesView(i.binding(set: update))
             case let .color(c):
-                ColorPropertiesView(header: "Color", model: c.binding(set: update))
+                ColorPropertiesView(header: "Type", model: c.binding(set: update))
             case .empty, .spacer:
                 EmptyView()
             }
             // Generic properties
             switch view.type {
-            case .shape, .text, .image, .hstack, .vstack, .zstack, .scroll, .collection, .map:
+            case .shape, .text, .image, .hstack, .vstack, .zstack, .scroll, .collection, .map, .color:
                 Divider()
-                PropertiesView(
+                ModifiersView(
                     .init(
                         get: {
-                            view.properties ?? .empty
+                            view.modifiers ?? .empty
                         },
                         set: {
-                            $view.properties.wrappedValue = $0
+                            view.modifiers = $0
                         }
                     )
                 )
-            case .spacer, .empty, .instance, .color:
+//                PropertiesView(
+//                    .init(
+//                        get: {
+//                            view.properties ?? .empty
+//                        },
+//                        set: {
+//                            $view.properties.wrappedValue = $0
+//                        }
+//                    )
+//                )
+            case .spacer, .empty, .instance:
                 EmptyView()
             }
         }

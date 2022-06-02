@@ -156,6 +156,7 @@
 		B68D9CAD2848B45200F2129F /* UicornView+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68D9CAC2848B45200F2129F /* UicornView+Color.swift */; };
 		B68D9CAE2848B45200F2129F /* UicornView+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68D9CAC2848B45200F2129F /* UicornView+Color.swift */; };
 		B68D9CAF2848B45200F2129F /* UicornView+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68D9CAC2848B45200F2129F /* UicornView+Color.swift */; };
+		B68D9CB12848D71500F2129F /* ModifiersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68D9CB02848D71500F2129F /* ModifiersView.swift */; };
 		B69093B8284550C800CB2F42 /* View+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093B7284550C800CB2F42 /* View+Instance.swift */; };
 		B69093B9284550C800CB2F42 /* View+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093B7284550C800CB2F42 /* View+Instance.swift */; };
 		B69093BA284550C800CB2F42 /* View+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093B7284550C800CB2F42 /* View+Instance.swift */; };
@@ -369,6 +370,7 @@
 		B68D9CA02848211300F2129F /* View+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modifiers.swift"; sourceTree = "<group>"; };
 		B68D9CA42848ACFD00F2129F /* Padding+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Padding+SwiftUI.swift"; sourceTree = "<group>"; };
 		B68D9CAC2848B45200F2129F /* UicornView+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Color.swift"; sourceTree = "<group>"; };
+		B68D9CB02848D71500F2129F /* ModifiersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiersView.swift; sourceTree = "<group>"; };
 		B69093B7284550C800CB2F42 /* View+Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Instance.swift"; sourceTree = "<group>"; };
 		B69093BB2845516000CB2F42 /* UicornView+Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Instance.swift"; sourceTree = "<group>"; };
 		B69093BF2845527600CB2F42 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -699,6 +701,7 @@
 				B65C0273283FA5DE0073FA4A /* ScrollPropertiesView.swift */,
 				B65C027B283FBFF20073FA4A /* FramePropertiesView.swift */,
 				B69093C32845611500CB2F42 /* InstancePropertiesView.swift */,
+				B68D9CB02848D71500F2129F /* ModifiersView.swift */,
 				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 				B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */,
 			);
@@ -1209,6 +1212,7 @@
 				B676929B282E622D0026CA87 /* Header.swift in Sources */,
 				B665A41A2847ADDB0076DB3F /* TextAlignment+SwiftUI.swift in Sources */,
 				B65C0265283F9D540073FA4A /* View+Scroll.swift in Sources */,
+				B68D9CB12848D71500F2129F /* ModifiersView.swift in Sources */,
 				B665A4022847AB8B0076DB3F /* Coordinate+MapKit.swift in Sources */,
 				B61433AE282AA1D200760F39 /* UicornView+UnsplashCollection.swift in Sources */,
 				B676929D282E828C0026CA87 /* ColorPropertiesView.swift in Sources */,

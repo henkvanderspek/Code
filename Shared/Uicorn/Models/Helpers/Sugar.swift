@@ -38,22 +38,22 @@ extension Uicorn.View {
     static func image(id: String = .unique, _ s: String = "", action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
         .init(id: id, type: .image(.remote(s)), action: action, properties: properties, modifiers: nil)
     }
-    static func image(id: String = .unique, _ s: String, fill: Uicorn.Color?, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: [Modifier]? = nil) -> Uicorn.View {
+    static func image(id: String = .unique, _ s: String, fill: Uicorn.Color?, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
         .init(id: id, type: .image(.system(name: s, fill: fill, type: type, weight: weight, scale: scale)), action: action, properties: properties, modifiers: nil)
     }
-    static func sfSymbol(id: String = .unique, _ s: String, fill: Uicorn.Color? = nil, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, properties: Uicorn.Properties? = nil, modifiers: [Modifier]? = nil) -> Uicorn.View {
+    static func sfSymbol(id: String = .unique, _ s: String, fill: Uicorn.Color? = nil, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
         .image(id: id, s, fill: fill, type: type, weight: weight, scale: scale, properties: properties, modifiers: modifiers)
     }
     static var randomSystemImage: Uicorn.View {
         .randomSystemImage()
     }
-    static func randomSystemImage(fill: Uicorn.Color? = nil, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: [Modifier]? = nil) -> Uicorn.View {
+    static func randomSystemImage(fill: Uicorn.Color? = nil, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
         .init(id: .unique, type: .image(.randomSystem(fill: fill)), action: action, properties: properties, modifiers: modifiers)
     }
     static var randomRemoteImage: Uicorn.View {
         randomRemoteImage()
     }
-    static func randomRemoteImage(action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: [Modifier]? = nil) -> Uicorn.View {
+    static func randomRemoteImage(action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
         .init(id: .unique, type: .image(.randomRemote), action: action, properties: properties, modifiers: modifiers)
     }
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View {
@@ -65,13 +65,13 @@ extension Uicorn.View {
     static var rectangle: Uicorn.View {
         .rectangle(.system(.yellow))
     }
-    static func rectangle(_ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: [Modifier]? = nil) -> Uicorn.View {
+    static func rectangle(_ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
         .init(id: .unique, type: .shape(.rectangle(c)), action: action, properties: properties, modifiers: modifiers)
     }
-    static func ellipse(_ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: [Modifier]? = nil) -> Uicorn.View {
+    static func ellipse(_ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
         .init(id: .unique, type: .shape(.ellipse(c)), action: action, properties: properties, modifiers: modifiers)
     }
-    static func capsule(_ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: [Modifier]? = nil) -> Uicorn.View {
+    static func capsule(_ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
         .init(id: .unique, type: .shape(.capsule(c)), action: action, properties: properties, modifiers: modifiers)
     }
     static var map: Uicorn.View {
@@ -104,7 +104,7 @@ extension Uicorn.View {
     static var color: Uicorn.View {
         .color(.random)
     }
-    static func color(id: String = .unique, _ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: [Modifier]? = nil) -> Uicorn.View {
+    static func color(id: String = .unique, _ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
         .init(id: .unique, type: .color(c), action: nil, properties: nil, modifiers: nil)
     }
 }
@@ -136,5 +136,32 @@ extension Uicorn.View.Action {
 extension String {
     static func random(of e: [String]) -> String {
         e.randomElement()!
+    }
+}
+
+extension Uicorn.View.Modifier {
+    convenience init(_ id: String = .unique, type: `Type`) {
+        self.init(id: id, type: type)
+    }
+    static func frame(_ f: Uicorn.Frame) -> Uicorn.View.Modifier {
+        .init(type: .frame(f))
+    }
+    static func padding(_ p: Uicorn.Padding) -> Uicorn.View.Modifier {
+        .init(type: .padding(p))
+    }
+    static func background(_ v: Uicorn.View) -> Uicorn.View.Modifier {
+        .init(type: .background(v))
+    }
+    static func cornerRadius(_ c: Int) -> Uicorn.View.Modifier {
+        .init(type: .cornerRadius(c))
+    }
+    static func opacity(_ o: Double) -> Uicorn.View.Modifier {
+        .init(type: .opacity(o))
+    }
+}
+
+extension Array where Element == Uicorn.View.Modifier {
+    static var empty: Self {
+        .init()
     }
 }

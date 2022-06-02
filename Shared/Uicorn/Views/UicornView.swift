@@ -19,19 +19,11 @@ struct UicornView: View {
     }
     var body: some View {
         content
-//            .frame(model.properties?.frame ?? .default, scaleFactor: scaleFactor)
-//            .cornerRadius(cornerRadius)
-//            .padding(.init(model.properties?.padding ?? .zero, scaleFactor: scaleFactor))
-//            .background {
-//                backgroundView()
-//                    .cornerRadius(cornerRadius)
-//            }
-//            .opacity(.init(model.properties?.opacity ?? 1.0))
             .modifiers(Binding($model.properties), scaleFactor: scaleFactor)
             .overlay {
                 Rectangle()
                     .strokeBorder(.orange, lineWidth: 2.0)
-                    .isHidden(!model.isSelected)
+                    .isHidden(!$model.wrappedValue.isSelected)
                     .clipped()
                     .blendMode(.overlay)
             }
@@ -51,12 +43,6 @@ struct UicornView: View {
     }
 }
 
-//extension UicornView {
-//    var cornerRadius: Double {
-//        .init(model.properties?.cornerRadius ?? 0).multiplied(by: scaleFactor)
-//    }
-//}
-
 private extension View {
     func onSafeTapGesture(action: Uicorn.View.Action?, perform p: @escaping (Uicorn.View.Action) -> Void) -> some View {
         guard let a = action else { return AnyView(self) }
@@ -65,16 +51,6 @@ private extension View {
         })
     }
 }
-
-//private extension UicornView {
-//    @ViewBuilder func backgroundView() -> some View {
-//        if let c = model.properties?.backgroundColor {
-//            SwiftUI.Color(c)
-//        } else {
-//            EmptyView()
-//        }
-//    }
-//}
 
 private extension UicornView {
     private var sanitizedModel: Uicorn.View {
