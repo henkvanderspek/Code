@@ -208,6 +208,10 @@ extension AppView.Observer {
     func update(_ c: Uicorn.Color) {
         update(.color(c))
     }
+    func update(_ m: Uicorn.View.Modifiers) {
+        selectedItem.view?.modifiers = m
+        objectWillChange.send()
+    }
 }
 
 extension TreeItem {
@@ -229,7 +233,7 @@ extension Uicorn.View {
         modified(type: .zstack(.init([cloned()])))
     }
     func cloned() -> Uicorn.View {
-        .init(id: id, type: type, action: action, properties: properties, modifiers: modifiers)
+        .init(id: id, type: type, action: action, modifiers: modifiers)
     }
     func type(_ t: `Type`) -> Uicorn.View {
         let v = cloned()
@@ -239,7 +243,6 @@ extension Uicorn.View {
     private func modified(type t: Uicorn.View.`Type`) {
         id = UUID().uuidString
         type = t
-        properties = nil
         action = nil
         modifiers = nil
     }

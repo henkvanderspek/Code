@@ -59,4 +59,4 @@ extension Uicorn.View.Instance.Value {
     }
 }
 
-extension Uicorn.View.Instance: UicornViewType {}
+extension Uicorn.View.Instance: Bindable {}

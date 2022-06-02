@@ -14,13 +14,13 @@ extension Uicorn.View {
     static var post: Uicorn.View {
         .vstack([
                 .hstack([
-                        .image(id: .postAvatarId, properties: .size(30).cornerRadius(15)),
+                        .image(id: .postAvatarId, modifiers: [.size(30), .cornerRadius(15)]),
                         .text(id: .postAuthorId)
                     ],
                     spacing: 15,
-                    properties: .padding(10)
+                    modifiers: [.padding(10)]
                 ),
-                .image(id: .postImageId, properties: .height(240)),
+                .image(id: .postImageId, modifiers: [.height(240)]),
                 .vstack([
                         .hstack([
                                 .sfSymbol(.random(of: ["heart", "heart.fill"]), weight: .medium),
@@ -48,7 +48,7 @@ extension Uicorn.View {
                     ],
                     alignment: .leading,
                     spacing: 12,
-                    properties: .padding(10)
+                    modifiers: [.padding(10)]
                 )
             ],
             alignment: .leading

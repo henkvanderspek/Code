@@ -8,46 +8,51 @@
 import SwiftUI
 
 struct ModifiersView: View {
-    @Binding var model: Uicorn.View.Modifiers
+    @Binding var modifiers: Uicorn.View.Modifiers
     init(_ m: Binding<Uicorn.View.Modifiers>) {
-        _model = m
+        _modifiers = m
     }
     var body: some View {
         Section {
-            ForEach(ViewModifier.allCases, id: \.self) { m in
-                switch m {
+            ForEach($modifiers) { $modifier in
+                switch modifier.type {
                 case .opacity:
-                    OptionalPropertiesView(header: m.localizedString, value: $model.opacity, defaultValue: 1.0) { value in
+                    OptionalPropertiesView(header: modifier.title, value: $modifier.opacity, defaultValue: 1.0) { value in
                         HGroup {
-                            StepperView($model.opacity, default: 1.0, range: 0...1, step: 0.1, header: "Opacity")
+                            StepperView($modifier.opacity, default: 1.0, range: 0...1, step: 0.1, header: "Opacity", showHeader: false)
                             GreedySpacer()
                         }
                     }
-                default:
-                    OptionalPropertiesView(header: m.localizedString, value: .constant(nil), defaultValue: 1) { _ in
-                        Text(m.localizedString)
+                case .padding, .blendMode, .cornerRadius, .frame, .overlay, .background:
+                    OptionalPropertiesView(header: modifier.title, value: .constant(nil), defaultValue: 1) { _ in
+                        Text(modifier.title)
                     }
                 }
                 Divider()
             }
-        }.labelsHidden()
+//            ForEach(ViewModifier.allCases, id: \.self) { m in
+//                OptionalPropertiesView(header: m.localizedString, value: .constant(nil), defaultValue: 1) { _ in
+//                    Text(m.localizedString)
+//                }
+//                Divider()
+//            }
+        }
+        .labelsHidden()
     }
 }
 
-private extension Uicorn.View.Modifiers {
+private extension Uicorn.View.Modifier {
     var opacity: Double? {
         get {
-            compactMap {
-                switch $0.type {
-                case let .opacity(o):
-                    return o
-                default:
-                    return nil
-                }
-            }.first
+            switch type {
+            case let .opacity(o): return o
+            default: return nil
+            }
         }
         set {
-            append(.opacity(newValue!))
+            type = .opacity(newValue ?? 1.0)
+            id = .unique
+            print(type)
         }
     }
 }
@@ -79,5 +84,25 @@ extension ViewModifier {
         case .overlay: return "Overlay"
         case .blendMode: return "Blend Mode"
         }
+    }
+}
+
+extension ViewModifier {
+    init(_ t: Uicorn.View.Modifier.`Type`) {
+        switch t {
+        case .opacity: self = .opacity
+        case .frame: self = .frame
+        case .cornerRadius: self = .cornerRadius
+        case .padding: self = .padding
+        case .background: self = .background
+        case .overlay: self = .overlay
+        case .blendMode: self = .blendMode
+        }
+    }
+}
+
+extension Uicorn.View.Modifier {
+    var title: String {
+        ViewModifier(type).localizedString
     }
 }

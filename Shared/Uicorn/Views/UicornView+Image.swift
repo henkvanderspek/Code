@@ -56,14 +56,14 @@ private extension Uicorn.View.Image.System {
 private extension UicornView.Image {
     @ViewBuilder func createView(for image: SwiftUI.Image) -> some SwiftUI.View {
         Color
-            .clear
-            .overlay {
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .clipped()
-                    .id(UUID())
-            }
+            .yellow
+//            .overlay {
+//                image
+//                    .resizable()
+//                    .scaledToFill()
+//                    .clipped()
+//                    .id(UUID())
+//            }
     }
 }
 

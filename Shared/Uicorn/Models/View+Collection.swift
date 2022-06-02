@@ -24,7 +24,7 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View.Collection: UicornViewType {}
+extension Uicorn.View.Collection: Bindable {}
 
 extension Uicorn.View.Collection {
     static var allTypeCases: [`Type`] {

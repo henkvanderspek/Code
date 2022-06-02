@@ -23,19 +23,23 @@ struct StepperView<V: Comparable & Strideable & CustomStringConvertible>: View {
     let range: ClosedRange<V>
     let step: V.Stride
     let header: String
+    let showHeader: Bool
     @FocusState private var isTextFieldFocused: Bool
     private var formatter: Formatter
-    init(_ v: Binding<V?>, default d: V, range r: ClosedRange<V>, step s: V.Stride, header h: String, formatter f: Formatter = .stepper) {
+    init(_ v: Binding<V?>, default d: V, range r: ClosedRange<V>, step s: V.Stride, header h: String, formatter f: Formatter = .stepper, showHeader sh: Bool = true) {
         _value = v
         `default` = d
         range = r
         step = s
         header = h
         formatter = f
+        showHeader = sh
     }
     var body: some View {
         VStack(alignment: .leading) {
-            Header(header)
+            if showHeader {
+                Header(header)
+            }
             HStack(spacing: 0) {
                 TextField(
                     "Value",

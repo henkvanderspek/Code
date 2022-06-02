@@ -18,4 +18,4 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View.Scroll: UicornViewType {}
+extension Uicorn.View.Scroll: Bindable {}

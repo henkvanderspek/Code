@@ -25,4 +25,4 @@ struct Color_Previews: PreviewProvider {
     }
 }
 
-extension Uicorn.Color: UicornViewType {}
+extension Uicorn.Color: Bindable {}

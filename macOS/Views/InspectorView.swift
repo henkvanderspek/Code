@@ -39,7 +39,7 @@ struct InspectorView: View {
             switch v.type {
             case .shape, .text, .image, .hstack, .vstack, .zstack, .scroll, .collection, .map, .color:
                 Divider()
-                ModifiersView($v.safeModifiers)
+                ModifiersView(v.safeModifiers.binding(set: observer.update))
             case .spacer, .empty, .instance:
                 EmptyView()
             }
@@ -52,12 +52,7 @@ struct InspectorView: View {
 
 private extension Uicorn.View {
     var safeModifiers: Modifiers {
-        get {
-            modifiers ?? .empty
-        }
-        set {
-            modifiers = newValue
-        }
+        modifiers ?? .empty
     }
 }
 

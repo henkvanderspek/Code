@@ -19,7 +19,7 @@ struct UicornView: View {
     }
     var body: some View {
         content
-            .modifiers(Binding($model.properties), scaleFactor: scaleFactor)
+            .modifiers(Binding($model.modifiers), scaleFactor: scaleFactor)
             .overlay {
                 Rectangle()
                     .strokeBorder(.orange, lineWidth: 2.0)
@@ -29,17 +29,17 @@ struct UicornView: View {
             }
 //            // TODO: Use the approach in below link to show consistent iOS style popovers
 //            // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
-//            .popover(isPresented: $shouldShowSheet) {
-//                sheetView?
-//                    .frame(minWidth: 300, minHeight: 300)
-//            }
-//            .onSafeTapGesture(action: model.action) {
-//                switch $0.type {
-//                case .presentSelf:
-//                    sheetView = AnyView(content)
-//                    shouldShowSheet = true
-//                }
-//            }
+            .popover(isPresented: $shouldShowSheet) {
+                sheetView?
+                    .frame(minWidth: 300, minHeight: 300)
+            }
+            .onSafeTapGesture(action: model.action) {
+                switch $0.type {
+                case .presentSelf:
+                    sheetView = AnyView(content)
+                    shouldShowSheet = true
+                }
+            }
     }
 }
 
@@ -88,7 +88,7 @@ private extension UicornView {
     }
 }
 
-extension UicornViewType {
+extension Bindable {
     var binding: Binding<Self> {
         binding {
             print($0)

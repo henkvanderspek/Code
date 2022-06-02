@@ -20,7 +20,7 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View.Image: UicornViewType {}
+extension Uicorn.View.Image: Bindable {}
 
 extension Uicorn.View.Image {
     static func remote(_ url: String) -> Uicorn.View.Image {

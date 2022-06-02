@@ -24,4 +24,4 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View.Text: UicornViewType {}
+extension Uicorn.View.Text: Bindable {}

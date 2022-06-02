@@ -25,17 +25,3 @@ extension Uicorn.Frame {
         .init(width: nil, height: nil, alignment: .center)
     }
 }
-
-extension Uicorn.Frame {
-    var w: CGFloat? {
-        let v = width.map { CGFloat($0) }
-        return v ?? 0 > 0 ? v : nil
-    }
-    var h: CGFloat? {
-        let v = height.map { CGFloat($0) }
-        return v ?? 0 > 0 ? v : nil
-    }
-    var a: Alignment {
-        .init(alignment)
-    }
-}

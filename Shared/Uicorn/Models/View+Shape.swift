@@ -30,7 +30,7 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View.Shape: UicornViewType {}
+extension Uicorn.View.Shape: Bindable {}
 
 extension Uicorn.View.Shape {
     static var allTypeCases: [`Type`] {

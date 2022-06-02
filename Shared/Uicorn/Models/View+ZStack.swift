@@ -18,4 +18,4 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View.ZStack: UicornViewType {}
+extension Uicorn.View.ZStack: Bindable {}

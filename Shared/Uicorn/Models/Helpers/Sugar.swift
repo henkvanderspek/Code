@@ -9,22 +9,22 @@ import Foundation
 
 extension Uicorn.View {
     static var empty: Uicorn.View {
-        .init(id: .unique, type: .empty, action: nil, properties: nil, modifiers: nil)
+        .init(id: .unique, type: .empty, action: nil, modifiers: nil)
     }
     static var spacer: Uicorn.View {
-        .init(id: .unique, type: .spacer, action: nil, properties: nil, modifiers: nil)
+        .init(id: .unique, type: .spacer, action: nil, modifiers: nil)
     }
-    static func text(id: String = .unique, _ s: String = "", font: Uicorn.Font = .default, alignment: Uicorn.TextAlignment = .leading, textCase: Uicorn.TextCase = .standard, foregroundColor: Uicorn.Color? = nil, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
-        .init(id: id, type: .text(.init(s, font: font, alignment: alignment, textCase: textCase, foregroundColor: foregroundColor)), action: action, properties: properties, modifiers: nil)
+    static func text(id: String = .unique, _ s: String = "", font: Uicorn.Font = .default, alignment: Uicorn.TextAlignment = .leading, textCase: Uicorn.TextCase = .standard, foregroundColor: Uicorn.Color? = nil, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: id, type: .text(.init(s, font: font, alignment: alignment, textCase: textCase, foregroundColor: foregroundColor)), action: action, modifiers: modifiers)
     }
-    static func hstack(_ c: [Uicorn.View], alignment: Uicorn.VerticalAlignment = .center, spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .hstack(.init(c, alignment: alignment, spacing: spacing)), action: action, properties: properties, modifiers: nil)
+    static func hstack(_ c: [Uicorn.View], alignment: Uicorn.VerticalAlignment = .center, spacing: Int = 0, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .hstack(.init(c, alignment: alignment, spacing: spacing)), action: action, modifiers: modifiers)
     }
-    static func vstack(_ c: [Uicorn.View], alignment: Uicorn.HorizontalAlignment = .center, spacing: Int = 0, action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .vstack(.init(c, alignment: alignment, spacing: spacing)), action: action, properties: properties, modifiers: nil)
+    static func vstack(_ c: [Uicorn.View], alignment: Uicorn.HorizontalAlignment = .center, spacing: Int = 0, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .vstack(.init(c, alignment: alignment, spacing: spacing)), action: action, modifiers: modifiers)
     }
-    static func zstack(_ c: [Uicorn.View], action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .zstack(.init(c)), action: action, properties: properties, modifiers: nil)
+    static func zstack(_ c: [Uicorn.View], action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .zstack(.init(c)), action: action, modifiers: modifiers)
     }
     static var hstack: Uicorn.View {
         .hstack([])
@@ -35,29 +35,29 @@ extension Uicorn.View {
     static var zstack: Uicorn.View {
         .zstack([])
     }
-    static func image(id: String = .unique, _ s: String = "", action: Action? = nil, properties: Uicorn.Properties? = nil) -> Uicorn.View {
-        .init(id: id, type: .image(.remote(s)), action: action, properties: properties, modifiers: nil)
+    static func image(id: String = .unique, _ s: String = "", action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: id, type: .image(.remote(s)), action: action, modifiers: modifiers)
     }
-    static func image(id: String = .unique, _ s: String, fill: Uicorn.Color?, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
-        .init(id: id, type: .image(.system(name: s, fill: fill, type: type, weight: weight, scale: scale)), action: action, properties: properties, modifiers: nil)
+    static func image(id: String = .unique, _ s: String, fill: Uicorn.Color?, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: id, type: .image(.system(name: s, fill: fill, type: type, weight: weight, scale: scale)), action: action, modifiers: modifiers)
     }
-    static func sfSymbol(id: String = .unique, _ s: String, fill: Uicorn.Color? = nil, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
-        .image(id: id, s, fill: fill, type: type, weight: weight, scale: scale, properties: properties, modifiers: modifiers)
+    static func sfSymbol(id: String = .unique, _ s: String, fill: Uicorn.Color? = nil, type: Uicorn.Font.`Type` = .body, weight: Uicorn.Font.Weight = .regular, scale: Uicorn.ImageScale = .large, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .image(id: id, s, fill: fill, type: type, weight: weight, scale: scale, modifiers: modifiers)
     }
     static var randomSystemImage: Uicorn.View {
         .randomSystemImage()
     }
-    static func randomSystemImage(fill: Uicorn.Color? = nil, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .image(.randomSystem(fill: fill)), action: action, properties: properties, modifiers: modifiers)
+    static func randomSystemImage(fill: Uicorn.Color? = nil, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.randomSystem(fill: fill)), action: action, modifiers: modifiers)
     }
     static var randomRemoteImage: Uicorn.View {
         randomRemoteImage()
     }
-    static func randomRemoteImage(action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .image(.randomRemote), action: action, properties: properties, modifiers: modifiers)
+    static func randomRemoteImage(action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .image(.randomRemote), action: action, modifiers: modifiers)
     }
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .collection(.unsplash(q, count: c)), action: nil, properties: nil, modifiers: nil)
+        .init(id: .unique, type: .collection(.unsplash(q, count: c)), action: nil, modifiers: nil)
     }
     static var unsplash: Uicorn.View {
         .unsplash(nil)
@@ -65,26 +65,26 @@ extension Uicorn.View {
     static var rectangle: Uicorn.View {
         .rectangle(.system(.yellow))
     }
-    static func rectangle(_ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .shape(.rectangle(c)), action: action, properties: properties, modifiers: modifiers)
+    static func rectangle(_ c: Uicorn.Color, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .shape(.rectangle(c)), action: action, modifiers: modifiers)
     }
-    static func ellipse(_ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .shape(.ellipse(c)), action: action, properties: properties, modifiers: modifiers)
+    static func ellipse(_ c: Uicorn.Color, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .shape(.ellipse(c)), action: action, modifiers: modifiers)
     }
-    static func capsule(_ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .shape(.capsule(c)), action: action, properties: properties, modifiers: modifiers)
+    static func capsule(_ c: Uicorn.Color, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .shape(.capsule(c)), action: action, modifiers: modifiers)
     }
     static var map: Uicorn.View {
         .map(name: "Eiffel Tower", coordinate: .eiffelTower)
     }
     static func map(id: String = .unique, name: String, coordinate: Uicorn.Coordinate) -> Uicorn.View {
-        .init(id: .unique, type: .map(.init(location: .init(name: name, coordinate: coordinate))), action: nil, properties: nil, modifiers: nil)
+        .init(id: .unique, type: .map(.init(location: .init(name: name, coordinate: coordinate))), action: nil, modifiers: nil)
     }
     static func hscroll(_ c: [Uicorn.View]) -> Uicorn.View {
-        .init(id: .unique, type: .scroll(.init(axis: .horizontal, children: c)), action: nil, properties: nil, modifiers: nil)
+        .init(id: .unique, type: .scroll(.init(axis: .horizontal, children: c)), action: nil, modifiers: nil)
     }
     static func vscroll(_ c: [Uicorn.View]) -> Uicorn.View {
-        .init(id: .unique, type: .scroll(.init(axis: .vertical, children: c)), action: nil, properties: nil, modifiers: nil)
+        .init(id: .unique, type: .scroll(.init(axis: .vertical, children: c)), action: nil, modifiers: nil)
     }
     static var hscroll: Uicorn.View {
         .hscroll([])
@@ -93,7 +93,7 @@ extension Uicorn.View {
         .vscroll([])
     }
     static func instance(_ id: String, values: Uicorn.View.Instance.Values) -> Uicorn.View {
-        .init(id: .unique, type: .instance(.init(id: .unique, componentId: id, values: values)), action: nil, properties: nil, modifiers: nil)
+        .init(id: .unique, type: .instance(.init(id: .unique, componentId: id, values: values)), action: nil, modifiers: nil)
     }
     static func postInstance(values: Uicorn.View.Instance.Values) -> Uicorn.View {
         .instance(.postComponentId, values: values)
@@ -104,8 +104,8 @@ extension Uicorn.View {
     static var color: Uicorn.View {
         .color(.random)
     }
-    static func color(id: String = .unique, _ c: Uicorn.Color, action: Action? = nil, properties: Uicorn.Properties? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
-        .init(id: .unique, type: .color(c), action: nil, properties: nil, modifiers: nil)
+    static func color(id: String = .unique, _ c: Uicorn.Color, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: .unique, type: .color(c), action: action, modifiers: modifiers)
     }
 }
 
@@ -157,6 +157,18 @@ extension Uicorn.View.Modifier {
     }
     static func opacity(_ o: Double) -> Uicorn.View.Modifier {
         .init(type: .opacity(o))
+    }
+    static func padding(_ v: Int) -> Uicorn.View.Modifier {
+        .init(type: .padding(.all(v)))
+    }
+    static func size(_ v: Int) -> Uicorn.View.Modifier {
+        .init(type: .frame(.init(width: .init(v), height: .init(v), alignment: .center)))
+    }
+    static func width(_ v: Int) -> Uicorn.View.Modifier {
+        .init(type: .frame(.init(width: .init(v), height: nil, alignment: .center)))
+    }
+    static func height(_ v: Int) -> Uicorn.View.Modifier {
+        .init(type: .frame(.init(width: nil, height: .init(v), alignment: .center)))
     }
 }
 

@@ -45,13 +45,11 @@ extension Uicorn {
         var id: String
         var type: `Type`
         var action: Action?
-        var properties: Properties?
         var modifiers: Modifiers?
-        init(id i: String, type t: `Type`, action a: Action?, properties p: Properties?, modifiers m: Modifiers?) {
+        init(id i: String, type t: `Type`, action a: Action?, modifiers m: Modifiers?) {
             id = i
             type = t
             action = a
-            properties = p
             modifiers = m
         }
     }
@@ -60,7 +58,7 @@ extension Uicorn {
 extension Uicorn.View: Identifiable {}
 extension Uicorn.View.Modifier: Identifiable {}
 
-protocol UicornViewType {}
+protocol Bindable {}
 
 extension Uicorn.View: RandomAccessCollection {
     private var subviews: [Uicorn.View] {
@@ -94,4 +92,5 @@ extension Uicorn.View: RandomAccessCollection {
     }
 }
 
-extension Uicorn.View.`Type`: UicornViewType {}
+extension Uicorn.View.`Type`: Bindable {}
+extension Uicorn.View.Modifiers: Bindable {}

@@ -20,4 +20,4 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View.HStack: UicornViewType {}
+extension Uicorn.View.HStack: Bindable {}

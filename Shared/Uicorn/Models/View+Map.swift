@@ -16,4 +16,4 @@ extension Uicorn.View {
     }
 }
 
-extension Uicorn.View.Map: UicornViewType {}
+extension Uicorn.View.Map: Bindable {}

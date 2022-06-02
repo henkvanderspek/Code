@@ -8,12 +8,9 @@
 import SwiftUI
 
 extension View {
-    func modifiers(_ p: Binding<Uicorn.Properties>?, scaleFactor s: CGFloat) -> some View {
-        guard let p = p else { return AnyView(self) }
-        return AnyView(modifiers(p.modifiers, scaleFactor: s))
-    }
     func modifiers(_ m: Binding<[Uicorn.View.Modifier]>?, scaleFactor s: CGFloat) -> some View {
-        m?.reduce(into: AnyView(self)) {
+        guard let m = m else { return AnyView(self) }
+        return m.reduce(into: AnyView(self)) {
             switch $1.wrappedValue.type {
             case let .frame(f):
                 $0 = AnyView($0.frame(f, scaleFactor: s))
@@ -25,7 +22,10 @@ extension View {
                 $0 = AnyView($0.opacity(.init(v)))
             case let .background(v):
                 $0 = AnyView($0.background { UicornView(background(v)) })
-            default: ()
+            case .blendMode: // TODO: blend mode
+                $0 = AnyView($0.blendMode(.normal))
+            case .overlay: // TODO: overlay
+                $0 = AnyView($0)
             }
         }
     }
@@ -47,19 +47,16 @@ extension View {
     }
 }
 
-extension Uicorn.Properties {
-    var modifiers: [Uicorn.View.Modifier] {
-        get {
-            return [
-                frame.map { .frame($0) },
-                .padding(padding),
-                backgroundColor.map { .background(.color($0)) },
-                .cornerRadius(cornerRadius),
-                opacity.map { .opacity($0) }
-            ].compactMap { $0 }
-        }
-        set {
-            fatalError()
-        }
+private extension Uicorn.Frame {
+    var w: CGFloat? {
+        let v = width.map { CGFloat($0) }
+        return v ?? 0 > 0 ? v : nil
+    }
+    var h: CGFloat? {
+        let v = height.map { CGFloat($0) }
+        return v ?? 0 > 0 ? v : nil
+    }
+    var a: Alignment {
+        .init(alignment)
     }
 }
