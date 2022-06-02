@@ -1,5 +1,5 @@
 //
-//  Scroll.swift
+//  UicornView+Scroll.swift
 //  Code
 //
 //  Created by Henk van der Spek on 26/05/2022.

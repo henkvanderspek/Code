@@ -1,5 +1,5 @@
 //
-//  Instance.swift
+//  UicornView+Instance.swift
 //  Code
 //
 //  Created by Henk van der Spek on 30/05/2022.

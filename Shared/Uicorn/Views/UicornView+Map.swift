@@ -1,5 +1,5 @@
 //
-//  View+Map.swift
+//  UicornView+Map.swift
 //  Code
 //
 //  Created by Henk van der Spek on 24/05/2022.

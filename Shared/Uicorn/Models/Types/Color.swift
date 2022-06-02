@@ -10,8 +10,8 @@ import Foundation
 extension Uicorn {
     class Color: Codable {
         enum `Type`: Codable {
-            case system(value: System)
-            case custom(value: Custom)
+            case system(System)
+            case custom(Custom)
         }
         var type: `Type`
         init(_ t: `Type`) {
@@ -20,14 +20,21 @@ extension Uicorn {
     }
 }
 
-extension Uicorn.Color.`Type` {
-    static func system(_ v: Uicorn.Color.System) -> Self {
-        .system(value: v)
+extension Uicorn.Color {
+    static var random: Uicorn.Color {
+        .system(.random)
     }
-    static func custom(_ v: Uicorn.Color.Custom) -> Self {
-        .custom(value: v)
+    static var clear: Uicorn.Color {
+        .custom(.clear)
+    }
+    static func system(_ s: Uicorn.Color.System) -> Uicorn.Color {
+        .init(.system(s))
+    }
+    static func custom(_ c: Uicorn.Color.Custom) -> Uicorn.Color {
+        .init(.custom(c))
     }
 }
+
 
 extension Uicorn.Color {
     enum System: String, Codable {
@@ -68,8 +75,41 @@ extension Uicorn.Color {
     }
 }
 
-extension Uicorn.Color {
-    static func system(_ s: Uicorn.Color.System) -> Uicorn.Color {
-        return .init(.system(s))
+extension FixedWidthInteger {
+    static var random: Self {
+        random(in: min...max)
+    }
+}
+
+extension Uicorn.Color.Custom {
+    static var random: Uicorn.Color.Custom {
+        .init(
+            red: .random,
+            green: .random,
+            blue: .random,
+            alpha: 1.0
+        )
+    }
+    static var clear: Uicorn.Color.Custom {
+        .init(.clear)
+    }
+}
+
+extension Uicorn.Color.System {
+    static var random: Uicorn.Color.System {
+        return [
+            .yellow,
+            .blue,
+            .red,
+            .orange,
+            .green,
+            .mint,
+            .teal,
+            .cyan,
+            .indigo,
+            .purple,
+            .pink,
+            .brown
+        ].randomElement()!
     }
 }

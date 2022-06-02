@@ -58,7 +58,7 @@ extension Uicorn.View: TreeItem {
                 return c.view.map { [$0] }
             case let .scroll(s):
                 return s.children
-            case .text, .spacer, .empty, .image, .shape, .map, .instance:
+            case .text, .spacer, .empty, .image, .shape, .map, .instance, .color:
                 return nil
             }
         }
@@ -75,7 +75,7 @@ extension Uicorn.View: TreeItem {
                 c.view = children.first
             case let .scroll(s):
                 s.children = children
-            case .text, .spacer, .empty, .image, .shape, .map, .instance:
+            case .text, .spacer, .empty, .image, .shape, .map, .instance, .color:
                 fatalError("Can't set children on \(type)")
             }
         }
@@ -92,7 +92,7 @@ extension Uicorn.View: TreeItem {
             return true
         case let .collection(c):
             return c.view == nil
-        case .text, .spacer, .empty, .image, .shape, .map, .instance:
+        case .text, .spacer, .empty, .image, .shape, .map, .instance, .color:
             return false
         }
     }
@@ -129,6 +129,7 @@ extension ViewType {
             }
         case .instance: self = .instance
         case .spacer: self = .spacer
+        case .color: self = .color
         case .empty: self = .empty
         }
     }

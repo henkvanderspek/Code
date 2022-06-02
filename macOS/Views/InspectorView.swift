@@ -54,6 +54,8 @@ struct InspectorView: View {
                 ScrollPropertiesView(s.binding(set: update))
             case let .instance(i):
                 InstancePropertiesView(i.binding(set: update))
+            case let .color(c):
+                ColorPropertiesView(header: "Color", model: c.binding(set: update))
             case .empty, .spacer:
                 EmptyView()
             }
@@ -71,7 +73,7 @@ struct InspectorView: View {
                         }
                     )
                 )
-            case .spacer, .empty, .instance:
+            case .spacer, .empty, .instance, .color:
                 EmptyView()
             }
         }
@@ -136,6 +138,9 @@ private extension InspectorView {
     }
     func update(_ i: Uicorn.View.Instance) {
         $view.type.wrappedValue = .instance(i)
+    }
+    func update(_ c: Uicorn.Color) {
+        $view.type.wrappedValue = .color(c)
     }
 }
 

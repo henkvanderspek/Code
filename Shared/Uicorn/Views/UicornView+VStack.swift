@@ -1,5 +1,5 @@
 //
-//  VStack.swift
+//  UicornView+VStack.swift
 //  Code
 //
 //  Created by Henk van der Spek on 09/05/2022.

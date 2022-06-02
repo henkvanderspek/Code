@@ -200,13 +200,19 @@ extension Uicorn.View {
         modified(type: .zstack(.init([cloned()])))
     }
     func cloned() -> Uicorn.View {
-        .init(id: id, type: type, action: action, properties: properties)
+        .init(id: id, type: type, action: action, properties: properties, modifiers: modifiers)
     }
-    func modified(type t: Uicorn.View.`Type`) {
+    func type(_ t: `Type`) -> Uicorn.View {
+        let v = cloned()
+        v.type = t
+        return v
+    }
+    private func modified(type t: Uicorn.View.`Type`) {
         id = UUID().uuidString
         type = t
         properties = nil
         action = nil
+        modifiers = nil
     }
 }
 
@@ -239,6 +245,8 @@ extension Uicorn.View {
             return .hscroll
         case .instance:
             return .postInstance
+        case .color:
+            return .color
         default:
             fatalError()
         }

@@ -19,41 +19,43 @@ struct UicornView: View {
     }
     var body: some View {
         content
-            .frame(model.properties?.frame ?? .default, scaleFactor: scaleFactor)
-            .cornerRadius(cornerRadius)
-            .padding(.init(model.properties?.padding ?? .zero, scaleFactor: scaleFactor))
-            .background {
-                backgroundView()
-                    .cornerRadius(cornerRadius)
-            }
-            .opacity(.init(model.properties?.opacity ?? 1.0))
+//            .frame(model.properties?.frame ?? .default, scaleFactor: scaleFactor)
+//            .cornerRadius(cornerRadius)
+//            .padding(.init(model.properties?.padding ?? .zero, scaleFactor: scaleFactor))
+//            .background {
+//                backgroundView()
+//                    .cornerRadius(cornerRadius)
+//            }
+//            .opacity(.init(model.properties?.opacity ?? 1.0))
+            .modifiers(Binding($model.properties), scaleFactor: scaleFactor)
             .overlay {
                 Rectangle()
                     .strokeBorder(.orange, lineWidth: 2.0)
                     .isHidden(!model.isSelected)
                     .clipped()
+                    .blendMode(.overlay)
             }
-            // TODO: Use the approach in below link to show consistent iOS style popovers
-            // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
-            .popover(isPresented: $shouldShowSheet) {
-                sheetView?
-                    .frame(minWidth: 300, minHeight: 300)
-            }
-            .onSafeTapGesture(action: model.action) {
-                switch $0.type {
-                case .presentSelf:
-                    sheetView = AnyView(content)
-                    shouldShowSheet = true
-                }
-            }
+//            // TODO: Use the approach in below link to show consistent iOS style popovers
+//            // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
+//            .popover(isPresented: $shouldShowSheet) {
+//                sheetView?
+//                    .frame(minWidth: 300, minHeight: 300)
+//            }
+//            .onSafeTapGesture(action: model.action) {
+//                switch $0.type {
+//                case .presentSelf:
+//                    sheetView = AnyView(content)
+//                    shouldShowSheet = true
+//                }
+//            }
     }
 }
 
-extension UicornView {
-    var cornerRadius: Double {
-        .init(model.properties?.cornerRadius ?? 0).multiplied(by: scaleFactor)
-    }
-}
+//extension UicornView {
+//    var cornerRadius: Double {
+//        .init(model.properties?.cornerRadius ?? 0).multiplied(by: scaleFactor)
+//    }
+//}
 
 private extension View {
     func onSafeTapGesture(action: Uicorn.View.Action?, perform p: @escaping (Uicorn.View.Action) -> Void) -> some View {
@@ -62,50 +64,17 @@ private extension View {
             p(a)
         })
     }
-    func frame(_ f: Uicorn.Frame, scaleFactor s: CGFloat) -> some View {
-        frame(width: f.w?.multiplied(by: s), height: f.h?.multiplied(by: s), alignment: f.a)
-    }
 }
 
-private extension EdgeInsets {
-    static var zero: Self {
-        .init(top: 0, leading: 0, bottom: 0, trailing: 0)
-    }
-    init(_ p: Uicorn.Padding, scaleFactor: CGFloat) {
-        self.init(
-            top: .init(p.top).multiplied(by: scaleFactor),
-            leading: .init(p.leading).multiplied(by: scaleFactor),
-            bottom: .init(p.bottom).multiplied(by: scaleFactor),
-            trailing: .init(p.trailing).multiplied(by: scaleFactor)
-        )
-    }
-}
-
-private extension FloatingPoint {
-    func multiplied(by f: Self) -> Self {
-        self * f
-    }
-}
-
-private extension Uicorn.Frame {
-    var w: CGFloat? {
-        let v = width.map { CGFloat($0) }
-        return v ?? 0 > 0 ? v : nil
-    }
-    var h: CGFloat? {
-        let v = height.map { CGFloat($0) }
-        return v ?? 0 > 0 ? v : nil
-    }
-    var a: Alignment {
-        .init(alignment)
-    }
-}
-
-private extension UicornView {
-    @ViewBuilder func backgroundView() -> some View {
-        model.properties?.backgroundColor.map { AnyView(Color($0)) } ?? AnyView(EmptyView())
-    }
-}
+//private extension UicornView {
+//    @ViewBuilder func backgroundView() -> some View {
+//        if let c = model.properties?.backgroundColor {
+//            SwiftUI.Color(c)
+//        } else {
+//            EmptyView()
+//        }
+//    }
+//}
 
 private extension UicornView {
     private var sanitizedModel: Uicorn.View {
@@ -133,6 +102,8 @@ private extension UicornView {
             Scroll(s.binding)
         case let .instance(i):
             Instance(i.binding)
+        case let .color(c):
+            Color(c.binding)
         case .spacer:
             Spacer()
         case .empty:

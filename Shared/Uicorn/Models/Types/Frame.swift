@@ -5,7 +5,7 @@
 //  Created by Henk van der Spek on 26/05/2022.
 //
 
-import Foundation
+import SwiftUI
 
 extension Uicorn {
     class Frame: Codable {
@@ -23,5 +23,19 @@ extension Uicorn {
 extension Uicorn.Frame {
     static var `default`: Uicorn.Frame {
         .init(width: nil, height: nil, alignment: .center)
+    }
+}
+
+extension Uicorn.Frame {
+    var w: CGFloat? {
+        let v = width.map { CGFloat($0) }
+        return v ?? 0 > 0 ? v : nil
+    }
+    var h: CGFloat? {
+        let v = height.map { CGFloat($0) }
+        return v ?? 0 > 0 ? v : nil
+    }
+    var a: Alignment {
+        .init(alignment)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Shape.swift
+//  UicornView+Shape.swift
 //  Code
 //
 //  Created by Henk van der Spek on 13/05/2022.
@@ -14,7 +14,7 @@ extension UicornView {
             _model = m
         }
         var body: some View {
-            let c = Color(model.fill ?? .system(.background))
+            let c = SwiftUI.Color(model.fill ?? .system(.background))
             switch model.type {
             case .rectangle:
                 Rectangle()
