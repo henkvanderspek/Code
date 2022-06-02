@@ -25,7 +25,7 @@ struct UicornView: View {
                     .strokeBorder(.orange, lineWidth: 2.0)
                     .isHidden(!$model.wrappedValue.isSelected)
                     .clipped()
-                    .blendMode(.overlay)
+                    //.blendMode(.lighten)
             }
 //            // TODO: Use the approach in below link to show consistent iOS style popovers
 //            // TODO: https://pspdfkit.com/blog/2022/presenting-popovers-on-iphone-with-swiftui/
@@ -85,21 +85,5 @@ private extension UicornView {
         case .empty:
             EmptyView()
         }
-    }
-}
-
-extension Bindable {
-    var binding: Binding<Self> {
-        binding {
-            print($0)
-        }
-    }
-    func binding(set: @escaping (Self)->()) -> Binding<Self> {
-        .init(
-            get: {
-                self
-            },
-            set: set
-        )
     }
 }

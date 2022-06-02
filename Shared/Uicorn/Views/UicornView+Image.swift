@@ -34,6 +34,7 @@ extension UicornView {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .clipped()
                 .onAppear {
                     print("Appeared: \($model.wrappedValue.remote.url.suffix(10))")
                 }
@@ -56,14 +57,14 @@ private extension Uicorn.View.Image.System {
 private extension UicornView.Image {
     @ViewBuilder func createView(for image: SwiftUI.Image) -> some SwiftUI.View {
         Color
-            .yellow
-//            .overlay {
-//                image
-//                    .resizable()
-//                    .scaledToFill()
-//                    .clipped()
-//                    .id(UUID())
-//            }
+            .clear
+            .overlay {
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .clipped()
+                    .id(UUID())
+            }
     }
 }
 

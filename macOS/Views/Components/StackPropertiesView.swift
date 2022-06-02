@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StackPropertiesView: View {
+    // TODO: Remodel this thing. It should only know about a stack, not type
     let type: Binding<Uicorn.View.`Type`>
     init(_ t: Binding<Uicorn.View.`Type`>) {
         type = t

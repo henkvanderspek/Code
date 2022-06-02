@@ -9,35 +9,87 @@ import SwiftUI
 
 struct ModifiersView: View {
     @Binding var modifiers: Uicorn.View.Modifiers
+    @State var showPopover = false
     init(_ m: Binding<Uicorn.View.Modifiers>) {
         _modifiers = m
     }
     var body: some View {
         Section {
+            HGroup {
+                Header("Modifiers", fontWeight: .regular).opacity(0.5)
+                Spacer()
+                Button {
+                    showPopover = true
+                } label: {
+                    Label("Add", systemImage: "plus")
+                        .labelStyle(.iconOnly)
+                        .frame(width: 10, height: 15)
+                }
+                .buttonStyle(.borderless)
+                .opacity(0.5)
+                .popover(isPresented: $showPopover, arrowEdge: .bottom) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        ForEach(ViewModifier.sanitizedCases, id: \.self) { m in
+                            Button {
+                                showPopover = false
+                                modifiers.append(.init(m))
+                            } label: {
+                                Label(m.localizedString, systemImage: "")
+                                    .labelStyle(.titleOnly)
+                            }
+                            .buttonStyle(.link)
+                            .padding(2)
+                        }
+                    }
+                    .padding()
+                }
+            }
+            Divider()
             ForEach($modifiers) { $modifier in
                 switch modifier.type {
                 case .opacity:
-                    OptionalPropertiesView(header: modifier.title, value: $modifier.opacity, defaultValue: 1.0) { value in
+                    OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.opacity), defaultValue: 1.0) { value in
                         HGroup {
                             StepperView($modifier.opacity, default: 1.0, range: 0...1, step: 0.1, header: "Opacity", showHeader: false)
                             GreedySpacer()
                         }
                     }
-                case .padding, .blendMode, .cornerRadius, .frame, .overlay, .background:
-                    OptionalPropertiesView(header: modifier.title, value: .constant(nil), defaultValue: 1) { _ in
-                        Text(modifier.title)
+                    Divider()
+                case .padding:
+                    OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.padding), defaultValue: .zero) { value in
+                        HGroup {
+                            PaddingPropertiesView(value, showHeader: false)
+                            GreedySpacer()
+                        }
                     }
+                    Divider()
+                case .blendMode, .cornerRadius, .frame, .overlay, .background:
+//                    OptionalPropertiesView(header: modifier.title, value: .constant(nil), defaultValue: 1) { _ in
+//                        Text(modifier.title)
+//                    }
+                    EmptyView()
                 }
-                Divider()
+                
             }
-//            ForEach(ViewModifier.allCases, id: \.self) { m in
-//                OptionalPropertiesView(header: m.localizedString, value: .constant(nil), defaultValue: 1) { _ in
-//                    Text(m.localizedString)
-//                }
-//                Divider()
-//            }
         }
         .labelsHidden()
+    }
+}
+
+private extension ModifiersView {
+    func binding<T>(id: String, _ m: Binding<T?>) -> Binding<T?> {
+        .init(
+            get: {
+                m.wrappedValue
+            },
+            set: { v in
+                if v == nil {
+                    $modifiers.wrappedValue = modifiers.filter { $0.id != id }
+                } else {
+                    m.wrappedValue = v
+                }
+            }
+        )
     }
 }
 
@@ -52,7 +104,18 @@ private extension Uicorn.View.Modifier {
         set {
             type = .opacity(newValue ?? 1.0)
             id = .unique
-            print(type)
+        }
+    }
+    var padding: Uicorn.Padding? {
+        get {
+            switch type {
+            case let .padding(p): return p
+            default: return nil
+            }
+        }
+        set {
+            type = .padding(newValue ?? .zero)
+            id = .unique
         }
     }
 }
@@ -85,6 +148,12 @@ extension ViewModifier {
         case .blendMode: return "Blend Mode"
         }
     }
+    static var sanitizedCases: [Self] {
+        return [
+            .opacity,
+            .padding
+        ]
+    }
 }
 
 extension ViewModifier {
@@ -97,6 +166,20 @@ extension ViewModifier {
         case .background: self = .background
         case .overlay: self = .overlay
         case .blendMode: self = .blendMode
+        }
+    }
+}
+
+private extension Uicorn.View.Modifier {
+    convenience init(_ v: ViewModifier) {
+        switch v {
+        case .opacity: self.init(type: .opacity(1))
+        case .overlay: self.init(type: .overlay(.empty))
+        case .padding: self.init(type: .padding(.zero))
+        case .frame: self.init(type: .frame(.default))
+        case .blendMode: self.init(type: .blendMode(.normal))
+        case .cornerRadius: self.init(type: .cornerRadius(0))
+        case .background: self.init(type: .background(.empty))
         }
     }
 }

@@ -58,8 +58,6 @@ extension Uicorn {
 extension Uicorn.View: Identifiable {}
 extension Uicorn.View.Modifier: Identifiable {}
 
-protocol Bindable {}
-
 extension Uicorn.View: RandomAccessCollection {
     private var subviews: [Uicorn.View] {
         switch type {
@@ -94,3 +92,29 @@ extension Uicorn.View: RandomAccessCollection {
 
 extension Uicorn.View.`Type`: Bindable {}
 extension Uicorn.View.Modifiers: Bindable {}
+
+extension Uicorn.View {
+    func embeddedInHStack() {
+        modified(type: .hstack(.init([cloned()], alignment: .center, spacing: 0)))
+    }
+    func embeddedInVStack() {
+        modified(type: .vstack(.init([cloned()], alignment: .center, spacing: 0)))
+    }
+    func embeddedInZStack() {
+        modified(type: .zstack(.init([cloned()])))
+    }
+    func cloned() -> Uicorn.View {
+        .init(id: id, type: type, action: action, modifiers: modifiers)
+    }
+    func type(_ t: `Type`) -> Uicorn.View {
+        let v = cloned()
+        v.type = t
+        return v
+    }
+    private func modified(type t: Uicorn.View.`Type`) {
+        id = UUID().uuidString
+        type = t
+        action = nil
+        modifiers = nil
+    }
+}

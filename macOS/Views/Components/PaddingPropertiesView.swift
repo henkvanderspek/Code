@@ -9,9 +9,11 @@ import SwiftUI
 
 struct PaddingPropertiesView: View {
     @Binding var model: Uicorn.Padding
+    let showHeader: Bool
     private let `default` = 0
-    init(_ m: Binding<Uicorn.Padding>) {
+    init(_ m: Binding<Uicorn.Padding>, showHeader sh: Bool = true) {
         _model = m
+        showHeader = sh
     }
     var body: some View {
         Section {
@@ -20,7 +22,8 @@ struct PaddingPropertiesView: View {
                 default: `default`,
                 range: 0...100,
                 step: 1,
-                header: "Padding"
+                header: "Padding",
+                showHeader: showHeader
             )
         }
         .labelsHidden()
