@@ -12,12 +12,12 @@ extension Uicorn {
         let id: String
         var title: String
         var view: View
-        var paramaters: [Parameter]
+        var parameters: [Parameter]
         init(id i: String, title t: String, view v: View, parameters p: [Parameter]) {
             id = i
             title = t
             view = v
-            paramaters = p
+            parameters = p
         }
     }
 }

@@ -33,6 +33,7 @@ extension UicornView {
                             .foregroundColor(.init(.background))
                     }
                 }
+                .id(model.id)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .clipped()
                 .onAppear {

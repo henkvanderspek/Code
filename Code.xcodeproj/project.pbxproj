@@ -406,7 +406,6 @@
 		B6B125E3283511C5005E989F /* PaddingPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingPropertiesView.swift; sourceTree = "<group>"; };
 		B6B125E62835123E005E989F /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		B6B125E928351A07005E989F /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
-		B6B125EC28352F15005E989F /* PropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesView.swift; sourceTree = "<group>"; };
 		B6C2808D2837D0E300099DA3 /* nokia.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = nokia.scn; sourceTree = "<group>"; };
 		B6C2843327CCEAF60000C0E7 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C2843527CCEAF60000C0E7 /* macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSApp.swift; sourceTree = "<group>"; };
@@ -705,7 +704,6 @@
 				B69093C32845611500CB2F42 /* InstancePropertiesView.swift */,
 				B68D9CB22849047300F2129F /* StackPropertiesView.swift */,
 				B68D9CB02848D71500F2129F /* ModifiersView.swift */,
-				B6B125EC28352F15005E989F /* PropertiesView.swift */,
 				B6FDFF4B283F8CFC009E40E1 /* OptionalPropertiesView.swift */,
 			);
 			path = Components;

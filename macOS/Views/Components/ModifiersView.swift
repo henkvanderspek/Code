@@ -50,8 +50,7 @@ struct ModifiersView: View {
                 case .opacity:
                     OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.opacity), defaultValue: 1.0) { value in
                         HGroup {
-                            StepperView($modifier.opacity, default: 1.0, range: 0...1, step: 0.1, header: "Opacity", showHeader: false)
-                            GreedySpacer()
+                            Slider(value: value, in: 0...1)
                         }
                     }
                 case .padding:
@@ -64,7 +63,7 @@ struct ModifiersView: View {
                 case .cornerRadius:
                     OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.cornerRadius), defaultValue: 0) { value in
                         HGroup {
-                            StepperView($modifier.cornerRadius, default: 0, range: 0...1000, step: 1, header: "Corner Radius", showHeader: false)
+                            StepperView(Binding(value), default: 0, range: 0...1000, step: 1, header: "Corner Radius", showHeader: false)
                             GreedySpacer()
                         }
                     }
@@ -83,13 +82,13 @@ struct ModifiersView: View {
                         }
                     }
                 case .background:
-                    OptionalPropertiesView(header: "Background Color", value: $modifier.backgroundColor, defaultValue: .system(.background)) { value in
+                    OptionalPropertiesView(header: "Background Color", value: binding(id: $modifier.id, $modifier.backgroundColor), defaultValue: .system(.background)) { value in
                         // TODO: Add picker to select type
                         ColorPropertiesView(header: "Background Color", model: value, showHeader: false)
                         // TODO: Add image and other common types
                     }
                 case .overlay:
-                    OptionalPropertiesView(header: "Overlay Image", value: $modifier.overlayImage, defaultValue: .randomRemote) { value in
+                    OptionalPropertiesView(header: "Overlay Image", value: binding(id: $modifier.id, $modifier.overlayImage), defaultValue: .randomRemote) { value in
                         // TODO: Add picker to select type
                         ImagePropertiesView(value)
                         // TODO: Add color and other common types
@@ -110,12 +109,20 @@ private extension ModifiersView {
             },
             set: { v in
                 if v == nil {
-                    $modifiers.wrappedValue = modifiers.filter { $0.id != id }
+                    modifiers.remove(id: id)
                 } else {
                     m.wrappedValue = v
                 }
             }
         )
+    }
+}
+
+private extension Uicorn.View.Modifiers {
+    mutating func remove(id: String) {
+        guard let i = firstIndex(where: { $0.id == id }) else { return }
+        remove(at: i)
+        print("Delete modifier")
     }
 }
 

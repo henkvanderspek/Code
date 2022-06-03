@@ -23,7 +23,7 @@ struct InstancePropertiesView: View {
             }
             if let id = $model.wrappedValue.componentId, let c = componentController.component(from: id) {
                 VGroup {
-                    ForEach(c.paramaters, id: \.id) {
+                    ForEach(c.parameters, id: \.id) {
                         switch $0.wrappedValue.type {
                         case .string:
                             TextFieldView(value: string(for: $0.wrappedValue.viewId), header: $0.title.wrappedValue)

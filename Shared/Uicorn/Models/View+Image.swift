@@ -35,6 +35,12 @@ extension Uicorn.View.Image {
     static func randomSystem(fill: Uicorn.Color?) -> Uicorn.View.Image {
         .init(type: .system(value: .random(fill: fill)))
     }
+    var id: String {
+        switch type {
+        case let .remote(r): return r.url
+        case let .system(s): return s.name
+        }
+    }
 }
 
 extension Uicorn.View.Image {
