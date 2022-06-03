@@ -13,8 +13,10 @@ protocol TreeItem {
     var systemImage: String { get }
     var children: [TreeItem]? { get set }
     var isView: Bool { get }
+    var isUtilityView: Bool { get }
     var canAddView: Bool { get }
     var isSelected: Bool { get set }
+    var view: Uicorn.View? { get }
     mutating func removeChild(byId: String)
 }
 
@@ -43,5 +45,8 @@ extension TreeItem {
     }
     mutating func removeChild(byId id: String) {
         children = children?.filter { $0.id != id }
+    }
+    var isUtilityView: Bool {
+        return false
     }
 }

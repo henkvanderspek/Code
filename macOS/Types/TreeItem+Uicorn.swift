@@ -19,6 +19,9 @@ extension Uicorn.App: TreeItem {
             screens = newValue?.compactMap { $0 as? Uicorn.Screen } ?? []
         }
     }
+    var view: Uicorn.View? {
+        return nil
+    }
 }
 
 extension Uicorn.Screen: TreeItem {
@@ -30,7 +33,7 @@ extension Uicorn.Screen: TreeItem {
             view.map { [$0] }
         }
         set {
-            view = newValue?.compactMap { $0 as? Uicorn.View }.first
+            view = newValue?.compactMap { $0.view }.first
         }
     }
     var canAddView: Bool {
@@ -47,36 +50,54 @@ extension Uicorn.View: TreeItem {
     }
     var children: [TreeItem]? {
         get {
+            func sanitize(_ c: [Uicorn.View]?) -> [TreeItem]? {
+                let ret = (overlays ?? []) + (c ?? []) + (backgrounds ?? [])
+                return ret.isEmpty ? nil : ret
+            }
             switch type {
             case let .hstack(v):
-                return v.children
+                return sanitize(v.children)
             case let .vstack(v):
-                return v.children
+                return sanitize(v.children)
             case let .zstack(v):
-                return v.children
+                return sanitize(v.children)
             case let .collection(c):
-                return c.view.map { [$0] }
+                return sanitize(c.view.map { [$0] })
             case let .scroll(s):
-                return s.children
+                return sanitize(s.children)
             case .text, .spacer, .empty, .image, .shape, .map, .instance, .color:
-                return nil
+                return sanitize(nil)
             }
         }
         set {
-            let children = newValue?.compactMap { $0 as? Uicorn.View } ?? []
+            let children = newValue?.filter { $0.isView } ?? []
+            // We need to filter the children that are utility views
+            let uviews = children.filter { $0.isUtilityView }
+            // Clean up the modifiers of type view that are not in this list
+            modifiers = modifiers?.filter {
+                switch $0.type {
+                case let .overlay(v):
+                    return uviews.contains(where: { $0.id == v.id })
+                case let .background(v):
+                    return uviews.contains(where: { $0.id == v.id })
+                default:
+                    return true
+                }
+            }
+            // Pass all non utility views on to the type to handle
+            let views = children.filter { !$0.isUtilityView }.compactMap { $0.view }
             switch type {
             case let .hstack(v):
-                v.children = children
+                v.children = views
             case let .vstack(v):
-                v.children = children
+                v.children = views
             case let .zstack(v):
-                v.children = children
+                v.children = views
             case let .collection(c):
-                c.view = children.first
+                c.view = views.first
             case let .scroll(s):
-                s.children = children
-            case .text, .spacer, .empty, .image, .shape, .map, .instance, .color:
-                fatalError("Can't set children on \(type)")
+                s.children = views
+            case .text, .spacer, .empty, .image, .shape, .map, .instance, .color: ()
             }
         }
     }
@@ -94,6 +115,79 @@ extension Uicorn.View: TreeItem {
             return c.view == nil
         case .text, .spacer, .empty, .image, .shape, .map, .instance, .color:
             return false
+        }
+    }
+    var view: Uicorn.View? {
+        return self
+    }
+    private var overlays: [TreeItem]? {
+        modifiers?.compactMap { $0.overlay }.map { Utility($0, .overlay) }
+    }
+    private var backgrounds: [TreeItem]? {
+        modifiers?.compactMap { $0.background }.map { Utility($0, .background) }
+    }
+}
+
+private extension Uicorn.View {
+    class Utility {
+        enum `Type` {
+            case overlay
+            case background
+        }
+        private var v: Uicorn.View
+        private var t: `Type`
+        init(_ view: Uicorn.View, _ type: `Type`) {
+            v = view
+            t = type
+        }
+    }
+}
+
+extension Uicorn.View.Utility: TreeItem {
+    var view: Uicorn.View? {
+        v
+    }
+    var id: String {
+        v.id
+    }
+    var title: String {
+        "\(ViewType(from: v.type).name) (\(t.title))"
+    }
+    var systemImage: String {
+        v.systemImage
+    }
+    var isView: Bool {
+        v.isView
+    }
+    var isSpacer: Bool {
+        v.isSpacer
+    }
+    var children: [TreeItem]? {
+        get {
+            v.children
+        }
+        set {
+            v.children = newValue
+        }
+    }
+    var isSelected: Bool {
+        get {
+            v.isSelected
+        }
+        set {
+            v.isSelected = newValue
+        }
+    }
+    var isUtilityView: Bool {
+        return true
+    }
+}
+
+private extension Uicorn.View.Utility.`Type` {
+    var title: String {
+        switch self {
+        case .overlay: return "O"
+        case .background: return "B"
         }
     }
 }

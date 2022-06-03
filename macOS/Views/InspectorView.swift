@@ -10,7 +10,7 @@ import SwiftUI
 struct InspectorView: View {
     @EnvironmentObject private var observer: AppView.Observer
     @State private var v: Uicorn.View = .empty
-    @State private var child: Uicorn.View? // TODO: This should support a chain (view -> view -> view)
+    @State private var child: Uicorn.View?
     var body: some View {
         Form {
             if child?.id != nil {
@@ -49,8 +49,6 @@ struct InspectorView: View {
             switch subject.type {
             case .shape, .text, .image, .hstack, .vstack, .zstack, .scroll, .collection, .map, .color:
                 Divider()
-                // TODO: make this work for children also
-                // TODO: probably we need to visualize overlays and background views in the tree?
                 ModifiersView(subject.safeModifiers.binding(set: update), selectedChild: $child)
             case .spacer, .empty, .instance:
                 EmptyView()
@@ -59,6 +57,10 @@ struct InspectorView: View {
         .onChange(of: observer.sanitizedSelectedItem.id) { _ in
             v = observer.sanitizedSelectedItem.wrappedValue
             child = nil
+        }
+        .onChange(of: child?.id) { _ in
+            guard let c = child else { return }
+            observer.selectedItem = c
         }
     }
     private var subject: Uicorn.View {

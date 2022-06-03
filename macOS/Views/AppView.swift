@@ -117,12 +117,6 @@ extension NSImage {
     }
 }
 
-extension TreeItem {
-    var view: Uicorn.View? {
-        self as? Uicorn.View
-    }
-}
-
 struct App_Previews: PreviewProvider {
     static var previews: some View {
         AppView(.mock)
@@ -150,7 +144,7 @@ extension AppView.Observer {
     var sanitizedSelectedItem: Binding<Uicorn.View> {
         return .init(
             get: {
-                self.selectedItem as? Uicorn.View ?? .empty
+                self.selectedItem.view ?? .empty
             },
             set: {
                 self.selectedItem = $0
@@ -180,6 +174,7 @@ extension AppView.Observer {
         selectedItem = selectedItem.children?.last ?? selectedItem
         objectWillChange.send()
     }
+    // TODO: Do we still need these
 //    func update(_ t: Uicorn.View.`Type`) {
 //        selectedItem.view?.type = t
 //        objectWillChange.send()

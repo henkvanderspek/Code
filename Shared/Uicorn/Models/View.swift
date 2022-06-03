@@ -126,3 +126,105 @@ extension Uicorn.View {
         return i
     }
 }
+
+extension Uicorn.View.Modifier {
+    var opacity: Double? {
+        get {
+            switch type {
+            case let .opacity(o): return o
+            default: return nil
+            }
+        }
+        set {
+            type = .opacity(newValue ?? 1.0)
+        }
+    }
+    var padding: Uicorn.Padding? {
+        get {
+            switch type {
+            case let .padding(p): return p
+            default: return nil
+            }
+        }
+        set {
+            type = .padding(newValue ?? .zero)
+        }
+    }
+    var cornerRadius: Int? {
+        get {
+            switch type {
+            case let .cornerRadius(r): return r
+            default: return nil
+            }
+        }
+        set {
+            type = .cornerRadius(newValue ?? .zero)
+        }
+    }
+    var frame: Uicorn.Frame? {
+        get {
+            switch type {
+            case let .frame(f): return f
+            default: return nil
+            }
+        }
+        set {
+            type = .frame(newValue ?? .default)
+        }
+    }
+    var blendMode: Uicorn.BlendMode? {
+        get {
+            switch type {
+            case let .blendMode(b): return b
+            default: return nil
+            }
+        }
+        set {
+            type = .blendMode(newValue ?? .normal)
+        }
+    }
+    var backgroundColor: Uicorn.Color? {
+        get {
+            switch type {
+            case let .background(v): return v.color
+            default: return nil
+            }
+        }
+        set {
+            type = .background(newValue.map { .color($0) } ?? .empty)
+        }
+    }
+    var overlayImage: Uicorn.View.Image? {
+        get {
+            switch type {
+            case let .overlay(v): return v.image
+            default: return nil
+            }
+        }
+        set {
+            type = .overlay(newValue.map { .image($0) } ?? .empty)
+        }
+    }
+    var background: Uicorn.View? {
+        get {
+            switch type {
+            case let .background(v): return v
+            default: return nil
+            }
+        }
+        set {
+            type = .background(newValue ?? .empty)
+        }
+    }
+    var overlay: Uicorn.View? {
+        get {
+            switch type {
+            case let .overlay(v): return v
+            default: return nil
+            }
+        }
+        set {
+            type = .overlay(newValue ?? .empty)
+        }
+    }
+}
