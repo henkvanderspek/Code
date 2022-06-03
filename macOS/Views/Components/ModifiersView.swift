@@ -54,7 +54,6 @@ struct ModifiersView: View {
                             GreedySpacer()
                         }
                     }
-                    Divider()
                 case .padding:
                     OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.padding), defaultValue: .zero) { value in
                         HGroup {
@@ -62,14 +61,39 @@ struct ModifiersView: View {
                             GreedySpacer()
                         }
                     }
-                    Divider()
-                case .blendMode, .cornerRadius, .frame, .overlay, .background:
-//                    OptionalPropertiesView(header: modifier.title, value: .constant(nil), defaultValue: 1) { _ in
-//                        Text(modifier.title)
-//                    }
-                    EmptyView()
+                case .cornerRadius:
+                    OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.cornerRadius), defaultValue: 0) { value in
+                        HGroup {
+                            StepperView($modifier.cornerRadius, default: 0, range: 0...1000, step: 1, header: "Corner Radius", showHeader: false)
+                            GreedySpacer()
+                        }
+                    }
+                case .frame:
+                    OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.frame), defaultValue: .default) { value in
+                        FramePropertiesView(value)
+                    }
+                case .blendMode:
+                    OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.blendMode), defaultValue: .normal) { value in
+                        Picker(modifier.title, selection: value) {
+                            ForEach(Uicorn.BlendMode.allCases, id: \.self) {
+                                Text($0.localizedString)
+                            }
+                        }
+                    }
+                case .background:
+                    OptionalPropertiesView(header: "Background Color", value: $modifier.backgroundColor, defaultValue: .system(.background)) { value in
+                        // TODO: Add picker to select type
+                        ColorPropertiesView(header: "Background Color", model: value, showHeader: false)
+                        // TODO: Add image and other common types
+                    }
+                case .overlay:
+                    OptionalPropertiesView(header: "Overlay Image", value: $modifier.overlayImage, defaultValue: .randomRemote) { value in
+                        // TODO: Add picker to select type
+                        ImagePropertiesView(value)
+                        // TODO: Add color and other common types
+                    }
                 }
-                
+                Divider()
             }
         }
         .labelsHidden()
@@ -103,7 +127,6 @@ private extension Uicorn.View.Modifier {
         }
         set {
             type = .opacity(newValue ?? 1.0)
-            id = .unique
         }
     }
     var padding: Uicorn.Padding? {
@@ -115,7 +138,61 @@ private extension Uicorn.View.Modifier {
         }
         set {
             type = .padding(newValue ?? .zero)
-            id = .unique
+        }
+    }
+    var cornerRadius: Int? {
+        get {
+            switch type {
+            case let .cornerRadius(r): return r
+            default: return nil
+            }
+        }
+        set {
+            type = .cornerRadius(newValue ?? .zero)
+        }
+    }
+    var frame: Uicorn.Frame? {
+        get {
+            switch type {
+            case let .frame(f): return f
+            default: return nil
+            }
+        }
+        set {
+            type = .frame(newValue ?? .default)
+        }
+    }
+    var blendMode: Uicorn.BlendMode? {
+        get {
+            switch type {
+            case let .blendMode(b): return b
+            default: return nil
+            }
+        }
+        set {
+            type = .blendMode(newValue ?? .normal)
+        }
+    }
+    var backgroundColor: Uicorn.Color? {
+        get {
+            switch type {
+            case let .background(v): return v.color
+            default: return nil
+            }
+        }
+        set {
+            type = .background(newValue.map { .color($0) } ?? .empty)
+        }
+    }
+    var overlayImage: Uicorn.View.Image? {
+        get {
+            switch type {
+            case let .overlay(v): return v.image
+            default: return nil
+            }
+        }
+        set {
+            type = .overlay(newValue.map { .image($0) } ?? .empty)
         }
     }
 }
@@ -148,11 +225,14 @@ extension ViewModifier {
         case .blendMode: return "Blend Mode"
         }
     }
+    var canAddItem: Bool {
+        switch self {
+        case .opacity, .padding, .cornerRadius, .frame, .background, .blendMode, .overlay:
+            return true
+        }
+    }
     static var sanitizedCases: [Self] {
-        return [
-            .opacity,
-            .padding
-        ]
+        allCases.filter { $0.canAddItem }
     }
 }
 
@@ -174,12 +254,12 @@ private extension Uicorn.View.Modifier {
     convenience init(_ v: ViewModifier) {
         switch v {
         case .opacity: self.init(type: .opacity(1))
-        case .overlay: self.init(type: .overlay(.empty))
+        case .overlay: self.init(type: .overlay(.randomRemoteImage))
         case .padding: self.init(type: .padding(.zero))
         case .frame: self.init(type: .frame(.default))
         case .blendMode: self.init(type: .blendMode(.normal))
         case .cornerRadius: self.init(type: .cornerRadius(0))
-        case .background: self.init(type: .background(.empty))
+        case .background: self.init(type: .background(.color(.system(.background))))
         }
     }
 }

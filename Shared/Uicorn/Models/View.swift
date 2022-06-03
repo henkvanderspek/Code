@@ -117,4 +117,12 @@ extension Uicorn.View {
         action = nil
         modifiers = nil
     }
+    var color: Uicorn.Color? {
+        guard case let .color(c) = type else { return nil }
+        return c
+    }
+    var image: Image? {
+        guard case let .image(i) = type else { return nil }
+        return i
+    }
 }

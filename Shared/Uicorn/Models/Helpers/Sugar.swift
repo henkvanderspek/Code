@@ -35,6 +35,9 @@ extension Uicorn.View {
     static var zstack: Uicorn.View {
         .zstack([])
     }
+    static func image(id: String = .unique, _ i: Image, action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
+        .init(id: id, type: .image(i), action: action, modifiers: modifiers)
+    }
     static func image(id: String = .unique, _ s: String = "", action: Action? = nil, modifiers: Modifiers? = nil) -> Uicorn.View {
         .init(id: id, type: .image(.remote(s)), action: action, modifiers: modifiers)
     }

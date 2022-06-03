@@ -20,6 +20,7 @@ struct UicornView: View {
     var body: some View {
         content
             .modifiers(Binding($model.modifiers), scaleFactor: scaleFactor)
+            .clipped()
             .overlay {
                 Rectangle()
                     .strokeBorder(.orange, lineWidth: 2.0)

@@ -9,8 +9,8 @@ import SwiftUI
 
 extension View {
     func modifiers(_ m: Binding<[Uicorn.View.Modifier]>?, scaleFactor s: CGFloat) -> some View {
-        guard let m = m else { return AnyView(self) }
-        return m.reduce(into: AnyView(self)) {
+        // TODO: Found out if all this type erasing is inefficient
+        m?.reduce(into: AnyView(self)) {
             switch $1.wrappedValue.type {
             case let .frame(f):
                 $0 = AnyView($0.frame(f, scaleFactor: s))
@@ -21,29 +21,19 @@ extension View {
             case let .opacity(v):
                 $0 = AnyView($0.opacity(.init(v)))
             case let .background(v):
-                $0 = AnyView($0.background { UicornView(background(v)) })
-            case .blendMode: // TODO: blend mode
-                $0 = AnyView($0.blendMode(.normal))
-            case .overlay: // TODO: overlay
-                $0 = AnyView($0)
+                $0 = AnyView($0.background { UicornView(v.binding) })
+            case let .blendMode(v):
+                $0 = AnyView($0.blendMode(.init(v)))
+            case let .overlay(v):
+                $0 = AnyView($0.overlay { UicornView(v.binding) })
             }
-        }
+        } ?? AnyView(self)
     }
     func frame(_ f: Uicorn.Frame, scaleFactor s: CGFloat) -> some View {
         frame(width: f.w?.multiplied(by: s), height: f.h?.multiplied(by: s), alignment: f.a)
     }
     func padding(_ p: Uicorn.Padding, scaleFactor s: CGFloat) -> some View {
         padding(.init(p, scaleFactor: s))
-    }
-    private func background(_ v: Uicorn.View) -> Binding<Uicorn.View> {
-        .init(
-            get: {
-                v
-            },
-            set: { _ in
-                fatalError()
-            }
-        )
     }
 }
 
@@ -60,3 +50,5 @@ private extension Uicorn.Frame {
         .init(alignment)
     }
 }
+
+extension Uicorn.View: Bindable {}
