@@ -74,9 +74,11 @@ struct ModifiersView: View {
                     }
                 case .blendMode:
                     OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.blendMode), defaultValue: .normal) { value in
-                        Picker(modifier.title, selection: value) {
-                            ForEach(Uicorn.BlendMode.allCases, id: \.self) {
-                                Text($0.localizedString)
+                        HGroup {
+                            Picker(modifier.title, selection: value) {
+                                ForEach(Uicorn.BlendMode.allCases, id: \.self) {
+                                    Text($0.localizedString)
+                                }
                             }
                         }
                     }
