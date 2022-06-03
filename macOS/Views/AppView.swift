@@ -180,36 +180,39 @@ extension AppView.Observer {
         selectedItem = selectedItem.children?.last ?? selectedItem
         objectWillChange.send()
     }
-    func update(_ t: Uicorn.View.`Type`) {
-        selectedItem.view?.type = t
-        objectWillChange.send()
-    }
-    func update(_ c: Uicorn.View.Collection) {
-        update(.collection(c))
-    }
-    func update(_ s: Uicorn.View.Shape) {
-        update(.shape(s))
-    }
-    func update(_ t: Uicorn.View.Text) {
-        update(.text(t))
-    }
-    func update(_ i: Uicorn.View.Image) {
-        update(.image(i))
-    }
-    func update(_ m: Uicorn.View.Map) {
-        update(.map(m))
-    }
-    func update(_ s: Uicorn.View.Scroll) {
-        update(.scroll(s))
-    }
-    func update(_ i: Uicorn.View.Instance) {
-        update(.instance(i))
-    }
-    func update(_ c: Uicorn.Color) {
-        update(.color(c))
-    }
+//    func update(_ t: Uicorn.View.`Type`) {
+//        selectedItem.view?.type = t
+//        objectWillChange.send()
+//    }
+//    func update(_ c: Uicorn.View.Collection) {
+//        update(.collection(c))
+//    }
+//    func update(_ s: Uicorn.View.Shape) {
+//        update(.shape(s))
+//    }
+//    func update(_ t: Uicorn.View.Text) {
+//        update(.text(t))
+//    }
+//    func update(_ i: Uicorn.View.Image) {
+//        update(.image(i))
+//    }
+//    func update(_ m: Uicorn.View.Map) {
+//        update(.map(m))
+//    }
+//    func update(_ s: Uicorn.View.Scroll) {
+//        update(.scroll(s))
+//    }
+//    func update(_ i: Uicorn.View.Instance) {
+//        update(.instance(i))
+//    }
+//    func update(_ c: Uicorn.Color) {
+//        update(.color(c))
+//    }
     func update(_ m: Uicorn.View.Modifiers) {
         selectedItem.view?.modifiers = m
+        objectWillChange.send()
+    }
+    func sendWillChange() {
         objectWillChange.send()
     }
 }

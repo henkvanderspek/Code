@@ -10,43 +10,59 @@ import SwiftUI
 struct InspectorView: View {
     @EnvironmentObject private var observer: AppView.Observer
     @State private var v: Uicorn.View = .empty
+    @State private var child: Uicorn.View? // TODO: This should support a chain (view -> view -> view)
     var body: some View {
         Form {
+            if child?.id != nil {
+                Button {
+                    child = nil
+                } label: {
+                    Text("Back")
+                }
+                .buttonStyle(.link)
+                Divider()
+            }
             // Specific properties
-            switch v.type {
+            switch subject.type {
             case let .collection(c):
-                CollectionPropertiesView(c.binding(set: observer.update))
+                CollectionPropertiesView(c.binding(set: update))
             case let .shape(s):
-                ShapePropertiesView(s.binding(set: observer.update))
+                ShapePropertiesView(s.binding(set: update))
             case let .text(t):
-                TextPropertiesView(t.binding(set: observer.update))
+                TextPropertiesView(t.binding(set: update))
             case let .image(i):
-                ImagePropertiesView(i.binding(set: observer.update))
+                ImagePropertiesView(i.binding(set: update))
             case .vstack, .hstack, .zstack:
-                StackPropertiesView(v.type.binding(set: observer.update))
+                StackPropertiesView(subject.type.binding(set: update))
             case let .map(m):
-                MapPropertiesView(m.binding(set: observer.update))
+                MapPropertiesView(m.binding(set: update))
             case let .scroll(s):
-                ScrollPropertiesView(s.binding(set: observer.update))
+                ScrollPropertiesView(s.binding(set: update))
             case let .instance(i):
-                InstancePropertiesView(i.binding(set: observer.update))
+                InstancePropertiesView(i.binding(set: update))
             case let .color(c):
-                ColorPropertiesView(header: "Type", model: c.binding(set: observer.update))
+                ColorPropertiesView(header: "Type", model: c.binding(set: update))
             case .empty, .spacer:
                 EmptyView()
             }
             // modifiers
-            switch v.type {
+            switch subject.type {
             case .shape, .text, .image, .hstack, .vstack, .zstack, .scroll, .collection, .map, .color:
                 Divider()
-                ModifiersView(v.safeModifiers.binding(set: observer.update))
+                // TODO: make this work for children also
+                // TODO: probably we need to visualize overlays and background views in the tree?
+                ModifiersView(subject.safeModifiers.binding(set: update), selectedChild: $child)
             case .spacer, .empty, .instance:
                 EmptyView()
             }
         }
         .onChange(of: observer.sanitizedSelectedItem.id) { _ in
             v = observer.sanitizedSelectedItem.wrappedValue
+            child = nil
         }
+    }
+    private var subject: Uicorn.View {
+        child ?? v
     }
 }
 
@@ -59,5 +75,14 @@ private extension Uicorn.View {
 struct InspectorView_Previews: PreviewProvider {
     static var previews: some View {
         InspectorView()
+    }
+}
+
+private extension InspectorView {
+    func update(_ c: Bindable) {
+        if let m = c as? Uicorn.View.Modifiers {
+            subject.modifiers = m
+        }
+        observer.sendWillChange()
     }
 }

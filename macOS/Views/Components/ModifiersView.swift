@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ModifiersView: View {
     @Binding var modifiers: Uicorn.View.Modifiers
+    @Binding var selectedChild: Uicorn.View?
     @State var showPopover = false
-    init(_ m: Binding<Uicorn.View.Modifiers>) {
+    init(_ m: Binding<Uicorn.View.Modifiers>, selectedChild c: Binding<Uicorn.View?>) {
         _modifiers = m
+        _selectedChild = c
     }
     var body: some View {
         Section {
@@ -82,16 +84,38 @@ struct ModifiersView: View {
                         }
                     }
                 case .background:
-                    OptionalPropertiesView(header: "Background Color", value: binding(id: $modifier.id, $modifier.backgroundColor), defaultValue: .system(.background)) { value in
-                        // TODO: Add picker to select type
-                        ColorPropertiesView(header: "Background Color", model: value, showHeader: false)
-                        // TODO: Add image and other common types
+                    OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.backgroundType), defaultValue: .color) { value in
+                        HGroup {
+                            Picker(modifier.title, selection: value) {
+                                ForEach(ViewType.sanitizedCases, id: \.self) {
+                                    Text($0.name)
+                                }
+                            }
+                            Button {
+                                $selectedChild.wrappedValue = $modifier.wrappedValue.backgroundView
+                            } label: {
+                                Text("Edit")
+                            }
+                            .buttonStyle(.link)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        }
                     }
                 case .overlay:
-                    OptionalPropertiesView(header: "Overlay Image", value: binding(id: $modifier.id, $modifier.overlayImage), defaultValue: .randomRemote) { value in
-                        // TODO: Add picker to select type
-                        ImagePropertiesView(value)
-                        // TODO: Add color and other common types
+                    OptionalPropertiesView(header: modifier.title, value: binding(id: $modifier.id, $modifier.overlayType), defaultValue: .color) { value in
+                        HGroup {
+                            Picker(modifier.title, selection: value) {
+                                ForEach(ViewType.sanitizedCases, id: \.self) {
+                                    Text($0.name)
+                                }
+                            }
+                            Button {
+                                $selectedChild.wrappedValue = $modifier.wrappedValue.overlayView
+                            } label: {
+                                Text("Edit")
+                            }
+                            .buttonStyle(.link)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        }
                     }
                 }
                 Divider()
@@ -204,11 +228,55 @@ private extension Uicorn.View.Modifier {
             type = .overlay(newValue.map { .image($0) } ?? .empty)
         }
     }
+    var backgroundType: ViewType? {
+        get {
+            switch type {
+            case let .background(v): return ViewType(from: v.type)
+            default: return nil
+            }
+        }
+        set {
+            type = .background(.from(newValue ?? .empty))
+        }
+    }
+    var backgroundView: Uicorn.View? {
+        get {
+            switch type {
+            case let .background(v): return v
+            default: return nil
+            }
+        }
+        set {
+            type = .background(newValue ?? .empty)
+        }
+    }
+    var overlayType: ViewType? {
+        get {
+            switch type {
+            case let .overlay(v): return ViewType(from: v.type)
+            default: return nil
+            }
+        }
+        set {
+            type = .overlay(.from(newValue ?? .empty))
+        }
+    }
+    var overlayView: Uicorn.View? {
+        get {
+            switch type {
+            case let .overlay(v): return v
+            default: return nil
+            }
+        }
+        set {
+            type = .overlay(newValue ?? .empty)
+        }
+    }
 }
 
 struct ModifiersPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        ModifiersView(.constant([]))
+        ModifiersView(.constant([]), selectedChild: .constant(nil))
     }
 }
 
