@@ -107,6 +107,16 @@ extension Uicorn.View.Image.System {
     }
 }
 
+extension Uicorn {
+    struct SFSymbol {
+        let name: String
+    }
+}
+
+extension Array where Element == Uicorn.SFSymbol {
+    static let all: [Element] = String.allSymbols.map { .init(name: $0) }
+}
+
 private extension String {
     static var randomImageUrl: Self {
         return allImages.randomElement()!
@@ -124,7 +134,7 @@ private extension String {
     static var randomSymbol: Self {
         return allSymbols.randomElement()!
     }
-    private static let allSymbols = [
+    static let allSymbols = [
         "square.and.arrow.up",
         "square.and.arrow.up.fill",
         "square.and.arrow.up.circle",

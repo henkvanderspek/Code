@@ -74,7 +74,12 @@ extension Uicorn.View: TreeItem {
             case let .zstack(v):
                 return sanitize(v.children)
             case let .collection(c):
-                return sanitize(c.view.map { [$0] })
+                switch c.type {
+                case .unsplash:
+                    return sanitize(c.view.map { [$0] })
+                case .sfSymbols:
+                    return sanitize(nil)
+                }
             case let .scroll(s):
                 return sanitize(s.children)
             case .text, .spacer, .empty, .image, .shape, .map, .instance, .color:
@@ -106,7 +111,11 @@ extension Uicorn.View: TreeItem {
             case let .zstack(v):
                 v.children = views
             case let .collection(c):
-                c.view = views.first
+                switch c.type {
+                case .unsplash:
+                    c.view = views.first
+                case .sfSymbols: ()
+                }
             case let .scroll(s):
                 s.children = views
             case .text, .spacer, .empty, .image, .shape, .map, .instance, .color: ()

@@ -12,6 +12,7 @@ extension Uicorn.View {
         typealias Parameters = [String: String?]
         enum `Type`: String, Codable, CaseIterable {
             case unsplash
+            case sfSymbols
         }
         var type: `Type`
         var parameters: Parameters
@@ -52,6 +53,7 @@ extension Uicorn.View.Collection.`Type` {
     var localizedTitle: String {
         switch self {
         case .unsplash: return "Unsplash"
+        case .sfSymbols: return "SF Symbols"
         }
     }
 }

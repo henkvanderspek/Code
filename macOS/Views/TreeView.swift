@@ -64,7 +64,7 @@ struct TreeView<V: View>: View {
             .overlay {
                 HStack {
                     Spacer()
-                    Image(systemName: item.isHidden ? "eye" : "eye.slash")
+                    Image(systemName: item.isHidden ? "eye.slash" : "eye")
                         .fixedSize()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 16)
