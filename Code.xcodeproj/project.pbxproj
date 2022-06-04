@@ -176,6 +176,9 @@
 		B69093C12845527600CB2F42 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093BF2845527600CB2F42 /* Component.swift */; };
 		B69093C22845527600CB2F42 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093BF2845527600CB2F42 /* Component.swift */; };
 		B69093C42845611500CB2F42 /* InstancePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69093C32845611500CB2F42 /* InstancePropertiesView.swift */; };
+		B69D2C64284BFFB20036AABD /* RelativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69D2C63284BFFB20036AABD /* RelativeView.swift */; };
+		B69D2C65284BFFB20036AABD /* RelativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69D2C63284BFFB20036AABD /* RelativeView.swift */; };
+		B69D2C66284BFFB20036AABD /* RelativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69D2C63284BFFB20036AABD /* RelativeView.swift */; };
 		B69E39C4283CD82600B65682 /* VerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39C3283CD82600B65682 /* VerticalAlignment.swift */; };
 		B69E39C5283CD82600B65682 /* VerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39C3283CD82600B65682 /* VerticalAlignment.swift */; };
 		B69E39C6283CD82600B65682 /* VerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E39C3283CD82600B65682 /* VerticalAlignment.swift */; };
@@ -383,6 +386,7 @@
 		B69093BB2845516000CB2F42 /* UicornView+Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Instance.swift"; sourceTree = "<group>"; };
 		B69093BF2845527600CB2F42 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B69093C32845611500CB2F42 /* InstancePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstancePropertiesView.swift; sourceTree = "<group>"; };
+		B69D2C63284BFFB20036AABD /* RelativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeView.swift; sourceTree = "<group>"; };
 		B69E39C3283CD82600B65682 /* VerticalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAlignment.swift; sourceTree = "<group>"; };
 		B69E39C7283CDCC000B65682 /* HorizontalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalAlignment.swift; sourceTree = "<group>"; };
 		B69E39CB283CEB3200B65682 /* Alignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment.swift; sourceTree = "<group>"; };
@@ -658,6 +662,7 @@
 			isa = PBXGroup;
 			children = (
 				B68D9CB52849565D00F2129F /* Bindable.swift */,
+				B69D2C63284BFFB20036AABD /* RelativeView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1113,6 +1118,7 @@
 				B6E13C60283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B68D9CA72848ACFD00F2129F /* Padding+SwiftUI.swift in Sources */,
 				B665A4072847ACA40076DB3F /* ImageScale+SwiftUI.swift in Sources */,
+				B69D2C66284BFFB20036AABD /* RelativeView.swift in Sources */,
 				B665A4032847AB8B0076DB3F /* Coordinate+MapKit.swift in Sources */,
 				B6B125E02834DE42005E989F /* UicornView.swift in Sources */,
 				B6B125D42834DE33005E989F /* Font.swift in Sources */,
@@ -1189,6 +1195,7 @@
 				B665A40E2847AD6C0076DB3F /* VerticalAlignment+SwiftUI.swift in Sources */,
 				B68D9C9E2848198000F2129F /* FloatingPoint+Multiplied.swift in Sources */,
 				B68563252840DCCC00D39A8D /* VGroup.swift in Sources */,
+				B69D2C65284BFFB20036AABD /* RelativeView.swift in Sources */,
 				B665A3EE284763030076DB3F /* ComponentController.swift in Sources */,
 				B6883D6A2825850700544462 /* String+Unique.swift in Sources */,
 				B67692A6282E9DAA0026CA87 /* Color.swift in Sources */,
@@ -1300,6 +1307,7 @@
 				B69E39CC283CEB3200B65682 /* Alignment.swift in Sources */,
 				B6AE6D692828FCFE001800F8 /* View.swift in Sources */,
 				B6418D562841626F00FA7C04 /* AppStorage.swift in Sources */,
+				B69D2C64284BFFB20036AABD /* RelativeView.swift in Sources */,
 				B68D9CB62849565D00F2129F /* Bindable.swift in Sources */,
 				B6FA89A52829753700E842AE /* View+VStack.swift in Sources */,
 				B665A4012847AB8B0076DB3F /* Coordinate+MapKit.swift in Sources */,
