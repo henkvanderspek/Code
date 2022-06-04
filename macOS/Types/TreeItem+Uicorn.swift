@@ -181,6 +181,9 @@ extension Uicorn.View.Utility: TreeItem {
     var isUtilityView: Bool {
         return true
     }
+    var canAddView: Bool {
+        v.canAddView
+    }
 }
 
 private extension Uicorn.View.Utility.`Type` {
