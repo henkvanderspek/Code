@@ -22,6 +22,12 @@ extension Uicorn.App: TreeItem {
     var view: Uicorn.View? {
         return nil
     }
+    var isHidden: Bool {
+        get {
+            return false
+        }
+        set {}
+    }
 }
 
 extension Uicorn.Screen: TreeItem {
@@ -38,6 +44,12 @@ extension Uicorn.Screen: TreeItem {
     }
     var canAddView: Bool {
         view == nil
+    }
+    var isHidden: Bool {
+        get {
+            return false
+        }
+        set {}
     }
 }
 
@@ -183,6 +195,14 @@ extension Uicorn.View.Utility: TreeItem {
     }
     var canAddView: Bool {
         v.canAddView
+    }
+    var isHidden: Bool {
+        get {
+            v.isHidden
+        }
+        set {
+            v.isHidden = newValue
+        }
     }
 }
 

@@ -41,6 +41,7 @@ struct UicornView: View {
                     shouldShowSheet = true
                 }
             }
+            .isHidden(model.isHidden)
     }
 }
 

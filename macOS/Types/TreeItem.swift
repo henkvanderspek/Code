@@ -16,6 +16,7 @@ protocol TreeItem {
     var isUtilityView: Bool { get }
     var canAddView: Bool { get }
     var isSelected: Bool { get set }
+    var isHidden: Bool { get set }
     var view: Uicorn.View? { get }
     mutating func removeChild(byId: String)
 }
@@ -48,5 +49,8 @@ extension TreeItem {
     }
     var isUtilityView: Bool {
         return false
+    }
+    mutating func toggleVisibility() {
+        isHidden = !isHidden
     }
 }

@@ -36,10 +36,12 @@ struct AppView: View {
                     }
                     .isDisabled(!view.item.isView)
                     .tapGesture {
+                        // TODO: Possible cause for occasional crash
                         observer.selectedItem.isSelected = false
                         view.item.isSelected = true
                         observer.selectedItem = view.item
                     }
+                    .id(UUID())
                 }
             }.listStyle(.sidebar)
             if let b = Binding($observer.sanitizedScreen) {
@@ -103,6 +105,9 @@ struct AppView: View {
             },
             .init(title: "Delete", image: .init("trash")) {
                 observer.delete(i, from: parent!)
+            },
+            .init(title: i.isHidden ? "Show" : "Hide", image: .init(i.isHidden ? "eye" : "eye.slash")) {
+                observer.toggleVisibility()
             }
         ]
     }
@@ -144,7 +149,11 @@ extension AppView.Observer {
     var sanitizedSelectedItem: Binding<Uicorn.View> {
         return .init(
             get: {
-                self.selectedItem.view ?? .empty
+                if self.selectedItem.isView {
+                    return self.selectedItem.view ?? .empty
+                } else {
+                    return .empty
+                }
             },
             set: {
                 self.selectedItem = $0
@@ -169,43 +178,48 @@ extension AppView.Observer {
         selectedItem = p
         objectWillChange.send()
     }
+    func toggleVisibility() {
+        guard let h = selectedItem.view?.isHidden else { return }
+        selectedItem.view?.isHidden = !h
+        objectWillChange.send()
+    }
     func addView(ofType t: ViewType) {
         selectedItem.addView(.from(t))
         selectedItem = selectedItem.children?.last ?? selectedItem
         objectWillChange.send()
     }
-    // TODO: Do we still need these
-//    func update(_ t: Uicorn.View.`Type`) {
-//        selectedItem.view?.type = t
-//        objectWillChange.send()
-//    }
-//    func update(_ c: Uicorn.View.Collection) {
-//        update(.collection(c))
-//    }
-//    func update(_ s: Uicorn.View.Shape) {
-//        update(.shape(s))
-//    }
-//    func update(_ t: Uicorn.View.Text) {
-//        update(.text(t))
-//    }
-//    func update(_ i: Uicorn.View.Image) {
-//        update(.image(i))
-//    }
-//    func update(_ m: Uicorn.View.Map) {
-//        update(.map(m))
-//    }
-//    func update(_ s: Uicorn.View.Scroll) {
-//        update(.scroll(s))
-//    }
-//    func update(_ i: Uicorn.View.Instance) {
-//        update(.instance(i))
-//    }
-//    func update(_ c: Uicorn.Color) {
-//        update(.color(c))
-//    }
+    // TODO: Do we still need these?
+    func update(_ t: Uicorn.View.`Type`) {
+        selectedItem.view?.type = t
+        sendWillChange()
+    }
+    func update(_ c: Uicorn.View.Collection) {
+        update(.collection(c))
+    }
+    func update(_ s: Uicorn.View.Shape) {
+        update(.shape(s))
+    }
+    func update(_ t: Uicorn.View.Text) {
+        update(.text(t))
+    }
+    func update(_ i: Uicorn.View.Image) {
+        update(.image(i))
+    }
+    func update(_ m: Uicorn.View.Map) {
+        update(.map(m))
+    }
+    func update(_ s: Uicorn.View.Scroll) {
+        update(.scroll(s))
+    }
+    func update(_ i: Uicorn.View.Instance) {
+        update(.instance(i))
+    }
+    func update(_ c: Uicorn.Color) {
+        update(.color(c))
+    }
     func update(_ m: Uicorn.View.Modifiers) {
         selectedItem.view?.modifiers = m
-        objectWillChange.send()
+        sendWillChange()
     }
     func sendWillChange() {
         objectWillChange.send()

@@ -46,11 +46,13 @@ extension Uicorn {
         var type: `Type`
         var action: Action?
         var modifiers: Modifiers?
-        init(id i: String, type t: `Type`, action a: Action?, modifiers m: Modifiers?) {
+        var isHidden: Bool
+        init(id i: String, type t: `Type`, action a: Action?, modifiers m: Modifiers?, isHidden h: Bool = false) {
             id = i
             type = t
             action = a
             modifiers = m
+            isHidden = h
         }
     }
 }
@@ -104,7 +106,7 @@ extension Uicorn.View {
         modified(type: .zstack(.init([cloned()])))
     }
     func cloned() -> Uicorn.View {
-        .init(id: id, type: type, action: action, modifiers: modifiers)
+        .init(id: id, type: type, action: action, modifiers: modifiers, isHidden: isHidden)
     }
     func type(_ t: `Type`) -> Uicorn.View {
         let v = cloned()

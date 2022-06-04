@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ModifiersView: View {
+    @EnvironmentObject private var observer: AppView.Observer
     @Binding var modifiers: Uicorn.View.Modifiers
-    @Binding var selectedChild: Uicorn.View?
     @State var showPopover = false
-    init(_ m: Binding<Uicorn.View.Modifiers>, selectedChild c: Binding<Uicorn.View?>) {
+    init(_ m: Binding<Uicorn.View.Modifiers>) {
         _modifiers = m
-        _selectedChild = c
     }
     var body: some View {
         Section {
@@ -92,7 +91,7 @@ struct ModifiersView: View {
                                 }
                             }
                             Button {
-                                $selectedChild.wrappedValue = $modifier.wrappedValue.background
+                                observer.selectedItem = $modifier.wrappedValue.background ?? .empty
                             } label: {
                                 Text("Edit")
                             }
@@ -109,7 +108,7 @@ struct ModifiersView: View {
                                 }
                             }
                             Button {
-                                $selectedChild.wrappedValue = $modifier.wrappedValue.overlay
+                                observer.selectedItem = $modifier.wrappedValue.overlay ?? .empty
                             } label: {
                                 Text("Edit")
                             }
@@ -177,7 +176,7 @@ private extension Uicorn.View.Modifier {
 
 struct ModifiersPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        ModifiersView(.constant([]), selectedChild: .constant(nil))
+        ModifiersView(.constant([]))
     }
 }
 

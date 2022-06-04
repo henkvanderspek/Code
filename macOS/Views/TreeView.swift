@@ -14,13 +14,15 @@ struct TreeView<V: View>: View {
     @State private var state: TreeItemState
     @Binding var selectedItem: TreeItem
     @State private var menuVisible = false
+    private var isParentHidden = false
     private var menu: (TreeView)->V
-    init(_ i: Binding<TreeItem>, parent p: Binding<TreeItem>? = nil, level l: Int = 0, selectedItem s: Binding<TreeItem>, menu m: @escaping (TreeView)->V) {
+    init(_ i: Binding<TreeItem>, parent p: Binding<TreeItem>? = nil, level l: Int = 0, selectedItem s: Binding<TreeItem>, isParentHidden h: Bool = false, menu m: @escaping (TreeView)->V) {
         _item = i
         parent = p
         level = l
         _state = .init(initialValue: i.wrappedValue.hasChildren ? .parent(.expanded) : .leaf)
         _selectedItem = s
+        isParentHidden = h
         menu = m
     }
     var body: some View {
@@ -48,6 +50,7 @@ struct TreeView<V: View>: View {
                 Text(item.title)
                 Spacer()
             }
+            .opacity(item.isHidden || isParentHidden ? 0.3 : 1.0)
             .frame(maxWidth: .infinity)
             .padding([.leading], .init(level * 12))
             .padding(4)
@@ -59,11 +62,27 @@ struct TreeView<V: View>: View {
             .cornerRadius(4)
             .contentShape(Rectangle())
             .overlay {
+                HStack {
+                    Spacer()
+                    Image(systemName: item.isHidden ? "eye" : "eye.slash")
+                        .fixedSize()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 20, height: 16)
+                        .opacity(item.isHidden ? 0.7 : 0.3)
+                        .isHidden(!item.isView)
+                        .onTapGesture {
+                            item.toggleVisibility()
+                        }
+                }
+                .padding(.horizontal, 4)
+                .isHidden(isParentHidden)
+            }
+            .overlay {
                 menu(self)
             }
             if isExpanded {
                 ForEach($item.safeChildren, id: \.id) { $child in
-                    TreeView($child, parent: $item, level: level + 1, selectedItem: $selectedItem, menu: menu)
+                    TreeView($child, parent: $item, level: level + 1, selectedItem: $selectedItem, isParentHidden: item.isHidden || isParentHidden, menu: menu)
                 }
                 .frame(maxWidth: .infinity)
                 .animation(.easeInOut, value: isExpanded)
