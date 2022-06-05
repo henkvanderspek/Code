@@ -26,6 +26,7 @@ extension UicornView {
             SwiftUI.ZStack {
                 GeometryReader { geo in
                     if let i = images {
+                        // TODO: From here should be decided by user
                         ScrollView {
                             SwiftUI.LazyVGrid(columns: columns, spacing: Self.spacing) {
                                 ForEach(i) { image in
