@@ -10,7 +10,8 @@ import SwiftUI
 
 @main
 struct macOSApp: App {
-    @StateObject private var backendController = Backend.Controller(configuration: .live)
+    @StateObject private var backendController = BackendController(configuration: .live)
+    @StateObject private var databaseController = DatabaseController(configuration: .dev)
     private let storage = AppStorageCoreData()
     private let app: Uicorn.App
     init() {
@@ -22,6 +23,7 @@ struct macOSApp: App {
         WindowGroup {
             AppView(app, storage: storage)
                 .environmentObject(backendController)
+                .environmentObject(databaseController)
         }
     }
 }

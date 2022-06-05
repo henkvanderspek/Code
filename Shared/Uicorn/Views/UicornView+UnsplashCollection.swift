@@ -12,7 +12,7 @@ extension UicornView {
         @Binding var query: String
         @Binding var count: Int
         @Binding var view: Uicorn.View?
-        @EnvironmentObject var backendController: Backend.Controller
+        @EnvironmentObject var backendController: BackendController
         @State private var images: [Backend.Images.Item]?
         private static let spacing = 2.0
         private static let cols = 3

@@ -13,6 +13,7 @@ extension Uicorn.View {
         enum `Type`: String, Codable, CaseIterable {
             case unsplash
             case sfSymbols
+            case database
         }
         var type: `Type`
         var parameters: Parameters
@@ -47,6 +48,14 @@ extension Uicorn.View.Collection {
             parameters["count"] = newValue.map { String($0) }
         }
     }
+    var entity: String? {
+        get {
+            parameters["entity"] ?? nil
+        }
+        set {
+            parameters["entity"] = newValue
+        }
+    }
 }
 
 extension Uicorn.View.Collection.`Type` {
@@ -54,6 +63,7 @@ extension Uicorn.View.Collection.`Type` {
         switch self {
         case .unsplash: return "Unsplash"
         case .sfSymbols: return "SF Symbols"
+        case .database: return "Database"
         }
     }
 }

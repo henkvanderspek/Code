@@ -254,6 +254,15 @@
 		B6C2843A27CCEAF70000C0E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843927CCEAF70000C0E7 /* Assets.xcassets */; };
 		B6C2843D27CCEAF70000C0E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C2843C27CCEAF70000C0E7 /* Preview Assets.xcassets */; };
 		B6D2B8F6283257EE00346B95 /* ShapePropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */; };
+		B6D2D727284CC586004DC95A /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2D726284CC586004DC95A /* DatabaseController.swift */; };
+		B6D2D728284CC586004DC95A /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2D726284CC586004DC95A /* DatabaseController.swift */; };
+		B6D2D729284CC586004DC95A /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2D726284CC586004DC95A /* DatabaseController.swift */; };
+		B6D2D72B284CD197004DC95A /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2D72A284CD197004DC95A /* Database.swift */; };
+		B6D2D72C284CD197004DC95A /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2D72A284CD197004DC95A /* Database.swift */; };
+		B6D2D72D284CD197004DC95A /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2D72A284CD197004DC95A /* Database.swift */; };
+		B6D2D72F284D1B41004DC95A /* UicornView+DatabaseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2D72E284D1B41004DC95A /* UicornView+DatabaseCollection.swift */; };
+		B6D2D730284D1B41004DC95A /* UicornView+DatabaseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2D72E284D1B41004DC95A /* UicornView+DatabaseCollection.swift */; };
+		B6D2D731284D1B41004DC95A /* UicornView+DatabaseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2D72E284D1B41004DC95A /* UicornView+DatabaseCollection.swift */; };
 		B6E13C5E283CFB36003BFDD4 /* TextCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C5D283CFB36003BFDD4 /* TextCase.swift */; };
 		B6E13C5F283CFB36003BFDD4 /* TextCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C5D283CFB36003BFDD4 /* TextCase.swift */; };
 		B6E13C60283CFB36003BFDD4 /* TextCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E13C5D283CFB36003BFDD4 /* TextCase.swift */; };
@@ -422,6 +431,9 @@
 		B6C2843E27CCEAF70000C0E7 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		B6C2844327CCFBCC0000C0E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePropertiesView.swift; sourceTree = "<group>"; };
+		B6D2D726284CC586004DC95A /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		B6D2D72A284CD197004DC95A /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		B6D2D72E284D1B41004DC95A /* UicornView+DatabaseCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+DatabaseCollection.swift"; sourceTree = "<group>"; };
 		B6E13C5D283CFB36003BFDD4 /* TextCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCase.swift; sourceTree = "<group>"; };
 		B6E13C61283D2639003BFDD4 /* UicornView+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Map.swift"; sourceTree = "<group>"; };
 		B6E13C65283D2CDA003BFDD4 /* GreedySpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreedySpacer.swift; sourceTree = "<group>"; };
@@ -777,6 +789,7 @@
 				B61433A6282A656E00760F39 /* UicornView+Collection.swift */,
 				B61433AC282AA1D200760F39 /* UicornView+UnsplashCollection.swift */,
 				B64DEC9A284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift */,
+				B6D2D72E284D1B41004DC95A /* UicornView+DatabaseCollection.swift */,
 				B67692A7282E9E330026CA87 /* UicornView+Shape.swift */,
 				B6E13C61283D2639003BFDD4 /* UicornView+Map.swift */,
 				B65C026B283FA1380073FA4A /* UicornView+Scroll.swift */,
@@ -867,6 +880,8 @@
 			children = (
 				B67B3D9627DF42B300F50F2E /* Types.swift */,
 				B61433A9282A84C600760F39 /* BackendController.swift */,
+				B6D2D72A284CD197004DC95A /* Database.swift */,
+				B6D2D726284CC586004DC95A /* DatabaseController.swift */,
 				B6883D692825850700544462 /* String+Unique.swift */,
 				B6AE6D732829319E001800F8 /* Color+Random.swift */,
 				B66400822846256400F228D7 /* UINavigationBar+Appearance.swift */,
@@ -1102,6 +1117,7 @@
 				B6A38E5E282BF8A5002777CA /* String+Unique.swift in Sources */,
 				B665A3FF2847AB600076DB3F /* Font+SwiftUI.swift in Sources */,
 				B69093BA284550C800CB2F42 /* View+Instance.swift in Sources */,
+				B6D2D729284CC586004DC95A /* DatabaseController.swift in Sources */,
 				B69093C22845527600CB2F42 /* Component.swift in Sources */,
 				B665A3F3284763100076DB3F /* ValueProvider.swift in Sources */,
 				B6A38E63282BF8AF002777CA /* Uicorn.swift in Sources */,
@@ -1112,6 +1128,7 @@
 				B6B125D82834DE39005E989F /* View+Shape.swift in Sources */,
 				B68D9CAF2848B45200F2129F /* UicornView+Color.swift in Sources */,
 				B665A4232847AE2D0076DB3F /* Axis+SwiftUI.swift in Sources */,
+				B6D2D72D284CD197004DC95A /* Database.swift in Sources */,
 				B665A3EB284762EF0076DB3F /* ScreenSettings.swift in Sources */,
 				B69E39C6283CD82600B65682 /* VerticalAlignment.swift in Sources */,
 				B69093BE2845516000CB2F42 /* UicornView+Instance.swift in Sources */,
@@ -1145,6 +1162,7 @@
 				B6B125DE2834DE42005E989F /* UicornView+Collection.swift in Sources */,
 				B68D9C9F2848198000F2129F /* FloatingPoint+Multiplied.swift in Sources */,
 				B6A38E6F282BF8AF002777CA /* View+Collection.swift in Sources */,
+				B6D2D731284D1B41004DC95A /* UicornView+DatabaseCollection.swift in Sources */,
 				B665A40B2847AD140076DB3F /* Color+SwiftUI.swift in Sources */,
 				B6B125E12834DE42005E989F /* UicornView+ZStack.swift in Sources */,
 				B6B125E22834DE42005E989F /* UicornView+UnsplashCollection.swift in Sources */,
@@ -1227,6 +1245,7 @@
 				B61433A2282A642200760F39 /* Sugar.swift in Sources */,
 				B6EECA5428338BD100774B42 /* Font.swift in Sources */,
 				B69093C12845527600CB2F42 /* Component.swift in Sources */,
+				B6D2D730284D1B41004DC95A /* UicornView+DatabaseCollection.swift in Sources */,
 				B65C027C283FBFF20073FA4A /* FramePropertiesView.swift in Sources */,
 				B65C0275283FA5DE0073FA4A /* ScrollPropertiesView.swift in Sources */,
 				B676929B282E622D0026CA87 /* Header.swift in Sources */,
@@ -1243,6 +1262,7 @@
 				B6A2E5FB282D33F7002FCDFF /* Action.swift in Sources */,
 				B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */,
 				B6AE6D702828FF39001800F8 /* View+Text.swift in Sources */,
+				B6D2D72C284CD197004DC95A /* Database.swift in Sources */,
 				B6FA89AF282975E300E842AE /* UicornView+ZStack.swift in Sources */,
 				B68D9CA62848ACFD00F2129F /* Padding+SwiftUI.swift in Sources */,
 				B6AE6D6A2828FCFE001800F8 /* View.swift in Sources */,
@@ -1266,6 +1286,7 @@
 				B665A4122847AD7D0076DB3F /* HorizontalAlignment+SwiftUI.swift in Sources */,
 				B665A4222847AE2D0076DB3F /* Axis+SwiftUI.swift in Sources */,
 				B66B4477283E297800230758 /* AppearanceView.swift in Sources */,
+				B6D2D728284CC586004DC95A /* DatabaseController.swift in Sources */,
 				B6E13C63283D2639003BFDD4 /* UicornView+Map.swift in Sources */,
 				B6C2070E283BAE49001B9BB1 /* TreeItemMenu.swift in Sources */,
 				B68D9C9528480FC100F2129F /* BlendMode.swift in Sources */,
@@ -1291,6 +1312,7 @@
 				B66F4CED284509CA00E941ED /* ImageScale.swift in Sources */,
 				B6817DE0283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B6E13C62283D2639003BFDD4 /* UicornView+Map.swift in Sources */,
+				B6D2D72B284CD197004DC95A /* Database.swift in Sources */,
 				B68D9CBB2849FDA500F2129F /* BlendMode+SwiftUI.swift in Sources */,
 				B64DEC9B284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift in Sources */,
 				B69093C02845527600CB2F42 /* Component.swift in Sources */,
@@ -1308,6 +1330,8 @@
 				B6AE6D692828FCFE001800F8 /* View.swift in Sources */,
 				B6418D562841626F00FA7C04 /* AppStorage.swift in Sources */,
 				B69D2C64284BFFB20036AABD /* RelativeView.swift in Sources */,
+				B6D2D72F284D1B41004DC95A /* UicornView+DatabaseCollection.swift in Sources */,
+				B6D2D727284CC586004DC95A /* DatabaseController.swift in Sources */,
 				B68D9CB62849565D00F2129F /* Bindable.swift in Sources */,
 				B6FA89A52829753700E842AE /* View+VStack.swift in Sources */,
 				B665A4012847AB8B0076DB3F /* Coordinate+MapKit.swift in Sources */,

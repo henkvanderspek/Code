@@ -24,29 +24,27 @@ protocol BackendControlling {
     func fetchImages(_ query: String, count: Int) async -> Backend.Images?
 }
 
-extension Backend {
-    class Controller: ObservableObject {
-        enum Configuration {
-            case dev
-            case live
-        }
-        let session: URLSession
-        let configuration: Configuration
-        init(configuration c: Configuration, urlSession s: URLSession = .shared) {
-            configuration = c
-            session = s
-        }
+class BackendController: ObservableObject {
+    enum Configuration {
+        case dev
+        case live
+    }
+    let configuration: Configuration
+    let session: URLSession
+    init(configuration c: Configuration, urlSession s: URLSession = .shared) {
+        configuration = c
+        session = s
     }
 }
 
-extension Backend.Controller: BackendControlling {
+extension BackendController: BackendControlling {
     @MainActor
     func fetchImages(_ query: String, count: Int) async -> Backend.Images? {
         await createTask(.fetchImages(query: query, count: count))
     }
 }
 
-private extension Backend.Controller {
+private extension BackendController {
     struct Empty: Codable {}
     enum Task {
         case fetchImages(query: String, count: Int)
@@ -69,7 +67,7 @@ private extension Backend.Controller {
 }
 
 
-private extension Backend.Controller.Configuration {
+private extension BackendController.Configuration {
     var root: String {
         switch self {
         case .dev: return "http://localhost:3000/api"
@@ -78,7 +76,7 @@ private extension Backend.Controller.Configuration {
     }
 }
 
-private extension Backend.Controller.Task {
+private extension BackendController.Task {
     func urlRequest(root: String, mock: Bool) -> URLRequest? {
         guard let u = URL(string: "\(root)/\(path(mock: mock))") else { return nil }
         print(u)

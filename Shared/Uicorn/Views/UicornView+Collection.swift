@@ -25,6 +25,8 @@ extension UicornView {
                 UnsplashCollection(query: Binding($model.query, default: Uicorn.defaultUnsplashCollectionQuery), count: Binding($model.count, default: Uicorn.defaultUnsplashCollectionCount), view: $model.view)
             case .sfSymbols:
                 SFSymbolsCollection()
+            case .database:
+                DatabaseCollection(entity: Binding($model.entity, default: ""))
             }
         }
     }

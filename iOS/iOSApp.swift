@@ -34,7 +34,8 @@ class DataModel: ObservableObject {
 
 @main
 struct iOSApp: App {
-    @StateObject private var backendController = Backend.Controller(configuration: .live)
+    @StateObject private var backendController = BackendController(configuration: .live)
+    @StateObject private var databaseController = DatabaseController(configuration: .dev)
     @StateObject private var componentController = ComponentController()
     private let pasteboard: UIPasteboard = .general
     private let spacing = 12.0
@@ -101,6 +102,7 @@ struct iOSApp: App {
                                                 componentController.app = $i.app
                                             }
                                             .environmentObject(backendController)
+                                            .environmentObject(databaseController)
                                             .environmentObject(componentController)
                                             .environmentObject(EmptyValueProvider())
                                             .id(UUID())
@@ -122,19 +124,6 @@ struct iOSApp: App {
                                 ToolbarItem(placement: .principal) {
                                     Text($i.wrappedValue.app.title)
                                         .foregroundColor(.white)
-                                }
-                            }
-                        } else {
-                            VStack {
-                                Text("😱")
-                                    .font(.system(.largeTitle).weight(.black))
-                                    .scaleEffect(5)
-                                    .navigationBarTitle("Error")
-                                Button {
-                                    isSheetPresented.toggle()
-                                } label: {
-                                    Label("Close", systemImage: "")
-                                        .labelStyle(.titleOnly)
                                 }
                             }
                         }
