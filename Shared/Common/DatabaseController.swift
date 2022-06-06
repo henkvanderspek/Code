@@ -20,8 +20,10 @@ class DatabaseController: ObservableObject {
     init(configuration c: Configuration) {
         configuration = c
     }
-    @MainActor
-    func fetchEntities() -> [Database.Entity] {
+    var databaseId: String {
+        database.id
+    }
+    var entities: [Database.Entity] {
         switch configuration {
         case .dev:
             return database.entities
@@ -29,8 +31,7 @@ class DatabaseController: ObservableObject {
             fatalError()
         }
     }
-    @MainActor
-    func fetchEntity(by id: String) -> Database.Entity? {
+    func entity(by id: String) -> Database.Entity? {
         switch configuration {
         case .dev:
             return database.entities.first(where: { $0.id == id })
@@ -38,9 +39,8 @@ class DatabaseController: ObservableObject {
             fatalError()
         }
     }
-    @MainActor
-    func fetchRecords(byEntity id: String) -> [Database.Record]? {
-        guard let e = fetchEntity(by: id) else { return nil }
+    func records(byEntity id: String) -> [Database.Record]? {
+        guard let e = entity(by: id) else { return nil }
         switch configuration {
         case .dev:
             return database

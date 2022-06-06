@@ -33,7 +33,7 @@ struct CollectionPropertiesView: View {
                 case .database:
                     Header("Table")
                     Picker("Table", selection: Binding($model.entity, default: "")) {
-                        ForEach(database.fetchEntities(), id: \.id) {
+                        ForEach(database.entities, id: \.id) {
                             Text($0.name)
                         }
                     }

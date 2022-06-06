@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InspectorView: View {
-    @EnvironmentObject private var observer: AppView.Observer
+    @EnvironmentObject private var observer: AppModelObserver
     @State private var v: Uicorn.View = .empty
     var body: some View {
         Form {

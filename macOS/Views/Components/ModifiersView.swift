@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ModifiersView: View {
-    @EnvironmentObject private var observer: AppView.Observer
+    @EnvironmentObject private var observer: AppModelObserver
     @Binding var modifiers: Uicorn.View.Modifiers
     @State var showPopover = false
     init(_ m: Binding<Uicorn.View.Modifiers>) {

@@ -21,7 +21,8 @@ struct macOSApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            AppView(app, storage: storage)
+            // TODO: Find a way to pass the database controller only once
+            AppView(app, storage: storage, databaseController: databaseController)
                 .environmentObject(backendController)
                 .environmentObject(databaseController)
         }

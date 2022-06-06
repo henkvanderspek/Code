@@ -19,7 +19,7 @@ extension UicornView {
             // TODO: For now we are hacking it like this
             ScrollView {
                 LazyVGrid(columns: [.init(), .init()]) {
-                    if let records: [Uicorn.Database.Record] = database.fetchRecords(byEntity: $entity.wrappedValue) {
+                    if let records: [Uicorn.Database.Record] = database.records(byEntity: $entity.wrappedValue) {
                         ForEach(records, id: \.rowId) { record in
                             SwiftUI.VStack(spacing: 2) {
                                 ForEach(record.values, id: \.id) {

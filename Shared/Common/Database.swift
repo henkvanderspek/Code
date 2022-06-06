@@ -100,6 +100,21 @@ extension Uicorn.Database.Record.Value {
         name = n
         type = .coordinate(v)
     }
+    var string: String {
+        type.string
+    }
+}
+
+extension Uicorn.Database.Record.Value.`Type` {
+    var string: String {
+        switch self {
+        case let .string(s): return s
+        case let .int(i): return .init(i)
+        case let .double(d): return .init(d)
+        case let .boolean(b): return .init(b)
+        case let .coordinate(c): return "\(c.latitude),\(c.longitude)"
+        }
+    }
 }
 
 extension Uicorn.Database.Value {
