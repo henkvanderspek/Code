@@ -17,7 +17,7 @@ struct ModifiersView: View {
     var body: some View {
         Section {
             HGroup {
-                Header("Modifiers", fontWeight: .regular).opacity(0.5)
+                Header("Modifiers", fontWeight: .regular).opacity(0.3)
                 Spacer()
                 Button {
                     showPopover = true
@@ -46,6 +46,7 @@ struct ModifiersView: View {
                 }
             }
             Divider()
+                .isHidden(modifiers.isEmpty)
             ForEach($modifiers) { $modifier in
                 switch modifier.type {
                 case .opacity:

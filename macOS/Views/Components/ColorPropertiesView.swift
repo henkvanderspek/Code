@@ -18,13 +18,11 @@ struct ColorPropertiesView: View {
     }
     var body: some View {
         Section {
-            VGroup {
-                if showHeader {
-                    Header(header)
-                }
-                Colors(header: header, $model.type)
-                    .pickerStyle(.menu)
+            if showHeader {
+                Header(header)
             }
+            Colors(header: header, $model.type)
+                .pickerStyle(.menu)
         }
         .labelsHidden()
     }

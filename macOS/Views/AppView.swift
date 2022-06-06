@@ -23,6 +23,7 @@ struct AppView: View {
     private let storage: AppStoring?
     private let pasteboard: NSPasteboard = .general
     @StateObject private var componentController = ComponentController()
+    @State private var isCmsActive: Bool = false
     init(_ a: Uicorn.App, storage s: AppStoring? = nil) {
         observer = .init(a)
         storage = s
@@ -43,15 +44,45 @@ struct AppView: View {
                     }
                     .id(UUID())
                 }
+                .isHidden(isCmsActive)
             }.listStyle(.sidebar)
-            if let b = Binding($observer.sanitizedScreen) {
+
+            if isCmsActive {
+                CmsView()
+            } else if let b = Binding($observer.sanitizedScreen) {
                 AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
                     ScreenView(b)
                 }
                 .id($observer.sanitizedScreen.wrappedValue?.view?.id ?? "empty")
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigation) {
+                        Menu {
+                            ForEach(ViewType.sanitizedCases, id: \.self) { type in
+                                Button {
+                                    observer.addView(ofType: type)
+                                } label: {
+                                    Label(type.name, systemImage: type.systemImage)
+                                        .labelStyle(.titleAndIcon)
+                                }
+                            }
+                        } label: {
+                            Label("Add", systemImage: "plus")
+                                .labelStyle(.iconOnly)
+                        }
+                        .disabled(!observer.selectedItem.canAddView)
+                        Toggle(isOn: $shouldShowDarkMode) {
+                            Label("Toggle Appearance", systemImage: shouldShowDarkMode ? "moon.fill" : "sun.max.fill")
+                                .labelStyle(.iconOnly)
+                        }
+                    }
+                }
             }
             List {
-                InspectorView()
+                if isCmsActive {
+                   EmptyView()
+                } else {
+                    InspectorView()
+                }
             }.listStyle(.sidebar)
         }
         .environmentObject(componentController)
@@ -60,22 +91,9 @@ struct AppView: View {
         .navigationViewStyle(.columns)
         .navigationTitle("")
         .toolbar {
-            ToolbarItemGroup(placement: .navigation) {
-                Menu {
-                    ForEach(ViewType.sanitizedCases, id: \.self) { type in
-                        Button {
-                            observer.addView(ofType: type)
-                        } label: {
-                            Label(type.name, systemImage: type.systemImage)
-                                .labelStyle(.titleAndIcon)
-                        }
-                    }
-                } label: {
-                    Label("Add", systemImage: "plus")
-                }
-                .disabled(!observer.selectedItem.canAddView)
-                Toggle(isOn: $shouldShowDarkMode) {
-                    Label("Toggle Appearance", systemImage: shouldShowDarkMode ? "moon.fill" : "sun.max.fill")
+            ToolbarItem {
+                Toggle(isOn: $isCmsActive) {
+                    Label("CMS", systemImage: "opticaldiscdrive")
                         .labelStyle(.iconOnly)
                 }
             }
