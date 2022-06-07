@@ -36,6 +36,18 @@ struct CollectionPropertiesView: View {
                         ForEach(database.entities, id: \.id) {
                             Text($0.name)
                         }
+                    }.onAppear {
+                        model.mappings = $model.mappings.wrappedValue ?? $model.wrappedValue.view?.properties.map { .init(viewProperty: $0) } ?? []
+                    }
+                    if let id = model.entity, let e = database.entity(by: id), let mappings = Binding($model.mappings) {
+                        ForEach(mappings, id: \.self) { $mapping in
+                            Header($mapping.wrappedValue.viewProperty.localizedString)
+                            Picker("Attribute", selection: Binding($mapping.databaseAttributeId, default: "")) {
+                                ForEach(e.attributes, id: \.id) {
+                                    Text($0.name)
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -44,8 +56,38 @@ struct CollectionPropertiesView: View {
     }
 }
 
+private extension Uicorn.View {
+    var properties: [Uicorn.View.Property] {
+        switch type {
+        case .map:
+            return [
+                .annotationTitle,
+                .annotationCoordinate
+            ]
+        default:
+            fatalError()
+        }
+    }
+}
+
 struct CollectionPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
         CollectionPropertiesView(.constant(.init(type: .unsplash, parameters: ["query":"pug"], view: .image("{{url}}"))))
+    }
+}
+
+extension Uicorn.View {
+    enum Property: Codable, CaseIterable {
+        case annotationTitle
+        case annotationCoordinate
+    }
+}
+
+extension Uicorn.View.Property {
+    var localizedString: String {
+        switch self {
+        case .annotationTitle: return "Annotation Title"
+        case .annotationCoordinate: return "Annotation Coordinate"
+        }
     }
 }

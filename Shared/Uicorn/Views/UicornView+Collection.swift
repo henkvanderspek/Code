@@ -26,7 +26,7 @@ extension UicornView {
             case .sfSymbols:
                 SFSymbolsCollection()
             case .database:
-                DatabaseCollection(entity: Binding($model.entity, default: ""), view: $model.view)
+                DatabaseCollection(entity: Binding($model.entity, default: ""), view: $model.view, mappings: Binding($model.mappings, default: []))
             }
         }
     }

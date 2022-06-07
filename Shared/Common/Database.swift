@@ -44,7 +44,7 @@ extension Uicorn {
                     case coordinate(Uicorn.Coordinate)
                 }
                 let id: String
-                let name: String
+                let attributeId: String
                 let type: `Type`
             }
             let rowId: Int
@@ -60,44 +60,44 @@ extension Uicorn.Database.Record.Value {
     init?(_ v: Uicorn.Database.Value, attribute: Uicorn.Database.Attribute) {
         switch attribute.type {
         case .string:
-            self = .init(attribute.name, v.value)
+            self = .init(attribute.id, v.value)
         case .int:
             guard let v = Int(v.value) else { return nil }
-            self = .init(attribute.name, v)
+            self = .init(attribute.id, v)
         case .double:
             guard let v = Double(v.value) else { return nil }
-            self = .init(attribute.name, v)
+            self = .init(attribute.id, v)
         case .boolean:
             guard let v = Bool(v.value) else { return nil }
-            self = .init(attribute.name, v)
+            self = .init(attribute.id, v)
         case .coordinate:
             guard let d = v.value.data(using: .utf8), let c = try? JSONDecoder().decode(Uicorn.Coordinate.self, from: d) else { return nil }
-            self = .init(attribute.name, c)
+            self = .init(attribute.id, c)
         }
     }
-    init(_ n: String, _ v: String) {
+    init(_ a: String, _ v: String) {
         id = .unique
-        name = n
+        attributeId = a
         type = .string(v)
     }
-    init(_ n: String, _ v: Int) {
+    init(_ a: String, _ v: Int) {
         id = .unique
-        name = n
+        attributeId = a
         type = .int(v)
     }
-    init(_ n: String, _ v: Double) {
+    init(_ a: String, _ v: Double) {
         id = .unique
-        name = n
+        attributeId = a
         type = .double(v)
     }
-    init(_ n: String, _ v: Bool) {
+    init(_ a: String, _ v: Bool) {
         id = .unique
-        name = n
+        attributeId = a
         type = .boolean(v)
     }
-    init(_ n: String, _ v: Uicorn.Coordinate) {
+    init(_ a: String, _ v: Uicorn.Coordinate) {
         id = .unique
-        name = n
+        attributeId = a
         type = .coordinate(v)
     }
     var string: String {

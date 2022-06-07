@@ -56,6 +56,24 @@ extension Uicorn.View.Collection {
             parameters["entity"] = newValue
         }
     }
+    var mappings: [Mapping]? {
+        get {
+            read(name: "mapping")
+        }
+        set {
+            write(name: "mapping", value: newValue)
+        }
+    }
+}
+
+private extension Uicorn.View.Collection {
+    func write<T: Codable>(name: String, value: T) {
+        parameters[name] = (try? JSONEncoder().encode(value)).map { .init(data: $0, encoding: .utf8) }
+    }
+    func read<T: Codable>(name: String) -> T? {
+        guard let v = parameters[name], let d = v?.data(using: .utf8), let o = try? JSONDecoder().decode(T.self, from: d) else { return nil }
+        return o
+    }
 }
 
 extension Uicorn.View.Collection.`Type` {
@@ -64,6 +82,18 @@ extension Uicorn.View.Collection.`Type` {
         case .unsplash: return "Unsplash"
         case .sfSymbols: return "SF Symbols"
         case .database: return "Database"
+        }
+    }
+}
+
+extension Uicorn.View.Collection {
+    struct Mapping: Codable, Hashable {
+        let id: String
+        let viewProperty: Uicorn.View.Property
+        var databaseAttributeId: String?
+        init(id i: String = .unique, viewProperty p: Uicorn.View.Property) {
+            id = i
+            viewProperty = p
         }
     }
 }
