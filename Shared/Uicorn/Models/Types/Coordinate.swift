@@ -28,6 +28,15 @@ extension Uicorn.Coordinate {
     static var eiffelTower: Uicorn.Coordinate {
         .init(48.85901957930565, 2.294606993956224)
     }
+    static var louvre: Uicorn.Coordinate {
+        .init(48.8606111, 2.337644)
+    }
+    static var muséeDesÉgoutsDeParis: Uicorn.Coordinate {
+        .init(48.8583701, 2.2944813)
+    }
+    static var champsÉlyséesClemenceau: Uicorn.Coordinate {
+        .init(48.8582572, 2.3080855)
+    }
     static var zanzibarBeachclub: Uicorn.Coordinate {
         .init(52.113456583059126, 4.279874927463718)
     }

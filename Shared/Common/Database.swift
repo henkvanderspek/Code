@@ -146,7 +146,9 @@ extension Uicorn.Database {
                 .init(id: .unique, rowId: 1, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Eiffel Tower"),
                 .init(id: .unique, rowId: 1, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .eiffelTower)!,
                 .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Louvre"),
-                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, value: "{\"latitude\":48.8606111,\"longitude\":2.337644}"),
+                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .louvre)!,
+                .init(id: .unique, rowId: 3, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Champs-Élysées - Clemenceau"),
+                .init(id: .unique, rowId: 3, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .champsÉlyséesClemenceau)!
             ]
         )
     }
