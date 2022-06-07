@@ -75,9 +75,9 @@ extension Uicorn.View: TreeItem {
                 return sanitize(v.children)
             case let .collection(c):
                 switch c.type {
-                case .unsplash:
+                case .unsplash, .database:
                     return sanitize(c.view.map { [$0] })
-                case .sfSymbols, .database:
+                case .sfSymbols:
                     return sanitize(nil)
                 }
             case let .scroll(s):
@@ -112,9 +112,9 @@ extension Uicorn.View: TreeItem {
                 v.children = views
             case let .collection(c):
                 switch c.type {
-                case .unsplash:
+                case .unsplash, .database:
                     c.view = views.first
-                case .sfSymbols, .database: ()
+                case .sfSymbols: ()
                 }
             case let .scroll(s):
                 s.children = views

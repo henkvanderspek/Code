@@ -26,7 +26,7 @@ extension UicornView {
             case .sfSymbols:
                 SFSymbolsCollection()
             case .database:
-                DatabaseCollection(entity: Binding($model.entity, default: ""))
+                DatabaseCollection(entity: Binding($model.entity, default: ""), view: $model.view)
             }
         }
     }
@@ -35,5 +35,11 @@ extension UicornView {
 struct Collection_Previews: PreviewProvider {
     static var previews: some View {
         UicornView.Collection(.constant(.init(type: .unsplash, parameters: [:], view: nil)))
+    }
+}
+
+class CollectionValueProvider: ObservableObject {
+    func provideValues(for v: Uicorn.View) -> Uicorn.View {
+        return v
     }
 }

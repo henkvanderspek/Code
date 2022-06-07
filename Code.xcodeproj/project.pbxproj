@@ -27,6 +27,9 @@
 		B61737A92829651E006DE98E /* UicornView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737A72829651E006DE98E /* UicornView+Image.swift */; };
 		B61737AB2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
 		B61737AC2829664A006DE98E /* View+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61737AA2829664A006DE98E /* View+Image.swift */; };
+		B622612A284F5506003D9969 /* InstanceValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6226129284F5506003D9969 /* InstanceValueProvider.swift */; };
+		B622612B284F5506003D9969 /* InstanceValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6226129284F5506003D9969 /* InstanceValueProvider.swift */; };
+		B622612C284F5506003D9969 /* InstanceValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6226129284F5506003D9969 /* InstanceValueProvider.swift */; };
 		B6261A29284E941500C148E3 /* TreeItem+Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6261A28284E941500C148E3 /* TreeItem+Database.swift */; };
 		B6261A2A284E942F00C148E3 /* CoreData+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6418D542841622E00FA7C04 /* CoreData+Sugar.swift */; };
 		B6261A2D284EA75400C148E3 /* AppModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6261A2C284EA75400C148E3 /* AppModelObserver.swift */; };
@@ -307,6 +310,7 @@
 		B61433AC282AA1D200760F39 /* UicornView+UnsplashCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+UnsplashCollection.swift"; sourceTree = "<group>"; };
 		B61737A72829651E006DE98E /* UicornView+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Image.swift"; sourceTree = "<group>"; };
 		B61737AA2829664A006DE98E /* View+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Image.swift"; sourceTree = "<group>"; };
+		B6226129284F5506003D9969 /* InstanceValueProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceValueProvider.swift; sourceTree = "<group>"; };
 		B6261A28284E941500C148E3 /* TreeItem+Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+Database.swift"; sourceTree = "<group>"; };
 		B6261A2C284EA75400C148E3 /* AppModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelObserver.swift; sourceTree = "<group>"; };
 		B6261A2E284EA9E800C148E3 /* DatabaseModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModelObserver.swift; sourceTree = "<group>"; };
@@ -574,6 +578,7 @@
 				B665A3E8284762EF0076DB3F /* ScreenSettings.swift */,
 				B665A3EC284763030076DB3F /* ComponentController.swift */,
 				B665A3F0284763100076DB3F /* ValueProvider.swift */,
+				B6226129284F5506003D9969 /* InstanceValueProvider.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -1168,6 +1173,7 @@
 				B6B125D32834DE33005E989F /* Action.swift in Sources */,
 				B66F4CEF284509CA00E941ED /* ImageScale.swift in Sources */,
 				B665A4132847AD7D0076DB3F /* HorizontalAlignment+SwiftUI.swift in Sources */,
+				B622612C284F5506003D9969 /* InstanceValueProvider.swift in Sources */,
 				B68D9CA32848211300F2129F /* Modifiers+SwiftUI.swift in Sources */,
 				B6A38E5F282BF8AF002777CA /* Sugar.swift in Sources */,
 				B64DEC9D284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift in Sources */,
@@ -1290,6 +1296,7 @@
 				B6FA89AF282975E300E842AE /* UicornView+ZStack.swift in Sources */,
 				B68D9CA62848ACFD00F2129F /* Padding+SwiftUI.swift in Sources */,
 				B6AE6D6A2828FCFE001800F8 /* View.swift in Sources */,
+				B622612B284F5506003D9969 /* InstanceValueProvider.swift in Sources */,
 				B660EEC2283641E8008234A4 /* ImagePropertiesView.swift in Sources */,
 				B6B125EB28351A07005E989F /* TextEditorView.swift in Sources */,
 				B61433A8282A656E00760F39 /* UicornView+Collection.swift in Sources */,
@@ -1330,6 +1337,7 @@
 				B6B125CE2834DA33005E989F /* Padding.swift in Sources */,
 				B6FA89AE282975E300E842AE /* UicornView+ZStack.swift in Sources */,
 				B665A4092847AD140076DB3F /* Color+SwiftUI.swift in Sources */,
+				B622612A284F5506003D9969 /* InstanceValueProvider.swift in Sources */,
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
 				B665A4052847ACA40076DB3F /* ImageScale+SwiftUI.swift in Sources */,
 				B665A3F1284763100076DB3F /* ValueProvider.swift in Sources */,
@@ -1690,6 +1698,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vdbyte.canvas;
 				PRODUCT_NAME = Canvas;
@@ -1718,6 +1727,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vdbyte.canvas;
 				PRODUCT_NAME = Canvas;

@@ -17,7 +17,7 @@ extension UicornView {
         var body: some View {
             if let $v = componentController.instance(from: $model.wrappedValue.componentId) {
                 UicornView($v)
-                    .environmentObject(ValueProvider(instance: $model.wrappedValue))
+                    .environmentObject(InstanceValueProvider(instance: $model.wrappedValue))
             } else {
                 EmptyView()
             }

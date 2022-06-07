@@ -65,6 +65,9 @@ extension Uicorn.View {
     static var unsplash: Uicorn.View {
         .unsplash(nil)
     }
+    static var database: Uicorn.View {
+        .init(id: .unique, type: .collection(.database), action: nil, modifiers: nil)
+    }
     static var rectangle: Uicorn.View {
         .rectangle(.system(.yellow))
     }
@@ -115,6 +118,9 @@ extension Uicorn.View {
 extension Uicorn.View.Collection {
     static func unsplash(_ q: String?, count c: Int? = nil) -> Uicorn.View.Collection {
         .init(type: .unsplash, parameters: ["query":q, "count":c.map { .init($0) }], view: .image("{{url}}", action: .presentSelf))
+    }
+    static var database: Uicorn.View.Collection {
+        .init(type: .database, parameters: [:], view: nil)
     }
 }
 

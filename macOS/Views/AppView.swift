@@ -15,6 +15,7 @@ struct AppView: View {
     private let pasteboard: NSPasteboard = .general
     @StateObject private var componentController = ComponentController()
     @State private var isDatabaseActive: Bool = false
+    @State private var columnVisibility = NavigationSplitViewVisibility.all
     init(_ a: Uicorn.App, storage s: AppStoring? = nil, databaseController db: DatabaseController) {
         appObserver = .init(a)
         // TODO: We need this in the constructor because the state object can't be instantiated later somehow
@@ -22,7 +23,7 @@ struct AppView: View {
         storage = s
     }
     var body: some View {
-        NavigationView {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
             List {
                 if isDatabaseActive {
                     TreeView($databaseObserver.rootItem, selectedItem: $databaseObserver.selectedItem) { view in
@@ -47,14 +48,17 @@ struct AppView: View {
                         .id(UUID())
                     }
                 }
-            }.listStyle(.sidebar)
-
+            }
+            .listStyle(.sidebar)
+            .navigationSplitViewColumnWidth(min: 200, ideal: 250)
+        } content: {
             if isDatabaseActive {
                 DatabaseView()
             } else if let b = Binding($appObserver.sanitizedScreen) {
                 AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
                     ScreenView(b)
                 }
+                .navigationSplitViewColumnWidth(min: 400, ideal: 450)
                 .id($appObserver.sanitizedScreen.wrappedValue?.view?.id ?? "empty")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigation) {
@@ -79,7 +83,7 @@ struct AppView: View {
                     }
                 }
             }
-            
+        } detail: {
             List {
                 if isDatabaseActive {
                    EmptyView()
@@ -189,7 +193,7 @@ extension Uicorn.View {
         case .shape:
             return .rectangle
         case .collection:
-            return .unsplash
+            return .database
         case .vscroll:
             return .vscroll
         case .hscroll:
