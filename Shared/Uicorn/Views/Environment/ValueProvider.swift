@@ -8,8 +8,13 @@
 import SwiftUI
 
 class ValueProvider: ObservableObject {
+    var children: [ValueProvider] = []
+    func addChild(_ c: ValueProvider) {
+        // TODO: Find a better way. Here the last one always wins while it should understand sibling scopes.
+        children.append(c)
+    }
     func provideValues(for v: Uicorn.View) -> Uicorn.View {
-        return v
+        return children.last?.provideValues(for: v) ?? v
     }
 }
 

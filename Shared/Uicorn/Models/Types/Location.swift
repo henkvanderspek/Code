@@ -31,6 +31,9 @@ extension Uicorn.Location {
     static var mock: Uicorn.Location {
         eiffelTower
     }
+    convenience init(_ c: Uicorn.Coordinate) {
+        self.init(name: .init(), coordinate: c)
+    }
 }
 
 extension Uicorn.Location: Equatable {

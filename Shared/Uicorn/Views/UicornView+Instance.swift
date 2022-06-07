@@ -10,6 +10,7 @@ import SwiftUI
 extension UicornView {
     struct Instance: View {
         @EnvironmentObject private var componentController: ComponentController
+        @EnvironmentObject private var valueProvider: ValueProvider
         @Binding var model: Uicorn.View.Instance
         init(_ m: Binding<Uicorn.View.Instance>) {
             _model = m
@@ -17,7 +18,9 @@ extension UicornView {
         var body: some View {
             if let $v = componentController.instance(from: $model.wrappedValue.componentId) {
                 UicornView($v)
-                    .environmentObject(InstanceValueProvider(instance: $model.wrappedValue))
+                    .onAppear {
+                        valueProvider.addChild(InstanceValueProvider(instance: $model.wrappedValue))
+                    }
             } else {
                 EmptyView()
             }

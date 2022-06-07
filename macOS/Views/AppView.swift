@@ -58,7 +58,7 @@ struct AppView: View {
                 AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
                     ScreenView(b)
                 }
-                .navigationSplitViewColumnWidth(min: 400, ideal: 450)
+                .navigationSplitViewColumnWidth(min: 400, ideal: 400, max: 450)
                 .id($appObserver.sanitizedScreen.wrappedValue?.view?.id ?? "empty")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigation) {
@@ -92,6 +92,7 @@ struct AppView: View {
                 }
             }.listStyle(.sidebar)
         }
+        .navigationSplitViewStyle(.balanced)
         .environmentObject(componentController)
         .environmentObject(EmptyValueProvider())
         .environmentObject(appObserver)

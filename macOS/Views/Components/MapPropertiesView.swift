@@ -14,15 +14,13 @@ struct MapPropertiesView: View {
     }
     var body: some View {
         Section {
-            TextFieldView(value: $model.location.coordinate.latitude.string, header: "Latitude")
-            TextFieldView(value: $model.location.coordinate.longitude.string, header: "Longitude")
         }.labelsHidden()
     }
 }
 
 struct MapPropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        MapPropertiesView(.constant(.init(location: .mock)))
+        MapPropertiesView(.constant(.mock))
     }
 }
 

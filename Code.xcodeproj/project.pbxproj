@@ -34,6 +34,9 @@
 		B6261A2A284E942F00C148E3 /* CoreData+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6418D542841622E00FA7C04 /* CoreData+Sugar.swift */; };
 		B6261A2D284EA75400C148E3 /* AppModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6261A2C284EA75400C148E3 /* AppModelObserver.swift */; };
 		B6261A2F284EA9E800C148E3 /* DatabaseModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6261A2E284EA9E800C148E3 /* DatabaseModelObserver.swift */; };
+		B6273253284F931700DF3F5A /* CollectionValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6273252284F931700DF3F5A /* CollectionValueProvider.swift */; };
+		B6273254284F931700DF3F5A /* CollectionValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6273252284F931700DF3F5A /* CollectionValueProvider.swift */; };
+		B6273255284F931700DF3F5A /* CollectionValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6273252284F931700DF3F5A /* CollectionValueProvider.swift */; };
 		B6418D552841622E00FA7C04 /* CoreData+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6418D542841622E00FA7C04 /* CoreData+Sugar.swift */; };
 		B6418D562841626F00FA7C04 /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685632828410F9800D39A8D /* AppStorage.swift */; };
 		B6418D572841633600FA7C04 /* CoreData+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6418D542841622E00FA7C04 /* CoreData+Sugar.swift */; };
@@ -314,6 +317,7 @@
 		B6261A28284E941500C148E3 /* TreeItem+Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+Database.swift"; sourceTree = "<group>"; };
 		B6261A2C284EA75400C148E3 /* AppModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelObserver.swift; sourceTree = "<group>"; };
 		B6261A2E284EA9E800C148E3 /* DatabaseModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModelObserver.swift; sourceTree = "<group>"; };
+		B6273252284F931700DF3F5A /* CollectionValueProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionValueProvider.swift; sourceTree = "<group>"; };
 		B627C60D2821636D0029126A /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B63F547227CE1D2200C111A8 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		B63F547527CE254200C111A8 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
@@ -579,6 +583,7 @@
 				B665A3EC284763030076DB3F /* ComponentController.swift */,
 				B665A3F0284763100076DB3F /* ValueProvider.swift */,
 				B6226129284F5506003D9969 /* InstanceValueProvider.swift */,
+				B6273252284F931700DF3F5A /* CollectionValueProvider.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -1154,6 +1159,7 @@
 				B6B125D82834DE39005E989F /* View+Shape.swift in Sources */,
 				B68D9CAF2848B45200F2129F /* UicornView+Color.swift in Sources */,
 				B665A4232847AE2D0076DB3F /* Axis+SwiftUI.swift in Sources */,
+				B6273255284F931700DF3F5A /* CollectionValueProvider.swift in Sources */,
 				B6D2D72D284CD197004DC95A /* Database.swift in Sources */,
 				B665A3EB284762EF0076DB3F /* ScreenSettings.swift in Sources */,
 				B69E39C6283CD82600B65682 /* VerticalAlignment.swift in Sources */,
@@ -1257,6 +1263,7 @@
 				B665A3FA2847A81E0076DB3F /* Location.swift in Sources */,
 				B665A3FE2847AB600076DB3F /* Font+SwiftUI.swift in Sources */,
 				B6A2E5F7282D064B002FCDFF /* CollectionPropertiesView.swift in Sources */,
+				B6273254284F931700DF3F5A /* CollectionValueProvider.swift in Sources */,
 				B6EECA582833937400774B42 /* TextPropertiesView.swift in Sources */,
 				B68D9CBC2849FDA500F2129F /* BlendMode+SwiftUI.swift in Sources */,
 				B69F2BD32828663900877D04 /* UicornView+HStack.swift in Sources */,
@@ -1377,6 +1384,7 @@
 				B6E13C5E283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B676929F282E9C9C0026CA87 /* Properties.swift in Sources */,
 				B65C0270283FA3570073FA4A /* View+Map.swift in Sources */,
+				B6273253284F931700DF3F5A /* CollectionValueProvider.swift in Sources */,
 				B665A3FD2847AB600076DB3F /* Font+SwiftUI.swift in Sources */,
 				B6883D6B2825854C00544462 /* String+Unique.swift in Sources */,
 				B69F2BDA2828689700877D04 /* UicornView+HStack.swift in Sources */,

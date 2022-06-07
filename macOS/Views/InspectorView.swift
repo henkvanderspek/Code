@@ -24,23 +24,23 @@ struct InspectorView: View {
                 ImagePropertiesView(i.binding(set: observer.update))
             case .vstack, .hstack, .zstack:
                 StackPropertiesView(v.type.binding(set: observer.update))
-            case let .map(m):
-                MapPropertiesView(m.binding(set: observer.update))
+//            case let .map(m):
+//                MapPropertiesView(m.binding(set: observer.update))
             case let .scroll(s):
                 ScrollPropertiesView(s.binding(set: observer.update))
             case let .instance(i):
                 InstancePropertiesView(i.binding(set: observer.update))
             case let .color(c):
                 ColorPropertiesView(header: "Type", model: c.binding(set: observer.update))
-            case .empty, .spacer:
+            case .empty, .spacer, .map:
                 EmptyView()
             }
             // modifiers
             switch v.type {
-            case .shape, .text, .image, .hstack, .vstack, .zstack, .scroll, .collection, .map, .color:
+            case .shape, .text, .image, .hstack, .vstack, .zstack, .scroll, .color:
                 Divider()
                 ModifiersView(v.safeModifiers.binding(set: observer.update))
-            case .spacer, .empty, .instance:
+            case .spacer, .empty, .instance, .map, .collection:
                 EmptyView()
             }
         }

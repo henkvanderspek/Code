@@ -37,9 +37,3 @@ struct Collection_Previews: PreviewProvider {
         UicornView.Collection(.constant(.init(type: .unsplash, parameters: [:], view: nil)))
     }
 }
-
-class CollectionValueProvider: ObservableObject {
-    func provideValues(for v: Uicorn.View) -> Uicorn.View {
-        return v
-    }
-}

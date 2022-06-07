@@ -103,6 +103,10 @@ extension Uicorn.Database.Record.Value {
     var string: String {
         type.string
     }
+    var coordinate: Uicorn.Coordinate? {
+        guard case let .coordinate(c) = type else { return nil }
+        return c
+    }
 }
 
 extension Uicorn.Database.Record.Value.`Type` {

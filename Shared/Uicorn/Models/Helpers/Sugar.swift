@@ -81,10 +81,10 @@ extension Uicorn.View {
         .init(id: .unique, type: .shape(.capsule(c)), action: action, modifiers: modifiers)
     }
     static var map: Uicorn.View {
-        .map(name: "Eiffel Tower", coordinate: .eiffelTower)
+        .map(location: .eiffelTower)
     }
-    static func map(id: String = .unique, name: String, coordinate: Uicorn.Coordinate) -> Uicorn.View {
-        .init(id: .unique, type: .map(.init(location: .init(name: name, coordinate: coordinate))), action: nil, modifiers: nil)
+    static func map(id: String = .unique, location: Uicorn.Location) -> Uicorn.View {
+        .init(id: .unique, type: .map(.init(location)), action: nil, modifiers: nil)
     }
     static func hscroll(_ c: [Uicorn.View]) -> Uicorn.View {
         .init(id: .unique, type: .scroll(.init(axis: .horizontal, children: c)), action: nil, modifiers: nil)
@@ -133,6 +133,15 @@ extension Uicorn.View.Shape {
     }
     static func capsule(_ c: Uicorn.Color) -> Uicorn.View.Shape {
         .init(type: .capsule, fill: c)
+    }
+}
+
+extension Uicorn.View.Map {
+    static var mock: Uicorn.View.Map {
+        .init(.eiffelTower)
+    }
+    convenience init(_ l: Uicorn.Location) {
+        self.init(annotations: [l])
     }
 }
 

@@ -10,6 +10,7 @@ import SwiftUI
 extension UicornView {
     struct DatabaseCollection: View {
         @EnvironmentObject var database: DatabaseController
+        @EnvironmentObject var valueProvider: ValueProvider
         @Binding var entity: String
         @Binding var view: Uicorn.View?
         init(entity e: Binding<String>, view v: Binding<Uicorn.View?>) {
@@ -20,35 +21,12 @@ extension UicornView {
             if let records: [Uicorn.Database.Record] = database.records(byEntity: $entity.wrappedValue) {
                 if let v = Binding($view) {
                     UicornView(v)
-                        .environmentObject(DatabaseCollectionValueProvider(records))
+                        .onAppear {
+                            // TODO: addChild:forViewWithId maybe?
+                            valueProvider.addChild(DatabaseCollectionValueProvider(records))
+                        }
                 }
             }
-//            // TODO: From here is implementation detail that should be decided by the user
-//            // TODO: For now we are hacking it like this
-//            ScrollView {
-//                LazyVGrid(columns: [.init(), .init()]) {
-//                    if let records: [Uicorn.Database.Record] = database.records(byEntity: $entity.wrappedValue) {
-//                        ForEach(records, id: \.rowId) { record in
-//                            SwiftUI.VStack(spacing: 2) {
-//                                ForEach(record.values, id: \.id) {
-//                                    switch $0.type {
-//                                    case let .string(s):
-//                                        SwiftUI.Text(s)
-//                                    case let .coordinate(c):
-//                                        Map(.constant(.init(location: .init(name: "Foo", coordinate: c))))
-//                                            .frame(height: 200)
-//                                    default:
-//                                        fatalError()
-//                                    }
-//                                }
-//                                .frame(maxWidth: .infinity, alignment: .leading)
-//                            }
-//                            .frame(maxWidth: .infinity)
-//                        }
-//                    }
-//                }
-//                .padding()
-//            }
         }
     }
 }
@@ -65,6 +43,19 @@ private class DatabaseCollectionValueProvider: CollectionValueProvider {
         records = r
     }
     override func provideValues(for v: Uicorn.View) -> Uicorn.View {
+        switch v.type {
+        case let .map(m):
+            // TODO: This mapping should be provided by user instead
+            // TODO: We can't know which field to use for the coordinate and which for the title
+            m.annotations = records.flatMap {
+                $0.values.compactMap {
+                    $0.coordinate.map {
+                        .init($0)
+                    }
+                }
+            }
+        default: ()
+        }
         return v
     }
 }
