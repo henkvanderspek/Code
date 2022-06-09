@@ -75,7 +75,7 @@ struct DatabaseView: View {
                                             .lineLimit(1)
                                             .padding(5)
                                             .frame(maxWidth: .infinity, alignment: .leading)
-                                        //.background(Color.gray.opacity(0.1))
+                                            .background(Color.gray.opacity(0.1))
                                     }
                                 }
                             }
