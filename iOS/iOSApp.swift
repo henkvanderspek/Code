@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class DataModel: ObservableObject {
+class DatabaseTreeViewState: ObservableObject {
     class Item: ObservableObject {
         @Published var app: Uicorn.App
         @Published var color: Color
@@ -41,9 +41,9 @@ struct iOSApp: App {
     private let spacing = 12.0
     private let cols = 3
     private let columns: [GridItem]
-    @ObservedObject private var model: DataModel = .init()
+    @ObservedObject private var model: DatabaseTreeViewState = .init()
     @State private var isSheetPresented = false
-    @State private var activeItem: DataModel.Item?
+    @State private var activeItem: DatabaseTreeViewState.Item?
     init() {
         columns = .init(repeating: .init(.flexible(), spacing: spacing), count: cols)
     }
@@ -144,8 +144,8 @@ struct iOSApp: App {
     }
 }
 
-extension DataModel.Item: Equatable {
-    static func == (lhs: DataModel.Item, rhs: DataModel.Item) -> Bool {
+extension DatabaseTreeViewState.Item: Equatable {
+    static func == (lhs: DatabaseTreeViewState.Item, rhs: DatabaseTreeViewState.Item) -> Bool {
         lhs.app.id == rhs.app.id
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ModifiersView: View {
-    @EnvironmentObject private var observer: AppModelObserver
+    @EnvironmentObject private var appTreeView: AppTreeViewState
     @Binding var modifiers: Uicorn.View.Modifiers
     @State var showPopover = false
     init(_ m: Binding<Uicorn.View.Modifiers>) {
@@ -92,7 +92,7 @@ struct ModifiersView: View {
                                 }
                             }
                             Button {
-                                observer.selectedItem = $modifier.wrappedValue.background ?? .empty
+                                appTreeView.selectedItem = $modifier.wrappedValue.background ?? .empty
                             } label: {
                                 Text("Edit")
                             }
@@ -109,7 +109,7 @@ struct ModifiersView: View {
                                 }
                             }
                             Button {
-                                observer.selectedItem = $modifier.wrappedValue.overlay ?? .empty
+                                appTreeView.selectedItem = $modifier.wrappedValue.overlay ?? .empty
                             } label: {
                                 Text("Edit")
                             }

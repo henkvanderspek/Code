@@ -8,42 +8,43 @@
 import SwiftUI
 
 struct AppView: View {
-    @ObservedObject private var appObserver: AppModelObserver
-    @ObservedObject private var databaseObserver: DatabaseModelObserver
+    @ObservedObject private var appTreeView: AppTreeViewState
+    @ObservedObject private var databaseTreeView: DatabaseTreeViewState
     @State var shouldShowDarkMode: Bool = false
     private let storage: AppStoring?
     private let pasteboard: NSPasteboard = .general
     @StateObject private var componentController = ComponentController()
     @State private var isDatabaseActive: Bool = false
     @State private var columnVisibility = NavigationSplitViewVisibility.all
+    @State private var selectedDatabaseTableId: String? = nil
     init(_ a: Uicorn.App, storage s: AppStoring? = nil, databaseController db: DatabaseController) {
-        appObserver = .init(a)
+        appTreeView = .init(a)
         // TODO: We need this in the constructor because the state object can't be instantiated later somehow
-        databaseObserver = .init(db)
+        databaseTreeView = .init(db)
         storage = s
     }
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             List {
                 if isDatabaseActive {
-                    TreeView($databaseObserver.rootItem, selectedItem: $databaseObserver.selectedItem) { view in
+                    TreeView($databaseTreeView.rootItem, selectedItem: $databaseTreeView.selectedItem) { view in
                         TreeItemMenu {
                             menuItems(view.item, parent: view.parent)
                         }
                         .isDisabled(!view.item.isView)
                         .tapGesture {
-                            databaseObserver.selectItem(&view.item)
+                            databaseTreeView.selectItem(&view.item)
                         }
                         .id(UUID())
                     }
                 } else {
-                    TreeView($appObserver.rootItem, selectedItem: $appObserver.selectedItem) { view in
+                    TreeView($appTreeView.rootItem, selectedItem: $appTreeView.selectedItem) { view in
                         TreeItemMenu {
                             menuItems(view.item, parent: view.parent)
                         }
                         .isDisabled(!view.item.isView)
                         .tapGesture {
-                            appObserver.selectItem(&view.item)
+                            appTreeView.selectItem(&view.item)
                         }
                         .id(UUID())
                     }
@@ -53,19 +54,19 @@ struct AppView: View {
             .navigationSplitViewColumnWidth(min: 200, ideal: 250)
         } content: {
             if isDatabaseActive {
-                DatabaseView()
-            } else if let b = Binding($appObserver.sanitizedScreen) {
+                DatabaseView(selectedTableId: $selectedDatabaseTableId)
+            } else if let b = Binding($appTreeView.sanitizedScreen) {
                 AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
                     ScreenView(b)
                 }
                 .navigationSplitViewColumnWidth(min: 400, ideal: 400, max: 450)
-                .id($appObserver.sanitizedScreen.wrappedValue?.view?.id ?? "empty")
+                .id($appTreeView.sanitizedScreen.wrappedValue?.view?.id ?? "empty")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigation) {
                         Menu {
                             ForEach(ViewType.sanitizedCases, id: \.self) { type in
                                 Button {
-                                    appObserver.addView(ofType: type)
+                                    appTreeView.addView(ofType: type)
                                 } label: {
                                     Label(type.name, systemImage: type.systemImage)
                                         .labelStyle(.titleAndIcon)
@@ -75,7 +76,7 @@ struct AppView: View {
                             Label("Add", systemImage: "plus")
                                 .labelStyle(.iconOnly)
                         }
-                        .disabled(!appObserver.selectedItem.canAddView)
+                        .disabled(!appTreeView.selectedItem.canAddView)
                         Toggle(isOn: $shouldShowDarkMode) {
                             Label("Toggle Appearance", systemImage: shouldShowDarkMode ? "moon.fill" : "sun.max.fill")
                                 .labelStyle(.iconOnly)
@@ -95,8 +96,8 @@ struct AppView: View {
         .navigationSplitViewStyle(.balanced)
         .environmentObject(componentController)
         .environmentObject(EmptyValueProvider())
-        .environmentObject(appObserver)
-        .environmentObject(databaseObserver)
+        .environmentObject(appTreeView)
+        .environmentObject(databaseTreeView)
         .navigationViewStyle(.columns)
         .navigationTitle("")
         .toolbar {
@@ -107,8 +108,8 @@ struct AppView: View {
                 }
             }
         }
-        .onReceive(appObserver.objectWillChange.first()) {
-            guard let a = appObserver.rootItem as? Uicorn.App else { return }
+        .onReceive(appTreeView.objectWillChange.first()) {
+            guard let a = appTreeView.rootItem as? Uicorn.App else { return }
             storage?.store(a) {
                 pasteboard.declareTypes([.uicornApp], owner: nil)
                 pasteboard.setData($0, forType: .uicornApp)
@@ -116,25 +117,28 @@ struct AppView: View {
             }
         }
         .onAppear {
-            componentController.app = $appObserver.app
+            componentController.app = $appTreeView.app
+        }
+        .onChange(of: databaseTreeView.selectedItemId) {
+            selectedDatabaseTableId = $0
         }
     }
     private func menuItems(_ i: TreeItem, parent: Binding<TreeItem>?) -> [TreeItemMenu.Item] {
         return [
             .init(title: "Embed in HStack", image: .init(.hstack)) {
-                appObserver.embedInHStack(i)
+                appTreeView.embedInHStack(i)
             },
             .init(title: "Embed in VStack", image: .init(.vstack)) {
-                appObserver.embedInVStack(i)
+                appTreeView.embedInVStack(i)
             },
             .init(title: "Embed in ZStack", image: .init(.zstack)) {
-                appObserver.embedInZStack(i)
+                appTreeView.embedInZStack(i)
             },
             .init(title: "Delete", image: .init("trash")) {
-                appObserver.delete(i, from: parent!)
+                appTreeView.delete(i, from: parent!)
             },
             .init(title: i.isHidden ? "Show" : "Hide", image: .init(i.isHidden ? "eye" : "eye.slash")) {
-                appObserver.toggleVisibility()
+                appTreeView.toggleVisibility()
             }
         ]
     }

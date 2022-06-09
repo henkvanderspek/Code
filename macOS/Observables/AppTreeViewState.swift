@@ -1,5 +1,5 @@
 //
-//  AppModelObserver.swift
+//  AppTreeViewState.swift
 //  macOS
 //
 //  Created by Henk van der Spek on 06/06/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class AppModelObserver: ObservableObject {
+class AppTreeViewState: ObservableObject {
     init(_ a: Uicorn.App) {
         app = a
         rootItem = a
@@ -18,7 +18,7 @@ class AppModelObserver: ObservableObject {
     @Published var selectedItem: TreeItem
 }
 
-extension AppModelObserver {
+extension AppTreeViewState {
     var sanitizedScreen: Uicorn.Screen? {
         get {
             rootItem.screen(by: selectedItem.id) as? Uicorn.Screen

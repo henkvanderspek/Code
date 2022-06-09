@@ -8,30 +8,30 @@
 import SwiftUI
 
 struct InspectorView: View {
-    @EnvironmentObject private var observer: AppModelObserver
+    @EnvironmentObject private var appTreeViewState: AppTreeViewState
     @State private var v: Uicorn.View = .empty
     var body: some View {
         Form {
             // Specific properties
             switch v.type {
             case let .collection(c):
-                CollectionPropertiesView(c.binding(set: observer.update))
+                CollectionPropertiesView(c.binding(set: appTreeViewState.update))
             case let .shape(s):
-                ShapePropertiesView(s.binding(set: observer.update))
+                ShapePropertiesView(s.binding(set: appTreeViewState.update))
             case let .text(t):
-                TextPropertiesView(t.binding(set: observer.update))
+                TextPropertiesView(t.binding(set: appTreeViewState.update))
             case let .image(i):
-                ImagePropertiesView(i.binding(set: observer.update))
+                ImagePropertiesView(i.binding(set: appTreeViewState.update))
             case .vstack, .hstack, .zstack:
-                StackPropertiesView(v.type.binding(set: observer.update))
+                StackPropertiesView(v.type.binding(set: appTreeViewState.update))
 //            case let .map(m):
-//                MapPropertiesView(m.binding(set: observer.update))
+//                MapPropertiesView(m.binding(set: appTreeView.update))
             case let .scroll(s):
-                ScrollPropertiesView(s.binding(set: observer.update))
+                ScrollPropertiesView(s.binding(set: appTreeViewState.update))
             case let .instance(i):
-                InstancePropertiesView(i.binding(set: observer.update))
+                InstancePropertiesView(i.binding(set: appTreeViewState.update))
             case let .color(c):
-                ColorPropertiesView(header: "Type", model: c.binding(set: observer.update))
+                ColorPropertiesView(header: "Type", model: c.binding(set: appTreeViewState.update))
             case .empty, .spacer, .map:
                 EmptyView()
             }
@@ -39,13 +39,13 @@ struct InspectorView: View {
             switch v.type {
             case .shape, .text, .image, .hstack, .vstack, .zstack, .scroll, .color:
                 Divider()
-                ModifiersView(v.safeModifiers.binding(set: observer.update))
+                ModifiersView(v.safeModifiers.binding(set: appTreeViewState.update))
             case .spacer, .empty, .instance, .map, .collection:
                 EmptyView()
             }
         }
-        .onChange(of: observer.sanitizedSelectedItem.id) { _ in
-            v = observer.sanitizedSelectedItem.wrappedValue
+        .onChange(of: appTreeViewState.sanitizedSelectedItem.id) { _ in
+            v = appTreeViewState.sanitizedSelectedItem.wrappedValue
         }
         .id(v.id)
     }

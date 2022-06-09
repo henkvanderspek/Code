@@ -32,8 +32,8 @@
 		B622612C284F5506003D9969 /* InstanceValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6226129284F5506003D9969 /* InstanceValueProvider.swift */; };
 		B6261A29284E941500C148E3 /* TreeItem+Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6261A28284E941500C148E3 /* TreeItem+Database.swift */; };
 		B6261A2A284E942F00C148E3 /* CoreData+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6418D542841622E00FA7C04 /* CoreData+Sugar.swift */; };
-		B6261A2D284EA75400C148E3 /* AppModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6261A2C284EA75400C148E3 /* AppModelObserver.swift */; };
-		B6261A2F284EA9E800C148E3 /* DatabaseModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6261A2E284EA9E800C148E3 /* DatabaseModelObserver.swift */; };
+		B6261A2D284EA75400C148E3 /* AppTreeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6261A2C284EA75400C148E3 /* AppTreeViewState.swift */; };
+		B6261A2F284EA9E800C148E3 /* DatabaseTreeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6261A2E284EA9E800C148E3 /* DatabaseTreeViewState.swift */; };
 		B6273253284F931700DF3F5A /* CollectionValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6273252284F931700DF3F5A /* CollectionValueProvider.swift */; };
 		B6273254284F931700DF3F5A /* CollectionValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6273252284F931700DF3F5A /* CollectionValueProvider.swift */; };
 		B6273255284F931700DF3F5A /* CollectionValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6273252284F931700DF3F5A /* CollectionValueProvider.swift */; };
@@ -315,8 +315,8 @@
 		B61737AA2829664A006DE98E /* View+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Image.swift"; sourceTree = "<group>"; };
 		B6226129284F5506003D9969 /* InstanceValueProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceValueProvider.swift; sourceTree = "<group>"; };
 		B6261A28284E941500C148E3 /* TreeItem+Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TreeItem+Database.swift"; sourceTree = "<group>"; };
-		B6261A2C284EA75400C148E3 /* AppModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelObserver.swift; sourceTree = "<group>"; };
-		B6261A2E284EA9E800C148E3 /* DatabaseModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModelObserver.swift; sourceTree = "<group>"; };
+		B6261A2C284EA75400C148E3 /* AppTreeViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTreeViewState.swift; sourceTree = "<group>"; };
+		B6261A2E284EA9E800C148E3 /* DatabaseTreeViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTreeViewState.swift; sourceTree = "<group>"; };
 		B6273252284F931700DF3F5A /* CollectionValueProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionValueProvider.swift; sourceTree = "<group>"; };
 		B627C60D2821636D0029126A /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B63F547227CE1D2200C111A8 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
@@ -524,8 +524,8 @@
 		B6261A2B284EA71B00C148E3 /* Observables */ = {
 			isa = PBXGroup;
 			children = (
-				B6261A2C284EA75400C148E3 /* AppModelObserver.swift */,
-				B6261A2E284EA9E800C148E3 /* DatabaseModelObserver.swift */,
+				B6261A2C284EA75400C148E3 /* AppTreeViewState.swift */,
+				B6261A2E284EA9E800C148E3 /* DatabaseTreeViewState.swift */,
 			);
 			path = Observables;
 			sourceTree = "<group>";
@@ -1223,7 +1223,7 @@
 				B68563272840DDBD00D39A8D /* Group.swift in Sources */,
 				B6AE6D752829319E001800F8 /* Color+Random.swift in Sources */,
 				B69E39C9283CDCC000B65682 /* HorizontalAlignment.swift in Sources */,
-				B6261A2F284EA9E800C148E3 /* DatabaseModelObserver.swift in Sources */,
+				B6261A2F284EA9E800C148E3 /* DatabaseTreeViewState.swift in Sources */,
 				B67B3D9827DF42B300F50F2E /* Types.swift in Sources */,
 				B665A41E2847AE080076DB3F /* TextCase+SwiftUI.swift in Sources */,
 				B68563232840D97000D39A8D /* HGroup.swift in Sources */,
@@ -1328,7 +1328,7 @@
 				B6D2D728284CC586004DC95A /* DatabaseController.swift in Sources */,
 				B6E13C63283D2639003BFDD4 /* UicornView+Map.swift in Sources */,
 				B6C2070E283BAE49001B9BB1 /* TreeItemMenu.swift in Sources */,
-				B6261A2D284EA75400C148E3 /* AppModelObserver.swift in Sources */,
+				B6261A2D284EA75400C148E3 /* AppTreeViewState.swift in Sources */,
 				B68D9C9528480FC100F2129F /* BlendMode.swift in Sources */,
 				B69F2BD52828673000877D04 /* UicornView+Text.swift in Sources */,
 				B61737A92829651E006DE98E /* UicornView+Image.swift in Sources */,

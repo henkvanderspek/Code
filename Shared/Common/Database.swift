@@ -154,7 +154,7 @@ extension Uicorn.Database {
     }
 }
 
-private extension String {
+extension String {
     static var entityPlaceId = "__entityPlaceId"
     static var entityCoordinateId = "__entityCoordinateId"
     static var attributePlaceNameId = "__attributePlaceNameId"

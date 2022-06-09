@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct DatabaseView: View {
-    @EnvironmentObject private var observer: DatabaseModelObserver
+    var selectedTableId: Binding<String?>
     @EnvironmentObject private var database: DatabaseController
     var body: some View {
-        if observer.rootItem.id != observer.selectedItem.id, let e = database.entity(by: observer.selectedItem.id), let r = database.records(byEntity: observer.selectedItem.id) {
+        if let id = selectedTableId.wrappedValue, let e = database.entity(by: id), let r = database.records(byEntity: id) {
             ScrollView {
                 VStack(spacing: 1) {
                     HStack(spacing: 1) {
@@ -47,6 +47,7 @@ struct DatabaseView: View {
 
 struct CmsView_Previews: PreviewProvider {
     static var previews: some View {
-        DatabaseView()
+        DatabaseView(selectedTableId: .constant(.entityPlaceId))
+            .environmentObject(DatabaseController(configuration: .dev))
     }
 }
