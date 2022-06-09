@@ -146,16 +146,20 @@ extension Uicorn.Database {
         )
     }
     mutating func store(entityId: String, _ record: Record) {
-        print(values)
-        record.values.forEach {
-            switch $0.type {
-            case let .coordinate(c):
-                values.append(.init(id: .unique, rowId: record.rowId, entityId: entityId, attributeId: $0.attributeId, coordinate: c)!)
-            case .string, .int, .double, .boolean:
-                values.append(.init(id: .unique, rowId: record.rowId, entityId: entityId, attributeId: $0.attributeId, value: $0.string))
-            }
+        values.append(contentsOf: record.values.compactMap {
+            Uicorn.Database.Value(entityId: entityId, rowId: record.rowId, $0)
+        })
+    }
+}
+
+extension Uicorn.Database.Value {
+    init?(entityId: String, rowId: Int, _ r: Uicorn.Database.Record.Value) {
+        switch r.type {
+        case let .coordinate(c):
+            self.init(id: .unique, rowId: rowId, entityId: entityId, attributeId: r.attributeId, coordinate: c)!
+        case .string, .int, .double, .boolean:
+            self.init(id: .unique, rowId: rowId, entityId: entityId, attributeId: r.attributeId, value: r.string)
         }
-        print(values)
     }
 }
 
