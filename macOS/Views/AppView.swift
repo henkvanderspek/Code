@@ -54,7 +54,7 @@ struct AppView: View {
             .navigationSplitViewColumnWidth(min: 200, ideal: 250)
         } content: {
             if isDatabaseActive {
-                DatabaseView(selectedTableId: $selectedDatabaseTableId)
+                DatabaseView(selectedEntityId: $selectedDatabaseTableId)
             } else if let b = Binding($appTreeView.sanitizedScreen) {
                 AppearanceView(colorScheme: shouldShowDarkMode ? .dark : .light) {
                     ScreenView(b)

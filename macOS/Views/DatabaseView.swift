@@ -8,11 +8,31 @@
 import SwiftUI
 
 struct DatabaseView: View {
-    var selectedTableId: Binding<String?>
+    var selectedEntityId: Binding<String?>
     @EnvironmentObject private var database: DatabaseController
+    @State private var isAddActive: Bool = false
     var body: some View {
-        if let id = selectedTableId.wrappedValue, let e = database.entity(by: id), let r = database.records(byEntity: id) {
+        if let id = selectedEntityId.wrappedValue, let e = database.entity(by: id), let r = database.records(byEntity: id) {
             ScrollView {
+                HStack {
+                    Text(e.name)
+                        .font(.title2)
+                        .bold()
+                    Spacer()
+                    Button {
+                        isAddActive = true
+                    } label: {
+                        Label("Add", systemImage: "plus")
+                            .font(.title2)
+                            .labelStyle(.iconOnly)
+                    }
+                    .buttonStyle(.borderless)
+                    .sheet(isPresented: $isAddActive) {
+                        EntityView(entity(e))
+                            .frame(width: 300, height: 300)
+                            .background(Color(.windowBackgroundColor))
+                    }
+                }
                 VStack(spacing: 1) {
                     HStack(spacing: 1) {
                         ForEach(e.attributes, id: \.id) {
@@ -20,7 +40,7 @@ struct DatabaseView: View {
                                 .lineLimit(1)
                                 .padding(5)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .font(.callout.weight(.medium))
+                                .font(.headline)
                         }
                     }
                     LazyVGrid(columns: [.init()], alignment: .leading, spacing: 1) {
@@ -31,7 +51,7 @@ struct DatabaseView: View {
                                         .lineLimit(1)
                                         .padding(5)
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                        .background(Color.gray.opacity(0.1))
+                                        //.background(Color.gray.opacity(0.1))
                                 }
                             }
                         }
@@ -47,7 +67,20 @@ struct DatabaseView: View {
 
 struct CmsView_Previews: PreviewProvider {
     static var previews: some View {
-        DatabaseView(selectedTableId: .constant(.entityPlaceId))
+        DatabaseView(selectedEntityId: .constant(.entityPlaceId))
             .environmentObject(DatabaseController(configuration: .dev))
+    }
+}
+
+private extension DatabaseView {
+    func entity(_ e: Uicorn.Database.Entity) -> Binding<Uicorn.Database.Entity> {
+        .init(
+            get: {
+                e
+            },
+            set: { _ in
+                fatalError()
+            }
+        )
     }
 }

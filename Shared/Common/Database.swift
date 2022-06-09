@@ -133,14 +133,7 @@ extension Uicorn.Database {
         .init(
             id: .unique,
             entities: [
-                .init(
-                    id: .entityPlaceId,
-                    name: "Places",
-                    attributes: [
-                        .init(id: .attributePlaceNameId, name: "Name", type: .string, param: nil),
-                        .init(id: .attributePlaceCoordinateId, name: "Coordinate", type: .coordinate, param: nil),
-                    ]
-                )
+                .places
             ],
             values: [
                 .init(id: .unique, rowId: 1, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Eiffel Tower"),
@@ -149,6 +142,22 @@ extension Uicorn.Database {
                 .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .louvre)!,
                 .init(id: .unique, rowId: 3, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Champs-Élysées - Clemenceau"),
                 .init(id: .unique, rowId: 3, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .champsÉlyséesClemenceau)!
+            ]
+        )
+    }
+}
+
+extension Uicorn.Database.Entity {
+    static var mock: Self {
+        places
+    }
+    static var places: Self {
+        .init(
+            id: .entityPlaceId,
+            name: "Places",
+            attributes: [
+                .init(id: .attributePlaceNameId, name: "Name", type: .string, param: nil),
+                .init(id: .attributePlaceCoordinateId, name: "Coordinate", type: .coordinate, param: nil),
             ]
         )
     }

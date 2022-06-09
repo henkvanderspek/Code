@@ -285,6 +285,7 @@
 		B6EECA5428338BD100774B42 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5228338BD100774B42 /* Font.swift */; };
 		B6EECA5628338D4000774B42 /* FontPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5528338D4000774B42 /* FontPropertiesView.swift */; };
 		B6EECA582833937400774B42 /* TextPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA572833937400774B42 /* TextPropertiesView.swift */; };
+		B6F226502851FD1000150C14 /* EntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F2264F2851FD1000150C14 /* EntityView.swift */; };
 		B6FA89A52829753700E842AE /* View+VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A42829753700E842AE /* View+VStack.swift */; };
 		B6FA89A62829753700E842AE /* View+VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A42829753700E842AE /* View+VStack.swift */; };
 		B6FA89A82829755100E842AE /* View+ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FA89A72829755100E842AE /* View+ZStack.swift */; };
@@ -467,6 +468,7 @@
 		B6EECA5228338BD100774B42 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		B6EECA5528338D4000774B42 /* FontPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPropertiesView.swift; sourceTree = "<group>"; };
 		B6EECA572833937400774B42 /* TextPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPropertiesView.swift; sourceTree = "<group>"; };
+		B6F2264F2851FD1000150C14 /* EntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityView.swift; sourceTree = "<group>"; };
 		B6FA89A42829753700E842AE /* View+VStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+VStack.swift"; sourceTree = "<group>"; };
 		B6FA89A72829755100E842AE /* View+ZStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ZStack.swift"; sourceTree = "<group>"; };
 		B6FA89AA282975D100E842AE /* UicornView+VStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+VStack.swift"; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 				B68563222840D97000D39A8D /* HGroup.swift */,
 				B68563242840DCCC00D39A8D /* VGroup.swift */,
 				B68563262840DDBD00D39A8D /* Group.swift */,
+				B6F2264F2851FD1000150C14 /* EntityView.swift */,
 				B6A2E5F6282D064B002FCDFF /* CollectionPropertiesView.swift */,
 				B676929C282E828C0026CA87 /* ColorPropertiesView.swift */,
 				B6D2B8F5283257EE00346B95 /* ShapePropertiesView.swift */,
@@ -1296,6 +1299,7 @@
 				B64DEC9C284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift in Sources */,
 				B69093B9284550C800CB2F42 /* View+Instance.swift in Sources */,
 				B6883D61282578BD00544462 /* InspectorView.swift in Sources */,
+				B6F226502851FD1000150C14 /* EntityView.swift in Sources */,
 				B6A2E5FB282D33F7002FCDFF /* Action.swift in Sources */,
 				B6883D5D2825468100544462 /* ViewVisibility.swift in Sources */,
 				B6AE6D702828FF39001800F8 /* View+Text.swift in Sources */,
