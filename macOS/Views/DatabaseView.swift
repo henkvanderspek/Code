@@ -11,69 +11,84 @@ struct DatabaseView: View {
     var selectedEntityId: Binding<String?>
     @EnvironmentObject private var database: DatabaseController
     @State private var isAddActive: Bool = false
+    @State private var currentRecord: Uicorn.Database.Record = .empty
+    @State private var uuid: UUID = .init()
     var body: some View {
-        if let id = selectedEntityId.wrappedValue, let e = database.entity(by: id), let r = database.records(byEntity: id) {
-            ScrollView {
-                HStack {
-                    Text(e.name)
-                        .font(.title2)
-                        .bold()
-                    Spacer()
-                    Button {
-                        isAddActive = true
-                    } label: {
-                        Label("Add", systemImage: "plus")
+        ZStack {
+            if let id = selectedEntityId.wrappedValue, let e = database.entity(by: id), let r = database.records(byEntity: id) {
+                ScrollView {
+                    HStack {
+                        Text(e.name)
                             .font(.title2)
-                            .labelStyle(.iconOnly)
-                    }
-                    .buttonStyle(.borderless)
-                    .sheet(isPresented: $isAddActive) {
-                        ZStack {
-                            EntityView(entity(e))
-                                .frame(width: 300)
-                                .frame(maxHeight: 300)
-                                .background(Color(.windowBackgroundColor))
+                            .bold()
+                        Spacer()
+                        Button {
+                            currentRecord = .init(rowId: r.count, e)
+                            isAddActive = true
+                        } label: {
+                            Label("Add", systemImage: "plus")
+                                .font(.title2)
+                                .labelStyle(.iconOnly)
                         }
-                        .toolbar {
-                            ToolbarItemGroup(placement: .confirmationAction) {
-                                Button {
-                                    isAddActive = false
-                                } label: {
-                                    Text("Close")
+                        .buttonStyle(.borderless)
+                        .sheet(isPresented: $isAddActive) {
+                            ZStack {
+                                EntityView(entity(e), record: $currentRecord)
+                                    .frame(width: 300)
+                                    .frame(maxHeight: 300)
+                                    .background(Color(.windowBackgroundColor))
+                            }
+                            .toolbar {
+                                ToolbarItemGroup(placement: .cancellationAction) {
+                                    Button {
+                                        isAddActive = false
+                                    } label: {
+                                        Text("Cancel")
+                                    }
+                                }
+                                ToolbarItemGroup(placement: .confirmationAction) {
+                                    Button {
+                                        isAddActive = false
+                                        database.store(entityId: id, currentRecord)
+                                        uuid = .init()
+                                    } label: {
+                                        Text("Save")
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                VStack(spacing: 1) {
-                    HStack(spacing: 1) {
-                        ForEach(e.attributes, id: \.id) {
-                            Text($0.name)
-                                .lineLimit(1)
-                                .padding(5)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .font(.headline)
+                    VStack(spacing: 1) {
+                        HStack(spacing: 1) {
+                            ForEach(e.attributes, id: \.id) {
+                                Text($0.name)
+                                    .lineLimit(1)
+                                    .padding(5)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.headline)
+                            }
                         }
-                    }
-                    LazyVGrid(columns: [.init()], alignment: .leading, spacing: 1) {
-                        ForEach(r, id: \.rowId) { record in
-                            HStack(spacing: 1) {
-                                ForEach(record.values, id: \.id) {
-                                    Text($0.string)
-                                        .lineLimit(1)
-                                        .padding(5)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                        LazyVGrid(columns: [.init()], alignment: .leading, spacing: 1) {
+                            ForEach(r, id: \.rowId) { record in
+                                HStack(spacing: 1) {
+                                    ForEach(record.values, id: \.id) {
+                                        Text($0.string)
+                                            .lineLimit(1)
+                                            .padding(5)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
                                         //.background(Color.gray.opacity(0.1))
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                .padding()
+            } else {
+                EmptyView()
             }
-            .padding()
-        } else {
-            EmptyView()
         }
+        .id(uuid)
     }
 }
 
@@ -94,5 +109,11 @@ private extension DatabaseView {
                 fatalError()
             }
         )
+    }
+}
+
+extension Uicorn.Database.Record {
+    static var empty: Self {
+        .init(rowId: 0, values: [])
     }
 }

@@ -63,4 +63,12 @@ class DatabaseController: ObservableObject {
             fatalError()
         }
     }
+    func store(entityId: String, _ record: Database.Record) {
+        switch configuration {
+        case .dev:
+            database.store(entityId: entityId, record)
+        case .live:
+            fatalError()
+        }
+    }
 }

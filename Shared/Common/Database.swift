@@ -48,11 +48,11 @@ extension Uicorn {
                 let type: `Type`
             }
             let rowId: Int
-            let values: [Value]
+            var values: [Value]
         }
         let id: String
         let entities: [Entity]
-        let values: [Value]
+        var values: [Value]
     }
 }
 
@@ -136,14 +136,26 @@ extension Uicorn.Database {
                 .places
             ],
             values: [
-                .init(id: .unique, rowId: 1, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Eiffel Tower"),
-                .init(id: .unique, rowId: 1, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .eiffelTower)!,
-                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Louvre"),
-                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .louvre)!,
-                .init(id: .unique, rowId: 3, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Champs-Élysées - Clemenceau"),
-                .init(id: .unique, rowId: 3, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .champsÉlyséesClemenceau)!
+                .init(id: .unique, rowId: 0, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Eiffel Tower"),
+                .init(id: .unique, rowId: 0, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .eiffelTower)!,
+                .init(id: .unique, rowId: 1, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Louvre"),
+                .init(id: .unique, rowId: 1, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .louvre)!,
+                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Champs-Élysées - Clemenceau"),
+                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .champsÉlyséesClemenceau)!
             ]
         )
+    }
+    mutating func store(entityId: String, _ record: Record) {
+        print(values)
+        record.values.forEach {
+            switch $0.type {
+            case let .coordinate(c):
+                values.append(.init(id: .unique, rowId: record.rowId, entityId: entityId, attributeId: $0.attributeId, coordinate: c)!)
+            case .string, .int, .double, .boolean:
+                values.append(.init(id: .unique, rowId: record.rowId, entityId: entityId, attributeId: $0.attributeId, value: $0.string))
+            }
+        }
+        print(values)
     }
 }
 

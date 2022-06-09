@@ -9,17 +9,16 @@ import SwiftUI
 
 struct EntityView: View {
     @Binding var entity: Uicorn.Database.Entity
-    @State var values: [String?]
-    // TODO: store record
-    init(_ e: Binding<Uicorn.Database.Entity>) {
+    @Binding var record: Uicorn.Database.Record
+    init(_ e: Binding<Uicorn.Database.Entity>, record r: Binding<Uicorn.Database.Record>) {
         _entity = e
-        values = .init(repeating: nil, count: e.wrappedValue.attributes.count)
+        _record = r
     }
     var body: some View {
         ScrollView {
             Form {
                 ForEach(Array(entity.attributes.enumerated()), id: \.offset) { i, e in
-                    VGroup {
+                    LazyVGrid(columns: .init(repeating: .init(.adaptive(minimum: 80)), count: 2), alignment: .leading) {
                         switch e.type {
                         case .string:
                             header(e.name)
@@ -50,23 +49,20 @@ private extension EntityView {
     func string(at i: Int) -> Binding<String> {
         .init(
             get: {
-                values[i] ?? ""
+                record.values[i].string
             },
             set: {
-                values[i] = $0
+                record.values[i] = record.values[i].modified($0)
             }
         )
     }
     func coordinate(at i: Int) -> Binding<Uicorn.Coordinate> {
         .init(
             get: {
-                guard let s = values[i], let d = s.data(using: .utf8) else { return .zero }
-                return (try? JSONDecoder().decode(Uicorn.Coordinate.self, from: d)) ?? .zero
+                record.values[i].coordinate ?? .zero
             },
             set: {
-                guard let d = try? JSONEncoder().encode($0) else { return }
-                guard let s = String(data: d, encoding: .utf8) else { return }
-                values[i] = s
+                record.values[i] = record.values[i].modified($0)
             }
         )
     }
@@ -74,6 +70,39 @@ private extension EntityView {
 
 struct EntityView_Previews: PreviewProvider {
     static var previews: some View {
-        EntityView(.constant(.mock))
+        EntityView(.constant(.mock), record: .constant(.init(.mock)))
+    }
+}
+
+extension Uicorn.Database.Record {
+    init(rowId id: Int = 0, _ e: Uicorn.Database.Entity) {
+        rowId = id
+        values = e.attributes.map { .init($0) }
+    }
+}
+
+extension Uicorn.Database.Record.Value {
+    init(_ a: Uicorn.Database.Attribute) {
+        id = .unique
+        attributeId = a.id
+        type = .init(a.type)
+    }
+    func modified(_ v: String) -> Self {
+        .init(id: id, attributeId: attributeId, type: .string(v))
+    }
+    func modified(_ v: Uicorn.Coordinate) -> Self {
+        .init(id: id, attributeId: attributeId, type: .coordinate(v))
+    }
+}
+
+extension Uicorn.Database.Record.Value.`Type` {
+    init(_ t: Uicorn.Database.Attribute.`Type`) {
+        switch t {
+        case .boolean: self = .boolean(.init())
+        case .double: self = .double(.init())
+        case .int: self = .int(.init())
+        case .string: self = .string(.init())
+        case .coordinate: self = .coordinate(.zero)
+        }
     }
 }
