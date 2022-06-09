@@ -36,7 +36,6 @@ struct DatabaseView: View {
                                 EntityView(entity(e), record: $currentRecord)
                                     .frame(width: 300)
                                     .frame(maxHeight: 300)
-                                    .background(Color(.windowBackgroundColor))
                             }
                             .toolbar {
                                 ToolbarItemGroup(placement: .cancellationAction) {
