@@ -28,9 +28,21 @@ struct DatabaseView: View {
                     }
                     .buttonStyle(.borderless)
                     .sheet(isPresented: $isAddActive) {
-                        EntityView(entity(e))
-                            .frame(width: 300, height: 300)
-                            .background(Color(.windowBackgroundColor))
+                        ZStack {
+                            EntityView(entity(e))
+                                .frame(width: 300)
+                                .frame(maxHeight: 300)
+                                .background(Color(.windowBackgroundColor))
+                        }
+                        .toolbar {
+                            ToolbarItemGroup(placement: .confirmationAction) {
+                                Button {
+                                    isAddActive = false
+                                } label: {
+                                    Text("Close")
+                                }
+                            }
+                        }
                     }
                 }
                 VStack(spacing: 1) {

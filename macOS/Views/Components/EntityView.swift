@@ -10,6 +10,7 @@ import SwiftUI
 struct EntityView: View {
     @Binding var entity: Uicorn.Database.Entity
     @State var values: [String?]
+    // TODO: store record
     init(_ e: Binding<Uicorn.Database.Entity>) {
         _entity = e
         values = .init(repeating: nil, count: e.wrappedValue.attributes.count)
@@ -19,8 +20,20 @@ struct EntityView: View {
             Form {
                 ForEach(Array(entity.attributes.enumerated()), id: \.offset) { i, e in
                     VGroup {
-                        Header(e.name, font: .body, fontWeight: .medium)
-                        TextField(e.name, text: value(at: i))
+                        switch e.type {
+                        case .string:
+                            header(e.name)
+                            TextField(e.name, text: string(at: i))
+                        case .coordinate:
+                            let c = coordinate(at: i)
+                            header("Latitude")
+                            TextField(e.name, value: c.latitude, format: .number.locale(.init(identifier: "US")))
+                            header("Longitude")
+                            TextField(e.name, value: c.longitude, format: .number.locale(.init(identifier: "US")))
+                        case .int, .double, .boolean:
+                            fatalError()
+                        }
+                        
                     }
                 }
             }
@@ -31,13 +44,29 @@ struct EntityView: View {
 }
 
 private extension EntityView {
-    func value(at i: Int) -> Binding<String> {
+    func header(_ s: String) -> some View {
+        Header(s, font: .body, fontWeight: .medium)
+    }
+    func string(at i: Int) -> Binding<String> {
         .init(
             get: {
-                return values[i] ?? ""
+                values[i] ?? ""
             },
             set: {
                 values[i] = $0
+            }
+        )
+    }
+    func coordinate(at i: Int) -> Binding<Uicorn.Coordinate> {
+        .init(
+            get: {
+                guard let s = values[i], let d = s.data(using: .utf8) else { return .zero }
+                return (try? JSONDecoder().decode(Uicorn.Coordinate.self, from: d)) ?? .zero
+            },
+            set: {
+                guard let d = try? JSONEncoder().encode($0) else { return }
+                guard let s = String(data: d, encoding: .utf8) else { return }
+                values[i] = s
             }
         )
     }
