@@ -19,14 +19,8 @@ extension Uicorn {
 }
 
 extension Uicorn.Location {
-    static var appleStoreSoho: Uicorn.Location {
-        .init(name: "Apple Store SoHo", coordinate: .appleStoreSoHo)
-    }
     static var eiffelTower: Uicorn.Location {
         .init(name: "Eiffel Tower", coordinate: .eiffelTower)
-    }
-    static var zanzibarBeachclub: Uicorn.Location {
-        .init(name: "Zanzibar Beachclub", coordinate: .zanzibarBeachclub)
     }
     static var mock: Uicorn.Location {
         eiffelTower

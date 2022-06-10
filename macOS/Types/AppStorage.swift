@@ -113,7 +113,7 @@ private extension NSManagedObjectModel {
     }
 }
 
-extension NSEntityDescription {
+private extension NSEntityDescription {
     static var item: NSEntityDescription {
         return .init(
             name: "Item",

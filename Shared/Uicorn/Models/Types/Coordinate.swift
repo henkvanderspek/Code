@@ -22,23 +22,17 @@ extension Uicorn.Coordinate {
     static var zero: Uicorn.Coordinate {
         .init(0, 0)
     }
-    static var appleStoreSoHo: Uicorn.Coordinate {
-        .init(40.72547452077477, -73.99895645460768)
-    }
     static var eiffelTower: Uicorn.Coordinate {
-        .init(48.85901957930565, 2.294606993956224)
+        .init(48.8539054,2.2663311)
     }
     static var louvre: Uicorn.Coordinate {
-        .init(48.8606111, 2.337644)
+        .init(48.8606111,2.3354553)
     }
-    static var muséeDesÉgoutsDeParis: Uicorn.Coordinate {
-        .init(48.8583701, 2.2944813)
+    static var muséeRodin: Uicorn.Coordinate {
+        .init(48.8660958,2.282997)
     }
-    static var champsÉlyséesClemenceau: Uicorn.Coordinate {
-        .init(48.8582572, 2.3080855)
-    }
-    static var zanzibarBeachclub: Uicorn.Coordinate {
-        .init(52.113456583059126, 4.279874927463718)
+    static var champsÉlysées: Uicorn.Coordinate {
+        .init(48.8683078,2.3000002)
     }
 }
 

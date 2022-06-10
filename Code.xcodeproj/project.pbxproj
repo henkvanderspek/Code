@@ -258,6 +258,7 @@
 		B6B125E5283511C5005E989F /* PaddingPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E3283511C5005E989F /* PaddingPropertiesView.swift */; };
 		B6B125E82835123E005E989F /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E62835123E005E989F /* StepperView.swift */; };
 		B6B125EB28351A07005E989F /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B125E928351A07005E989F /* TextEditorView.swift */; };
+		B6B902F2285385FC00999F91 /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685632828410F9800D39A8D /* AppStorage.swift */; };
 		B6C2070D283B9CFD001B9BB1 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B3D9627DF42B300F50F2E /* Types.swift */; };
 		B6C2070E283BAE49001B9BB1 /* TreeItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE6D7628295130001800F8 /* TreeItemMenu.swift */; };
 		B6C2808E2837D0E300099DA3 /* nokia.scn in Resources */ = {isa = PBXBuildFile; fileRef = B6C2808D2837D0E300099DA3 /* nokia.scn */; };
@@ -1207,6 +1208,7 @@
 				B6B125DF2834DE42005E989F /* UicornView+Shape.swift in Sources */,
 				B665A3EF284763030076DB3F /* ComponentController.swift in Sources */,
 				B6A38E65282BF8AF002777CA /* View+VStack.swift in Sources */,
+				B6B902F2285385FC00999F91 /* AppStorage.swift in Sources */,
 				B6A38E72282BF8AF002777CA /* App.swift in Sources */,
 				B6B125DA2834DE42005E989F /* UicornView+Text.swift in Sources */,
 				B6A38E6B282BF8AF002777CA /* View+HStack.swift in Sources */,

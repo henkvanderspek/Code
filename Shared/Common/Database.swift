@@ -116,7 +116,7 @@ extension Uicorn.Database.Record.Value.`Type` {
         case let .int(i): return .init(i)
         case let .double(d): return .init(d)
         case let .boolean(b): return .init(b)
-        case let .coordinate(c): return "\(c.latitude),\(c.longitude)"
+        case let .coordinate(c): return "\(c)"
         }
     }
 }
@@ -140,8 +140,8 @@ extension Uicorn.Database {
                 .init(id: .unique, rowId: 0, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .eiffelTower)!,
                 .init(id: .unique, rowId: 1, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Louvre"),
                 .init(id: .unique, rowId: 1, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .louvre)!,
-                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Champs-Élysées - Clemenceau"),
-                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .champsÉlyséesClemenceau)!
+                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceNameId, value: "Champs-Élysées"),
+                .init(id: .unique, rowId: 2, entityId: .entityPlaceId, attributeId: .attributePlaceCoordinateId, coordinate: .champsÉlysées)!
             ]
         )
     }
@@ -184,4 +184,23 @@ extension String {
     static var entityCoordinateId = "__entityCoordinateId"
     static var attributePlaceNameId = "__attributePlaceNameId"
     static var attributePlaceCoordinateId = "__attributePlaceLocationId"
+}
+
+extension String.StringInterpolation {
+    mutating func appendInterpolation(_ coordinate: Uicorn.Coordinate) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        formatter.locale = .init(identifier: "US")
+        guard
+            let lat = formatter.string(from: coordinate.latitude as NSNumber),
+            let lon = formatter.string(from: coordinate.longitude as NSNumber)
+        else {
+            return
+        }
+        appendLiteral(lat)
+        appendLiteral(",")
+        appendLiteral(lon)
+    }
 }

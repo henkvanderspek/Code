@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct macOSApp: App {
     @StateObject private var backendController = BackendController(configuration: .live)
-    @StateObject private var databaseController = DatabaseController(configuration: .dev)
+    @StateObject private var databaseController = DatabaseController(configuration: .mock)
     private let storage = AppStorageCoreData()
     private let app: Uicorn.App
     init() {

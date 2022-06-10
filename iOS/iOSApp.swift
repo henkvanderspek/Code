@@ -35,7 +35,7 @@ class DatabaseTreeViewState: ObservableObject {
 @main
 struct iOSApp: App {
     @StateObject private var backendController = BackendController(configuration: .live)
-    @StateObject private var databaseController = DatabaseController(configuration: .dev)
+    @StateObject private var databaseController = DatabaseController(configuration: .mock)
     @StateObject private var componentController = ComponentController()
     private let pasteboard: UIPasteboard = .general
     private let spacing = 12.0
