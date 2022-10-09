@@ -54,6 +54,9 @@
 		B64DEC9B284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEC9A284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift */; };
 		B64DEC9C284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEC9A284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift */; };
 		B64DEC9D284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEC9A284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift */; };
+		B654ED2D2857271000DD0C19 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654ED2C2857271000DD0C19 /* Metric.swift */; };
+		B654ED2E2857271000DD0C19 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654ED2C2857271000DD0C19 /* Metric.swift */; };
+		B654ED2F2857271000DD0C19 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654ED2C2857271000DD0C19 /* Metric.swift */; };
 		B65C0264283F9D540073FA4A /* View+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0263283F9D540073FA4A /* View+Scroll.swift */; };
 		B65C0265283F9D540073FA4A /* View+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0263283F9D540073FA4A /* View+Scroll.swift */; };
 		B65C0266283F9D540073FA4A /* View+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C0263283F9D540073FA4A /* View+Scroll.swift */; };
@@ -285,9 +288,9 @@
 		B6EE49992853A406001C6C68 /* MockDatabaseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE49982853A406001C6C68 /* MockDatabaseEngine.swift */; };
 		B6EE499A2853A406001C6C68 /* MockDatabaseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE49982853A406001C6C68 /* MockDatabaseEngine.swift */; };
 		B6EE499B2853A406001C6C68 /* MockDatabaseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE49982853A406001C6C68 /* MockDatabaseEngine.swift */; };
-		B6EE499D2853A423001C6C68 /* CloudKitDatabaseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE499C2853A423001C6C68 /* CloudKitDatabaseEngine.swift */; };
-		B6EE499E2853A423001C6C68 /* CloudKitDatabaseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE499C2853A423001C6C68 /* CloudKitDatabaseEngine.swift */; };
-		B6EE499F2853A423001C6C68 /* CloudKitDatabaseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE499C2853A423001C6C68 /* CloudKitDatabaseEngine.swift */; };
+		B6EE499D2853A423001C6C68 /* CoreDataDatabaseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE499C2853A423001C6C68 /* CoreDataDatabaseEngine.swift */; };
+		B6EE499E2853A423001C6C68 /* CoreDataDatabaseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE499C2853A423001C6C68 /* CoreDataDatabaseEngine.swift */; };
+		B6EE499F2853A423001C6C68 /* CoreDataDatabaseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE499C2853A423001C6C68 /* CoreDataDatabaseEngine.swift */; };
 		B6EECA5328338BD100774B42 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5228338BD100774B42 /* Font.swift */; };
 		B6EECA5428338BD100774B42 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5228338BD100774B42 /* Font.swift */; };
 		B6EECA5628338D4000774B42 /* FontPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EECA5528338D4000774B42 /* FontPropertiesView.swift */; };
@@ -341,6 +344,7 @@
 		B64C9F42283695F700A4B7CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B64C9F45283695F700A4B7CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B64DEC9A284BAE6F001615BE /* UicornView+SFSymbolsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+SFSymbolsCollection.swift"; sourceTree = "<group>"; };
+		B654ED2C2857271000DD0C19 /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
 		B65C0263283F9D540073FA4A /* View+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Scroll.swift"; sourceTree = "<group>"; };
 		B65C0267283F9E9D0073FA4A /* Axis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axis.swift; sourceTree = "<group>"; };
 		B65C026B283FA1380073FA4A /* UicornView+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UicornView+Scroll.swift"; sourceTree = "<group>"; };
@@ -473,7 +477,7 @@
 		B6ECBE0427E4E4AF00185B7E /* ComposeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeTextView.swift; sourceTree = "<group>"; };
 		B6ECBE0727E7614E00185B7E /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		B6EE49982853A406001C6C68 /* MockDatabaseEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabaseEngine.swift; sourceTree = "<group>"; };
-		B6EE499C2853A423001C6C68 /* CloudKitDatabaseEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseEngine.swift; sourceTree = "<group>"; };
+		B6EE499C2853A423001C6C68 /* CoreDataDatabaseEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDatabaseEngine.swift; sourceTree = "<group>"; };
 		B6EECA5228338BD100774B42 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		B6EECA5528338D4000774B42 /* FontPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPropertiesView.swift; sourceTree = "<group>"; };
 		B6EECA572833937400774B42 /* TextPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPropertiesView.swift; sourceTree = "<group>"; };
@@ -864,6 +868,7 @@
 				B65C0267283F9E9D0073FA4A /* Axis.swift */,
 				B665A4202847AE2D0076DB3F /* Axis+SwiftUI.swift */,
 				B65C027D283FC0970073FA4A /* Frame.swift */,
+				B654ED2C2857271000DD0C19 /* Metric.swift */,
 				B66F4CEC284509CA00E941ED /* ImageScale.swift */,
 				B665A4042847ACA40076DB3F /* ImageScale+SwiftUI.swift */,
 				B665A3F42847A4A90076DB3F /* Coordinate.swift */,
@@ -925,7 +930,7 @@
 				B6D2D72A284CD197004DC95A /* Database.swift */,
 				B6D2D726284CC586004DC95A /* DatabaseController.swift */,
 				B6EE49982853A406001C6C68 /* MockDatabaseEngine.swift */,
-				B6EE499C2853A423001C6C68 /* CloudKitDatabaseEngine.swift */,
+				B6EE499C2853A423001C6C68 /* CoreDataDatabaseEngine.swift */,
 				B6883D692825850700544462 /* String+Unique.swift */,
 				B6AE6D732829319E001800F8 /* Color+Random.swift */,
 				B66400822846256400F228D7 /* UINavigationBar+Appearance.swift */,
@@ -1166,7 +1171,7 @@
 				B6D2D729284CC586004DC95A /* DatabaseController.swift in Sources */,
 				B69093C22845527600CB2F42 /* Component.swift in Sources */,
 				B665A3F3284763100076DB3F /* ValueProvider.swift in Sources */,
-				B6EE499F2853A423001C6C68 /* CloudKitDatabaseEngine.swift in Sources */,
+				B6EE499F2853A423001C6C68 /* CoreDataDatabaseEngine.swift in Sources */,
 				B6A38E63282BF8AF002777CA /* Uicorn.swift in Sources */,
 				B6817DE2283CF82F006623A9 /* TextAlignment.swift in Sources */,
 				B6A38E73282BF8B2002777CA /* BackendController.swift in Sources */,
@@ -1182,6 +1187,7 @@
 				B69093BE2845516000CB2F42 /* UicornView+Instance.swift in Sources */,
 				B6E13C60283CFB36003BFDD4 /* TextCase.swift in Sources */,
 				B68D9CA72848ACFD00F2129F /* Padding+SwiftUI.swift in Sources */,
+				B654ED2F2857271000DD0C19 /* Metric.swift in Sources */,
 				B665A4072847ACA40076DB3F /* ImageScale+SwiftUI.swift in Sources */,
 				B69D2C66284BFFB20036AABD /* RelativeView.swift in Sources */,
 				B665A4032847AB8B0076DB3F /* Coordinate+MapKit.swift in Sources */,
@@ -1287,7 +1293,7 @@
 				B69F2BD32828663900877D04 /* UicornView+HStack.swift in Sources */,
 				B6AE6D642828FCDB001800F8 /* App.swift in Sources */,
 				B6E13C67283D2CDA003BFDD4 /* GreedySpacer.swift in Sources */,
-				B6EE499E2853A423001C6C68 /* CloudKitDatabaseEngine.swift in Sources */,
+				B6EE499E2853A423001C6C68 /* CoreDataDatabaseEngine.swift in Sources */,
 				B61737AC2829664A006DE98E /* View+Image.swift in Sources */,
 				B6418D552841622E00FA7C04 /* CoreData+Sugar.swift in Sources */,
 				B6B125E5283511C5005E989F /* PaddingPropertiesView.swift in Sources */,
@@ -1329,6 +1335,7 @@
 				B61433A8282A656E00760F39 /* UicornView+Collection.swift in Sources */,
 				B6D2B8F6283257EE00346B95 /* ShapePropertiesView.swift in Sources */,
 				B665A3EA284762EF0076DB3F /* ScreenSettings.swift in Sources */,
+				B654ED2E2857271000DD0C19 /* Metric.swift in Sources */,
 				B6261A29284E941500C148E3 /* TreeItem+Database.swift in Sources */,
 				B65C0269283F9E9D0073FA4A /* Axis.swift in Sources */,
 				B6C2843627CCEAF60000C0E7 /* macOSApp.swift in Sources */,
@@ -1363,7 +1370,7 @@
 				B6AE6D632828FCDB001800F8 /* App.swift in Sources */,
 				B6B125CE2834DA33005E989F /* Padding.swift in Sources */,
 				B6FA89AE282975E300E842AE /* UicornView+ZStack.swift in Sources */,
-				B6EE499D2853A423001C6C68 /* CloudKitDatabaseEngine.swift in Sources */,
+				B6EE499D2853A423001C6C68 /* CoreDataDatabaseEngine.swift in Sources */,
 				B665A4092847AD140076DB3F /* Color+SwiftUI.swift in Sources */,
 				B622612A284F5506003D9969 /* InstanceValueProvider.swift in Sources */,
 				B67B3D9727DF42B300F50F2E /* Types.swift in Sources */,
@@ -1412,6 +1419,7 @@
 				B69F2BDA2828689700877D04 /* UicornView+HStack.swift in Sources */,
 				B665A3E9284762EF0076DB3F /* ScreenSettings.swift in Sources */,
 				B69F2BDB2828689A00877D04 /* UicornView.swift in Sources */,
+				B654ED2D2857271000DD0C19 /* Metric.swift in Sources */,
 				B6FA89A82829755100E842AE /* View+ZStack.swift in Sources */,
 				B665A4152847ADB40076DB3F /* Alignment+SwiftUI.swift in Sources */,
 				B67692A2282E9D4C0026CA87 /* View+Shape.swift in Sources */,

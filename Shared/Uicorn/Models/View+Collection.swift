@@ -97,3 +97,19 @@ extension Uicorn.View.Collection {
         }
     }
 }
+
+extension Uicorn.View {
+    enum Property: Codable, CaseIterable {
+        case annotationTitle
+        case annotationCoordinate
+    }
+}
+
+extension Uicorn.View.Property {
+    var localizedString: String {
+        switch self {
+        case .annotationTitle: return "Annotation Title"
+        case .annotationCoordinate: return "Annotation Coordinate"
+        }
+    }
+}

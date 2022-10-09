@@ -98,14 +98,14 @@ extension Uicorn.View {
     static var vscroll: Uicorn.View {
         .vscroll([])
     }
-    static func instance(_ id: String, values: Uicorn.View.Instance.Values) -> Uicorn.View {
+    static func instance(_ id: String = .unique, values: Uicorn.View.Instance.Values) -> Uicorn.View {
         .init(id: .unique, type: .instance(.init(id: .unique, componentId: id, values: values)), action: nil, modifiers: nil)
     }
     static func postInstance(values: Uicorn.View.Instance.Values) -> Uicorn.View {
         .instance(.postComponentId, values: values)
     }
     static var postInstance: Uicorn.View {
-        .postInstance(values: [:])
+        .init(id: .unique, type: .instance(.post), action: nil, modifiers: nil)
     }
     static var color: Uicorn.View {
         .color(.random)

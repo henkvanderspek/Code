@@ -59,7 +59,7 @@ class HostController<V: View>: UIHostingController<V> {
 }
 
 struct RootView: View {
-    @StateObject private var backendController = Backend.Controller(configuration: .live)
+    @StateObject private var backendController = BackendController(configuration: .live)
     var body: some View {
         UicornView(.constant(.mock))
             .environmentObject(backendController)

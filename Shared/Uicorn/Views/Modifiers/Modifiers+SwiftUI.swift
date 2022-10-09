@@ -51,4 +51,11 @@ private extension Uicorn.Frame {
     }
 }
 
+private extension Uicorn.Metric {
+    var v: CGFloat? {
+        let ret = CGFloat(value)
+        return ret > 0 ? ret : nil
+    }
+}
+
 extension Uicorn.View: Bindable {}

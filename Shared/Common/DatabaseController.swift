@@ -28,7 +28,7 @@ class DatabaseController: ObservableObject {
         case .mock:
             return MockDatabaseEngine()
         case .dev, .live:
-            fatalError()
+            return CoreDataDatabaseEngine()
         }
     }()
     init(configuration c: Configuration) {

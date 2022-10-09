@@ -29,7 +29,16 @@ extension UicornView {
 }
 
 struct Instance_Previews: PreviewProvider {
+    static var view: Uicorn.View = .postInstance
+    static var app: Uicorn.App = .init(id: .unique, title: .init(), color: .random, screens: [.init(id: .unique, title: .init(), view: view)], components: [.post])
+    static var componentController = ComponentController()
+    static var valueProvider = EmptyValueProvider()
     static var previews: some View {
-        UicornView.Instance(.constant(.init(id: .unique, componentId: .unique, values: [:])))
+        UicornView(.constant(view))
+            .environmentObject(componentController)
+            .environmentObject(valueProvider)
+            .onAppear {
+                componentController.app = .constant(app)
+            }
     }
 }

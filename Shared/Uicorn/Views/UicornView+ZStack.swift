@@ -15,8 +15,8 @@ extension UicornView {
         }
         var body: some View {
             SwiftUI.ZStack(alignment: .init($model.alignment.wrappedValue)) {
-                ForEach($model.reversedEnumeratedChildren, id: \.offset) { v in
-                    UicornView(v.element)
+                ForEach($model.children) {
+                    UicornView($0)
                 }
             }
         }
